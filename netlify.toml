@@ -1,0 +1,4 @@
+[build]
+base = "socialtours/"
+publish = "socialtours/build"
+command = "yarn build"
