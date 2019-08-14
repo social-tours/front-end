@@ -1,26 +1,33 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { Component } from 'react';
 import './App.css';
+import axios from "axios";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+
+class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      usersData: []
+    };
+  }
+
+  componentDidMount() {
+    axios
+      .get("http://staging-a-socialtours.herokuapp.com/api/users")
+      .then(response => {
+        this.setState({ usersData: response.data });
+      })
+      .catch(err => console.log(err));
+  }
+
+  render() {
+    return (
+      <div>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          {this.state.usersData.length} users in database
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+      </div>
+    );
+  }
 }
-
 export default App;
