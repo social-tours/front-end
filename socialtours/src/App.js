@@ -24,7 +24,7 @@ class App extends Component {
     return (
       <div>
         <p>
-          {this.state.usersData.length}
+          {this.state.usersData.length} users in database
         </p>
       </div>
     );
