@@ -13,7 +13,7 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get("http://staging-a-socialtours.herokuapp.com/api/users")
+      .get("https://staging-a-socialtours.herokuapp.com/api/users")
       .then(response => {
         this.setState({ usersData: response.data });
       })
