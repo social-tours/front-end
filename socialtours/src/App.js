@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from "axios";
-
+import API_ENDPOINT from './config/api';
 
 class App extends Component {
   constructor(props) {
@@ -13,9 +13,10 @@ class App extends Component {
 
   componentDidMount() {
     axios
-      .get("https://staging-a-socialtours.herokuapp.com/api/users")
+      .get(`${API_ENDPOINT}/api/users`)
+
       .then(response => {
-        this.setState({ usersData: response.data });
+        this.setState({ usersData: response.data });      
       })
       .catch(err => console.log(err));
   }
