@@ -1,4 +1,6 @@
 import React from 'react';
+import API_ENDPOINT from '../config/api';
+
 const axios = require('axios');
 
 class Login extends React.Component {
@@ -17,7 +19,7 @@ class Login extends React.Component {
         }
     }
 
-    render(){
+    render(){        
         return (
             <>
                 {this.state.isLoggedIn ? <h2>Congrats! You're logged in.</h2> : <></>}
@@ -82,7 +84,7 @@ class Login extends React.Component {
         if (this.isValidLogIn){
             const {email, password} = this.state.user;
             const user = {email, password};
-            axios.post('www.staging-a-socialtours.heroku.com/api/login', user)
+            axios.post(`${API_ENDPOINT}/api/login`, user)
             .then(res => 
                 this.setState({response: {...res.data}, isLoggedIn: true}))
             .catch(err => console.log(err))
@@ -93,7 +95,7 @@ class Login extends React.Component {
     signup = () => {
         const user = {...this.state.user};
 
-        axios.post('www.staging-a-socialtours.heroku.com/api/register', user)
+        axios.post(`${API_ENDPOINT}/api/register`, user)
         .then(res => 
             console.log('sign up successful , do something'))
         .catch(err => console.log(err))
