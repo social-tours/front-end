@@ -40,7 +40,12 @@ class Login extends React.Component {
     }
 
     handleChange = event => {
-        this.setState({user: {value: event.target.value}});
+        this.setState({
+            user: {
+              ...this.state.user,
+              [event.target.name]: event.target.value
+            }
+          });
       }
     
     handleSubmit = event =>{
