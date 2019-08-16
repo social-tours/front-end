@@ -23,7 +23,7 @@ class Login extends React.Component {
         return (
             <>
                 {this.state.isLoggedIn ? <h2>Congrats! You're logged in.</h2> : <></>}
-                <form style={{width: '300px', height: '200px', display: 'flex', flexDirection: 'column'}} onSubmit={this.state.isLoggingIn ? this.login : this.signup}>
+                <form style={{width: '300px', height: '200px', display: 'flex', flexDirection: 'column'}} onSubmit={this.handleSubmit}>
                     {this.state.isLoggingIn ? <>
                         <input style={{width: '50%'}} name='first_name' value={this.state.user.first_name} placeholder='First Name' onChange={this.handleChange} />
                         <input style={{width: '50%'}} name='last_name' value={this.state.user.last_name} placeholder='Last Name' onChange={this.handleChange} />
@@ -46,12 +46,12 @@ class Login extends React.Component {
     handleSubmit = event =>{
         event.preventDefault();
         if (this.state.isLoggingIn){
-            if (this.isValidLogIn){
-                this.login();
-            }   
-        } else {
             if (this.isValidSignUp) {
                 this.signup();
+            }   
+        } else {            
+            if (this.isValidLogIn){
+                this.login();
             }   
         }
       }
