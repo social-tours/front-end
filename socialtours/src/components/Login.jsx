@@ -57,7 +57,8 @@ class Login extends React.Component {
                 this.signup();
             }   
         } else {            
-            if (this.isValidLogIn){
+            // if login is invalid, do nothing
+            if (this.isValidLogIn()){
                 this.login();
             }   
         }
@@ -87,15 +88,12 @@ class Login extends React.Component {
     }
 
     login = () => {
-
-        if (this.isValidLogIn){
-            const {email, password} = this.state.user;
-            const user = {email, password};
-            axios.post(`${API_ENDPOINT}/api/login`, user)
-            .then(res => 
-                this.setState({response: {...res.data}, isLoggedIn: true}))
-            .catch(err => console.log(err))
-        }
+        const {email, password} = this.state.user;
+        const user = {email, password};
+        axios.post(`${API_ENDPOINT}/api/login`, user)
+        .then(res => 
+            this.setState({response: {...res.data}, isLoggedIn: true}))
+        .catch(err => console.log(err))
             
     }
 
