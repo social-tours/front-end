@@ -51,7 +51,9 @@ class Login extends React.Component {
     handleSubmit = event =>{
         event.preventDefault();
         if (this.state.isLoggingIn){
-            if (this.isValidSignUp) {
+
+            // if signup is invalid, do nothing
+            if (this.isValidSignUp()) {
                 this.signup();
             }   
         } else {            
