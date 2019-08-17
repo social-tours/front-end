@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const testComponent = _ => {
+const TestComponent = _ => {
     const [h1Message, setH1Message] = useState('default');
     return (
         <div>
@@ -9,3 +9,5 @@ const testComponent = _ => {
         </div>
     )
 }
+
+export default TestComponent;
