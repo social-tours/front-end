@@ -3,6 +3,8 @@ import './App.css';
 import axios from "axios";
 import API_ENDPOINT from './config/api';
 
+import TestComponent from './components/TestComponent';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -27,6 +29,7 @@ class App extends Component {
         <p>
           {this.state.usersData.length} users in database
         </p>
+        <TestComponent/>
       </div>
     );
   }
