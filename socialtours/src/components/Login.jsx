@@ -7,7 +7,7 @@ class Login extends React.Component {
     constructor(props){
         super(props)
         this.state = {
-            isLoggingIn : false,
+            isSigningUp : false,
             isLoggedIn: false,
             user: {
                 first_name: '',
@@ -24,15 +24,15 @@ class Login extends React.Component {
             <>
                 {this.state.isLoggedIn ? <h2>Congrats! You're logged in.</h2> : <></>}
                 <form style={{width: '300px', height: '200px', display: 'flex', flexDirection: 'column'}} onSubmit={this.handleSubmit}>
-                    {this.state.isLoggingIn ? <>
+                    {this.state.isSigningUp ? <>
                         <input style={{width: '50%'}} name='first_name' value={this.state.user.first_name} placeholder='First Name' onChange={this.handleChange} />
                         <input style={{width: '50%'}} name='last_name' value={this.state.user.last_name} placeholder='Last Name' onChange={this.handleChange} />
                         </>
                         : <></>}
                     <input style={{width: '50%'}} name='email' value={this.state.user.email}  placeholder='Email' onChange={this.handleChange} />
                     <input style={{width: '50%'}} name='password' value={this.state.user.password} placeholder='Password' onChange={this.handleChange} />
-                    {!this.state.isLoggingIn ? <span style={{width: '50%', outline: '1px solid black', textAlign: 'center'}} onClick={() => this.setState({isLoggingIn : !this.state.isLoggingIn})}>Sign Up</span> : <></>}
-                    <button style={{width: '50%'}} type='submit' value='submit' >{!this.state.isLoggingIn ? 'Log In' : 'Lets do this' }</button>
+                    {!this.state.isSigningUp ? <span style={{width: '50%', outline: '1px solid black', textAlign: 'center'}} onClick={() => this.setState({isSigningUp : !this.state.isSigningUp})}>Sign Up</span> : <></>}
+                    <button style={{width: '50%'}} type='submit' value='submit' >{!this.state.isSigningUp ? 'Log In' : 'Lets do this' }</button>
                     
                 </form>
             </>
@@ -50,7 +50,7 @@ class Login extends React.Component {
     
     handleSubmit = event =>{
         event.preventDefault();
-        if (this.state.isLoggingIn){
+        if (this.state.isSigningUp){
 
             // if signup is invalid, do nothing
             if (this.isValidSignUp()) {
