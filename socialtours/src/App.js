@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import axios from "axios";
+import Login from './components/Login';
 import API_ENDPOINT from './config/api';
 
 class App extends Component {
@@ -27,6 +28,7 @@ class App extends Component {
         <p>
           {this.state.usersData.length} users in database
         </p>
+        <Login />        
       </div>
     );
   }
