@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import './App.css';
+import React, { Component } from "react";
+import "./App.css";
 import axios from "axios";
-import API_ENDPOINT from './config/api';
+import API_ENDPOINT from "./config/api";
 
-import TestComponent from './components/TestComponent';
+import TestComponent from "./components/TestComponent";
 
 class App extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ class App extends Component {
       .get(`${API_ENDPOINT}/api/users`)
 
       .then(response => {
-        this.setState({ usersData: response.data });      
+        this.setState({ usersData: response.data });
       })
       .catch(err => console.log(err));
   }
@@ -26,10 +26,8 @@ class App extends Component {
   render() {
     return (
       <div>
-        <p>
-          {this.state.usersData.length} users in database
-        </p>
-        <TestComponent/>
+        <p>{this.state.usersData.length} users in database</p>
+        <TestComponent />
       </div>
     );
   }
