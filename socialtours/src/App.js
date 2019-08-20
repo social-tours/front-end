@@ -4,6 +4,8 @@ import axios from "axios";
 import Login from './components/Login';
 import API_ENDPOINT from './config/api';
 
+import TestComponent from './components/TestComponent';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -29,6 +31,7 @@ class App extends Component {
           {this.state.usersData.length} users in database
         </p>
         <Login />
+        <TestComponent/>
       </div>
     );
   }
