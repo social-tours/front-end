@@ -16,7 +16,8 @@
 		"build": "react-scripts build",
 		"test": "react-scripts test",
 		"eject": "react-scripts eject",
-		"cypress": "cypress open"
+		"cypress": "cypress open",
+		"format": "prettier --write '**/*.{js,jsx}'"
 	},
 	"eslintConfig": {
 		"extends": "react-app"
@@ -29,7 +30,7 @@
 		"singleQuote": false,
 		"trailingComma": "none",
 		"bracketSpacing": true,
-		"jsxBracketSameLine": false
+		"jsxBracketSameLine": false,
 	},
 	"browserslist": {
 		"production": [
