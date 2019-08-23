@@ -55,10 +55,53 @@ const fetchEvent = eventID => async dispatch => {
 
 
 // Put event
+const putEvent = eventID => async dispatch => {
+    dispatch({
+        type: PUT_EVENT
+    }); //greg
+    try {
+        const event = await axios.put(API + `/events/${eventID}`)
+        event.status === 200 ? dispatch({
+            type: PUT_EVENT_SUCCEEDED,
+            payload: event.data
+        }) : dispatch({
+            type: PUT_EVENT_FAILED,
+            // payload: event.data
+        })
 
+    } catch (err) {
+        //FETCH_FAILED
+        dispatch({
+            type: PUT_EVENT_FAILED
+        })
+        console.log(err);
+    }
+}
 
 
 // delete event
+const deleteEvent = eventID => async dispatch => {
+    dispatch({
+        type: DELETE_EVENT
+    }); //greg
+    try {
+        const event = await axios.delete(API + `/events/${eventID}`)
+        event.status === 200 ? dispatch({
+            type: DELETE_EVENT_SUCCEEDED,
+            payload: event.data
+        }) : dispatch({
+            type: DELETE_EVENT_FAILED,
+            payload: event.data
+        })
+
+    } catch (err) {
+        //FETCH_FAILED
+        dispatch({
+            type: FETCH_EVENT_FAILED
+        })
+        console.log(err);
+    }
+}
 
 
 
