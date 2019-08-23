@@ -25,7 +25,7 @@ export const types = {
 const API = '' // need to get from backend
 
 // get event, FETCHEVENT, SUCCEED, FAIL
-const fetchEvent = eventID => async dispatch => {
+export const fetchEvent = eventID => async dispatch => {
     dispatch({
         type: FETCH_EVENT
     }); //greg
@@ -55,7 +55,7 @@ const fetchEvent = eventID => async dispatch => {
 
 
 // Put event
-const putEvent = eventID => async dispatch => {
+export const putEvent = eventID => async dispatch => {
     dispatch({
         type: PUT_EVENT
     }); //greg
@@ -78,9 +78,8 @@ const putEvent = eventID => async dispatch => {
     }
 }
 
-
 // delete event
-const deleteEvent = eventID => async dispatch => {
+export const deleteEvent = eventID => async dispatch => {
     dispatch({
         type: DELETE_EVENT
     }); //greg
