@@ -30,24 +30,23 @@ const fetchEvent = eventID => async dispatch => {
         type: FETCH_EVENT
     }); //greg
     try {
-        const event = await axios.get(API / event)
+        const event = await axios.get(API + `/events/${eventID}`)
         if (event.status === 200) {
             //FETCH_SUCCEEDED
             dispatch({
                 type: FETCH_EVENT_SUCCEEDED,
-                payload: result.status
+                payload: event.data
             });
         } else {
             dispatch({
                 type: FETCH_EVENT_FAILED,
-                payload: err
+                // payload: event.data
             })
         }
     } catch (err) {
         //FETCH_FAILED
         dispatch({
-            type: FETCH_EVENT_FAILED,
-            payload: err
+            type: FETCH_EVENT_FAILED
         })
         console.log(err);
     }
@@ -60,6 +59,7 @@ const fetchEvent = eventID => async dispatch => {
 
 
 // Put event
+
 
 
 // delete event
