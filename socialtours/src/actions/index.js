@@ -13,10 +13,12 @@ export const types = {
     POST_EVENT_SUCCEEDED: 'POST_EVENT_SUCCEEDED',
     POST_EVENT_FAILED: 'POST_EVENT_FAILED',
 
+    // Completed by Greg, 
     PUT_EVENT: 'PUT_EVENT',
     PUT_EVENT_SUCCEEDED: 'PUT_EVENT_SUCCEEDED',
     PUT_EVENT_FAILED: 'PUT_EVENT_FAILED',
 
+    // Completed by Greg, 
     DELETE_EVENT: 'DELETE_EVENT',
     DELETE_EVENT_SUCCEEDED: 'DELETE_EVENT_SUCCEEDED',
     DELETE_EVENT_FAILED: 'DELETE_EVENT_FAILED'
@@ -82,12 +84,12 @@ export const putEvent = eventID => async dispatch => {
     }); //greg
     try {
         const event = await axios.put(API + `/events/${eventID}`)
-        event.status === 200 ? dispatch({
+        event.status === 204 ? dispatch({
             type: PUT_EVENT_SUCCEEDED,
             payload: event.data
         }) : dispatch({
             type: PUT_EVENT_FAILED,
-            // payload: event.data
+            payload: event.data
         })
 
     } catch (err) {
@@ -99,7 +101,6 @@ export const putEvent = eventID => async dispatch => {
     }
 }
 
-
 // delete event
 export const deleteEvent = eventID => async dispatch => {
     dispatch({
@@ -107,7 +108,7 @@ export const deleteEvent = eventID => async dispatch => {
     }); //greg
     try {
         const event = await axios.delete(API + `/events/${eventID}`)
-        event.status === 200 ? dispatch({
+        event.status === 204 ? dispatch({
             type: DELETE_EVENT_SUCCEEDED,
             payload: event.data
         }) : dispatch({
