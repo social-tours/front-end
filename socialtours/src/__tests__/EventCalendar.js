@@ -44,10 +44,12 @@ describe("EventCalendar display", () => {
 
 		fireEvent.click(getLastMonth);
 		fireEvent.click(getLastMonth);
+		getByText(lastMonth);
 	});
 });
 
 describe("EventCalendar functionality", () => {
 	it("Loads content from the server", () => {});
-	it("Opens an event when you click on the event", () => {});
+	if (("Displays appropriate event count on event day", () => {}))
+		it("Opens an event when you click on the event", () => {});
 });
