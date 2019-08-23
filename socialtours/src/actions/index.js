@@ -61,12 +61,12 @@ const putEvent = eventID => async dispatch => {
     }); //greg
     try {
         const event = await axios.put(API + `/events/${eventID}`)
-        event.status === 200 ? dispatch({
+        event.status === 204 ? dispatch({
             type: PUT_EVENT_SUCCEEDED,
             payload: event.data
         }) : dispatch({
             type: PUT_EVENT_FAILED,
-            // payload: event.data
+            payload: event.data
         })
 
     } catch (err) {
@@ -86,7 +86,7 @@ const deleteEvent = eventID => async dispatch => {
     }); //greg
     try {
         const event = await axios.delete(API + `/events/${eventID}`)
-        event.status === 200 ? dispatch({
+        event.status === 204 ? dispatch({
             type: DELETE_EVENT_SUCCEEDED,
             payload: event.data
         }) : dispatch({
