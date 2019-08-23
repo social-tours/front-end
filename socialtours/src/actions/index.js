@@ -31,18 +31,14 @@ const fetchEvent = eventID => async dispatch => {
     }); //greg
     try {
         const event = await axios.get(API + `/events/${eventID}`)
-        if (event.status === 200) {
-            //FETCH_SUCCEEDED
-            dispatch({
-                type: FETCH_EVENT_SUCCEEDED,
-                payload: event.data
-            });
-        } else {
-            dispatch({
-                type: FETCH_EVENT_FAILED,
-                // payload: event.data
-            })
-        }
+        event.status === 200 ? dispatch({
+            type: FETCH_EVENT_SUCCEEDED,
+            payload: event.data
+        }) : dispatch({
+            type: FETCH_EVENT_FAILED,
+            // payload: event.data
+        })
+
     } catch (err) {
         //FETCH_FAILED
         dispatch({
@@ -63,3 +59,7 @@ const fetchEvent = eventID => async dispatch => {
 
 
 // delete event
+
+
+
+event.status === 200 ? ANSWERIF TRUE | ANSWRER IF FALSE
