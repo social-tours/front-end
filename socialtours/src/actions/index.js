@@ -53,7 +53,28 @@ export const fetchEvent = eventID => async dispatch => {
 
 
 // Post event
+export const postEvent = eventID => async dispatch => {
+    dispatch({
+        type: POST_EVENT
+    }); //greg
+    try {
+        const event = await axios.get(API + `/events/${eventID}`)
+        event.status === 200 ? dispatch({
+            type: POST_EVENT_SUCCEEDED,
+            payload: event.data
+        }) : dispatch({
+            type: POST_EVENT_FAILED,
+            // payload: event.data
+        })
 
+    } catch (err) {
+        //POST_FAILED
+        dispatch({
+            type: POST_EVENT_FAILED
+        })
+        console.log(err);
+    }
+}
 
 
 // Put event
