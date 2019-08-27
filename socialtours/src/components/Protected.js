@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom'
 import API_ENDPOINT from "../config/api";
 import axios from "axios";
 
@@ -29,11 +30,9 @@ export default class Secret extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.props.auth.logout}>logout</button>
-
+        <Link to="/">Home</Link>
         <p>secret place</p>
         <p>{this.state.users.length} users in database</p>
-
       </div>
     )
   }
