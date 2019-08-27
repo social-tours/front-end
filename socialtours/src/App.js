@@ -1,6 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import "./App.css";
 import axios from "axios";
+import Auth from './Auth';
 import Login from "./components/Login";
 import API_ENDPOINT from "./config/api";
 
@@ -9,6 +10,8 @@ class App extends Component {
         super(props);
         this.state = {
             usersData: [],
+            // move to redux state later
+            auth: new Auth()
         };
     }
 
