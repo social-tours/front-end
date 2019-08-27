@@ -42,7 +42,7 @@ const events = [
 	},
 	{
 		id: 5,
-		user_id: 4,
+		user_id: 3,
 		type: 1,
 		title: "Kung Fu Fighting",
 		description: "Let's learn Kung Fu together.",
