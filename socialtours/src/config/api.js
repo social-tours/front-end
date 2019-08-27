@@ -10,7 +10,7 @@ if (hostname === 'www.socialtours.io') {
 } else if (hostname === 'staging-b-socialtours.netlify.com') {
   API_ENDPOINT = 'https://staging-b-socialtours.herokuapp.com';
 } else {
-  API_ENDPOINT = 'http://localhost:5000'
+  API_ENDPOINT = 'http://localhost:8080'
 }
 
 export default API_ENDPOINT;
