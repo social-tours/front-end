@@ -1,5 +1,6 @@
 /* eslint no-restricted-globals: 0 */
 import auth0 from "auth0-js";
+import { REDIRECT_URI } from "./config/api";
 
 const LOGIN_SUCCESS_PAGE = "/protected";
 const LOGIN_FAILURE_PAGE = "/";
@@ -8,7 +9,7 @@ export default class Auth {
 	auth0 = new auth0.WebAuth({
 		domain: "dev-r8zrga7p.auth0.com",
 		clientID: "mKqnZoQovxuLSlTUSIwjj4bcuMOH3aX1",
-		redirectUri: "http://localhost:3000/callback",
+		redirectUri: `${REDIRECT_URI}/callback`,
 		audience: "http://localhost:8080",
 		responseType: "token id_token",
 		scope: "openid profile"

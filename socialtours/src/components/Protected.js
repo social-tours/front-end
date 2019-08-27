@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import API_ENDPOINT from "../config/api";
+import { API_ENDPOINT } from "../config/api";
 import axios from "axios";
 
 export default class Secret extends Component {
