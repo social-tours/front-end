@@ -74,7 +74,14 @@ export const postEvent = eventID => async dispatch => {
         console.log(err);
     }
 }
-
+    } catch (err) {
+        //POST_FAILED
+        dispatch({
+            type: POST_EVENT_FAILED
+        })
+        console.log(err);
+    }
+}
 
 
 // Put event
