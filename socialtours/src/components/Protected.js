@@ -10,15 +10,11 @@ export default class Secret extends Component {
 
 	componentDidMount() {
 		axios
-			.get(
-				`${API_ENDPOINT}/api/users`
-				// for accessing protected endpoint later
-				// ,{
-				//   headers: {
-				//     Authorization: 'Bearer ' + localStorage.getItem('access_token')
-				//   },
-				// }
-			)
+			.get(`${API_ENDPOINT}/api/users`, {
+				headers: {
+					Authorization: "Bearer " + localStorage.getItem("access_token")
+				}
+			})
 
 			.then(response => {
 				this.setState({ users: response.data });
