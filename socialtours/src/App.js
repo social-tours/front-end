@@ -1,18 +1,24 @@
 import React, { Component } from "react";
-import "./App.css";
 import axios from "axios";
-import Login from "./components/Login";
-import API_ENDPOINT from "./config/api";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from 'react-redux';
+import { fetchEvents } from './actions/index.js';
 
+import "./App.css";
+import Login from "./components/Login";
+// import Calendar from "./components/EventCalendar";
+//import API_ENDPOINT from "./config/api";
+const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
 class App extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            usersData: [],
+            usersData: []
         };
     }
 
     componentDidMount() {
+        this.props.fetchEvents()
         axios
             .get(`${API_ENDPOINT}/api/users`)
 
@@ -24,11 +30,18 @@ class App extends Component {
 
     render() {
         return (
-            <div>
-                <p>{this.state.usersData.length} users in database</p>
-                <Login />
-            </div>
+            <Router>
+                <div>
+                    <p>{this.state.usersData.length} users in database</p>
+                    <Route path="/login" component={Login} />
+                    {/* <Route path="/calendar" component={Calendar} /> */}
+                </div>
+            </Router>
         );
     }
 }
-export default App;
+const mapStateToProps = state => {
+    console.log(state);
+    return (state)
+}
+export default connect(mapStateToProps, { fetchEvents })(App);
