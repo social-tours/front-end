@@ -25,8 +25,8 @@ class Login extends React.Component {
                 {this.state.isLoggedIn ? (
                     <h2>Congrats! You're logged in.</h2>
                 ) : (
-                    <></>
-                )}
+                        <></>
+                    )}
                 <form
                     style={{
                         width: "300px",
@@ -54,8 +54,8 @@ class Login extends React.Component {
                             />
                         </>
                     ) : (
-                        <></>
-                    )}
+                            <></>
+                        )}
                     <input
                         style={{ width: "50%" }}
                         name="email"
@@ -86,8 +86,8 @@ class Login extends React.Component {
                             Sign Up
                         </span>
                     ) : (
-                        <></>
-                    )}
+                            <></>
+                        )}
                     <button
                         style={{ width: "50%" }}
                         type="submit"
@@ -126,7 +126,7 @@ class Login extends React.Component {
 
     isValidSignUp = () => {
         const { first_name, last_name, email, password } = this.state.user;
-
+        // first_name.length > 0 && last_name.length > 0 && email.length > 0 && password.length > 0 ? true : false;
         if (
             first_name.length > 0 &&
             last_name.length > 0 &&

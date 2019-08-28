@@ -3,6 +3,8 @@ import "./App.css";
 import axios from "axios";
 import Login from "./components/Login";
 import API_ENDPOINT from "./config/api";
+import { fetchEvents } from './actions/index.js'
+import { connect } from 'react-redux';
 
 class App extends Component {
     constructor(props) {
@@ -13,6 +15,7 @@ class App extends Component {
     }
 
     componentDidMount() {
+        this.props.fetchEvents()
         axios
             .get(`${API_ENDPOINT}/api/users`)
 
@@ -31,4 +34,4 @@ class App extends Component {
         );
     }
 }
-export default App;
+export default connect(null, { fetchEvents })(App);

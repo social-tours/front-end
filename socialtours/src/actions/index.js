@@ -3,6 +3,11 @@ import axios from 'axios';
 // action types
 export const types = {
     // Completed by Greg, 
+    FETCH_EVENTS: 'FETCH_EVENTS',
+    FETCH_EVENTS_SUCCEEDED: 'FETCH_EVENTS_SUCCEEDED',
+    FETCH_EVENTS_FAILED: 'FETCH_EVENTS_FAILED',
+
+    // Completed by Greg, 
     FETCH_EVENT: 'FETCH_EVENT',
     FETCH_EVENT_SUCCEEDED: 'FETCH_EVENT_SUCCEEDED',
     FETCH_EVENT_FAILED: 'FETCH_EVENT_FAILED',
@@ -23,7 +28,31 @@ export const types = {
     DELETE_EVENT_FAILED: 'DELETE_EVENT_FAILED'
 }
 
-const API = '' // need to get from backend
+const API = 'https://staging-a-socialtours.herokuapp.com' // need to get from backend
+
+// get event, FETCHEVENT, SUCCEED, FAIL
+export const fetchEvents = () => async dispatch => {
+    dispatch({
+        type: types.FETCH_EVENTS
+    }); //greg
+    try {
+        const events = await axios.get(API + `/api/events`)
+        events.status === 200 ? dispatch({
+            type: types.FETCH_EVENTS_SUCCEEDED,
+            payload: events.data
+        }) : dispatch({
+            type: types.FETCH_EVENTS_FAILED,
+            // payload: event.data
+        })
+
+    } catch (err) {
+        //types.FETCH_FAILED
+        dispatch({
+            type: types.FETCH_EVENTS_FAILED
+        })
+        console.log(err);
+    }
+}
 
 // get event, FETCHEVENT, SUCCEED, FAIL
 export const fetchEvent = eventID => async dispatch => {
