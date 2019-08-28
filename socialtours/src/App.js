@@ -4,8 +4,9 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import "./App.css";
 import Login from "./components/Login";
-import API_ENDPOINT from "./config/api";
-
+import Calendar from "./components/EventCalendar";
+//import API_ENDPOINT from "./config/api";
+const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
 class App extends Component {
 	constructor(props) {
 		super(props);
@@ -30,6 +31,7 @@ class App extends Component {
 				<div>
 					<p>{this.state.usersData.length} users in database</p>
 					<Route path="/login" component={Login} />
+					<Route path="/calendar" component={Calendar} />
 				</div>
 			</Router>
 		);
