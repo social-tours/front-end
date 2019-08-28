@@ -19,88 +19,6 @@ class Login extends React.Component {
 		};
 	}
 
-<<<<<<< HEAD
-    render() {
-        return (
-            <>
-                {this.state.isLoggedIn ? (
-                    <h2>Congrats! You're logged in.</h2>
-                ) : (
-                        <></>
-                    )}
-                <form
-                    style={{
-                        width: "300px",
-                        height: "200px",
-                        display: "flex",
-                        flexDirection: "column",
-                    }}
-                    onSubmit={this.handleSubmit}
-                >
-                    {this.state.isSigningUp ? (
-                        <>
-                            <input
-                                style={{ width: "50%" }}
-                                name="first_name"
-                                value={this.state.user.first_name}
-                                placeholder="First Name"
-                                onChange={this.handleChange}
-                            />
-                            <input
-                                style={{ width: "50%" }}
-                                name="last_name"
-                                value={this.state.user.last_name}
-                                placeholder="Last Name"
-                                onChange={this.handleChange}
-                            />
-                        </>
-                    ) : (
-                            <></>
-                        )}
-                    <input
-                        style={{ width: "50%" }}
-                        name="email"
-                        value={this.state.user.email}
-                        placeholder="Email"
-                        onChange={this.handleChange}
-                    />
-                    <input
-                        style={{ width: "50%" }}
-                        name="password"
-                        value={this.state.user.password}
-                        placeholder="Password"
-                        onChange={this.handleChange}
-                    />
-                    {!this.state.isSigningUp ? (
-                        <span
-                            style={{
-                                width: "50%",
-                                outline: "1px solid black",
-                                textAlign: "center",
-                            }}
-                            onClick={() =>
-                                this.setState({
-                                    isSigningUp: !this.state.isSigningUp,
-                                })
-                            }
-                        >
-                            Sign Up
-                        </span>
-                    ) : (
-                            <></>
-                        )}
-                    <button
-                        style={{ width: "50%" }}
-                        type="submit"
-                        value="submit"
-                    >
-                        {!this.state.isSigningUp ? "Log In" : "Lets do this"}
-                    </button>
-                </form>
-            </>
-        );
-    }
-=======
 	render() {
 		return (
 			<>
@@ -132,8 +50,8 @@ class Login extends React.Component {
 							/>
 						</>
 					) : (
-						<></>
-					)}
+							<></>
+						)}
 					<input
 						style={{ width: "50%" }}
 						name="email"
@@ -164,8 +82,8 @@ class Login extends React.Component {
 							Sign Up
 						</span>
 					) : (
-						<></>
-					)}
+							<></>
+						)}
 					<button style={{ width: "50%" }} type="submit" value="submit">
 						{!this.state.isSigningUp ? "Log In" : "Lets do this"}
 					</button>
@@ -173,7 +91,6 @@ class Login extends React.Component {
 			</>
 		);
 	}
->>>>>>> 1cc0465365fd1b605b8a99c91807b24f9485ffec
 
 	handleChange = event => {
 		this.setState({
@@ -199,22 +116,6 @@ class Login extends React.Component {
 		}
 	};
 
-<<<<<<< HEAD
-    isValidSignUp = () => {
-        const { first_name, last_name, email, password } = this.state.user;
-        // first_name.length > 0 && last_name.length > 0 && email.length > 0 && password.length > 0 ? true : false;
-        if (
-            first_name.length > 0 &&
-            last_name.length > 0 &&
-            email.length > 0 &&
-            password.length > 0
-        ) {
-            return true;
-        } else {
-            return false;
-        }
-    };
-=======
 	isValidSignUp = () => {
 		const { first_name, last_name, email, password } = this.state.user;
 
@@ -229,7 +130,6 @@ class Login extends React.Component {
 			return false;
 		}
 	};
->>>>>>> 1cc0465365fd1b605b8a99c91807b24f9485ffec
 
 	isValidLogIn = () => {
 		const { email, password } = this.state.user;

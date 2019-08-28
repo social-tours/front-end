@@ -4,46 +4,51 @@ import axios from 'axios';
 export const types = {
     // Completed by Greg, 
     FETCH_EVENTS: 'FETCH_EVENTS',
-    FETCH_EVENTS_SUCCEEDED: 'FETCH_EVENTS_SUCCEEDED',
+    FETCH_EVENTS_SUCCESS: 'FETCH_EVENTS_SUCCESS',
     FETCH_EVENTS_FAILED: 'FETCH_EVENTS_FAILED',
 
     // Completed by Greg, 
     FETCH_EVENT: 'FETCH_EVENT',
-    FETCH_EVENT_SUCCEEDED: 'FETCH_EVENT_SUCCEEDED',
+    FETCH_EVENT_SUCCESS: 'FETCH_EVENT_SUCCESS',
     FETCH_EVENT_FAILED: 'FETCH_EVENT_FAILED',
 
     // Completed by Michael, 
     POST_EVENT: 'POST_EVENT',
-    POST_EVENT_SUCCEEDED: 'POST_EVENT_SUCCEEDED',
+    POST_EVENT_SUCCESS: 'POST_EVENT_SUCCESS',
     POST_EVENT_FAILED: 'POST_EVENT_FAILED',
 
     // Completed by Greg, 
     PUT_EVENT: 'PUT_EVENT',
-    PUT_EVENT_SUCCEEDED: 'PUT_EVENT_SUCCEEDED',
+    PUT_EVENT_SUCCESS: 'PUT_EVENT_SUCCESS',
     PUT_EVENT_FAILED: 'PUT_EVENT_FAILED',
 
     // Completed by Greg, 
     DELETE_EVENT: 'DELETE_EVENT',
-    DELETE_EVENT_SUCCEEDED: 'DELETE_EVENT_SUCCEEDED',
+    DELETE_EVENT_SUCCESS: 'DELETE_EVENT_SUCCESS',
     DELETE_EVENT_FAILED: 'DELETE_EVENT_FAILED'
 }
 
 const API = 'https://staging-a-socialtours.herokuapp.com' // need to get from backend
 
-// get event, FETCHEVENT, SUCCEED, FAIL
+// get event list, FETCHEVENT, SUCCEED, FAIL
 export const fetchEvents = () => async dispatch => {
     dispatch({
         type: types.FETCH_EVENTS
-    }); //greg
+    });
     try {
         const events = await axios.get(API + `/api/events`)
-        events.status === 200 ? dispatch({
-            type: types.FETCH_EVENTS_SUCCEEDED,
-            payload: events.data
-        }) : dispatch({
-            type: types.FETCH_EVENTS_FAILED,
-            // payload: event.data
-        })
+        console.log(events)
+        if (events.status === 200) {
+            console.log('Im Here')
+            dispatch({
+                type: types.FETCH_EVENTS_SUCCESS,
+                payload: events.data.events
+            })
+        } else {
+            dispatch({
+                type: types.FETCH_EVENTS_FAILED,
+            })
+        }
 
     } catch (err) {
         //types.FETCH_FAILED
@@ -62,7 +67,7 @@ export const fetchEvent = eventID => async dispatch => {
     try {
         const event = await axios.get(API + `/events/${eventID}`)
         event.status === 200 ? dispatch({
-            type: types.FETCH_EVENT_SUCCEEDED,
+            type: types.FETCH_EVENT_SUCCESS,
             payload: event.data
         }) : dispatch({
             type: types.FETCH_EVENT_FAILED,
@@ -88,7 +93,7 @@ export const postEvent = eventID => async dispatch => {
     try {
         const event = await axios.get(API + `/events/${eventID}`)
         event.status === 200 ? dispatch({
-            type: types.POST_EVENT_SUCCEEDED,
+            type: types.POST_EVENT_SUCCESS,
             payload: event.data
         }) : dispatch({
             type: types.POST_EVENT_FAILED,
@@ -102,14 +107,7 @@ export const postEvent = eventID => async dispatch => {
         })
         console.log(err);
     }
-}
-    } catch (err) {
-        //POST_FAILED
-        dispatch({
-            type: POST_EVENT_FAILED
-        })
-        console.log(err);
-    }
+
 }
 
 
@@ -121,7 +119,7 @@ export const putEvent = eventID => async dispatch => {
     try {
         const event = await axios.put(API + `/events/${eventID}`)
         event.status === 204 ? dispatch({
-            type: types.PUT_EVENT_SUCCEEDED,
+            type: types.PUT_EVENT_SUCCESS,
             payload: event.data
         }) : dispatch({
             type: types.PUT_EVENT_FAILED,
@@ -145,7 +143,7 @@ export const deleteEvent = eventID => async dispatch => {
     try {
         const event = await axios.delete(API + `/events/${eventID}`)
         event.status === 204 ? dispatch({
-            type: types.DELETE_EVENT_SUCCEEDED,
+            type: types.DELETE_EVENT_SUCCESS,
             payload: event.data
         }) : dispatch({
             type: types.DELETE_EVENT_FAILED,
