@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import "./App.css";
 import axios from "axios";
+import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import "./App.css";
 import Login from "./components/Login";
 import API_ENDPOINT from "./config/api";
 
@@ -24,10 +26,12 @@ class App extends Component {
 
 	render() {
 		return (
-			<div>
-				<p>{this.state.usersData.length} users in database</p>
-				<Login />
-			</div>
+			<Router>
+				<div>
+					<p>{this.state.usersData.length} users in database</p>
+					<Route path="/login" component={Login} />
+				</div>
+			</Router>
 		);
 	}
 }
