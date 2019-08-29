@@ -2,7 +2,7 @@ import React from 'react';
 
 class EventDetails extends React.Component {
     state = {
-        id: '',
+        // id: '',
         type: '',
         title: '',
         description: '',
@@ -24,7 +24,7 @@ class EventDetails extends React.Component {
     componentDidMount() {
         if (this.props.forUpdate) {
             this.setState({
-                id: this.props.event.id,
+                // id: this.props.event.id,
                 type: this.props.event.type,
                 title: this.props.event.title,
                 description: this.props.event.description,
@@ -53,7 +53,7 @@ class EventDetails extends React.Component {
         e.preventDefault();
         let newEvent = {
             ...this.state,
-            id: this.props.event.id
+            title: this.props.event.title
         }
         this.props.updateEvent(newEvent);
         this.props.toggleUpdate();
@@ -67,7 +67,7 @@ class EventDetails extends React.Component {
     render() {
         return (
             <form onSubmit={this.props.forUpdate ? this.updateEvent : this.addEvent}>
-                <input name='id' placeholder='id' onChange={this.handleChange} value={this.state.id} />
+                {/* <input name='id' placeholder='id' onChange={this.handleChange} value={this.state.id} /> */}
                 <input name='type' placeholder='type' onChange={this.handleChange} value={this.state.type} />
                 <input name='title' placeholder='title' onChange={this.handleChange} value={this.state.title} />
                 <input name='description' placeholder='description' onChange={this.handleChange} value={this.state.description} />
