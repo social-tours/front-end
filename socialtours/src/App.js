@@ -6,6 +6,8 @@ import { fetchEvents } from './actions/index.js';
 
 import "./App.css";
 import Login from "./components/Login";
+import EventDetails from './components/updateDeleteEvent.js';
+
 // import Calendar from "./components/EventCalendar";
 //import API_ENDPOINT from "./config/api";
 const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
@@ -35,6 +37,8 @@ class App extends Component {
                     <p>{this.state.usersData.length} users in database</p>
                     <Route path="/login" component={Login} />
                     {/* <Route path="/calendar" component={Calendar} /> */}
+                    <Route path="/eventDetails" component={EventDetails} />
+
                 </div>
             </Router>
         );
