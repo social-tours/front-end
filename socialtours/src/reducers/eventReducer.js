@@ -2,6 +2,10 @@
 import { types } from "../actions/index.js";
 
 const {
+	FETCH_EVENTS,
+	FETCH_EVENTS_SUCCESS,
+	FETCH_EVENTS_FAILURE,
+
 	FETCH_EVENT,
 	FETCH_EVENT_SUCCESS,
 	FETCH_EVENT_FAILURE,
@@ -30,6 +34,25 @@ const initialState = {
 
 const eventReducer = (state = initialState, action) => {
 	switch (action.type) {
+		case FETCH_EVENTS:
+			return {
+				...state,
+				fetchingEvents: true
+			};
+		case FETCH_EVENTS_SUCCESS:
+			console.log(action.payload);
+			return {
+				...state,
+				fetchingEvents: false,
+				events: { ...action.payload }
+			};
+		case FETCH_EVENTS_FAILURE:
+			return {
+				...state,
+				fetchingEvents: false,
+				error: action.payload
+			};
+
 		case FETCH_EVENT:
 			return {
 				...state,

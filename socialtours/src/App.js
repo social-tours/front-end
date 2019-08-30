@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import { fetchEvents } from "./actions/index.js";
 
 import "./App.css";
 import Login from "./components/Login";
@@ -16,6 +18,7 @@ class App extends Component {
 	}
 
 	componentDidMount() {
+		this.props.fetchEvents();
 		axios
 			.get(`${API_ENDPOINT}/api/users`)
 
@@ -37,4 +40,11 @@ class App extends Component {
 		);
 	}
 }
-export default App;
+const mapStateToProps = state => {
+	console.log(state);
+	return state;
+};
+export default connect(
+	mapStateToProps,
+	{ fetchEvents }
+)(App);
