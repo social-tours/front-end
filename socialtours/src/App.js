@@ -1,19 +1,27 @@
 import React, { Component } from "react";
 import axios from "axios";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import Auth from "./Auth";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
 
 import "./App.css";
 import Login from "./components/Login";
-import Calendar from "./components/EventCalendar";
+
+import Main from "./components/Main";
+import Protected from "./components/Protected";
+import NotFound from "./components/NotFound";
+import Callback from "./components/Callback";
+
+// import Calendar from "./components/EventCalendar";
 //import API_ENDPOINT from "./config/api";
 const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
 class App extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			usersData: []
+			usersData: [],
+			auth: new Auth()
 		};
 	}
 
@@ -31,11 +39,25 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<div>
-					<p>{this.state.usersData.length} users in database</p>
-					<Route path="/login" component={Login} />
-					<Route path="/calendar" component={Calendar} />
-				</div>
+				<Switch>
+					<Route
+						exact
+						path="/"
+						render={() => <Main auth={this.state.auth} />}
+					/>
+					<Route
+						path="/protected"
+						render={() =>
+							this.state.auth.isAuthenticated() ? (
+								<Protected auth={this.state.auth} />
+							) : (
+								<NotFound />
+							)
+						}
+					/>
+					<Route path="/callback" component={Callback} />
+					<Route component={NotFound} />
+				</Switch>
 			</Router>
 		);
 	}
