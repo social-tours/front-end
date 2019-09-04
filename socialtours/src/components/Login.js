@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import axios from "axios";
-import { API_ENDPOINT } from "../config/api";
+import { connect } from "react-redux";
+import { login } from "../actions";
 
 class Login extends Component {
 	state = {
@@ -21,21 +21,13 @@ class Login extends Component {
 
 	handleLogin = async e => {
 		e.preventDefault();
-
-		try {
-			await axios.post(`${API_ENDPOINT}/api/login`, this.state.credentials);
-			console.log("success");
-		} catch (error) {
-			console.log("login err: ", error);
-			if (error.response && error.response.status === 401) {
-				// localStorage.removeItem("token");
-			}
-		}
+		this.props.login(this.state.credentials);
 	};
 
 	render() {
 		return (
-			<div>
+			<>
+				{this.props.loginError && <p>Error on login, try again</p>}
 				<form onSubmit={this.handleLogin}>
 					<input
 						type="email"
@@ -53,9 +45,19 @@ class Login extends Component {
 					/>
 					<button>Log in</button>
 				</form>
-			</div>
+			</>
 		);
 	}
 }
 
-export default Login;
+const mapStateToProps = state => {
+	return {
+		isLoggingIn: state.authReducer.isLoggingIn,
+		loginError: state.authReducer.loginError
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	{ login }
+)(Login);
