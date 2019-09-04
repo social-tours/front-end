@@ -19,20 +19,18 @@ class Login extends Component {
 		});
 	};
 
-	handleLogin = e => {
+	handleLogin = async e => {
 		e.preventDefault();
-		// convert to async await
-		axios
-			.post(`${API_ENDPOINT}/api/login`, this.state.credentials)
-			.then(res => {
-				console.log("success");
-			})
-			.catch(err => {
-				console.log("login err: ", err);
-				if (err.response && err.response.status === 401) {
-					// localStorage.removeItem("token");
-				}
-			});
+
+		try {
+			await axios.post(`${API_ENDPOINT}/api/login`, this.state.credentials);
+			console.log("success");
+		} catch (error) {
+			console.log("login err: ", error);
+			if (error.response && error.response.status === 401) {
+				// localStorage.removeItem("token");
+			}
+		}
 	};
 
 	render() {
