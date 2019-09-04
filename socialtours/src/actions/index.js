@@ -1,4 +1,5 @@
 import axios from "axios";
+import { API_ENDPOINT } from "../config/api";
 
 // action types
 export const types = {
@@ -28,15 +29,13 @@ export const types = {
 	DELETE_EVENT_FAILED: "DELETE_EVENT_FAILED"
 };
 
-const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
-
 // get event list, FETCHEVENT, SUCCEED, FAIL
 export const fetchEvents = () => async dispatch => {
 	dispatch({
 		type: types.FETCH_EVENTS
 	});
 	try {
-		const events = await axios.get(API + `/api/events`);
+		const events = await axios.get(API_ENDPOINT + `/api/events`);
 		console.log(events);
 		if (events.status === 200) {
 			console.log("Im Here");
@@ -64,7 +63,7 @@ export const fetchEvent = eventID => async dispatch => {
 		type: types.FETCH_EVENT
 	}); //greg
 	try {
-		const event = await axios.get(API + `/events/${eventID}`);
+		const event = await axios.get(API_ENDPOINT + `/events/${eventID}`);
 		event.status === 200
 			? dispatch({
 					type: types.FETCH_EVENT_SUCCESS,
@@ -89,7 +88,7 @@ export const postEvent = eventID => async dispatch => {
 		type: types.POST_EVENT
 	}); //greg
 	try {
-		const event = await axios.get(API + `/events/${eventID}`);
+		const event = await axios.get(API_ENDPOINT + `/events/${eventID}`);
 		event.status === 200
 			? dispatch({
 					type: types.POST_EVENT_SUCCESS,
@@ -114,7 +113,7 @@ export const putEvent = eventID => async dispatch => {
 		type: types.PUT_EVENT
 	}); //greg
 	try {
-		const event = await axios.put(API + `/events/${eventID}`);
+		const event = await axios.put(API_ENDPOINT + `/events/${eventID}`);
 		event.status === 204
 			? dispatch({
 					type: types.PUT_EVENT_SUCCESS,
@@ -139,7 +138,7 @@ export const deleteEvent = eventID => async dispatch => {
 		type: types.DELETE_EVENT
 	}); //greg
 	try {
-		const event = await axios.delete(API + `/events/${eventID}`);
+		const event = await axios.delete(API_ENDPOINT + `/events/${eventID}`);
 		event.status === 204
 			? dispatch({
 					type: types.DELETE_EVENT_SUCCESS,

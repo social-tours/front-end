@@ -2,8 +2,15 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import Calendar from "react-calendar";
+import { getSchedules } from "../actions/schedules";
 
 class EventCalendar extends Component {
+	state = {};
+	componentDidMount() {
+		console.log("CDM");
+		this.props.getSchedules();
+	}
+
 	render() {
 		return (
 			<div data-testid="component-calendar">
@@ -14,11 +21,11 @@ class EventCalendar extends Component {
 }
 
 const mapStateToProps = state => {
-	console.log(state);
+	console.log("eventCalendar, mstp", state);
 	return state;
 };
 
 export default connect(
 	mapStateToProps,
-	null
+	{ getSchedules }
 )(EventCalendar);

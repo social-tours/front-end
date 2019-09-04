@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import axios from "axios";
 import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
@@ -15,26 +14,13 @@ import Callback from "./components/Callback";
 import Calendar from "./components/EventCalendar";
 
 // import Calendar from "./components/EventCalendar";
-//import API_ENDPOINT from "./config/api";
-const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
 class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			usersData: [],
-			auth: new Auth()
-		};
-	}
+	state = {
+		auth: new Auth()
+	};
 
 	componentDidMount() {
 		this.props.fetchEvents();
-		axios
-			.get(`${API_ENDPOINT}/api/users`)
-
-			.then(response => {
-				this.setState({ usersData: response.data });
-			})
-			.catch(err => console.log(err));
 	}
 
 	render() {
@@ -59,7 +45,6 @@ class App extends Component {
 					<Route path="/callback" component={Callback} />
 					<Route path="/calendar" component={Calendar} />
 					<Route component={NotFound} />
-
 				</Switch>
 			</Router>
 		);
