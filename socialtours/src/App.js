@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
 
 import "./App.css";
-// import Login from "./components/Login";
+import Login from "./components/Login";
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";
@@ -44,6 +44,7 @@ class App extends Component {
 					<Route path="/callback" component={Callback} />
 					<Route component={NotFound} />
 				</Switch>
+				<Login />
 			</Router>
 		);
 	}
