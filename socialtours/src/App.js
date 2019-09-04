@@ -6,12 +6,13 @@ import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
 
 import "./App.css";
-import Login from "./components/Login";
+// import Login from "./components/Login";
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/Callback";
+import Calendar from "./components/EventCalendar";
 
 // import Calendar from "./components/EventCalendar";
 //import API_ENDPOINT from "./config/api";
@@ -56,7 +57,9 @@ class App extends Component {
 						}
 					/>
 					<Route path="/callback" component={Callback} />
+					<Route path="/calendar" component={Calendar} />
 					<Route component={NotFound} />
+
 				</Switch>
 			</Router>
 		);
