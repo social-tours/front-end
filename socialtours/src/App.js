@@ -14,7 +14,7 @@ import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/Callback";
 
-import EventDetails from './components/updateDeleteEvent.js'
+import TheCrudEvent from './components/updateDeleteEvent.js'
 
 // import Calendar from "./components/EventCalendar";
 //import API_ENDPOINT from "./config/api";
@@ -62,8 +62,8 @@ class App extends Component {
                     <Route component={NotFound} />
                 </Switch>
                 <Route
-                        path="/eventdetails" component={EventDetails}
-                    />
+                    path="/events" component={TheCrudEvent}
+                />
             </Router>
         );
     }
