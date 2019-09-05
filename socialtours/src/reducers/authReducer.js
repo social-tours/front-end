@@ -1,6 +1,4 @@
-import { types } from "../actions/types";
-
-const { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } = types;
+import { types } from "../actions/authActions";
 
 const initialState = {
 	loginError: null,
@@ -9,20 +7,20 @@ const initialState = {
 
 const authReducer = (state = initialState, action) => {
 	switch (action.type) {
-		case LOGIN_START: {
+		case types.LOGIN_START: {
 			return {
 				...state,
 				loginError: null,
 				loggingIn: true
 			};
 		}
-		case LOGIN_SUCCESS: {
+		case types.LOGIN_SUCCESS: {
 			return {
 				...state,
 				loggingIn: false
 			};
 		}
-		case LOGIN_FAILURE: {
+		case types.LOGIN_FAILURE: {
 			return {
 				...state,
 				loginError: "failed login",

@@ -1,7 +1,37 @@
 import axios from "axios";
 import { API_ENDPOINT } from "../config/api";
 
-import { types } from "./types";
+// action types
+export const types = {
+	// Completed by Greg,
+	FETCH_EVENTS: "FETCH_EVENTS",
+	FETCH_EVENTS_SUCCESS: "FETCH_EVENTS_SUCCESS",
+	FETCH_EVENTS_FAILED: "FETCH_EVENTS_FAILED",
+
+	// Completed by Greg,
+	FETCH_EVENT: "FETCH_EVENT",
+	FETCH_EVENT_SUCCESS: "FETCH_EVENT_SUCCESS",
+	FETCH_EVENT_FAILED: "FETCH_EVENT_FAILED",
+
+	// Completed by Michael,
+	POST_EVENT: "POST_EVENT",
+	POST_EVENT_SUCCESS: "POST_EVENT_SUCCESS",
+	POST_EVENT_FAILED: "POST_EVENT_FAILED",
+
+	// Completed by Greg,
+	PUT_EVENT: "PUT_EVENT",
+	PUT_EVENT_SUCCESS: "PUT_EVENT_SUCCESS",
+	PUT_EVENT_FAILED: "PUT_EVENT_FAILED",
+
+	// Completed by Greg,
+	DELETE_EVENT: "DELETE_EVENT",
+	DELETE_EVENT_SUCCESS: "DELETE_EVENT_SUCCESS",
+	DELETE_EVENT_FAILED: "DELETE_EVENT_FAILED",
+
+	LOGIN_START: "LOGIN_START",
+	LOGIN_SUCCESS: "LOGIN_SUCCESS",
+	LOGIN_FAILURE: "LOGIN_FAILURE"
+};
 
 // get event list, FETCHEVENT, SUCCEED, FAIL
 export const fetchEvents = () => async dispatch => {

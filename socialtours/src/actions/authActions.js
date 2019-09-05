@@ -1,7 +1,12 @@
 import axios from "axios";
 import { API_ENDPOINT } from "../config/api";
 
-import { types } from "./types";
+// action types
+export const types = {
+	LOGIN_START: "LOGIN_START",
+	LOGIN_SUCCESS: "LOGIN_SUCCESS",
+	LOGIN_FAILURE: "LOGIN_FAILURE"
+};
 
 export const login = creds => async dispatch => {
 	dispatch({ type: types.LOGIN_START });
