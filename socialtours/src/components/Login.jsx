@@ -50,8 +50,8 @@ class Login extends React.Component {
 							/>
 						</>
 					) : (
-							<></>
-						)}
+						<></>
+					)}
 					<input
 						style={{ width: "50%" }}
 						name="email"
@@ -82,8 +82,8 @@ class Login extends React.Component {
 							Sign Up
 						</span>
 					) : (
-							<></>
-						)}
+						<></>
+					)}
 					<button style={{ width: "50%" }} type="submit" value="submit">
 						{!this.state.isSigningUp ? "Log In" : "Lets do this"}
 					</button>
