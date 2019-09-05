@@ -1,4 +1,4 @@
-import { types } from "../actions/index.js";
+import { types } from "../actions/types";
 
 const { LOGIN_START, LOGIN_SUCCESS, LOGIN_FAILURE } = types;
 
