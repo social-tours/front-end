@@ -37,9 +37,9 @@ export const fetchEvents = () => async dispatch => {
     });
     try {
         const events = await axios.get(API + `/api/events`)
-        console.log(events)
+        // console.log(events)
         if (events.status === 200) {
-            console.log('Im Here')
+            // console.log('Im Here')
             dispatch({
                 type: types.FETCH_EVENTS_SUCCESS,
                 payload: events.data.events
@@ -65,7 +65,7 @@ export const fetchEvent = eventID => async dispatch => {
         type: types.FETCH_EVENT
     }); //greg
     try {
-        const event = await axios.get(API + `/events/${eventID}`)
+        const event = await axios.get(API + `/api/events/${eventID}`)
         event.status === 200 ? dispatch({
             type: types.FETCH_EVENT_SUCCESS,
             payload: event.data
@@ -86,12 +86,12 @@ export const fetchEvent = eventID => async dispatch => {
 
 
 // Post event
-export const postEvent = eventID => async dispatch => {
+export const postEvent = newEvent => async dispatch => {
     dispatch({
         type: types.POST_EVENT
     }); //greg
     try {
-        const event = await axios.get(API + `/events/${eventID}`)
+        const event = await axios.post(API + "/api/events", newEvent)
         event.status === 200 ? dispatch({
             type: types.POST_EVENT_SUCCESS,
             payload: event.data
@@ -112,12 +112,12 @@ export const postEvent = eventID => async dispatch => {
 
 
 // Put event
-export const putEvent = eventID => async dispatch => {
+export const putEvent = (eventID, data) => async dispatch => {
     dispatch({
         type: types.PUT_EVENT
     }); //greg
     try {
-        const event = await axios.put(API + `/events/${eventID}`)
+        const event = await axios.put(API + `/api/events/${eventID}`, data)
         event.status === 204 ? dispatch({
             type: types.PUT_EVENT_SUCCESS,
             payload: event.data
