@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
 
+
 import "./App.css";
 // import Login from "./components/Login";
 
@@ -12,8 +13,11 @@ import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/Callback";
 
+import TheCrudEvent from './components/updateDeleteEvent.js'
+
 // import Calendar from "./components/EventCalendar";
 class App extends Component {
+<<<<<<< HEAD
 	state = {
 		auth: new Auth()
 	};
@@ -21,38 +25,61 @@ class App extends Component {
 	componentDidMount() {
 		this.props.fetchEvents();
 	}
+=======
+    constructor(props) {
+        super(props);
+        this.state = {
+            usersData: [],
+            auth: new Auth()
+        }
+    }
 
-	render() {
-		return (
-			<Router>
-				<Switch>
-					<Route
-						exact
-						path="/"
-						render={() => <Main auth={this.state.auth} />}
-					/>
-					<Route
-						path="/protected"
-						render={() =>
-							this.state.auth.isAuthenticated() ? (
-								<Protected auth={this.state.auth} />
-							) : (
-								<NotFound />
-							)
-						}
-					/>
-					<Route path="/callback" component={Callback} />
-					<Route component={NotFound} />
-				</Switch>
-			</Router>
-		);
-	}
+    componentDidMount() {
+        this.props.fetchEvents();
+        axios
+            .get(`${API_ENDPOINT}/api/users`)
+
+            .then(response => {
+                this.setState({ usersData: response.data });
+            })
+            .catch(err => console.log(err));
+    }
+>>>>>>> 10ae2cce09652637fa27918738ca94f87ef3c9ee
+
+    render() {
+        return (
+            <Router>
+                <Switch>
+                    <Route
+                        exact
+                        path="/"
+                        render={() => <Main auth={this.state.auth} />}
+                    />
+                    <Route
+                        path="/protected"
+                        render={() =>
+                            this.state.auth.isAuthenticated() ? (
+                                <Protected auth={this.state.auth} />
+                            ) : (
+                                    <NotFound />
+                                )
+                        }
+                    />
+                    <Route path="/callback" component={Callback} />
+                    <Route component={NotFound} />
+                </Switch>
+                <Route
+                    path="/events" component={TheCrudEvent}
+                />
+            </Router>
+        );
+    }
 }
 const mapStateToProps = state => {
-	console.log(state);
-	return state;
+    console.log(state);
+    return state;
 };
 export default connect(
-	mapStateToProps,
-	{ fetchEvents }
+    mapStateToProps,
+    { fetchEvents }
 )(App);
