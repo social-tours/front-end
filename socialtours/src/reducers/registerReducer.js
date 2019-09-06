@@ -2,14 +2,19 @@ import { types } from "../actions/registerActions";
 
 const initialState = {
 	auth0User: "",
-	user: "",
-	fetchingUser: false,
+	newUser: "",
 	registeringUser: false,
 	addingUser: false,
 	error: null,
 	errorStatusCode: null
 };
 
+/**
+ * Function to manage state of user registration
+ * @param {object} state
+ * @param {object} action
+ * @returns {object} new state
+ */
 const registerReducer = (state = initialState, action) => {
 	switch (action.type) {
 		case types.REGISTER_START:
@@ -44,17 +49,20 @@ const registerReducer = (state = initialState, action) => {
 			return {
 				...state,
 				addingUser: false,
-				user: action.payload
+				newUser: action.payload
 			};
 
 		case types.ADD_USER_FAILURE:
 			return {
 				...state,
-        addingUser: false,
-        user: "",
+				addingUser: false,
+				newUser: "",
 				error: action.payload,
 				errorStatusCode: action.payload.status
 			};
+
+		default:
+			return state;
 	}
 };
 
