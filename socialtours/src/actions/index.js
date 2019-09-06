@@ -85,7 +85,7 @@ export const fetchEvent = eventID => async dispatch => {
 
 
 
-// Post event
+// Post event. This needs to change from /events to /createEvent 
 export const postEvent = newEvent => async dispatch => {
     dispatch({
         type: types.POST_EVENT
