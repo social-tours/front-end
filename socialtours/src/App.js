@@ -14,6 +14,7 @@ import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/Callback";
 
+import TheCreateEvent from './components/createEvent.js'
 import TheCrudEvent from './components/updateDeleteEvent.js'
 
 // import Calendar from "./components/EventCalendar";
@@ -61,6 +62,9 @@ class App extends Component {
                     <Route path="/callback" component={Callback} />
                     <Route component={NotFound} />
                 </Switch>
+                <Route
+                    path="/createEvent" component={TheCreateEvent}
+                />
                 <Route
                     path="/events" component={TheCrudEvent}
                 />
