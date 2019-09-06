@@ -1,13 +1,7 @@
 import React, { Component } from "react";
-import auth0 from "auth0-js";
-import axios from "axios";
+import { connect } from "react-redux";
 
-import { API_ENDPOINT } from "../config/api";
-
-const webAuth = new auth0.WebAuth({
-	domain: "dev-r8zrga7p.auth0.com",
-	clientID: "mKqnZoQovxuLSlTUSIwjj4bcuMOH3aX1"
-});
+import { auth0SignUp, addUser } from "../actions";
 
 class Register extends Component {
 	state = {
@@ -15,57 +9,52 @@ class Register extends Component {
 		first_name: "",
 		last_name: "",
 		password: "",
-		phone: "",
+		phone_nbr: "",
 		type: 1
 	};
 
+	/**
+	 * Method to handle form input
+	 * @returns new local state with form data
+	 */
 	handleInput = e => {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	addUser = async token => {
-		try {
-			const newUser = {
-				...this.state,
-				auth0_token: token
-			};
-
-			const addUserData = await axios.post(
-				`${API_ENDPOINT}/api/register`,
-				newUser
-			);
-			console.log(`ADDED TO DATABASE: `, addUserData);
-		} catch (err) {
-			console.err(err.message);
-		}
-	};
-
+	/**
+	 * Method to invoke Auth0 new user registration
+	 * and adding user to API database
+	 * @returns new global state with new Auth0 and user information
+	 */
 	handleRegister = async e => {
 		e.preventDefault();
-
-		const auth0SignUp = await webAuth.signup(
-			{
+		console.log("AUTH0 SIGNUP: ", this.props.registeringUser);
+		try {
+			const newSignUp = {
 				connection: "Username-Password-Authentication",
 				email: this.state.email,
 				password: this.state.password,
 				given_name: this.state.first_name,
 				family_name: this.state.last_name,
-				phone: this.state.phone,
+				phone: this.state.phone_nbr,
 				name: `${this.state.first_name} ${this.state.last_name}`
-			},
-			function(err) {
-				if (err) {
-					console.error(err);
-					return alert("Something went wrong: " + err.message);
-				} else {
-					return alert("success signup without login!");
-				}
-			}
-		);
-		console.log("AUTH0 SIGN UP: ", auth0SignUp);
+			};
 
-		if (auth0SignUp.headers["auth0-client"]) {
-			this.addUser(auth0SignUp.headers["auth0-client"]);
+			await this.props.auth0SignUp(newSignUp);
+
+			if (this.props.auth0User.headers["auth0-client"]) {
+				const newUser = {
+					...this.state,
+					auth0_token: this.props.auth0User.headers["auth0-client"]
+				};
+				await this.props.addUser(newUser);
+			} else {
+				console.log("DID NOT ADD TO DATABASE: ", this.props.error);
+				return this.props.error
+			}
+		} catch (err) {
+			console.log(err);
+			return this.props.error;
 		}
 	};
 
@@ -108,8 +97,8 @@ class Register extends Component {
 
 				<input
 					type="tel"
-					name="phone"
-					value={this.state.phone}
+					name="phone_nbr"
+					value={this.state.phone_nbr}
 					onChange={this.handleInput}
 					placeholder="phone"
 				/>
@@ -121,4 +110,17 @@ class Register extends Component {
 	}
 }
 
-export default Register;
+const mapStateToProps = state => {
+	return {
+		registeringUser: state.registerReducer.registeringUser,
+		addingUser: state.registerReducer.addingUser,
+		auth0User: state.registerReducer.auth0User,
+		newUser: state.registerReducer.newUser,
+		error: state.registerReducer.error
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	{ auth0SignUp, addUser }
+)(Register);
