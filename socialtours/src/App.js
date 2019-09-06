@@ -44,7 +44,7 @@ class App extends Component {
 					<Route path="/callback" component={Callback} />
 					<Route component={NotFound} />
 				</Switch>
-				<Login />
+				<Login auth={this.state.auth} />
 			</Router>
 		);
 	}
