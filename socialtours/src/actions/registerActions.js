@@ -11,40 +11,40 @@ export const types = {
 	ADD_USER_SUCCESS: "ADD_USER_SUCCESS",
 	ADD_USER_FAILURE: "ADD_USER_FAILURE"
 };
-
-export const auth0SignUp = user => dispatch => {
+/**
+ * Function to register new user to Auth0
+ * @param {object} userSignUp
+ * @returns {object} Auth0 user profile
+ */
+export const auth0SignUp = userSignUp => async dispatch => {
 	const webAuth = new auth0.WebAuth({
 		domain: "dev-r8zrga7p.auth0.com",
 		clientID: "mKqnZoQovxuLSlTUSIwjj4bcuMOH3aX1"
 	});
 
-	dispatch({ type: REGISTER_START });
+	dispatch({ type: types.REGISTER_START });
 
-	webAuth
-		.signup(user, err => {
+	try {
+		const addAuth0User = await webAuth.signup(userSignUp, err => {
 			if (err) throw err;
-		})
-		.then(res => {
-			console.log(res);
-			dispatch({ type: REGISTER_SUCCESS, payload: res });
-		})
-		.catch(err => {
-			console.log(err);
-			dispatch({ type: REGISTER_FAILURE, payload: err });
 		});
+		dispatch({ type: types.REGISTER_SUCCESS, payload: addAuth0User });
+	} catch (err) {
+		dispatch({ type: types.REGISTER_FAILURE, payload: err });
+	}
 };
 
+/**
+ * Function to add new user to API database
+ * @param {object} user
+ * @returns {object} new user record
+ */
 export const addUser = user => async dispatch => {
-	dispatch({ type: ADD_USER_START });
+	dispatch({ type: types.ADD_USER_START });
 	try {
-		const addUserData = await axios.post(
-			`${API_ENDPOINT}/api/register`,
-			newUser
-		);
-		console.log(addUserData);
-		dispatch({ type: ADD_USER_SUCCESS, payload: addUserData });
+		const addUserData = await axios.post(`${API_ENDPOINT}/api/register`, user);
+		dispatch({ type: types.ADD_USER_SUCCESS, payload: addUserData.data });
 	} catch (err) {
-		console.log(err);
-		dispatch({ type: ADD_USER_FAILURE, payload: err });
+		dispatch({ type: types.ADD_USER_FAILURE, payload: err });
 	}
 };
