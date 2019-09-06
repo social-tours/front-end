@@ -3,6 +3,7 @@ import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
+import { getSchedules } from "./actions/schedules";
 
 import "./App.css";
 // import Login from "./components/Login";
@@ -51,10 +52,13 @@ class App extends Component {
 	}
 }
 const mapStateToProps = state => {
-	console.log(state);
+	//console.log(state);
 	return state;
 };
 export default connect(
 	mapStateToProps,
-	{ fetchEvents }
+	{
+		fetchEvents,
+		getSchedules
+	}
 )(App);
