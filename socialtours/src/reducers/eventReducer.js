@@ -1,5 +1,6 @@
 // import eventReducer from './eventReducer.js'
-import { types } from "../actions/index.js";
+
+import { types } from "../actions/eventActions";
 
 const {
 	FETCH_EVENTS,
