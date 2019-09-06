@@ -6,7 +6,7 @@ import { fetchEvents } from "./actions/index.js";
 import { getSchedules } from "./actions/schedules";
 
 import "./App.css";
-// import Login from "./components/Login";
+import Login from "./components/Login";
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";
@@ -47,6 +47,7 @@ class App extends Component {
 					<Route path="/calendar" component={Calendar} />
 					<Route component={NotFound} />
 				</Switch>
+				<Login />
 			</Router>
 		);
 	}
