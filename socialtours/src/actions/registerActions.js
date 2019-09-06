@@ -2,7 +2,15 @@ import auth0 from "auth0-js";
 import axios from "axios";
 import { API_ENDPOINT } from "../config/api";
 
-import { types } from "./types";
+export const types = {
+	REGISTER_START: "REGISTER_START",
+	REGISTER_SUCCESS: "REGISTER_SUCCESS",
+	REGISTER_FAILURE: "REGISTER_FAILURE",
+
+	ADD_USER_START: "ADD_USER_START",
+	ADD_USER_SUCCESS: "ADD_USER_SUCCESS",
+	ADD_USER_FAILURE: "ADD_USER_FAILURE"
+};
 
 export const auth0SignUp = user => dispatch => {
 	const webAuth = new auth0.WebAuth({
@@ -10,7 +18,7 @@ export const auth0SignUp = user => dispatch => {
 		clientID: "mKqnZoQovxuLSlTUSIwjj4bcuMOH3aX1"
 	});
 
-	dispatch({ type: types.REGISTER_START });
+	dispatch({ type: REGISTER_START });
 
 	webAuth
 		.signup(user, err => {
@@ -18,25 +26,25 @@ export const auth0SignUp = user => dispatch => {
 		})
 		.then(res => {
 			console.log(res);
-			dispatch({ type: types.REGISTER_SUCCESS, payload: res });
+			dispatch({ type: REGISTER_SUCCESS, payload: res });
 		})
 		.catch(err => {
 			console.log(err);
-			dispatch({ type: types.REGISTER_FAILURE, payload: err });
+			dispatch({ type: REGISTER_FAILURE, payload: err });
 		});
 };
 
 export const addUser = user => async dispatch => {
-	dispatch({ type: types.ADD_USER_START });
+	dispatch({ type: ADD_USER_START });
 	try {
 		const addUserData = await axios.post(
 			`${API_ENDPOINT}/api/register`,
 			newUser
 		);
 		console.log(addUserData);
-		dispatch({ type: types.ADD_USER_SUCCESS, payload: addUserData });
+		dispatch({ type: ADD_USER_SUCCESS, payload: addUserData });
 	} catch (err) {
 		console.log(err);
-		dispatch({ type: types.ADD_USER_FAILURE, payload: err });
+		dispatch({ type: ADD_USER_FAILURE, payload: err });
 	}
 };
