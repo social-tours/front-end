@@ -14,6 +14,7 @@ import NotFound from "./components/NotFound";
 import Callback from "./components/Callback";
 
 import TheCrudEvent from "./components/updateDeleteEvent.js";
+import ManageEvents from "./components/ManageEvents/ManageEvents";
 
 // import Calendar from "./components/EventCalendar";
 //import API_ENDPOINT from "./config/api";
@@ -61,6 +62,7 @@ class App extends Component {
 					<Route component={NotFound} />
 				</Switch>
 				<Route path="/events" component={TheCrudEvent} />
+				<Route path="/ManageEvents" component={ManageEvents} />
 			</Router>
 		);
 	}
