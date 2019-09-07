@@ -4,6 +4,8 @@ import EventCard from "./EventCard";
 
 import { getEvents } from "../../actions/events";
 
+// TODO: if someone clicks on an event in the dashboard calendar, enable them to edit/delete if this is their event. If not, only show details. Perhaps this could be for Canvas#2 when we focus on 'Followers' while Canvas#1 is for "Influencers"
+
 class ManageEvents extends Component {
 	componentDidMount() {
 		this.props.getEvents();
