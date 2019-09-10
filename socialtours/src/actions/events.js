@@ -32,7 +32,7 @@ export const getEvents = () => async dispatch => {
 		if (schedules.status === SUCCESS) {
 			dispatch({
 				type: types.FETCH_EVENT_SUCCESS,
-				payload: schedules.data.schedules
+				payload: schedules.data
 			});
 		} else {
 			dispatch({

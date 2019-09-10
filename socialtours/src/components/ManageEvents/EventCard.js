@@ -2,6 +2,7 @@ import React from "react";
 import { connect } from "react-redux";
 
 const EventCard = props => {
+	console.log("THIS IS PROPS ", props.title);
 	return (
 		<div className="EventCard">
 			<div>
