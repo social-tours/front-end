@@ -1,7 +1,7 @@
 import axios from "axios";
 import { API_ENDPOINT } from "../config/api";
 
-const EVENTS = "/api/events";
+const EVENTS = "/api/event";
 
 const SUCCESS = 200;
 
@@ -32,7 +32,7 @@ export const getEvents = () => async dispatch => {
 		if (schedules.status === SUCCESS) {
 			dispatch({
 				type: types.FETCH_EVENT_SUCCESS,
-				payload: schedules.data
+				payload: schedules.data.schedule
 			});
 		} else {
 			dispatch({

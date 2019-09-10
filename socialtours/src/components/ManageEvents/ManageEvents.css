@@ -1,0 +1,25 @@
+.events-title {
+	display: flex;
+	justify-content: center;
+	align-content: center;
+	font-size: 3rem;
+}
+
+.event-card {
+	margin: 0 auto;
+	margin-top: 10px;
+	border: 1px dashed rgb(9, 228, 75);
+	width: 120%;
+	background-color: whitesmoke;
+	padding: 10px 0px;
+}
+
+.event-card p {
+	margin-left: 20%;
+}
+
+.events-all {
+	display: flex;
+	flex-wrap: wrap;
+	background-color: rgba(205, 205, 205, 1);
+}

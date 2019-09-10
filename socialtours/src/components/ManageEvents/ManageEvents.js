@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import EventCard from "./EventCard";
 
 import { getSchedules } from "../../actions/schedules";
+import "./ManageEvents.css";
 
 // TODO: if someone clicks on an event in the dashboard calendar, enable them to edit/delete if this is their event. If not, only show details. Perhaps this could be for Canvas#2 when we focus on 'Followers' while Canvas#1 is for "Influencers"
 
@@ -15,11 +16,11 @@ class ManageEvents extends Component {
 	render() {
 		return (
 			<>
-				<p>Mangage Events</p>
+				<p className="events-title">Mangage Events</p>
 
-				<div className="AllEvents">
+				<div className="events-all">
 					<ul>
-						hi - {this.props.schedules.length}
+						{this.props.schedules.length} events are populating - code comment
 						{this.props.schedules.map(schedule => {
 							// TODO: ensure the fields are being populated with accurate data
 							return (
@@ -27,6 +28,7 @@ class ManageEvents extends Component {
 									id={schedule.id}
 									key={schedule.id}
 									title={schedule.title}
+									description={schedule.description}
 									date={schedule.start_date_time}
 									location={schedule.location}
 								/>
