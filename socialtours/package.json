@@ -6,6 +6,7 @@
 		"auth0-js": "^9.11.3",
 		"axios": "^0.19.0",
 		"react": "^16.9.0",
+		"react-calendar": "^2.19.1",
 		"react-dom": "^16.9.0",
 		"react-redux": "^7.1.0",
 		"react-router-dom": "^5.0.1",
@@ -26,8 +27,8 @@
 	},
 	"prettier": {
 		"printWidth": 80,
-		"tabWidth": 2,
 		"useTabs": true,
+		"tabWidth": 2,
 		"semi": true,
 		"singleQuote": false,
 		"trailingComma": "none",

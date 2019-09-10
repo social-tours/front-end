@@ -4,6 +4,7 @@ import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
+import { getSchedules } from "./actions/schedules";
 
 import "./App.css";
 import Login from "./components/Login";
@@ -12,6 +13,7 @@ import Main from "./components/Main";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/Callback";
+import Calendar from "./components/EventCalendar";
 
 import TheCrudEvent from "./components/updateDeleteEvent.js";
 import ManageEvents from "./components/ManageEvents/ManageEvents";
@@ -59,6 +61,7 @@ class App extends Component {
 						}
 					/>
 					<Route path="/callback" component={Callback} />
+					<Route path="/calendar" component={Calendar} />
 					<Route component={NotFound} />
 				</Switch>
 				<Route path="/events" component={TheCrudEvent} />
@@ -69,10 +72,13 @@ class App extends Component {
 	}
 }
 const mapStateToProps = state => {
-	console.log(state);
+	//console.log(state);
 	return state;
 };
 export default connect(
 	mapStateToProps,
-	{ fetchEvents }
+	{
+		fetchEvents,
+		getSchedules
+	}
 )(App);
