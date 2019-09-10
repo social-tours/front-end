@@ -32,7 +32,10 @@ class App extends Component {
 						path="/"
 						render={() => <Main auth={this.state.auth} />}
 					/>
-					<Route path="/login" component={Login} />
+					<Route
+						path="/login"
+						render={() => <Login auth={this.state.auth} />}
+					/>
 					<Route path="/register" component={Register} />
 					<Route
 						path="/protected"
@@ -47,7 +50,6 @@ class App extends Component {
 					<Route path="/callback" component={Callback} />
 					<Route component={NotFound} />
 				</Switch>
-				{/* <Login /> */}
 			</Router>
 		);
 	}

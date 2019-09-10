@@ -30,7 +30,7 @@ export default class Secret extends Component {
 		return (
 			<div>
 				<Link to="/">Home</Link>
-				<p>secret place</p>
+				<p>secret authenticated place</p>
 				<p>{this.state.users.length} users in database</p>
 			</div>
 		);

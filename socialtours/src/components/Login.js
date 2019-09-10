@@ -21,6 +21,9 @@ class Login extends Component {
 
 	handleLogin = async e => {
 		e.preventDefault();
+
+		this.props.auth.login(this.state.credentials);
+
 		this.props.login(this.state.credentials);
 	};
 
