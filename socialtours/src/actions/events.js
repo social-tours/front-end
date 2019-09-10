@@ -28,10 +28,11 @@ export const getEvents = () => async dispatch => {
 	dispatch({ type: types.FETCHING_EVENT });
 	try {
 		const schedules = await axios.get(API_ENDPOINT + EVENTS);
+		console.log("THIS IS GETEVENTS ACTION ", schedules);
 		if (schedules.status === SUCCESS) {
 			dispatch({
 				type: types.FETCH_EVENT_SUCCESS,
-				payload: schedules.data
+				payload: schedules.data.schedules
 			});
 		} else {
 			dispatch({

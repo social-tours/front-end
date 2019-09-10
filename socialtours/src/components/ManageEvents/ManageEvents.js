@@ -9,6 +9,7 @@ import { getEvents } from "../../actions/events";
 class ManageEvents extends Component {
 	componentDidMount() {
 		this.props.getEvents();
+		console.log("Manage THIS", this.props.getEvents());
 	}
 
 	render() {
@@ -18,18 +19,17 @@ class ManageEvents extends Component {
 
 				<div className="AllEvents">
 					<ul>
-						{this.props.ManageEvents.map(event => {
-							return (
-								// TODO: ensure the fields are being populated with accurate data
-								<EventCard
-									id={event.id}
-									key={event.id}
-									title={event.schedule.title}
-									date={event.schedule.start_date_time}
-									location={event.schedule.location}
-								/>
-							);
-						})}
+						hi
+						{/* {this.props.ManageEvents.map(event => {
+							// TODO: ensure the fields are being populated with accurate data
+							<EventCard
+								id={event.id}
+								key={event.id}
+								title={event.schedule.title}
+								date={event.schedule.start_date_time}
+								location={event.schedule.location}
+							/>;
+						})} */}
 					</ul>
 				</div>
 

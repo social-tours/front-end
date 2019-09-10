@@ -62,7 +62,7 @@ class App extends Component {
 					<Route component={NotFound} />
 				</Switch>
 				<Route path="/events" component={TheCrudEvent} />
-				<Route path="/ManageEvents" component={ManageEvents} />
+				<Route exact path="/ManageEvents" component={ManageEvents} />
 				<Login />
 			</Router>
 		);
