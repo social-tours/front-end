@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import auth0 from "auth0-js";
 
 import { auth0SignUp, addUser } from "../actions";
+import { REDIRECT_URI } from "../config/api";
 
 class Register extends Component {
 	state = {
@@ -50,7 +52,7 @@ class Register extends Component {
 				await this.props.addUser(newUser);
 			} else {
 				console.log("DID NOT ADD TO DATABASE: ", this.props.error);
-				return this.props.error
+				return this.props.error;
 			}
 		} catch (err) {
 			console.log(err);
@@ -58,9 +60,29 @@ class Register extends Component {
 		}
 	};
 
+	loginWithGoogle = async e => {
+		e.preventDefault();
+		const webAuth = new auth0.WebAuth({
+			domain: "dev-r8zrga7p.auth0.com",
+			clientID: "mKqnZoQovxuLSlTUSIwjj4bcuMOH3aX1",
+			responseType: "token id_token",
+			scope: "openid profile email",
+			redirectUri: `${REDIRECT_URI}/register`
+		});
+
+		const authUser = await webAuth.authorize(
+			{ connection: "google-oauth2" },
+			async err => {
+				if (err) throw err;
+			}
+		);
+
+		console.log("authUser", authUser);
+	};
+
 	render() {
 		return (
-			<form onSubmit={this.handleRegister}>
+			<form>
 				<input
 					type="email"
 					name="email"
@@ -104,7 +126,9 @@ class Register extends Component {
 				/>
 				<br />
 
-				<button>Sign Up</button>
+				<button onClick={this.handleRegister}>Sign Up</button>
+				<br />
+				<button onClick={this.loginWithGoogle}>Google</button>
 			</form>
 		);
 	}
