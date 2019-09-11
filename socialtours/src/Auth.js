@@ -37,15 +37,16 @@ export default class Auth {
 	handleAuthentication(path = LOGIN_SUCCESS_PAGE) {
 		this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
-				console.log(authResults.expiresAt);
+				this.storeAuth0Token(authResults);
+				// console.log(authResults.expiresAt);
 
-				let expiresAt = JSON.stringify(
-					authResults.expiresIn * 1000 + new Date().getTime()
-				);
-				localStorage.setItem("access_token", authResults.accessToken);
-				localStorage.setItem("id_token", authResults.idToken);
-				localStorage.setItem("expires_at", expiresAt);
-				location.hash = "";
+				// let expiresAt = JSON.stringify(
+				// 	authResults.expiresIn * 1000 + new Date().getTime()
+				// );
+				// localStorage.setItem("access_token", authResults.accessToken);
+				// localStorage.setItem("id_token", authResults.idToken);
+				// localStorage.setItem("expires_at", expiresAt);
+				// location.hash = "";
 				location.pathname = path;
 			} else if (err) {
 				location.pathname = LOGIN_FAILURE_PAGE;
@@ -61,13 +62,13 @@ export default class Auth {
 	handleRegistration = cb => {
 		this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
-				console.log(authResults.expiresAt);
-				let expiresAt = JSON.stringify(
-					authResults.expiresIn * 1000 + new Date().getTime()
-				);
-				localStorage.setItem("access_token", authResults.accessToken);
-				localStorage.setItem("id_token", authResults.idToken);
-				localStorage.setItem("expires_at", expiresAt);
+				this.storeAuth0Token(authResults);
+				// let expiresAt = JSON.stringify(
+				// 	authResults.expiresIn * 1000 + new Date().getTime()
+				// );
+				// localStorage.setItem("access_token", authResults.accessToken);
+				// localStorage.setItem("id_token", authResults.idToken);
+				// localStorage.setItem("expires_at", expiresAt);
 				location.hash = "";
 				const { email, given_name, family_name } = this.getProfile();
 				const newUser = {
@@ -96,6 +97,17 @@ export default class Auth {
 		localStorage.removeItem("id_token");
 		localStorage.removeItem("expires_at");
 		location.pathname = LOGIN_FAILURE_PAGE;
+	}
+
+	storeAuth0Token(token) {
+		console.log(token.expiresAt);
+		let expiresAt = JSON.stringify(
+			token.expiresIn * 1000 + new Date().getTime()
+		);
+
+		localStorage.setItem("access_token", token.accessToken);
+		localStorage.setItem("id_token", token.idToken);
+		localStorage.setItem("expires_at", expiresAt);
 	}
 
 	/**
