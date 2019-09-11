@@ -9,9 +9,11 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import InboxIcon from "@material-ui/icons/MoveToInbox";
-import MailIcon from "@material-ui/icons/Mail";
+import LockOpenIcon from "@material-ui/icons/LockOpen";
+import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import MenuIcon from "@material-ui/icons/Menu";
+import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import MovieFilterIcon from "@material-ui/icons/MovieFilter";
 
 const useStyles = makeStyles({
 	list: {
@@ -50,25 +52,33 @@ export default function Navigation() {
 			onKeyDown={toggleDrawer(side, false)}
 		>
 			<List>
-				{["Inbox", "Starred", "Send email", "Drafts"].map((text, index) => (
-					<ListItem button key={text}>
-						<ListItemIcon>
-							{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-						</ListItemIcon>
-						<ListItemText primary={text} />
-					</ListItem>
-				))}
+				<ListItem button>
+					<ListItemIcon>
+						<LockOpenIcon />
+					</ListItemIcon>
+					<ListItemText primary={"Login"} />
+				</ListItem>
 			</List>
 			<Divider />
 			<List>
-				{["All mail", "Trash", "Spam"].map((text, index) => (
-					<ListItem button key={text}>
-						<ListItemIcon>
-							{index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
-						</ListItemIcon>
-						<ListItemText primary={text} />
-					</ListItem>
-				))}
+				<ListItem button>
+					<ListItemIcon>
+						<AssignmentIndIcon />
+					</ListItemIcon>
+					<ListItemText primary={"About"} />
+				</ListItem>
+				<ListItem button>
+					<ListItemIcon>
+						<MailOutlineIcon />
+					</ListItemIcon>
+					<ListItemText primary={"Contact"} />
+				</ListItem>
+				<ListItem button>
+					<ListItemIcon>
+						<MovieFilterIcon />
+					</ListItemIcon>
+					<ListItemText primary={"Credits"} />
+				</ListItem>
 			</List>
 		</div>
 	);
