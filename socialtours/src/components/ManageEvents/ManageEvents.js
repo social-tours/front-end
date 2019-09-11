@@ -1,50 +1,52 @@
 import React, { Component } from "react";
+import moment from "moment";
 import { connect } from "react-redux";
 import EventCard from "./EventCard";
 
 import { getSchedules } from "../../actions/schedules";
 import "./ManageEvents.css";
 
-// TODO: if someone clicks on an event in the dashboard calendar, enable them to edit/delete if this is their event. If not, only show details. Perhaps this could be for Canvas#2 when we focus on 'Followers' while Canvas#1 is for "Influencers"
-
 class ManageEvents extends Component {
+	state = {
+		// to parse before/after events and map them seperately within their own components
+		eventsBefore: [],
+		eventsAfter: []
+	};
+
 	componentDidMount() {
 		this.props.getSchedules();
-		// console.log("Manage THIS", this.props.getEvents());
 	}
 
 	render() {
 		return (
-			<>
+			<div>
 				<p className="events-title">Mangage Events</p>
+				{console.log("EVENTS BEFORE ", this.eventsBefore)}
+				<div className="events-container events-list">
+					<div className="events-list">
+						<ul>
+							{this.props.schedules.length} events are populating{" "}
+							{/* just for testing everything is being mapped  */}
+							{this.props.schedules.map(schedule => {
+								return (
+									<EventCard
+										id={schedule.id}
+										key={schedule.id}
+										title={schedule.title}
+										description={schedule.description}
+										date={schedule.start_date_time}
+										location={schedule.location}
+									/>
+								);
+							})}
+						</ul>
+					</div>
 
-				<div className="events-all">
-					<ul>
-						{this.props.schedules.length} events are populating - code comment
-						{this.props.schedules.map(schedule => {
-							// TODO: ensure the fields are being populated with accurate data
-							return (
-								<EventCard
-									id={schedule.id}
-									key={schedule.id}
-									title={schedule.title}
-									description={schedule.description}
-									date={schedule.start_date_time}
-									location={schedule.location}
-								/>
-							);
-						})}
-					</ul>
+					<div className="events-left">left container</div>
+
+					<div className="events=right">right container</div>
 				</div>
-
-				{/* <div className="Left-Container">
-
-        </div>
-
-				<div className="Right-Container">
-          
-        </div> */}
-			</>
+			</div>
 		);
 	}
 }

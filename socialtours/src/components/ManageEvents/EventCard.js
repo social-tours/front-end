@@ -7,10 +7,10 @@ const EventCard = props => {
 	console.log("THIS IS PROPS ", props.title);
 	return (
 		<div className="event-card">
-			<p>{props.title}</p>
-			<p>{props.description}</p>
-			<p>• {props.date}</p>
-			<p>• {props.location}</p>
+			<p>Title: {props.title}</p>
+			<p>Description: {props.description}</p>
+			<p>Time: {props.date}</p>
+			<p>Location: {props.location}</p>
 		</div>
 	);
 };

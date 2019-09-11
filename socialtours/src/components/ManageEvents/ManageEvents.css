@@ -1,8 +1,13 @@
+.events-container {
+	display: flex;
+}
 .events-title {
 	display: flex;
 	justify-content: center;
 	align-content: center;
 	font-size: 3rem;
+	color: #443e3e;
+	text-shadow: 1px 1px 5px rgb(83, 83, 83);
 }
 
 .event-card {
@@ -18,7 +23,7 @@
 	margin-left: 20%;
 }
 
-.events-all {
+.events-list {
 	display: flex;
 	flex-wrap: wrap;
 	background-color: rgba(205, 205, 205, 1);
