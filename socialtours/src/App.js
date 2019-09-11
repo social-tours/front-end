@@ -6,6 +6,7 @@ import { fetchEvents } from "./actions/index.js";
 
 import "./App.css";
 import Login from "./components/Login";
+import Register from "./components/Register";
 import LandingPage from "./components/LandingPage";
 
 import Main from "./components/Main";
@@ -27,7 +28,16 @@ class App extends Component {
 		return (
 			<Router>
 				<Switch>
-					<Route path="/login" render={() => <Main auth={this.state.auth} />} />
+					<Route
+						exact
+						path="/"
+						render={() => <Main auth={this.state.auth} />}
+					/>
+					<Route
+						path="/login"
+						render={() => <Login auth={this.state.auth} />}
+					/>
+					<Route path="/register" component={Register} />
 					<Route
 						path="/protected"
 						render={() =>
