@@ -1,9 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import auth0 from "auth0-js";
 
 import { auth0SignUp, addUser } from "../actions";
-import { REDIRECT_URI } from "../config/api";
 
 class Register extends Component {
 	state = {
@@ -12,7 +10,8 @@ class Register extends Component {
 		last_name: "",
 		password: "",
 		phone_nbr: "",
-		type: 1
+		type: 1,
+		auth0_token: ""
 	};
 
 	/**
@@ -45,9 +44,11 @@ class Register extends Component {
 			await this.props.auth0SignUp(newSignUp);
 
 			if (this.props.auth0User.headers["auth0-client"]) {
-				const newUser = {
-					...this.state,
+				this.setState({
 					auth0_token: this.props.auth0User.headers["auth0-client"]
+				});
+				const newUser = {
+					...this.state
 				};
 				await this.props.addUser(newUser);
 			} else {
@@ -58,26 +59,6 @@ class Register extends Component {
 			console.log(err);
 			return this.props.error;
 		}
-	};
-
-	loginWithGoogle = async e => {
-		e.preventDefault();
-		const webAuth = new auth0.WebAuth({
-			domain: "dev-r8zrga7p.auth0.com",
-			clientID: "mKqnZoQovxuLSlTUSIwjj4bcuMOH3aX1",
-			responseType: "token id_token",
-			scope: "openid profile email",
-			redirectUri: `${REDIRECT_URI}/register`
-		});
-
-		const authUser = await webAuth.authorize(
-			{ connection: "google-oauth2" },
-			async err => {
-				if (err) throw err;
-			}
-		);
-
-		console.log("authUser", authUser);
 	};
 
 	render() {
@@ -128,7 +109,7 @@ class Register extends Component {
 
 				<button onClick={this.handleRegister}>Sign Up</button>
 				<br />
-				<button onClick={this.loginWithGoogle}>Google</button>
+				<button onClick={this.props.auth.loginWithGoogle}>Google</button>
 			</form>
 		);
 	}

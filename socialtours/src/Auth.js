@@ -33,6 +33,24 @@ export default class Auth {
 	}
 
 	/**
+	 * Method to execute user registration
+	 * through social media login
+	 * @returns invoke page redirect to
+	 * registration callback
+	 */
+	loginWithGoogle = async e => {
+		e.preventDefault();
+		const auth0Google = new auth0.WebAuth({
+			...auth0Settings,
+			redirectUri: `${REDIRECT_URI}/register/callback`
+		});
+
+		await auth0Google.authorize({ connection: "google-oauth2" }, async err => {
+			if (err) throw err;
+		});
+	};
+
+	/**
 	 * Method to handle post Auth0 authentication
 	 * activities for user login
 	 * @param {string} path
@@ -57,14 +75,14 @@ export default class Auth {
 	handleRegistration = cb => {
 		const auth0Registration = new auth0.WebAuth({
 			...auth0Settings,
-			redirectUri: `${REDIRECT_URI}/register/callback`,
+			redirectUri: `${REDIRECT_URI}/register/callback`
 		});
 
 		auth0Registration.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				this.storeAuth0Token(authResults);
 				location.hash = "";
-			
+
 				const { email, given_name, family_name } = this.getProfile();
 				const newUser = {
 					email,
