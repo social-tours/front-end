@@ -19,8 +19,12 @@ export default class Auth {
 		this.login = this.login.bind(this);
 	}
 
-	login() {
-		this.auth0.authorize();
+	login(credentials) {
+		this.auth0.redirect.loginWithCredentials({
+			connection: "Username-Password-Authentication",
+			username: credentials.email,
+			password: credentials.password
+		});
 	}
 
 	handleAuthentication() {
