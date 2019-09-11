@@ -6,15 +6,18 @@ import { REDIRECT_URI } from "./config/api";
 
 const LOGIN_SUCCESS_PAGE = "/protected";
 const LOGIN_FAILURE_PAGE = "/";
+const auth0Settings = {
+	domain: "dev-r8zrga7p.auth0.com",
+	clientID: "mKqnZoQovxuLSlTUSIwjj4bcuMOH3aX1",
+	responseType: "token id_token",
+	scope: "openid profile email"
+};
 
 export default class Auth {
 	auth0 = new auth0.WebAuth({
-		domain: "dev-r8zrga7p.auth0.com",
-		clientID: "mKqnZoQovxuLSlTUSIwjj4bcuMOH3aX1",
-		redirectUri: `${REDIRECT_URI}/register/callback`,
-		audience: "http://localhost:8080",
-		responseType: "token id_token",
-		scope: "openid profile"
+		...auth0Settings,
+		redirectUri: `${REDIRECT_URI}/callback`,
+		audience: "http://localhost:8080"
 	});
 
 	constructor() {
@@ -38,15 +41,7 @@ export default class Auth {
 		this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				this.storeAuth0Token(authResults);
-				// console.log(authResults.expiresAt);
-
-				// let expiresAt = JSON.stringify(
-				// 	authResults.expiresIn * 1000 + new Date().getTime()
-				// );
-				// localStorage.setItem("access_token", authResults.accessToken);
-				// localStorage.setItem("id_token", authResults.idToken);
-				// localStorage.setItem("expires_at", expiresAt);
-				// location.hash = "";
+				location.hash = "";
 				location.pathname = path;
 			} else if (err) {
 				location.pathname = LOGIN_FAILURE_PAGE;
@@ -60,16 +55,16 @@ export default class Auth {
 	 * activities for new user registration
 	 */
 	handleRegistration = cb => {
-		this.auth0.parseHash((err, authResults) => {
+		const auth0Registration = new auth0.WebAuth({
+			...auth0Settings,
+			redirectUri: `${REDIRECT_URI}/register/callback`,
+		});
+
+		auth0Registration.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				this.storeAuth0Token(authResults);
-				// let expiresAt = JSON.stringify(
-				// 	authResults.expiresIn * 1000 + new Date().getTime()
-				// );
-				// localStorage.setItem("access_token", authResults.accessToken);
-				// localStorage.setItem("id_token", authResults.idToken);
-				// localStorage.setItem("expires_at", expiresAt);
 				location.hash = "";
+			
 				const { email, given_name, family_name } = this.getProfile();
 				const newUser = {
 					email,
@@ -100,7 +95,6 @@ export default class Auth {
 	}
 
 	storeAuth0Token(token) {
-		console.log(token.expiresAt);
 		let expiresAt = JSON.stringify(
 			token.expiresIn * 1000 + new Date().getTime()
 		);
@@ -110,10 +104,6 @@ export default class Auth {
 		localStorage.setItem("expires_at", expiresAt);
 	}
 
-	/**
-	 * Method to parse Auth0 token data to
-	 * display user profile information
-	 */
 	getProfile() {
 		if (localStorage.getItem("id_token")) {
 			return jwtDecode(localStorage.getItem("id_token"));
