@@ -7,6 +7,7 @@ import { fetchEvents } from "./actions/index.js";
 import "./App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import RegisterCallback from "./components/RegisterCallback"
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";
@@ -36,7 +37,14 @@ class App extends Component {
 						path="/login"
 						render={() => <Login auth={this.state.auth} />}
 					/>
-					<Route path="/register" component={Register} />
+					<Route
+						exact path="/register"
+						render={() => <Register auth={this.state.auth} />}
+					/>
+					<Route
+						exact path="/register/callback"
+						render={() => <RegisterCallback auth={this.state.auth} />}
+					/>
 					<Route
 						path="/protected"
 						render={() =>
