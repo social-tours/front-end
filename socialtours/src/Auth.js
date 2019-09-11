@@ -1,5 +1,7 @@
 /* eslint no-restricted-globals: 0 */
 import auth0 from "auth0-js";
+import jwtDecode from "jwt-decode";
+
 import { REDIRECT_URI } from "./config/api";
 
 const LOGIN_SUCCESS_PAGE = "/protected";
@@ -27,7 +29,7 @@ export default class Auth {
 		});
 	}
 
-	handleAuthentication() {
+	handleAuthentication(path = LOGIN_SUCCESS_PAGE) {
 		this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				console.log(authResults.expiresAt);
@@ -38,11 +40,12 @@ export default class Auth {
 				localStorage.setItem("access_token", authResults.accessToken);
 				localStorage.setItem("id_token", authResults.idToken);
 				localStorage.setItem("expires_at", expiresAt);
-				location.pathname = LOGIN_SUCCESS_PAGE;
+				location.hash = "";
+				location.pathname = path;
 			} else if (err) {
 				location.pathname = LOGIN_FAILURE_PAGE;
 				console.error(err);
-			}
+		 	}
 		});
 	}
 
@@ -56,5 +59,13 @@ export default class Auth {
 		localStorage.removeItem("id_token");
 		localStorage.removeItem("expires_at");
 		location.pathname = LOGIN_FAILURE_PAGE;
+	}
+
+	getProfile() {
+		if (localStorage.getItem("id_token")) {
+			return jwtDecode(localStorage.getItem("id_token"));
+		} else {
+			return {};
+		}
 	}
 }
