@@ -1,6 +1,9 @@
 import React from "react";
 import styled from "styled-components";
 
+import PlanImage from "../images/plan2.png";
+import ShareImage from "../images/share.png";
+
 const colors = {
 	black_plum: "#011638",
 	grape: "#46237A",
@@ -53,13 +56,41 @@ const LandingPage = () => {
 				</nav>
 			</NavWrapper>
 			<CarouselWrapper>
-				<CarouselImage src={carousel_data[1].imgUrl} />
+				<CarouselImage src={carousel_data[2].imgUrl} />
+				<HeroCard>
+					<h2>Connect with Followers</h2>
+					<img src={PlanImage} />
+					<img src={ShareImage} />
+				</HeroCard>
 			</CarouselWrapper>
 		</LandingPageWrapper>
 	);
 };
 
 export default LandingPage;
+
+const HeroCard = styled.div`
+	display: flex;
+	flex-direction: column;
+	height: 75%;
+	width: 25%;
+	transform: translate(275%, -120%);
+	background-color: ${colors.mint};
+	box-shadow: ${colors.black_plum} 5px 5px 5px;
+	padding-top: 15px;
+	h2 {
+		display: block;
+		font-size: 1.2rem;
+		margin: 0 auto;
+		text-align: center;
+		margin-bottom: 15px;
+	}
+
+	img {
+		width: 75%;
+		margin: 0 auto;
+	}
+`;
 
 const LogoImage = styled.img`
 	height: 90%;
@@ -89,7 +120,7 @@ const NavWrapper = styled.div`
 	height: 50px;
 	width: 1000px;
 	margin: 0 auto;
-	background-color: ${colors.putty};
+	background-color: ${colors.mint};
 	nav {
 		display: flex;
 		flex-direction: column;
