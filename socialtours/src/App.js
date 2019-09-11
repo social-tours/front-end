@@ -7,7 +7,6 @@ import { fetchEvents } from "./actions/index.js";
 import "./App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import LandingPage from "./components/LandingPage";
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";
@@ -49,7 +48,6 @@ class App extends Component {
 						}
 					/>
 					<Route path="/callback" component={Callback} />
-					<Route path="/" exact component={LandingPage} />
 					<Route component={NotFound} />
 				</Switch>
 			</Router>
