@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 import axios from 'axios';
 
-import { fetchEvent, postEvent, putEvent, deleteEvent } from '../actions/index.js'
+import { fetchEvent, putEvent, deleteEvent } from '../actions/index.js'
 const API = 'https://staging-a-socialtours.herokuapp.com' // need to get from backend
 
 class UpdateDeleteEvent extends React.Component {

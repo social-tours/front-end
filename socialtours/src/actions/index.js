@@ -33,7 +33,8 @@ const API = 'https://staging-a-socialtours.herokuapp.com' // need to get from ba
 // get event list, FETCHEVENT, SUCCEED, FAIL
 export const fetchEvents = () => async dispatch => {
     dispatch({
-        type: types.FETCH_EVENTS
+        type: types.FETCH_EVENTS,
+        // payload: event.data.events
     });
     try {
         const events = await axios.get(API + `/api/events`)
@@ -60,7 +61,7 @@ export const fetchEvents = () => async dispatch => {
 }
 
 // get event, FETCHEVENT, SUCCEED, FAIL
-export const fetchEvent = eventID => async dispatch => {
+export const fetchEvent = eventID => async dispatch => {// why not event.id?
     dispatch({
         type: types.FETCH_EVENT
     }); //greg
