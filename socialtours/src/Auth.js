@@ -17,6 +17,7 @@ export default class Auth {
 
 	constructor() {
 		this.login = this.login.bind(this);
+		this.googleLogin = this.googleLogin.bind(this);
 	}
 
 	login(credentials) {
@@ -24,6 +25,12 @@ export default class Auth {
 			connection: "Username-Password-Authentication",
 			username: credentials.email,
 			password: credentials.password
+		});
+	}
+
+	googleLogin() {
+		this.auth0.authorize({
+			connection: "google-oauth2"
 		});
 	}
 
