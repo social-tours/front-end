@@ -1,6 +1,9 @@
-import auth0 from "auth0-js";
 import axios from "axios";
+
 import { API_ENDPOINT } from "../config/api";
+import Auth from "../Auth";
+
+const auth = new Auth();
 
 export const types = {
 	REGISTER_START: "REGISTER_START",
@@ -17,17 +20,14 @@ export const types = {
  * @returns {object} Auth0 user profile
  */
 export const auth0SignUp = userSignUp => async dispatch => {
-	const webAuth = new auth0.WebAuth({
-		domain: "dev-r8zrga7p.auth0.com",
-		clientID: "mKqnZoQovxuLSlTUSIwjj4bcuMOH3aX1"
-	});
-
 	dispatch({ type: types.REGISTER_START });
 
 	try {
-		const addAuth0User = await webAuth.signup(userSignUp, err => {
+		const addAuth0User = await auth.auth0.signup(userSignUp, (err, results) => {
 			if (err) throw err;
+			return results;
 		});
+
 		dispatch({ type: types.REGISTER_SUCCESS, payload: addAuth0User });
 	} catch (err) {
 		dispatch({ type: types.REGISTER_FAILURE, payload: err });
