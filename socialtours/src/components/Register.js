@@ -51,6 +51,11 @@ class Register extends Component {
 					...this.state
 				};
 				await this.props.addUser(newUser);
+				
+				await this.props.auth.login({
+					email: this.state.email,
+					password: this.state.password
+				});
 			} else {
 				console.log("DID NOT ADD TO DATABASE: ", this.props.error);
 				return this.props.error;
