@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import { Route, withRouter } from "react-router-dom";
-import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import "./ManageEvents.css";
 
@@ -12,23 +11,18 @@ class EventCard extends Component {
 	render() {
 		console.log("THIS IS PROPS ", this.props.title);
 		return (
-			<div
-				className="event-card"
-				// onClick={this.props.history.push(`/events/${props.id}`)}
-			>
+			<div className="event-card">
+				<p>ID#: {this.props.id}</p>
 				<p>Title: {this.props.title}</p>
 				<p>Description: {this.props.description}</p>
 				<p>Time: {this.props.date}</p>
 				<p>Location: {this.props.location}</p>
-				<button
-					type="submit"
-					// onClick={this.props.history.push(`/events/${this.props.title}`)}
-				>
+				<Link type="submit" to={`/events/${this.props.id}`}>
 					EDIT / DELETE
-				</button>
+				</Link>
 			</div>
 		);
 	}
 }
 
-export default connect()(EventCard);
+export default EventCard;

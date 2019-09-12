@@ -11,13 +11,6 @@ class ManageEvents extends Component {
 		this.props.getSchedules();
 	}
 
-	// forwardToEditDelete = e => {
-	// 	// const id = this.props.schedules.id;
-	// 	e.preventDefault();
-	// 	this.props.history.push(`/events/${this.props.schedules.id}`);
-	// 	console.log("FORWARD FUNCTION ID: ", this.props.schedules.id);
-	// };
-
 	render() {
 		return (
 			<div>
@@ -31,7 +24,6 @@ class ManageEvents extends Component {
 								if (schedule.start_date_time < moment().format()) {
 									return (
 										<EventCard
-											// onSubmit={this.props.history.push(`/events/${schedule.id}`)}
 											id={schedule.id}
 											key={schedule.id}
 											title={schedule.title}
@@ -51,7 +43,6 @@ class ManageEvents extends Component {
 								if (schedule.start_date_time > moment().format()) {
 									return (
 										<EventCard
-											// onSubmit={this.props.history.push(`/events/${schedule.id}`)}
 											id={schedule.id}
 											key={schedule.id}
 											title={schedule.title}
@@ -70,7 +61,7 @@ class ManageEvents extends Component {
 	}
 }
 
-const mapStateToPops = state => {
+const mapStateToProps = state => {
 	console.log("ManageEvents State: ", state);
 	return {
 		events: state.events,
@@ -80,6 +71,6 @@ const mapStateToPops = state => {
 };
 
 export default connect(
-	mapStateToPops,
+	mapStateToProps,
 	{ getSchedules }
 )(ManageEvents);
