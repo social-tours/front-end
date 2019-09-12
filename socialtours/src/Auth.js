@@ -15,9 +15,7 @@ const auth0Settings = {
 
 export default class Auth {
 	auth0 = new auth0.WebAuth({
-		...auth0Settings,
-		redirectUri: `${REDIRECT_URI}/callback`,
-		audience: "http://localhost:8080"
+		...auth0Settings
 	});
 
 	constructor() {
@@ -28,7 +26,9 @@ export default class Auth {
 		this.auth0.redirect.loginWithCredentials({
 			connection: "Username-Password-Authentication",
 			username: credentials.email,
-			password: credentials.password
+			password: credentials.password,
+			redirectUri: `${REDIRECT_URI}/callback`,
+			audience: "http://localhost:8080"
 		});
 	}
 
@@ -40,14 +40,15 @@ export default class Auth {
 	 */
 	loginWithGoogle = async e => {
 		e.preventDefault();
-		const auth0Google = new auth0.WebAuth({
-			...auth0Settings,
-			redirectUri: `${REDIRECT_URI}/register/callback`
-		});
-
-		await auth0Google.authorize({ connection: "google-oauth2" }, async err => {
-			if (err) throw err;
-		});
+		await this.auth0.authorize(
+			{
+				connection: "google-oauth2",
+				redirectUri: `${REDIRECT_URI}/register/callback`
+			},
+			async err => {
+				if (err) throw err;
+			}
+		);
 	};
 
 	/**
@@ -73,12 +74,7 @@ export default class Auth {
 	 * activities for new user registration
 	 */
 	handleRegistration = cb => {
-		const auth0Registration = new auth0.WebAuth({
-			...auth0Settings,
-			redirectUri: `${REDIRECT_URI}/register/callback`
-		});
-
-		auth0Registration.parseHash((err, authResults) => {
+		this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				this.storeAuth0Token(authResults);
 				location.hash = "";
