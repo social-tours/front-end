@@ -7,44 +7,63 @@ import { getSchedules } from "../../actions/schedules";
 import "./ManageEvents.css";
 
 class ManageEvents extends Component {
-	state = {
-		// to parse before/after events and map them seperately within their own components
-		eventsBefore: [],
-		eventsAfter: []
-	};
-
 	componentDidMount() {
 		this.props.getSchedules();
 	}
+
+	// forwardToEditDelete = e => {
+	// 	// const id = this.props.schedules.id;
+	// 	e.preventDefault();
+	// 	this.props.history.push(`/events/${this.props.schedules.id}`);
+	// 	console.log("FORWARD FUNCTION ID: ", this.props.schedules.id);
+	// };
 
 	render() {
 		return (
 			<div>
 				<p className="events-title">Mangage Events</p>
-				{console.log("EVENTS BEFORE ", this.eventsBefore)}
+				{this.props.schedules.length} total events are on your list
 				<div className="events-container events-list">
-					<div className="events-list">
+					<div className="events-before">
+						Past Events
 						<ul>
-							{this.props.schedules.length} events are populating{" "}
-							{/* just for testing everything is being mapped  */}
 							{this.props.schedules.map(schedule => {
-								return (
-									<EventCard
-										id={schedule.id}
-										key={schedule.id}
-										title={schedule.title}
-										description={schedule.description}
-										date={schedule.start_date_time}
-										location={schedule.location}
-									/>
-								);
+								if (schedule.start_date_time < moment().format()) {
+									return (
+										<EventCard
+											// onSubmit={this.props.history.push(`/events/${schedule.id}`)}
+											id={schedule.id}
+											key={schedule.id}
+											title={schedule.title}
+											description={schedule.description}
+											date={schedule.start_date_time}
+											location={schedule.location}
+										/>
+									);
+								}
 							})}
 						</ul>
 					</div>
-
-					<div className="events-left">left container</div>
-
-					<div className="events=right">right container</div>
+					<div className="events-after">
+						Upcoming Events
+						<ul>
+							{this.props.schedules.map(schedule => {
+								if (schedule.start_date_time > moment().format()) {
+									return (
+										<EventCard
+											// onSubmit={this.props.history.push(`/events/${schedule.id}`)}
+											id={schedule.id}
+											key={schedule.id}
+											title={schedule.title}
+											description={schedule.description}
+											date={schedule.start_date_time}
+											location={schedule.location}
+										/>
+									);
+								}
+							})}
+						</ul>
+					</div>
 				</div>
 			</div>
 		);

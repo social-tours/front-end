@@ -68,10 +68,10 @@ class App extends Component {
 					/>
 					<Route path="/callback" component={Callback} />
 					<Route path="/calendar" component={Calendar} />
-					<Route component={NotFound} />
-          <Route path="/events" component={TheCrudEvent} />
-				  <Route exact path="/ManageEvents" component={ManageEvents} />
-				  <Login />
+					{/* <Route component={NotFound} /> Commented out so I can work on code without being 'authorized' on line 65*/}
+					<Route path="/events" component={TheCrudEvent} />
+					<Route exact path="/ManageEvents" component={ManageEvents} />
+					<Login />
 				</Switch>
 			</Router>
 		);
