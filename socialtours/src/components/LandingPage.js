@@ -44,28 +44,7 @@ const LandingPage = () => {
 
 	return (
 		<LandingPageWrapper>
-			<NavWrapper>
-				<LogoImage src={require("../images/terrible_logo.png")} />
-				<nav>
-					<ul>
-						<li>
-							<a href="/login">Login</a>
-						</li>
-						<li>
-							<a href="/register">Signup</a>
-						</li>
-						<li>
-							<a href="/about">About</a>
-						</li>
-						<li>
-							<a href="/contact">Contact us</a>
-						</li>
-						<li>
-							<a href="/credits">Site credits</a>
-						</li>
-					</ul>
-				</nav>
-			</NavWrapper>
+
 			<CarouselWrapper>
 				<CarouselImage src={carousel_data[imgIndex].imgUrl} />
 				<HeroCard>
@@ -129,41 +108,7 @@ const CarouselImage = styled.img`
 	max-height: 600px;
 `;
 
-const NavWrapper = styled.div`
-	display: flex;
-	flex-direction: row;
-	height: 50px;
-	width: 1000px;
-	margin: 0 auto;
-	background-color: ${colors.mint};
-	nav {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		width: 100%;
-		padding-right: 15px;
-		ul {
-			display: flex;
-			flex-direction: row;
-			align-self: flex-end;
-			li {
-				margin: 5px;
-				list-style: none;
-				a {
-					color: ${colors.black_plum};
-					font-weight: bold;
-					text-decoration: none;
-					&:visited {
-						color: ${colors.grape};
-					}
-					&:hover {
-						text-decoration: underline overline;
-					}
-				}
-			}
-		}
-	}
-`;
+
 
 /* Credits
     To be added to a page prior to publication
