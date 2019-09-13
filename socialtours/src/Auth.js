@@ -18,10 +18,6 @@ export default class Auth {
 		...auth0Settings
 	});
 
-	constructor() {
-		this.login = this.login.bind(this);
-	}
-
 	login(credentials) {
 		this.auth0.redirect.loginWithCredentials({
 			connection: "Username-Password-Authentication",
