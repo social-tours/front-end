@@ -28,6 +28,12 @@ export default class Auth {
 		});
 	}
 
+	googleLogin() {
+		this.auth0.authorize({
+			connection: "google-oauth2"
+		});
+	}
+
 	/**
 	 * Method to execute user registration
 	 * through Google login
