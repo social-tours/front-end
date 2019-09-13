@@ -13,8 +13,11 @@ const Dashboard = () => {
 	return (
 		<DashWrapper>
 			<LeftItems>
-				<div />
-				<div />
+				<NewEvent>
+					<h2>Create a New Event</h2>
+					<DashButton>Create</DashButton>
+				</NewEvent>
+				<CalendarWrapper />
 			</LeftItems>
 			<RightItem />
 		</DashWrapper>
@@ -37,16 +40,40 @@ const LeftItems = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	width: 100%;
-	div {
-		margin-top: 5%;
-		margin-bottom: 5%;
-		margin-left: 20%;
-		height: 45%;
-		width: 48%;
-		background-color: ${colors.mint};
-		border: 1px solid ${colors.black_plum};
-		box-shadow: #282c34 5px 5px 5px;
+`;
+
+const NewEvent = styled.div`
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	margin-top: 6%;
+	margin-bottom: 5%;
+	margin-left: 20%;
+	padding-bottom: 5%;
+	height: 45%;
+	width: 55%;
+	background-color: ${colors.mint};
+	border: 1px solid ${colors.black_plum};
+	box-shadow: #282c34 5px 5px 5px;
+	h2 {
+		font-weight: bold;
+		font-size: 1.4rem;
+		margin-top: 8%;
 	}
+`;
+
+const CalendarWrapper = styled.div`
+	width: 100%;
+	margin-top: 5%;
+	margin-bottom: 6%;
+	margin-left: 20%;
+	height: 45%;
+	width: 55%;
+	background-color: ${colors.mint};
+	border: 1px solid ${colors.black_plum};
+	box-shadow: #282c34 5px 5px 5px;
 `;
 
 const RightItem = styled.div`
@@ -59,4 +86,10 @@ const RightItem = styled.div`
 	background-color: ${colors.mint};
 	border: 1px solid ${colors.black_plum};
 	box-shadow: #282c34 5px 5px 5px;
+`;
+
+const DashButton = styled.button`
+	background-color: ${colors.grape};
+	color: ${colors.putty};
+	padding: 3% 25%;
 `;

@@ -7,6 +7,7 @@ import "typeface-roboto";
 
 import rootReducer from "./reducers";
 import "./index.css";
+import "./reset.css";
 import App from "./App";
 
 const store = createStore(rootReducer, applyMiddleware(thunk));
