@@ -9,7 +9,7 @@ import { getSchedules } from "./actions/schedules";
 import "./App.css";
 import Login from "./components/Login";
 import Register from "./components/Register";
-import RegisterCallback from "./components/RegisterCallback"
+import RegisterCallback from "./components/RegisterCallback";
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";
@@ -24,13 +24,10 @@ import ManageEvents from "./components/ManageEvents/ManageEvents";
 //import API_ENDPOINT from "./config/api";
 const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
 class App extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			usersData: [],
-			auth: new Auth()
-		};
-	}
+	state = {
+		usersData: [],
+		auth: new Auth()
+	};
 
 	componentDidMount() {
 		this.props.fetchEvents();
@@ -57,11 +54,13 @@ class App extends Component {
 						render={() => <Login auth={this.state.auth} />}
 					/>
 					<Route
-						exact path="/register"
+						exact
+						path="/register"
 						render={() => <Register auth={this.state.auth} />}
 					/>
 					<Route
-						exact path="/register/callback"
+						exact
+						path="/register/callback"
 						render={() => <RegisterCallback auth={this.state.auth} />}
 					/>
 					<Route
