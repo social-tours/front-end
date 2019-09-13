@@ -52,7 +52,7 @@ const Dashboard = () => {
 export default Dashboard;
 
 const DashWrapper = styled.div`
-	margin: 0 auto;
+	margin: 35px auto;
 	display: flex;
 	max-width: 1000px;
 	height: 95vh;

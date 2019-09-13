@@ -97,6 +97,8 @@ export default function Navigation() {
 
 const NavWrapper = styled.div`
 	margin: 0 auto;
+	position: fixed;
+	top: 0;
 	width: 100%;
 	height: 35px;
 	background-color: #dff8eb;

@@ -39,7 +39,7 @@ const LandingPage = () => {
 	useEffect(() => {
 		setTimeout(() => {
 			setImgIndex((imgIndex + 1) % carousel_data.length);
-		}, 3000)
+		}, 3000);
 	}, [imgIndex]);
 
 	return (
@@ -61,9 +61,10 @@ export default LandingPage;
 const HeroCard = styled.div`
 	display: flex;
 	flex-direction: column;
+	//margin-top: 25px;
 	height: 75%;
 	width: 25%;
-	
+
 	transform: translate(275%, -120%);
 	background-color: ${colors.mint};
 	box-shadow: ${colors.black_plum} 5px 5px 5px;
@@ -89,6 +90,7 @@ const LogoImage = styled.img`
 
 const LandingPageWrapper = styled.div`
 	width: 100%;
+	margin-top: 35px;
 	background-color: ${colors.black_plum};
 	height: 100vh;
 `;
