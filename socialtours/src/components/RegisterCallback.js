@@ -39,4 +39,3 @@ export default connect(
 	mapStateToProps,
 	{ addUser }
 )(RegisterCallback);
-
