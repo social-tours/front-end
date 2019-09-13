@@ -30,6 +30,10 @@ class Login extends Component {
 	render() {
 		return (
 			<>
+				<button onClick={this.props.auth.googleLogin}>
+					Log in with Google
+				</button>
+				<p>or</p>
 				{this.props.loginError && <p>Error on login, try again</p>}
 				<form onSubmit={this.handleLogin}>
 					<input
