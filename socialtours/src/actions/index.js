@@ -9,6 +9,7 @@ export const types = {
 
     // Completed by Greg, 
     FETCH_EVENT: 'FETCH_EVENT',
+
     FETCH_EVENT_SUCCESS: 'FETCH_EVENT_SUCCESS',
     FETCH_EVENT_FAILED: 'FETCH_EVENT_FAILED',
 
