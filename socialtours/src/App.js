@@ -68,16 +68,16 @@ class App extends Component {
                     path="/events" component={TheCrudEvent}
                     /> */}
 
-                            {this.props.events.map(event => (
-                                <Route
-                                    key={event.id}
-                                    path={`/events/${event.id}`}
-                                    render={props =>
-                                        <TheCrudEvent
-                                            {...props}
-                                            event={event}
-                                        />}
-                                />))}
+                {this.props.events.map(event => (
+                    <Route
+                        key={event.id}
+                        path={`/events/${event.id}`}
+                        render={props =>
+                            <TheCrudEvent
+                                {...props}
+                                event={event}
+                            />}
+                    />))}
 
 
             </Router>
@@ -85,7 +85,7 @@ class App extends Component {
     }
 }
 const mapStateToProps = state => {
-    console.log(state);
+    // console.log(state);
     return {
         events: state.eventReducer.events
     };

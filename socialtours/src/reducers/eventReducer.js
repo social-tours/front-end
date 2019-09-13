@@ -40,7 +40,7 @@ const eventReducer = (state = initialState, action) => {
                 fetchingEvents: true
             }
         case FETCH_EVENTS_SUCCESS:
-            console.log("FETCH EVENT SUCCESS: ", action.payload)
+            // console.log("FETCH EVENT SUCCESS: ", action.payload)
             return {
                 ...state,
                 fetchingEvents: false,
@@ -95,12 +95,14 @@ const eventReducer = (state = initialState, action) => {
                 deletingEvent: true,
             }
         case DELETE_EVENT_SUCCESS:
+            console.log("DELETE EVENT SUCCESS: ", action.payload)
             return {
                 ...state,
                 deletingEvent: false,
                 events: action.payload
             }
         case DELETE_EVENT_FAILURE:
+            console.log("DELETE EVENT FAILURE: ", action.payload)
             return {
                 ...state,
                 deletingEvent: false,

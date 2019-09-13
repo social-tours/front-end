@@ -62,12 +62,12 @@ export const fetchEvents = () => async dispatch => {
 }
 
 // get event, FETCHEVENT, SUCCEED, FAIL
-export const fetchEvent = eventID => async dispatch => {// why not event.id?
+export const fetchEvent = id => async dispatch => {// why not event.id?
     dispatch({
         type: types.FETCH_EVENT
     }); //greg
     try {
-        const event = await axios.get(API + `/api/events/${eventID}`)
+        const event = await axios.get(API + `/api/events/${id}`)
         event.status === 200 ? dispatch({
             type: types.FETCH_EVENT_SUCCESS,
             payload: event.data
@@ -114,12 +114,12 @@ export const postEvent = newEvent => async dispatch => {
 
 
 // Put event
-export const putEvent = (eventID, data) => async dispatch => {
+export const putEvent = (id, data) => async dispatch => {
     dispatch({
         type: types.PUT_EVENT
     }); //greg
     try {
-        const event = await axios.put(API + `/api/events/${eventID}`, data)
+        const event = await axios.put(API + `/api/events/${id}`, data)
         event.status === 204 ? dispatch({
             type: types.PUT_EVENT_SUCCESS,
             payload: event.data
@@ -138,24 +138,48 @@ export const putEvent = (eventID, data) => async dispatch => {
 }
 
 // delete event
-export const deleteEvent = eventID => async dispatch => {
+// export const deleteEvent = id => async dispatch => {
+//     dispatch({
+//         type: types.DELETE_EVENT
+//     }); //greg
+//     try {
+//         const event = await axios.delete(API + `/events/${id}`)
+//         event.status === 204 ? dispatch({
+//             type: types.DELETE_EVENT_SUCCESS,
+//             payload: event.data
+//         }) : dispatch({
+//             type: types.DELETE_EVENT_FAILED,
+//             payload: event.data
+//         })
+
+//     } catch (err) {
+//         //FETCH_FAILED
+//         dispatch({
+//             type: types.FETCH_EVENT_FAILED
+//         })
+//         console.log(err);
+//     }
+// }
+
+
+export const deleteEvent = id => async dispatch => {
     dispatch({
         type: types.DELETE_EVENT
     }); //greg
     try {
-        const event = await axios.delete(API + `/events/${eventID}`)
+        const event = await axios.delete(API + `/api/events/${id}`)
         event.status === 204 ? dispatch({
             type: types.DELETE_EVENT_SUCCESS,
             payload: event.data
         }) : dispatch({
             type: types.DELETE_EVENT_FAILED,
-            payload: event.data
+            // payload: event.data
         })
 
     } catch (err) {
-        //FETCH_FAILED
+        //types.DELETE_FAILED
         dispatch({
-            type: types.FETCH_EVENT_FAILED
+            type: types.DELETE_EVENT_FAILED
         })
         console.log(err);
     }
