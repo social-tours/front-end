@@ -12,6 +12,7 @@ import Main from "./components/Main";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/Callback";
+import Navigation from "./components/Navigation";
 
 // import Calendar from "./components/EventCalendar";
 class App extends Component {
@@ -26,6 +27,7 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
+				<Navigation authenticated={this.state.auth.isAuthenticated()} />
 				<Switch>
 					<Route
 						exact
