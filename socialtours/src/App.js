@@ -53,11 +53,7 @@ class App extends Component {
 					/>
 					<Route path="/login" component={Login} />
 					<Route path="/register" component={Register} />
-					<Route
-						exact
-						path="/register/callback"
-						render={() => <RegisterCallback auth={this.state.auth} />}
-					/>
+					<Route path="/register/callback" component={RegisterCallback} />
 					<Route
 						path="/protected"
 						render={() =>
