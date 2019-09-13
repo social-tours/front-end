@@ -114,7 +114,7 @@ class Register extends Component {
 
 				<button onClick={this.handleRegister}>Sign Up</button>
 				<br />
-				<button onClick={this.props.auth.loginWithGoogle}>Google</button>
+				<button onClick={this.props.auth.registerWithGoogle}>Google</button>
 			</form>
 		);
 	}

@@ -30,11 +30,11 @@ export default class Auth {
 
 	/**
 	 * Method to execute user registration
-	 * through social media login
+	 * through Google login
 	 * @returns invoke page redirect to
 	 * registration callback
 	 */
-	loginWithGoogle = async e => {
+	registerWithGoogle = async e => {
 		e.preventDefault();
 		await this.auth0.authorize(
 			{
