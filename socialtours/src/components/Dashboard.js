@@ -1,6 +1,12 @@
 import React from "react";
 import styled from "styled-components";
 
+//icons
+import StarIcon from "@material-ui/icons/Star";
+import EventNoteIcon from "@material-ui/icons/EventNote";
+import PublicIcon from "@material-ui/icons/Public";
+import MicIcon from "@material-ui/icons/Mic";
+
 const colors = {
 	black_plum: "#011638",
 	grape: "#46237A",
@@ -14,12 +20,27 @@ const Dashboard = () => {
 		<DashWrapper>
 			<LeftItems>
 				<NewEvent>
-					<h2>Create a New Event</h2>
+					<DashHeader>Create a New Event</DashHeader>
 					<DashButton>Create</DashButton>
 				</NewEvent>
 				<CalendarWrapper />
 			</LeftItems>
-			<RightItem />
+			<NextEvent>
+				<DashHeader>Info on Next Event</DashHeader>
+				<EventItem>
+					<StarIcon /> <span>Event Type</span>
+				</EventItem>
+				<EventItem>
+					<EventNoteIcon /> <span>Date</span>
+				</EventItem>
+				<EventItem>
+					<PublicIcon /> <span>Location</span>
+				</EventItem>
+				<EventItem>
+					<MicIcon /> <span>Name/Title of Event</span>
+				</EventItem>
+				<DashButton>Details</DashButton>
+			</NextEvent>
 		</DashWrapper>
 	);
 };
@@ -57,11 +78,6 @@ const NewEvent = styled.div`
 	background-color: ${colors.mint};
 	border: 1px solid ${colors.black_plum};
 	box-shadow: #282c34 5px 5px 5px;
-	h2 {
-		font-weight: bold;
-		font-size: 1.4rem;
-		margin-top: 8%;
-	}
 `;
 
 const CalendarWrapper = styled.div`
@@ -76,13 +92,16 @@ const CalendarWrapper = styled.div`
 	box-shadow: #282c34 5px 5px 5px;
 `;
 
-const RightItem = styled.div`
+const NextEvent = styled.div`
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
 	width: 48%;
 	height: 90%;
 	margin-top: 3%;
 	margin-right: 15%;
+	padding-bottom: 5%;
 	background-color: ${colors.mint};
 	border: 1px solid ${colors.black_plum};
 	box-shadow: #282c34 5px 5px 5px;
@@ -92,4 +111,24 @@ const DashButton = styled.button`
 	background-color: ${colors.grape};
 	color: ${colors.putty};
 	padding: 3% 25%;
+`;
+
+const DashHeader = styled.h2`
+	font-weight: bold;
+	font-size: 1.4rem;
+	margin-top: 8%;
+`;
+
+const EventItem = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-content: center;
+	align-items: center;
+	margin-top: 10%;
+	margin-left: 15%;
+	width: 100%;
+	span {
+		margin-left: 10%;
+	}
 `;
