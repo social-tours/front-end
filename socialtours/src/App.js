@@ -19,6 +19,7 @@ import Calendar from "./components/EventCalendar";
 
 import TheCrudEvent from "./components/updateDeleteEvent.js";
 import ManageEvents from "./components/ManageEvents/ManageEvents";
+import Navigation from "./components/Navigation";
 
 // import Calendar from "./components/EventCalendar";
 //import API_ENDPOINT from "./config/api";
@@ -43,6 +44,7 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
+				<Navigation authenticated={this.state.auth.isAuthenticated()} />
 				<Switch>
 					<Route
 						exact

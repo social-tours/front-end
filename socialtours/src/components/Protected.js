@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { API_ENDPOINT } from "../config/api";
 import axios from "axios";
 
+import Dashboard from "./Dashboard";
+
 export default class Secret extends Component {
 	state = {
 		users: ""
