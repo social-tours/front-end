@@ -44,6 +44,9 @@ const LandingPage = () => {
 							<a href="/login">Login</a>
 						</li>
 						<li>
+							<a href="/register">Signup</a>
+						</li>
+						<li>
 							<a href="/about">About</a>
 						</li>
 						<li>
