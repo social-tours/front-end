@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-
+import { withRouter } from "react-router-dom";
 import { fetchEvent, postEvent } from '../actions/index.js'
 
 class TheCreateEvent extends React.Component {
@@ -17,6 +17,12 @@ class TheCreateEvent extends React.Component {
         this.setState({
             [e.target.name]: e.target.value
         })
+
+    }
+
+    redirect() {
+        this.props.history.push('/ManageEvents')
+        console.log("redirect handler used!")
     }
 
     addEvent = (e) => {
@@ -44,7 +50,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(
-    mapStateToProps,
-    { fetchEvent, postEvent }
-)(TheCreateEvent);
+export default withRouter(connect(mapStateToProps, { fetchEvent, postEvent })(TheCreateEvent));
