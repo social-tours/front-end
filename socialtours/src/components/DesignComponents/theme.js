@@ -1,4 +1,12 @@
 const theme = {
+  colors: {
+    black_plum: "#011638",
+    grape: "#46237A",
+    putty: "#CDCDCD",
+    mint: "#DFF8EB",
+    spruce: "#214E34"
+  },
+  
   color: {
     primaryColor: '#265077',
     primaryDark: '#022140',
@@ -63,4 +71,4 @@ const theme = {
 
 export default theme
 
-export const { color, colorScheme, fontStyles, fontSizing, breakpoints, flex } = theme
+export const { colors, color, colorScheme, fontStyles, fontSizing, breakpoints, flex } = theme
