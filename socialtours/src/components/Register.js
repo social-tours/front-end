@@ -50,7 +50,7 @@ class Register extends Component {
 				await this.props.addUser(newUser);
 			} else {
 				console.log("DID NOT ADD TO DATABASE: ", this.props.error);
-				return this.props.error
+				return this.props.error;
 			}
 		} catch (err) {
 			console.log(err);
