@@ -10,7 +10,8 @@ class Register extends Component {
 		last_name: "",
 		password: "",
 		phone_nbr: "",
-		type: 1
+		type: 1,
+		auth0_token: ""
 	};
 
 	/**
@@ -43,11 +44,18 @@ class Register extends Component {
 			await this.props.auth0SignUp(newSignUp);
 
 			if (this.props.auth0User.headers["auth0-client"]) {
-				const newUser = {
-					...this.state,
+				this.setState({
 					auth0_token: this.props.auth0User.headers["auth0-client"]
+				});
+				const newUser = {
+					...this.state
 				};
 				await this.props.addUser(newUser);
+				
+				await this.props.auth.login({
+					email: this.state.email,
+					password: this.state.password
+				});
 			} else {
 				console.log("DID NOT ADD TO DATABASE: ", this.props.error);
 				return this.props.error;
@@ -60,7 +68,7 @@ class Register extends Component {
 
 	render() {
 		return (
-			<form onSubmit={this.handleRegister}>
+			<form>
 				<input
 					type="email"
 					name="email"
@@ -104,7 +112,9 @@ class Register extends Component {
 				/>
 				<br />
 
-				<button>Sign Up</button>
+				<button onClick={this.handleRegister}>Sign Up</button>
+				<br />
+				<button onClick={this.props.auth.registerWithGoogle}>Google</button>
 			</form>
 		);
 	}

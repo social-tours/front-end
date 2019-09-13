@@ -44,6 +44,28 @@ const LandingPage = () => {
 
 	return (
 		<LandingPageWrapper>
+			<NavWrapper>
+				<LogoImage src={require("../images/terrible_logo.png")} />
+				<nav>
+					<ul>
+						<li>
+							<a href="/login">Login</a>
+						</li>
+						<li>
+							<a href="/register">Signup</a>
+						</li>
+						<li>
+							<a href="/about">About</a>
+						</li>
+						<li>
+							<a href="/contact">Contact us</a>
+						</li>
+						<li>
+							<a href="/credits">Site credits</a>
+						</li>
+					</ul>
+				</nav>
+			</NavWrapper>
 			<CarouselWrapper>
 				<CarouselImage src={carousel_data[imgIndex].imgUrl} />
 				<HeroCard>
