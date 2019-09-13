@@ -61,11 +61,7 @@ class App extends Component {
 					<Route
 						path="/protected"
 						render={() =>
-							this.state.auth.isAuthenticated() ? (
-								<Protected auth={this.state.auth} />
-							) : (
-								<NotFound />
-							)
+							this.props.auth.isAuthenticated() ? <Protected /> : <NotFound />
 						}
 					/>
 					<Route path="/callback" component={Callback} />
@@ -81,7 +77,9 @@ class App extends Component {
 }
 const mapStateToProps = state => {
 	//console.log(state);
-	return state;
+	return {
+		auth: state.authReducer.auth
+	};
 };
 export default connect(
 	mapStateToProps,
