@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
@@ -26,8 +25,7 @@ import Navigation from "./components/Navigation";
 const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
 class App extends Component {
 	state = {
-		usersData: [],
-		auth: new Auth()
+		usersData: []
 	};
 
 	componentDidMount() {
@@ -44,7 +42,7 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<Navigation authenticated={this.state.auth.isAuthenticated()} />
+				<Navigation authenticated={this.props.auth.isAuthenticated()} />
 				<Switch>
 					<Route exact path="/" component={Main} />
 					<Route path="/login" component={Login} />
