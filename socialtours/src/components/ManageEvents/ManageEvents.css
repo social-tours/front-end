@@ -11,6 +11,9 @@
 }
 
 .event-card {
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	margin: 0 auto;
 	margin-top: 10px;
 	border: 1px dashed rgb(9, 228, 75);
