@@ -51,10 +51,7 @@ class App extends Component {
 						path="/"
 						render={() => <Main auth={this.state.auth} />}
 					/>
-					<Route
-						path="/login"
-						render={() => <Login auth={this.state.auth} />}
-					/>
+					<Route path="/login" component={Login} />
 					<Route
 						exact
 						path="/register"
