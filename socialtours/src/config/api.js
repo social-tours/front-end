@@ -10,6 +10,7 @@ if (hostname === "www.socialtours.io") {
 	REDIRECT_URI = "https://www.socialtours.io";
 } else if (hostname === "staging-a-socialtours.netlify.com") {
 	API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
+	// API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
 	REDIRECT_URI = "https://staging-a-socialtours.netlify.com";
 } else if (hostname === "staging-b-socialtours.netlify.com") {
 	API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
