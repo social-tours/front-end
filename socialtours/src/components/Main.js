@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
@@ -7,7 +9,7 @@ import LandingPage from "../components/LandingPage";
 import Navigation from "../components/Navigation";
 import Dashboard from "../components/Dashboard";
 
-export default class Main extends Component {
+class Main extends Component {
 	render() {
 		return (
 			<>
@@ -24,3 +26,14 @@ const SiteWrapper = styled.div`
 	height: 100vh;
 	background-color: #011638;
 `;
+
+const mapStateToProps = state => {
+	return {
+		auth: state.authReducer.auth
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	null
+)(Main);

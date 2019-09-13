@@ -46,11 +46,7 @@ class App extends Component {
 			<Router>
 				<Navigation authenticated={this.state.auth.isAuthenticated()} />
 				<Switch>
-					<Route
-						exact
-						path="/"
-						render={() => <Main auth={this.state.auth} />}
-					/>
+					<Route exact path="/" component={Main} />
 					<Route path="/login" component={Login} />
 					<Route path="/register" component={Register} />
 					<Route path="/register/callback" component={RegisterCallback} />
