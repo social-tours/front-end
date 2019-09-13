@@ -27,7 +27,12 @@ class EventCard extends Component {
 				<p>Date: {this.getDate()}</p>
 				<p>Time: {this.props.date}</p>
 				<p>Location: {this.props.location}</p>
-				<Link type="submit" to={`/events/${this.props.id}`}>
+				<Link to={{
+					pathname: '/editevent',
+					state: {
+						...this.props
+					}
+				}}>
 					Manage Event
 					</Link>
 
