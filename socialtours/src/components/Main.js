@@ -20,8 +20,8 @@ export default class Main extends Component {
 				{/*</p>*/}
 				<SiteWrapper>
 					<Navigation />
-					{/*<Dashboard />*/}
-					<LandingPage />
+					<Dashboard />
+					{/*<LandingPage />*/}
 				</SiteWrapper>
 			</>
 		);
