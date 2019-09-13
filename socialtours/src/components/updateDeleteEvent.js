@@ -8,9 +8,9 @@ const API = 'https://staging-a-socialtours.herokuapp.com' // need to get from ba
 class UpdateDeleteEvent extends React.Component {
     state = {
         id: '',
-        type: '', // hardcoded for testing
+        type: '',
         title: '',
-        host_id: '', //FK to user_ID, hardcoded for now to get to work
+        host_id: '', //FK to user_ID
         description: '',
         event_image: '',
         capacity: ''
@@ -18,14 +18,17 @@ class UpdateDeleteEvent extends React.Component {
 
     componentDidMount = async () => { // How to populate fields with current data - 9/5/19
         const currentEvent = this.handleFetchEvent()
-        const events = await axios.get(API + `/api/events`)
-        // this.setState({
-        //     id: 12,
-        //     title: currentEvent.title,
-        //     description: currentEvent.description,
-        //     event_image: currentEvent.event_image,
-        //     capacity: currentEvent.capacity
-        // })
+        // const events = await axios.get(API + `/api/events/1`)
+        const event = this.props.event
+        console.log('My CDM Props', event)
+        this.setState({
+            id: event.id,
+            title: event.title,
+            host_id: event.host_id,
+            description: event.description,
+            event_image: event.event_image,
+            capacity: event.capacity
+        })
         // if (this.props.forUpdate) {
         // }
     }
@@ -93,6 +96,7 @@ class UpdateDeleteEvent extends React.Component {
 
 const mapStateToProps = state => {
     // console.log(state, 'hello from UpdateDeleteEvent');
+    console.log("MSTP update/delete", state)
     return {
         events: state.events
     }

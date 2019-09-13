@@ -40,11 +40,11 @@ const eventReducer = (state = initialState, action) => {
                 fetchingEvents: true
             }
         case FETCH_EVENTS_SUCCESS:
-            console.log(action.payload)
+            console.log("FETCH EVENT SUCCESS: ", action.payload)
             return {
                 ...state,
                 fetchingEvents: false,
-                events: {...action.payload}
+                events: [...action.payload]
             }
         case FETCH_EVENTS_FAILURE:
             return {

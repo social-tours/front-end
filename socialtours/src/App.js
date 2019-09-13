@@ -60,17 +60,35 @@ class App extends Component {
                     />
                     <Route path="/callback" component={Callback} />
                     <Route component={NotFound} />
+
+
                 </Switch>
-                <Route
+
+                {/* <Route
                     path="/events" component={TheCrudEvent}
-                />
+                    /> */}
+
+                            {this.props.events.map(event => (
+                                <Route
+                                    key={event.id}
+                                    path={`/events/${event.id}`}
+                                    render={props =>
+                                        <TheCrudEvent
+                                            {...props}
+                                            event={event}
+                                        />}
+                                />))}
+
+
             </Router>
         );
     }
 }
 const mapStateToProps = state => {
     console.log(state);
-    return state;
+    return {
+        events: state.eventReducer.events
+    };
 };
 export default connect(
     mapStateToProps,

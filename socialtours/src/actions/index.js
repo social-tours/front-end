@@ -43,7 +43,7 @@ export const fetchEvents = () => async dispatch => {
             // console.log('Im Here')
             dispatch({
                 type: types.FETCH_EVENTS_SUCCESS,
-                payload: events.data.events
+                payload: events.data
             })
         } else {
             dispatch({
