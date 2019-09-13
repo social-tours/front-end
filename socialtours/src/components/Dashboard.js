@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 
+import EventCalendar from "./EventCalendar";
+
 //icons
 import StarIcon from "@material-ui/icons/Star";
 import EventNoteIcon from "@material-ui/icons/EventNote";
@@ -23,7 +25,9 @@ const Dashboard = () => {
 					<DashHeader>Create a New Event</DashHeader>
 					<DashButton>Create</DashButton>
 				</NewEvent>
-				<CalendarWrapper />
+				<CalendarWrapper>
+					<EventCalendar />
+				</CalendarWrapper>
 			</LeftItems>
 			<NextEvent>
 				<DashHeader>Info on Next Event</DashHeader>
@@ -85,7 +89,7 @@ const CalendarWrapper = styled.div`
 	margin-top: 5%;
 	margin-bottom: 6%;
 	margin-left: 20%;
-	height: 45%;
+	//height: 45%;
 	width: 55%;
 	background-color: ${colors.mint};
 	border: 1px solid ${colors.black_plum};
