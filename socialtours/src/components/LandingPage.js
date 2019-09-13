@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import PlanImage from "../images/plan2.png";
@@ -34,10 +34,18 @@ const carousel_data = [
 ];
 
 const LandingPage = () => {
+	let [imgIndex, setImgIndex] = useState(0);
+
+	useEffect(() => {
+		setTimeout(() => {
+			setImgIndex((imgIndex + 1) % carousel_data.length);
+		}, 3000)
+	}, [imgIndex]);
+
 	return (
 		<LandingPageWrapper>
 			<CarouselWrapper>
-				<CarouselImage src={carousel_data[2].imgUrl} />
+				<CarouselImage src={carousel_data[imgIndex].imgUrl} />
 				<HeroCard>
 					<h2>Connect with Followers</h2>
 					<img src={PlanImage} />
@@ -55,6 +63,7 @@ const HeroCard = styled.div`
 	flex-direction: column;
 	height: 75%;
 	width: 25%;
+	
 	transform: translate(275%, -120%);
 	background-color: ${colors.mint};
 	box-shadow: ${colors.black_plum} 5px 5px 5px;
@@ -93,6 +102,7 @@ const CarouselWrapper = styled.div`
 
 const CarouselImage = styled.img`
 	width: 100%;
+	max-height: 600px;
 `;
 
 const NavWrapper = styled.div`
