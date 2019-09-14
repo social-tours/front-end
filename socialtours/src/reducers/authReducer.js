@@ -1,8 +1,10 @@
 import { types } from "../actions/authActions";
+import Auth from "../Auth";
 
 const initialState = {
 	loginError: null,
-	loggingIn: false
+	loggingIn: false,
+	auth: new Auth()
 };
 
 const authReducer = (state = initialState, action) => {

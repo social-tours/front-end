@@ -60,7 +60,8 @@ class Login extends Component {
 const mapStateToProps = state => {
 	return {
 		isLoggingIn: state.authReducer.isLoggingIn,
-		loginError: state.authReducer.loginError
+		loginError: state.authReducer.loginError,
+		auth: state.authReducer.auth
 	};
 };
 
