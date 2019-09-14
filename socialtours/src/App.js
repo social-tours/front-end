@@ -67,9 +67,6 @@ class App extends Component {
                 <Route
                     path="/createEvent" component={TheCreateEvent}
                 />
-                <Route
-                    path="/events" component={TheCrudEvent}
-                /> */}
 
                 {this.props.events.map(event => (
                     <Route

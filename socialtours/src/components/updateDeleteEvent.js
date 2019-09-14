@@ -29,8 +29,8 @@ class UpdateDeleteEvent extends React.Component {
             event_image: event.event_image,
             capacity: event.capacity
         })
-        // if (this.props.forUpdate) {
-        // }
+        if (this.props.forUpdate) {
+        }
     }
 
     handleChange = (e) => {
@@ -89,8 +89,8 @@ class UpdateDeleteEvent extends React.Component {
                 <input name='event_image' placeholder='event_image' onChange={this.handleChange} value={this.state.event_image} />
                 <input name='capacity' placeholder='capacity' onChange={this.handleChange} value={this.state.capacity} type='number' />
 
-                <button onClick={(e) => this.updateEvent(e, this.props.event.id)}>Update Event</button>
-                <button onClick={(e) => this.deleteEvent(e, this.props.event.id)}>Delete Event</button>
+                <button onClick={(e) => this.updateEvent(e, this.props.event.id)}>Update This Event</button>
+                <button onClick={(e) => this.deleteEvent(e, this.props.event.id)}>Delete This Event</button>
 
             </form>
         );
