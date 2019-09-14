@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
@@ -26,8 +25,7 @@ import Navigation from "./components/Navigation";
 const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
 class App extends Component {
 	state = {
-		usersData: [],
-		auth: new Auth()
+		usersData: []
 	};
 
 	componentDidMount() {
@@ -44,35 +42,16 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<Navigation authenticated={this.state.auth.isAuthenticated()} />
+				<Navigation authenticated={this.props.auth.isAuthenticated()} />
 				<Switch>
-					<Route
-						exact
-						path="/"
-						render={() => <Main auth={this.state.auth} />}
-					/>
-					<Route
-						path="/login"
-						render={() => <Login auth={this.state.auth} />}
-					/>
-					<Route
-						exact
-						path="/register"
-						render={() => <Register auth={this.state.auth} />}
-					/>
-					<Route
-						exact
-						path="/register/callback"
-						render={() => <RegisterCallback auth={this.state.auth} />}
-					/>
+					<Route exact path="/" component={Main} />
+					<Route path="/login" component={Login} />
+					<Route path="/register" component={Register} />
+					<Route path="/register/callback" component={RegisterCallback} />
 					<Route
 						path="/protected"
 						render={() =>
-							this.state.auth.isAuthenticated() ? (
-								<Protected auth={this.state.auth} />
-							) : (
-								<NotFound />
-							)
+							this.props.auth.isAuthenticated() ? <Protected /> : <NotFound />
 						}
 					/>
 					<Route path="/callback" component={Callback} />
@@ -88,7 +67,9 @@ class App extends Component {
 }
 const mapStateToProps = state => {
 	//console.log(state);
-	return state;
+	return {
+		auth: state.authReducer.auth
+	};
 };
 export default connect(
 	mapStateToProps,
