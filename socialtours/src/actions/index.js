@@ -95,12 +95,34 @@ export const postEvent = newEvent => async dispatch => {
 
 }
 
-export const putEvent = (id, data) => async dispatch => {
+// export const putEvent = (id, data) => async dispatch => {
+//     dispatch({
+//         type: types.PUT_EVENT
+//     });
+//     try {
+//         const event = await axios.put(API + `/api/events/${id}`, data)
+//         event.status === 204 ? dispatch({
+//             type: types.PUT_EVENT_SUCCESS,
+//             payload: event.data
+//         }) : dispatch({
+//             type: types.PUT_EVENT_FAILED,
+//             payload: event.data
+//         })
+
+//     } catch (err) {
+//         dispatch({
+//             type: types.PUT_EVENT_FAILED
+//         })
+//         console.log(err);
+//     }
+// }
+
+export const putEvent = (id) => async dispatch => {
     dispatch({
         type: types.PUT_EVENT
     });
     try {
-        const event = await axios.put(API + `/api/events/${id}`, data)
+        const event = await axios.put(API + `/api/events/${id}`)
         event.status === 204 ? dispatch({
             type: types.PUT_EVENT_SUCCESS,
             payload: event.data

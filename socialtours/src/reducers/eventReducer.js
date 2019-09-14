@@ -114,12 +114,15 @@ const eventReducer = (state = initialState, action) => {
                 updatingEvent: true
             }
         case PUT_EVENT_SUCCESS:
+            console.log("PUT EVENT SUCCESS: ", action.payload)
             return {
                 ...state,
                 updatingEvent: false,
                 events: action.payload
             }
         case PUT_EVENT_FAILURE:
+            console.log("PUT EVENT FAILURE: ", action.payload)
+
             return {
                 ...state,
                 updatingEvent: false,

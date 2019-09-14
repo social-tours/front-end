@@ -50,18 +50,30 @@ class UpdateDeleteEvent extends React.Component {
         return event
     }
 
-    updateEvent = async (e, id) => {
+    putEvent = async (e, id) => {
         e.preventDefault();
-        let updatedData = {
-            ...this.state
+        let updatedEvent = {
+            ...this.state,
         }
-        delete updatedData.id;
-        // console.log("STUFF IM SENDING", updatedData)
-        const myFunction = await axios.put(API + `/api/events/${id}`, { updatedData })
+        // delete updatedEvent.id;
+        console.log("UPDATE SENDING", updatedEvent)
+        const myFunction = await axios.put(API + `/api/events/${id}`, { updatedEvent })
         console.log("UPDATE RESULTS", myFunction)
-        // this.props.updatedData(id, updatedData);
+        this.props.putEvent(updatedEvent);
         // this.props.toggleUpdate();
     }
+    // putEvent = async (e, id) => {
+    //     e.preventDefault();
+    //     let updatedData = {
+    //         ...this.state
+    //     }
+    //     delete updatedData.id;
+    //     console.log("STUFF IM SENDING", updatedData)
+    //     const myFunction = await axios.put(API + `/api/events/${id}`, { updatedData })
+    //     console.log("UPDATE RESULTS", myFunction)
+    //   // this.props.putEvent(id, updatedData);
+    //         // this.props.toggleUpdate();
+    // }
 
     deleteEvent = (e, id) => {
         // this.props.deleteEvent(this.props.event.id)
@@ -84,12 +96,12 @@ class UpdateDeleteEvent extends React.Component {
             >
                 <input name='type' placeholder={this.state.type} onChange={this.handleChange} value={this.state.type} type='number' />
                 <input name='title' placeholder={this.props.title} onChange={this.handleChange} value={this.state.title} />
-                <input name='host_ID' placeholder='host_ID' onChange={this.handleChange} value={this.state.host_ID} />
+                <input name='host_ID' placeholder='host_ID' onChange={this.handleChange} value={this.state.host_ID} type='number' />
                 <input name='description' placeholder='description' onChange={this.handleChange} value={this.state.description} />
                 <input name='event_image' placeholder='event_image' onChange={this.handleChange} value={this.state.event_image} />
                 <input name='capacity' placeholder='capacity' onChange={this.handleChange} value={this.state.capacity} type='number' />
 
-                <button onClick={(e) => this.updateEvent(e, this.props.event.id)}>Update This Event</button>
+                <button onClick={(e) => this.putEvent(e, this.props.event.id)}>Update This Event</button>
                 <button onClick={(e) => this.deleteEvent(e, this.props.event.id)}>Delete This Event</button>
 
             </form>
