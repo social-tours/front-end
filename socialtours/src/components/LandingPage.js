@@ -1,16 +1,9 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
+import { colors } from "./DesignComponents/theme";
 import PlanImage from "../images/plan2.png";
 import ShareImage from "../images/share.png";
-
-const colors = {
-	black_plum: "#011638",
-	grape: "#46237A",
-	putty: "#CDCDCD",
-	mint: "#DFF8EB",
-	spruce: "#214E34"
-};
 
 const carousel_data = [
 	{
@@ -44,7 +37,6 @@ const LandingPage = () => {
 
 	return (
 		<LandingPageWrapper>
-
 			<CarouselWrapper>
 				<CarouselImage src={carousel_data[imgIndex].imgUrl} />
 				<HeroCard>
@@ -107,8 +99,6 @@ const CarouselImage = styled.img`
 	width: 100%;
 	max-height: 600px;
 `;
-
-
 
 /* Credits
     To be added to a page prior to publication

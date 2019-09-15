@@ -1,21 +1,13 @@
 import React from "react";
 import styled from "styled-components";
-
-import EventCalendar from "./EventCalendar";
-
 //icons
 import StarIcon from "@material-ui/icons/Star";
 import EventNoteIcon from "@material-ui/icons/EventNote";
 import PublicIcon from "@material-ui/icons/Public";
 import MicIcon from "@material-ui/icons/Mic";
 
-const colors = {
-	black_plum: "#011638",
-	grape: "#46237A",
-	putty: "#CDCDCD",
-	mint: "#DFF8EB",
-	spruce: "#214E34"
-};
+import { colors } from "./DesignComponents/theme";
+import EventCalendar from "./EventCalendar";
 
 const Dashboard = () => {
 	return (
