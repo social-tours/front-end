@@ -81,50 +81,39 @@ class Register extends Component {
 			<FormContainer>
 				<form>
 					<input
-						type="email"
-						name="email"
-						value={this.state.email}
-						onChange={this.handleInput}
-						placeholder="email"
-					/>
-					<br />
-
-					<input
-						type="password"
-						name="password"
-						value={this.state.password}
-						onChange={this.handleInput}
-						placeholder="password"
-					/>
-					<br />
-
-					<input
 						name="first_name"
 						value={this.state.first_name}
 						onChange={this.handleInput}
 						placeholder="First Name"
 					/>
-					<br />
-
 					<input
 						name="last_name"
 						value={this.state.last_name}
 						onChange={this.handleInput}
 						placeholder="Last Name"
 					/>
-					<br />
-
+					<input
+						type="email"
+						name="email"
+						value={this.state.email}
+						onChange={this.handleInput}
+						placeholder="Email"
+					/>
+					<input
+						type="password"
+						name="password"
+						value={this.state.password}
+						onChange={this.handleInput}
+						placeholder="Password"
+					/>
 					<input
 						type="tel"
 						name="phone_nbr"
 						value={this.state.phone_nbr}
 						onChange={this.handleInput}
-						placeholder="phone"
+						placeholder="Phone Number"
 					/>
-					<br />
-
 					<button onClick={this.handleRegister}>Sign Up</button>
-					<br />
 					<button onClick={this.handleGoogleRegistration}>Google</button>
 				</form>
 			</FormContainer>

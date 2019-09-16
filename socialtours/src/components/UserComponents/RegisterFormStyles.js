@@ -4,9 +4,10 @@ import { color, colorScheme, fontSizing, flex, breakpoints } from '../DesignComp
 export const FormContainer = styled.div`
   width: 600px;
   ${flex('column', 'center', 'center')};
-  margin: 20px 0;
+  margin: 50px auto;
   border-radius: 5px;
-  box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
+  border: 1px solid ${colorScheme.secondaryBorderColor}
+  // box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
   background: ${color.lightText};
   font-size: ${fontSizing.sm};
 
@@ -38,15 +39,15 @@ export const FormContainer = styled.div`
     }
 
     & *  {
-      margin: 5px 0;
+      margin: 10px 0;
     }
 
     input {
-      width: 100%;
-      padding: 2px 10px;
-      border: 1px solid ${colorScheme.defaultBorderColor};
-      background: ${color.primaryBgShading};     
-      line-height: 1.5rem;
+      width: 80%;
+      padding: 10px;
+      border: 1px solid ${colorScheme.secondaryBorderColor};
+      // background: ${color.primaryBgShading};     
+      line-height: 1rem;
     }
 
     button {
