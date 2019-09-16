@@ -78,6 +78,7 @@ class Register extends Component {
 
 	render() {
 		return (
+			<FormContainer>
 				<form>
 					<input
 						type="email"
@@ -126,6 +127,7 @@ class Register extends Component {
 					<br />
 					<button onClick={this.handleGoogleRegistration}>Google</button>
 				</form>
+			</FormContainer>
 		);
 	}
 }
