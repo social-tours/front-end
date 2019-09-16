@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { auth0SignUp, addUser } from "../actions";
+import { auth0SignUp, addUser } from "../../actions";
 
 class Register extends Component {
 	state = {

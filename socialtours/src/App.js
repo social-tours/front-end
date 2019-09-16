@@ -7,8 +7,8 @@ import { getSchedules } from "./actions/schedules";
 
 import "./App.css";
 import Login from "./components/Login";
-import Register from "./components/Register";
-import RegisterCallback from "./components/RegisterCallback";
+import Register from "./components/UserComponents/Register";
+import RegisterCallback from "./components/UserComponents/RegisterCallback";
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";

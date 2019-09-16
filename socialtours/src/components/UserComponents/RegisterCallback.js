@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { addUser } from "../actions";
+import { addUser } from "../../actions";
 
 const LOGIN_SUCCESS_PAGE = "/";
 //const LOGIN_FAILURE_PAGE = "/";
