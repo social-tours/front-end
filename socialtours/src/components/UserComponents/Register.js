@@ -117,7 +117,7 @@ class Register extends Component {
 					</S.FormButton>
 					<S.FormButton onClick={this.handleGoogleRegistration} transparent socialIcon>
 						<div>
-							<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" className="socialIcon"/>
+							<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo" className="socialIcon"/>
 						</div>
 						<div>Sign up with Google</div>
 					</S.FormButton>
