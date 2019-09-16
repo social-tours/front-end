@@ -1,3 +1,11 @@
+import { createGlobalStyle } from "styled-components";
+import "typeface-roboto";
+
+//import { colors, color, fontStyles, fontSizing } from "./theme";
+import "../../reset.css";
+
+const GlobalStyle = createGlobalStyle`
+
 body {
 	margin: 0;
 	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -15,3 +23,7 @@ code {
 html {
 	box-sizing: border-box;
 }
+
+`;
+
+export default GlobalStyle;

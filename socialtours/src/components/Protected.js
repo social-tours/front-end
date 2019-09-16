@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { API_ENDPOINT } from "../config/api";
 import axios from "axios";
 
+import Dashboard from "./Dashboard";
+
 export default class Secret extends Component {
 	state = {
 		users: ""
@@ -30,8 +32,16 @@ export default class Secret extends Component {
 		return (
 			<div>
 				<Link to="/">Home</Link>
-				<p>secret place</p>
+				<p>secret authenticated place</p>
 				<p>{this.state.users.length} users in database</p>
+				{this.state.users.length > 0 &&
+					this.state.users.map(user => (
+						<div key={user.id}>
+							<h4>{`${user.first_name} ${user.last_name}`}</h4>
+							<p>ID: {user.id}</p>
+							<p>Registered at: {user.created_at}</p>
+						</div>
+					))}
 			</div>
 		);
 	}
