@@ -1,16 +1,22 @@
 import { createGlobalStyle } from "styled-components";
 import "typeface-roboto";
 
-//import { colors, color, fontStyles, fontSizing } from "./theme";
+import { fontStyles } from "./theme";
 import "../../reset.css";
 
 const GlobalStyle = createGlobalStyle`
 
+* {
+	box-sizing: border-box;
+}
+
+// html {
+// 	font-size: 62.5%;
+// }
+
 body {
 	margin: 0;
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-		sans-serif;
+	font-family: ${fontStyles.defaultFont};
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 }
@@ -20,9 +26,6 @@ code {
 		monospace;
 }
 
-html {
-	box-sizing: border-box;
-}
 
 `;
 
