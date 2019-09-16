@@ -13,10 +13,15 @@ class ManageEvents extends Component {
 
 	render() {
 		return (
-			<div>
-				<p className="events-title">Mangage Events</p>
-				{this.props.schedules.length} total events are on your list
+			<div className='events-wrapper'>
+				<div className="events-header">
+					<p className="events-title">Mangage Events</p>
+					{this.props.schedules.length > 0 ? <p>{this.props.schedules.length} total events are on your list</p> : <></>}
+				</div>
 				<div className="events-container events-list">
+
+
+
 					<div className="events-before">
 						Past Events
 						<ul>
@@ -57,6 +62,7 @@ class ManageEvents extends Component {
 					</div>
 				</div>
 			</div>
+
 		);
 	}
 }
