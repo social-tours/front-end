@@ -51,7 +51,7 @@ class Register extends Component {
 					...this.state
 				};
 				await this.props.addUser(newUser);
-				
+
 				await this.props.auth.login({
 					email: this.state.email,
 					password: this.state.password
@@ -126,7 +126,8 @@ const mapStateToProps = state => {
 		addingUser: state.registerReducer.addingUser,
 		auth0User: state.registerReducer.auth0User,
 		newUser: state.registerReducer.newUser,
-		error: state.registerReducer.error
+		error: state.registerReducer.error,
+		auth: state.authReducer.auth
 	};
 };
 

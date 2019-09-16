@@ -31,7 +31,8 @@ const mapStateToProps = state => {
 		addingUser: state.registerReducer.addingUser,
 		auth0User: state.registerReducer.auth0User,
 		newUser: state.registerReducer.newUser,
-		error: state.registerReducer.error
+		error: state.registerReducer.error,
+		auth: state.authReducer.auth
 	};
 };
 
@@ -39,4 +40,3 @@ export default connect(
 	mapStateToProps,
 	{ addUser }
 )(RegisterCallback);
-
