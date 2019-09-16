@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { fetchEvent, postEvent } from '../actions/index.js'
+import { fetchEvent, postEvent } from '../actions/index.js';
+import EventFormStyles from "./EventFormStyles.js"
 
 class TheCreateEvent extends React.Component {
     state = {
@@ -33,13 +34,15 @@ class TheCreateEvent extends React.Component {
 
     render() {
         return (
-            <form >
-                <input name='title' placeholder='title' onChange={this.handleChange} value={this.state.title} />
-                <input name='description' placeholder='description' onChange={this.handleChange} value={this.state.description} />
-                <input name='event_image' placeholder='event_image' onChange={this.handleChange} value={this.state.event_image} />
-                <input name='capacity' placeholder='capacity' onChange={this.handleChange} value={this.state.capacity} type='number' />
-                <button onClick={(e) => this.addEvent(e, this.state.id)}>Create Event</button>
-            </form>
+            <EventFormStyles>
+                <form >
+                    <input name='title' placeholder='title' onChange={this.handleChange} value={this.state.title} />
+                    <input name='description' placeholder='description' onChange={this.handleChange} value={this.state.description} />
+                    <input name='event_image' placeholder='event_image' onChange={this.handleChange} value={this.state.event_image} />
+                    <input name='capacity' placeholder='capacity' onChange={this.handleChange} value={this.state.capacity} type='number' />
+                    <button onClick={(e) => this.addEvent(e, this.state.id)}>Create Event</button>
+                </form>
+            </EventFormStyles>
         );
     }
 }
