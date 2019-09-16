@@ -1,9 +1,16 @@
-import styled from 'styled-components'
-import { color, colorScheme, fontSizing, flex, breakpoints } from '../DesignComponents/theme'
+import styled, { css } from "styled-components";
+import {
+	color,
+	colorScheme,
+	fontSizing,
+	flex,
+	breakpoints
+} from "../DesignComponents/theme";
+import Button from "../DesignComponents/Button";
 
 export const FormContainer = styled.div`
   width: 600px;
-  ${flex('column', 'center', 'center')};
+  ${flex("column", "center", "center")};
   margin: 50px auto;
   border-radius: 5px;
   border: 1px solid ${colorScheme.secondaryBorderColor}
@@ -30,7 +37,7 @@ export const FormContainer = styled.div`
 
   form {
     width: 90%;
-    ${flex('column', 'center')};
+    ${flex("column", "center")};
     padding: 20px;
 
 
@@ -50,9 +57,31 @@ export const FormContainer = styled.div`
       line-height: 1rem;
     }
 
-    button {
-      width: 150px;
-    }
   }
-`
-export default FormContainer
+`;
+
+export const FormButton = styled(Button)`
+	width: 250px;
+	padding: 10px;
+	border-radius: 5px;
+	font-weight: normal;
+	font-size: ${fontSizing.xxs};
+
+	${props =>
+		props.socialIcon &&
+		css`
+			${flex("row", "center", "space-evenly")};
+			padding: 1px 10px;
+
+			div:first-child {
+				width: 20px;
+			}
+
+			img {
+				width: 100%;
+				height: auto;
+			}
+		`}
+`;
+
+export default FormContainer;

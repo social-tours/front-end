@@ -3,8 +3,7 @@ import { connect } from "react-redux";
 
 import { auth0SignUp, addUser } from "../../actions";
 
-import { FormContainer } from "./RegisterFormStyles";
-
+import * as S from "./RegisterFormStyles";
 class Register extends Component {
 	state = {
 		email: "",
@@ -78,7 +77,7 @@ class Register extends Component {
 
 	render() {
 		return (
-			<FormContainer>
+			<S.FormContainer>
 				<form>
 					<input
 						name="first_name"
@@ -113,10 +112,17 @@ class Register extends Component {
 						onChange={this.handleInput}
 						placeholder="Phone Number"
 					/>
-					<button onClick={this.handleRegister}>Sign Up</button>
-					<button onClick={this.handleGoogleRegistration}>Google</button>
+					<S.FormButton onClick={this.handleRegister} add>
+						Sign Up
+					</S.FormButton>
+					<S.FormButton onClick={this.handleGoogleRegistration} transparent socialIcon>
+						<div>
+							<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" className="socialIcon"/>
+						</div>
+						<div>Sign up with Google</div>
+					</S.FormButton>
 				</form>
-			</FormContainer>
+			</S.FormContainer>
 		);
 	}
 }
