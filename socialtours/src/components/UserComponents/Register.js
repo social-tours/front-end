@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 
 import { auth0SignUp, addUser } from "../../actions";
 
+import { FormContainer } from "./RegisterFormStyles";
+
 class Register extends Component {
 	state = {
 		email: "",
@@ -66,56 +68,64 @@ class Register extends Component {
 		}
 	};
 
+	/**
+	 * Method to invoke new user registration
+	 * using Google login
+	 */
+	handleGoogleRegistration = e => {
+		this.props.auth.registerWithGoogle(e);
+	};
+
 	render() {
 		return (
-			<form>
-				<input
-					type="email"
-					name="email"
-					value={this.state.email}
-					onChange={this.handleInput}
-					placeholder="email"
-				/>
-				<br />
+				<form>
+					<input
+						type="email"
+						name="email"
+						value={this.state.email}
+						onChange={this.handleInput}
+						placeholder="email"
+					/>
+					<br />
 
-				<input
-					type="password"
-					name="password"
-					value={this.state.password}
-					onChange={this.handleInput}
-					placeholder="password"
-				/>
-				<br />
+					<input
+						type="password"
+						name="password"
+						value={this.state.password}
+						onChange={this.handleInput}
+						placeholder="password"
+					/>
+					<br />
 
-				<input
-					name="first_name"
-					value={this.state.first_name}
-					onChange={this.handleInput}
-					placeholder="First Name"
-				/>
-				<br />
+					<input
+						name="first_name"
+						value={this.state.first_name}
+						onChange={this.handleInput}
+						placeholder="First Name"
+					/>
+					<br />
 
-				<input
-					name="last_name"
-					value={this.state.last_name}
-					onChange={this.handleInput}
-					placeholder="Last Name"
-				/>
-				<br />
+					<input
+						name="last_name"
+						value={this.state.last_name}
+						onChange={this.handleInput}
+						placeholder="Last Name"
+					/>
+					<br />
 
-				<input
-					type="tel"
-					name="phone_nbr"
-					value={this.state.phone_nbr}
-					onChange={this.handleInput}
-					placeholder="phone"
-				/>
-				<br />
+					<input
+						type="tel"
+						name="phone_nbr"
+						value={this.state.phone_nbr}
+						onChange={this.handleInput}
+						placeholder="phone"
+					/>
+					<br />
 
-				<button onClick={this.handleRegister}>Sign Up</button>
-				<br />
-				<button onClick={this.props.auth.registerWithGoogle}>Google</button>
-			</form>
+					<button onClick={this.handleRegister}>Sign Up</button>
+					<br />
+					<button onClick={this.handleGoogleRegistration}>Google</button>
+				</form>
 		);
 	}
 }
