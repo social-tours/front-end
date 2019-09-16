@@ -19,8 +19,17 @@ class EventCard extends Component {
 	constructor(props) {
 		super(props);
 	}
+	getDate = () => {
+		const newDate = this.props.date.slice(0, 10).split('-').reverse();
 
+		let mm = newDate[1];
+		newDate[1] = newDate[0];
+		newDate[0] = mm;
+
+		return newDate.join('-');
+	}
 	render() {
+
 		const {
 			size = "2.5rem",
 			title = "I Have A New Event!",
