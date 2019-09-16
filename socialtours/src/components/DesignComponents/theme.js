@@ -9,12 +9,18 @@ const theme = {
 
 	color: {
 		primaryColor: "#265077",
-		primaryDark: "#022140",
-		primaryBgShading: "#F5F8FA",
+		primaryDark: () => {
+			return theme.colors.black_plum;
+		},
+		primaryBgShading: () => {
+			return theme.colors.mint;
+		},
 		secondaryColor: "#e4e5eb",
 		secondaryBgShading: "#C5CAE9",
-		accent: "#51A7F8",
-		grayShade: "#d6d6d6",
+		accent: "#6558F5",
+		grayShade: () => {
+			return theme.colors.putty;
+		},
 		emphasis: "#212121",
 		darkText: "#595959",
 		lightText: "#FFFFFF",
