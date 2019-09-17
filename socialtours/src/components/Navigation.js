@@ -16,6 +16,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import MovieFilterIcon from "@material-ui/icons/MovieFilter";
 import HomeIcon from "@material-ui/icons/Home";
+import LockIcon from "@material-ui/icons/Lock";
 
 const useStyles = makeStyles({
 	list: {
@@ -81,16 +82,21 @@ function Navigation(props) {
 	);
 
 	const getLink = () => {
-		if (props.location.pathname == "/")
+		if (props.location.pathname != "/login")
 			return (
 				<>
 					<ListItemIcon>
-						<LockOpenIcon />
+						{props.authenticated() ? <LockOpenIcon /> : <LockIcon />}
 					</ListItemIcon>
-					<ListItemText
-						primary={"Login"}
-						onClick={() => props.history.push("login")}
-					/>
+
+					{props.authenticated() ? (
+						<ListItemText primary={"Log out"} onClick={() => props.logout()} />
+					) : (
+						<ListItemText
+							primary={"Login"}
+							onClick={() => props.history.push("login")}
+						/>
+					)}
 				</>
 			);
 		else
