@@ -4,7 +4,8 @@ const theme = {
 		grape: "#46237A",
 		putty: "#CDCDCD",
 		mint: "#DFF8EB",
-		spruce: "#214E34"
+		spruce: "#214E34",
+		dirty_concord: "#34344A"
 	},
 
 	color: {
