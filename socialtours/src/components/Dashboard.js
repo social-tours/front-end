@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
 import CreateEvent from "./createEvent";
+import moment from "moment";
 import { withRouter } from "react-router-dom";
 import Loader from "react-loader";
 
@@ -29,24 +30,30 @@ class Dashboard extends React.Component {
 			this.setState({
 				events: this.props.events
 			});
-			this.filterEvents();
+			this.getNextEvent();
 		}
 	}
 
-	filterEvents() {
+	getNextEvent() {
 		let { events } = this.state;
 		const nextEvent = {};
-
-		console.log("filterEvents before", events);
 
 		if (events.length === 0) return;
 		if (!this.props.user) return;
 
-		events = events.filter(
-			event => event.host_id === this.props.user && event.schedule.length > 0
-		);
-
-		console.log("filterEvents", events);
+		events.forEach(event => {
+			if (event.host_id === this.props.user && event.schedule.length > 0) {
+				event.schedule.forEach(event => {
+					if (nextEvent == {}) nextEvent = event;
+					else if (
+						event.start_date_time > moment().format() &&
+						event.start_date_time < nextEvent.start_date_time
+					) {
+						nextEvent = event;
+					}
+				});
+			}
+		});
 	}
 
 	render() {
