@@ -32,6 +32,10 @@ class TheCreateEvent extends React.Component {
         this.props.postEvent(newEvent);
     }
 
+
+
+
+
     render() {
         return (
             <EventFormStyles>
@@ -40,7 +44,7 @@ class TheCreateEvent extends React.Component {
                     <input name='description' placeholder='description' onChange={this.handleChange} value={this.state.description} />
                     <input name='event_image' placeholder='event_image' onChange={this.handleChange} value={this.state.event_image} />
                     <input name='capacity' placeholder='capacity' onChange={this.handleChange} value={this.state.capacity} type='number' />
-                    <button onClick={(e) => this.addEvent(e, this.state.id)}>Create Event</button>
+                    <button onClick={(e) => { this.addEvent(e, this.state.id); this.redirect() }}>Create Event</button>
                 </form>
             </EventFormStyles>
         );
