@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -24,7 +25,7 @@ const useStyles = makeStyles({
 	}
 });
 
-export default function Navigation() {
+function Navigation(props) {
 	const classes = useStyles();
 	const [state, setState] = React.useState({
 		top: false,
@@ -56,7 +57,10 @@ export default function Navigation() {
 					<ListItemIcon>
 						<LockOpenIcon />
 					</ListItemIcon>
-					<ListItemText primary={"Login"} />
+					<ListItemText
+						primary={"Login"}
+						onClick={() => props.history.push("login")}
+					/>
 				</ListItem>
 			</List>
 			<Divider />
@@ -94,6 +98,8 @@ export default function Navigation() {
 		</NavWrapper>
 	);
 }
+
+export default withRouter(Navigation);
 
 const NavWrapper = styled.div`
 	margin: 0 auto;
