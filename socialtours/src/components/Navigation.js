@@ -1,4 +1,6 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
+import { connect } from "react-redux";
 import styled from "styled-components";
 
 import { makeStyles } from "@material-ui/core/styles";
@@ -10,6 +12,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
+import LockCloseIcon from "@material-ui/icons/Lock";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import MenuIcon from "@material-ui/icons/Menu";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
@@ -21,10 +24,14 @@ const useStyles = makeStyles({
 	},
 	fullList: {
 		width: "auto"
+	},
+	a: {
+		textDecoration: "none",
+		color: "initial"
 	}
 });
 
-export default function Navigation() {
+export function Navigation({ auth }) {
 	const classes = useStyles();
 	const [state, setState] = React.useState({
 		top: false,
@@ -52,12 +59,23 @@ export default function Navigation() {
 			onKeyDown={toggleDrawer(side, false)}
 		>
 			<List>
-				<ListItem button>
-					<ListItemIcon>
-						<LockOpenIcon />
-					</ListItemIcon>
-					<ListItemText primary={"Login"} />
-				</ListItem>
+				{!auth.isAuthenticated() ? (
+					<ListItem button>
+						<ListItemIcon>
+							<LockOpenIcon />
+						</ListItemIcon>
+						<NavLink className={classes.a} to="/login">
+							<ListItemText primary={"Login"} />
+						</NavLink>
+					</ListItem>
+				) : (
+					<ListItem onClick={auth.logout} button>
+						<ListItemIcon>
+							<LockCloseIcon />
+						</ListItemIcon>
+						<ListItemText primary={"Logout"} />
+					</ListItem>
+				)}
 			</List>
 			<Divider />
 			<List>
@@ -95,6 +113,12 @@ export default function Navigation() {
 	);
 }
 
+const mapStateToProps = state => {
+	return {
+		auth: state.authReducer.auth
+	};
+};
+
 const NavWrapper = styled.div`
 	margin: 0 auto;
 	position: fixed;
@@ -103,3 +127,8 @@ const NavWrapper = styled.div`
 	height: 35px;
 	background-color: #dff8eb;
 `;
+
+export default connect(
+	mapStateToProps,
+	{}
+)(Navigation);
