@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import { color, fontSizing, breakpoints } from './theme'
+import styled, { css } from "styled-components";
+import { color, fontSizing, breakpoints } from "./theme";
 
 const Button = styled.button`
   padding: 10px;
@@ -14,33 +14,33 @@ const Button = styled.button`
   }
 
   ${props =>
-    props.primary &&
-    css`
-      background: ${color.primaryColor}; 
-  `}
+		props.primary &&
+		css`
+			background: ${color.primaryColor};
+		`}
 
   ${props =>
-    props.add &&
-    css`
-      color: ${color.lightText};
-      background: ${color.accent}; 
-  `}
+		props.add &&
+		css`
+			color: ${color.lightText};
+			background: ${color.accent};
+		`}
 
   ${props =>
-    props.update &&
-    css`
-      color: ${color.lightText};
-      background: coral; 
-  `}
+		props.update &&
+		css`
+			color: ${color.lightText};
+			background: coral;
+		`}
 
   ${props =>
-    props.delete &&
-    css`
-      color: ${color.lightText};
-      background: ${color.danger}; 
-  `}
+		props.delete &&
+		css`
+			color: ${color.lightText};
+			background: ${color.danger};
+		`}
 
 
-`
+`;
 
-export default Button
+export default Button;
