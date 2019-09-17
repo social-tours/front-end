@@ -27,6 +27,7 @@ const EventFormStyles = styled.div`
 			height: 35px;
 			border: 1px solid ${colors.grape};
 			padding-left: 10px;
+			border-radius: 5px;
 		}
 	}
 
@@ -35,6 +36,7 @@ const EventFormStyles = styled.div`
 		color: ${colors.putty};
 		height: 35px;
 		width: 85%;
+		border-radius: 5px;
 	}
 `;
 

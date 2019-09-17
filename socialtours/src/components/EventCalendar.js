@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
+import styled from "styled-components";
 
 import Calendar from "react-calendar";
 import { getSchedules } from "../actions/schedules";
+import { colors } from "./DesignComponents/theme";
 
 class EventCalendar extends Component {
 	state = {
@@ -85,10 +87,13 @@ class EventCalendar extends Component {
 		return (
 			<div data-testid="component-calendar">
 				{this.props.schedules.length > 0 && (
-					<Calendar
-						tileDisabled={e => this.isDisabled(e)}
-						onClickDay={e => this.handleClick(e)}
-					/>
+					<CalendarWrapper>
+						<Calendar
+							tileClassName="calTile"
+							tileDisabled={e => this.isDisabled(e)}
+							onClickDay={e => this.handleClick(e)}
+						/>
+					</CalendarWrapper>
 				)}
 			</div>
 		);
@@ -105,3 +110,10 @@ export default withRouter(
 		{ getSchedules }
 	)(EventCalendar)
 );
+
+const CalendarWrapper = styled.div`
+	border-radius: 10px;
+	.react-calendar {
+		border-radius: 10px;
+	}
+`;
