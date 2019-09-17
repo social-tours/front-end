@@ -21,12 +21,21 @@ const EventFormStyles = styled.div`
 	  justify-content: space-between;
 	  align-items: center;
 	  align-content: center;
+	  
+	  input {
+	    width: 80%;
+	    height: 35px;
+	    border: 1px solid ${colors.grape};
+	    padding-left: 10px;
+	  }
 	}
 	
 	button {
     background-color: ${colors.grape};
     color: ${colors.putty};
     padding: 3% 25%;
+    height: 35px;
+    width: 80%;
 	}
 `;
 
