@@ -15,6 +15,7 @@ import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import MenuIcon from "@material-ui/icons/Menu";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import MovieFilterIcon from "@material-ui/icons/MovieFilter";
+import HomeIcon from "@material-ui/icons/Home";
 
 const useStyles = makeStyles({
 	list: {
@@ -53,22 +54,7 @@ function Navigation(props) {
 			onKeyDown={toggleDrawer(side, false)}
 		>
 			<List>
-				<ListItem button>
-					<ListItemIcon>
-						<LockOpenIcon />
-					</ListItemIcon>
-					{props.location.pathname != "/login" ? (
-						<ListItemText
-							primary={"Login"}
-							onClick={() => props.history.push("login")}
-						/>
-					) : (
-						<ListItemText
-							primary={"Home"}
-							onClick={() => props.history.push("/")}
-						/>
-					)}
-				</ListItem>
+				<ListItem button>{getLink()}</ListItem>
 			</List>
 			<Divider />
 			<List>
@@ -93,6 +79,33 @@ function Navigation(props) {
 			</List>
 		</div>
 	);
+
+	const getLink = () => {
+		if (props.location.pathname != "/login")
+			return (
+				<>
+					<ListItemIcon>
+						<LockOpenIcon />
+					</ListItemIcon>
+					<ListItemText
+						primary={"Login"}
+						onClick={() => props.history.push("login")}
+					/>
+				</>
+			);
+		else
+			return (
+				<>
+					<ListItemIcon>
+						<HomeIcon />
+					</ListItemIcon>
+					<ListItemText
+						primary={"Home"}
+						onClick={() => props.history.push("/")}
+					/>
+				</>
+			);
+	};
 
 	//console.log("location", props.location.pathname);
 	return (
