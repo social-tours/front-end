@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 
 import { auth0SignUp, addUser } from "../../actions";
 
-import * as S from "./RegisterFormStyles";
+import * as S from "./FormStyles";
 class Register extends Component {
 	state = {
 		email: "",
@@ -77,52 +77,74 @@ class Register extends Component {
 
 	render() {
 		return (
-			<S.FormContainer>
-				<form>
-					<input
-						name="first_name"
-						value={this.state.first_name}
-						onChange={this.handleInput}
-						placeholder="First Name"
-					/>
-					<input
-						name="last_name"
-						value={this.state.last_name}
-						onChange={this.handleInput}
-						placeholder="Last Name"
-					/>
-					<input
-						type="email"
-						name="email"
-						value={this.state.email}
-						onChange={this.handleInput}
-						placeholder="Email"
-					/>
-					<input
-						type="password"
-						name="password"
-						value={this.state.password}
-						onChange={this.handleInput}
-						placeholder="Password"
-					/>
-					<input
-						type="tel"
-						name="phone_nbr"
-						value={this.state.phone_nbr}
-						onChange={this.handleInput}
-						placeholder="Phone Number"
-					/>
-					<S.FormButton onClick={this.handleRegister} add>
-						Sign Up
-					</S.FormButton>
-					<S.FormButton onClick={this.handleGoogleRegistration} transparent socialIcon>
-						<div>
-							<img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo" className="socialIcon"/>
-						</div>
-						<div>Sign up with Google</div>
-					</S.FormButton>
-				</form>
-			</S.FormContainer>
+			<>
+				<S.FormContainer>
+					<form>
+						<p>Register</p>
+						<input
+							name="first_name"
+							value={this.state.first_name}
+							onChange={this.handleInput}
+							placeholder="First Name"
+							required
+						/>
+						<input
+							name="last_name"
+							value={this.state.last_name}
+							onChange={this.handleInput}
+							placeholder="Last Name"
+							required
+						/>
+						<input
+							type="email"
+							name="email"
+							value={this.state.email}
+							onChange={this.handleInput}
+							placeholder="Email"
+							required
+						/>
+						<input
+							type="tel"
+							name="phone_nbr"
+							value={this.state.phone_nbr}
+							onChange={this.handleInput}
+							placeholder="Phone Number"
+						/>
+						<input
+							type="password"
+							name="password"
+							value={this.state.password}
+							onChange={this.handleInput}
+							placeholder="Password"
+						/>
+						<label htmlFor="password">Minimum length is 8 characters</label>
+						<S.FormButton onClick={this.handleRegister} add>
+							Sign Up
+						</S.FormButton>
+					</form>
+				</S.FormContainer>
+				<S.TextContainer>
+					<p>or</p>
+				</S.TextContainer>
+				<S.FormContainer>
+					<form>
+						<S.FormButton
+							onClick={this.handleGoogleRegistration}
+							transparent
+							socialIcon
+						>
+							<div>
+								<img
+									src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+									alt="Google Logo"
+									className="socialIcon"
+								/>
+							</div>
+							<div>Sign up with Google</div>
+						</S.FormButton>
+					</form>
+				</S.FormContainer>
+			</>
 		);
 	}
 }
