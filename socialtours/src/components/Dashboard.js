@@ -13,7 +13,7 @@ import MicIcon from "@material-ui/icons/Mic";
 
 import { colors } from "./DesignComponents/theme";
 import EventCalendar from "./EventCalendar";
-import { getSchedules, fetchEvents } from "../actions";
+import { fetchEvents } from "../actions";
 
 class Dashboard extends React.Component {
 	state = {
@@ -21,7 +21,6 @@ class Dashboard extends React.Component {
 	};
 
 	componentDidMount() {
-		this.props.getSchedules();
 		this.props.fetchEvents();
 	}
 
@@ -41,10 +40,11 @@ class Dashboard extends React.Component {
 		console.log("filterEvents before", events);
 
 		if (events.length === 0) return;
-
 		if (!this.props.user) return;
 
-		events = events.filter(event => event.host_id === this.props.user);
+		events = events.filter(
+			event => event.host_id === this.props.user && event.schedule.length > 0
+		);
 
 		console.log("filterEvents", events);
 	}
@@ -90,17 +90,15 @@ class Dashboard extends React.Component {
 }
 
 const mapStateToProps = ({ scheduleReducer, eventReducer }) => {
-	console.log("reducer", eventReducer);
 	return {
-		events: scheduleReducer.schedules,
-		userEvents: eventReducer.events
+		events: eventReducer.events
 	};
 };
 
 export default withRouter(
 	connect(
 		mapStateToProps,
-		{ getSchedules, fetchEvents }
+		{ fetchEvents }
 	)(Dashboard)
 );
 
