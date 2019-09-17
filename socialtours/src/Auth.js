@@ -31,7 +31,8 @@ export default class Auth {
 	googleLogin = e => {
 		e.preventDefault();
 		this.auth0.authorize({
-			connection: "google-oauth2"
+			connection: "google-oauth2",
+			redirectUri: `${REDIRECT_URI}/callback`
 		});
 	};
 
