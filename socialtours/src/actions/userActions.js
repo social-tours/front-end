@@ -15,7 +15,7 @@ export const types = {
 	DELETE_USER_FAILURE: "DELETE_USER_FAILURE"
 };
 
-export const getUser = id => async dispatch => {
+export const fetchUser = id => async dispatch => {
 	dispatch({ type: types.FETCH_USER_START });
   try {
     const user = await axios.get(`${API_ENDPOINT}/api/users/${id}`)
