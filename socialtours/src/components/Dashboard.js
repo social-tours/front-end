@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { connect } from 'react-redux';
 import CreateEvent from './createEvent';
 import { withRouter } from 'react-router-dom';
+import Loader from 'react-loader';
 
 //icons
 import StarIcon from "@material-ui/icons/Star";
@@ -12,13 +13,45 @@ import MicIcon from "@material-ui/icons/Mic";
 
 import { colors } from "./DesignComponents/theme";
 import EventCalendar from "./EventCalendar";
+import { getSchedules, fetchEvents } from "../actions";
 
 class Dashboard extends React.Component {
 	state = {
-		events: []
+		events: this.props.events
+	}
+
+	componentDidMount() {
+		this.props.getSchedules();
+		this.props.fetchEvents();
+	}
+
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (prevState.events != this.props.events) {
+			this.setState({
+				events: this.props.events
+			});
+			this.filterEvents();
+		}
+	}
+
+	filterEvents() {
+		let { events } = this.state;
+		const nextEvent = {};
+
+		console.log("filterEvents before", events);
+
+		if (events.length === 0) return;
+
+		if (!this.props.user) return;
+
+		events = events.filter(event => event.host_id === this.props.user);
+
+		console.log("filterEvents", events);
 	}
 
 	render() {
+		if (this.state.events.length === 0) return <DashWrapper><Loader/></DashWrapper>;
+
 		return (
 			<DashWrapper>
 				<LeftItems>
@@ -51,13 +84,15 @@ class Dashboard extends React.Component {
 	}
 };
 
-const mapStateToProps = ({scheduleReducer}) => {
+const mapStateToProps = ({scheduleReducer, eventReducer}) => {
+	console.log("reducer", eventReducer);
 	return {
-		events: scheduleReducer.schedules
+		events: scheduleReducer.schedules,
+		userEvents: eventReducer.events
 	}
 }
 
-export default withRouter(connect(mapStateToProps, null)(Dashboard));
+export default withRouter(connect(mapStateToProps, {getSchedules, fetchEvents})(Dashboard));
 
 const DashWrapper = styled.div`
 	margin: 35px auto;
@@ -65,7 +100,7 @@ const DashWrapper = styled.div`
 	max-width: 1000px;
 	height: 95vh;
 	width: 80%;
-	background-color: ${colors.putty};
+	background-color: ${ colors.dirty_concord };
 `;
 
 const LeftItems = styled.div`
@@ -84,7 +119,7 @@ const NewEvent = styled.div`
 	margin-top: 6%;
 	margin-bottom: 5%;
 	margin-left: 20%;
-	padding-bottom: 5%;
+	//padding-bottom: 5%;
 	height: 45%;
 	width: 55%;
 	background-color: ${colors.mint};
@@ -94,7 +129,7 @@ const NewEvent = styled.div`
 
 const CalendarWrapper = styled.div`
 	width: 100%;
-	margin-top: 5%;
+	//margin-top: 3%;
 	margin-bottom: 6%;
 	margin-left: 20%;
 	//height: 45%;
