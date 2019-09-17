@@ -32,8 +32,12 @@ class Login extends Component {
 	render() {
 		return (
 			<>
-				{this.props.loginError && <p>Error on login, try again</p>}
 				<S.FormContainer>
+					{this.props.loginError && (
+						<S.TextContainer>
+							<p>Error on login, try again</p>
+						</S.TextContainer>
+					)}
 					<form onSubmit={this.handleLogin}>
 						<input
 							type="email"
