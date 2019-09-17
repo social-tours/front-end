@@ -2,11 +2,9 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 
 import styled from "styled-components";
-import { Link } from "react-router-dom";
 
 import LandingPage from "../components/LandingPage";
 
-import Navigation from "../components/Navigation";
 import Dashboard from "../components/Dashboard";
 
 class Main extends Component {
@@ -14,7 +12,7 @@ class Main extends Component {
 		return (
 			<>
 				<SiteWrapper>
-					{this.props.auth.isAuthenticated() ? <Dashboard /> : <LandingPage />}
+					{this.props.auth.isAuthenticated() ? <Dashboard user={1} /> : <LandingPage />}
 				</SiteWrapper>
 			</>
 		);

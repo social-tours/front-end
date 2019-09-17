@@ -1,5 +1,8 @@
 import React from "react";
 import styled from "styled-components";
+import connect from 'react-redux';
+import CreateEvent from './createEvent';
+
 //icons
 import StarIcon from "@material-ui/icons/Star";
 import EventNoteIcon from "@material-ui/icons/EventNote";
@@ -9,15 +12,15 @@ import MicIcon from "@material-ui/icons/Mic";
 import { colors } from "./DesignComponents/theme";
 import EventCalendar from "./EventCalendar";
 
-const Dashboard = () => {
+const Dashboard = (props) => {
 	return (
 		<DashWrapper>
 			<LeftItems>
 				<NewEvent>
 					<DashHeader>Create a New Event</DashHeader>
-					<DashButton>Create</DashButton>
+						<CreateEvent />
 				</NewEvent>
-				<CalendarWrapper>
+				<CalendarWrapper user={props.user}>
 					<EventCalendar />
 				</CalendarWrapper>
 			</LeftItems>
