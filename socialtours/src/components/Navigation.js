@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { withRouter } from "react-router-dom";
+import { withRouter, matchPath } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -57,10 +57,17 @@ function Navigation(props) {
 					<ListItemIcon>
 						<LockOpenIcon />
 					</ListItemIcon>
-					<ListItemText
-						primary={"Login"}
-						onClick={() => props.history.push("login")}
-					/>
+					{props.location.pathname != "/login" ? (
+						<ListItemText
+							primary={"Login"}
+							onClick={() => props.history.push("login")}
+						/>
+					) : (
+						<ListItemText
+							primary={"Home"}
+							onClick={() => props.history.push("/")}
+						/>
+					)}
 				</ListItem>
 			</List>
 			<Divider />
@@ -87,6 +94,7 @@ function Navigation(props) {
 		</div>
 	);
 
+	//console.log("location", props.location.pathname);
 	return (
 		<NavWrapper>
 			<Button onClick={toggleDrawer("left", true)}>
