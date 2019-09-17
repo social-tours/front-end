@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 import { API_ENDPOINT } from "../config/api";
 
 // action types
@@ -15,6 +16,9 @@ export const login = creds => async dispatch => {
 		let user = await axios.post(`${API_ENDPOINT}/api/login`, creds);
 		console.log("success");
 		localStorage.setItem("token", user.data.token);
+		// decoding json to get user id
+		console.log(jwt_decode(localStorage.getItem("token")).userId);
+
 		dispatch({ type: types.LOGIN_SUCCESS });
 	} catch (error) {
 		console.log("login err: ", error);
