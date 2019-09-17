@@ -1,5 +1,5 @@
-import styled, { css } from 'styled-components'
-import { color, fontSizing, breakpoints } from './theme'
+import styled, { css } from "styled-components";
+import { color, colorScheme, fontSizing, breakpoints } from "./theme";
 
 const Button = styled.button`
   padding: 10px;
@@ -10,37 +10,44 @@ const Button = styled.button`
   cursor: pointer;
 
   @media ${breakpoints[0]} {
-    font-size: ${fontSizing.xs}
+    font-size: ${fontSizing.xxs}
   }
 
   ${props =>
-    props.primary &&
-    css`
-      background: ${color.primaryColor}; 
-  `}
+		props.primary &&
+		css`
+			background: ${color.accent};
+		`}
 
   ${props =>
-    props.add &&
-    css`
-      color: ${color.lightText};
-      background: ${color.accent}; 
-  `}
+		props.transparent &&
+		css`
+			background: transparent;
+			border: 1px solid ${colorScheme.secondaryBorderColor};
+		`}
 
   ${props =>
-    props.update &&
-    css`
-      color: ${color.lightText};
-      background: coral; 
-  `}
+		props.add &&
+		css`
+			color: ${color.lightText};
+			background: coral;
+		`}
 
   ${props =>
-    props.delete &&
-    css`
-      color: ${color.lightText};
-      background: ${color.danger}; 
-  `}
+		props.update &&
+		css`
+			color: ${color.lightText};
+			background: coral;
+		`}
+
+  ${props =>
+		props.delete &&
+		css`
+			color: ${color.lightText};
+			background: ${color.danger};
+		`}
 
 
-`
+`;
 
-export default Button
+export default Button;
