@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import connect from 'react-redux';
+import { connect } from 'react-redux';
 import CreateEvent from './createEvent';
+import { withRouter } from 'react-router-dom';
 
 //icons
 import StarIcon from "@material-ui/icons/Star";
@@ -12,39 +13,51 @@ import MicIcon from "@material-ui/icons/Mic";
 import { colors } from "./DesignComponents/theme";
 import EventCalendar from "./EventCalendar";
 
-const Dashboard = (props) => {
-	return (
-		<DashWrapper>
-			<LeftItems>
-				<NewEvent>
-					<DashHeader>Create a New Event</DashHeader>
-						<CreateEvent />
-				</NewEvent>
-				<CalendarWrapper user={props.user}>
-					<EventCalendar />
-				</CalendarWrapper>
-			</LeftItems>
-			<NextEvent>
-				<DashHeader>Info on Next Event</DashHeader>
-				<EventItem>
-					<StarIcon /> <span>Event Type</span>
-				</EventItem>
-				<EventItem>
-					<EventNoteIcon /> <span>Date</span>
-				</EventItem>
-				<EventItem>
-					<PublicIcon /> <span>Location</span>
-				</EventItem>
-				<EventItem>
-					<MicIcon /> <span>Name/Title of Event</span>
-				</EventItem>
-				<DashButton>Details</DashButton>
-			</NextEvent>
-		</DashWrapper>
-	);
+class Dashboard extends React.Component {
+	state = {
+		events: []
+	}
+
+	render() {
+		return (
+			<DashWrapper>
+				<LeftItems>
+					<NewEvent>
+						<DashHeader>Create a New Event</DashHeader>
+						<CreateEvent user={this.props.user}/>
+					</NewEvent>
+					<CalendarWrapper user={this.props.user}>
+						<EventCalendar/>
+					</CalendarWrapper>
+				</LeftItems>
+				<NextEvent>
+					<DashHeader>Info on Next Event</DashHeader>
+					<EventItem>
+						<StarIcon/> <span>Event Type</span>
+					</EventItem>
+					<EventItem>
+						<EventNoteIcon/> <span>Date</span>
+					</EventItem>
+					<EventItem>
+						<PublicIcon/> <span>Location</span>
+					</EventItem>
+					<EventItem>
+						<MicIcon/> <span>Name/Title of Event</span>
+					</EventItem>
+					<DashButton>Details</DashButton>
+				</NextEvent>
+			</DashWrapper>
+		);
+	}
 };
 
-export default Dashboard;
+const mapStateToProps = ({scheduleReducer}) => {
+	return {
+		events: scheduleReducer.schedules
+	}
+}
+
+export default withRouter(connect(mapStateToProps, null)(Dashboard));
 
 const DashWrapper = styled.div`
 	margin: 35px auto;

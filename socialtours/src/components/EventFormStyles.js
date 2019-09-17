@@ -33,9 +33,8 @@ const EventFormStyles = styled.div`
 	button {
     background-color: ${colors.grape};
     color: ${colors.putty};
-    padding: 3% 25%;
     height: 35px;
-    width: 80%;
+    width: 85%;
 	}
 `;
 
