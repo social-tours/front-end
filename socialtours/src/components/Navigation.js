@@ -81,7 +81,7 @@ function Navigation(props) {
 	);
 
 	const getLink = () => {
-		if (props.location.pathname != "/login")
+		if (props.location.pathname == "/")
 			return (
 				<>
 					<ListItemIcon>
