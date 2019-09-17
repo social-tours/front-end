@@ -6,14 +6,14 @@ import { fetchEvents } from "./actions/index.js";
 import { getSchedules } from "./actions/schedules";
 
 import "./App.css";
-import Login from "./components/Login";
+import Login from "./components/UserComponents/Login";
 import Register from "./components/UserComponents/Register";
 import RegisterCallback from "./components/UserComponents/RegisterCallback";
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
-import Callback from "./components/Callback";
+import Callback from "./components/UserComponents/Callback";
 import Calendar from "./components/EventCalendar";
 
 import TheCrudEvent from "./components/updateDeleteEvent.js";
