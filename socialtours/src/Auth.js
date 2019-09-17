@@ -104,9 +104,10 @@ export default class Auth {
 	}
 
 	logout() {
-		localStorage.removeItem("access_token");
-		localStorage.removeItem("id_token");
-		localStorage.removeItem("expires_at");
+		localStorage.clear()
+		// localStorage.removeItem("access_token");
+		// localStorage.removeItem("id_token");
+		// localStorage.removeItem("expires_at");
 		location.pathname = LOGIN_FAILURE_PAGE;
 	}
 
