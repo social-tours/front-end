@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { connect } from "react-redux";
-import axios from 'axios';
+import axios from "axios";
 
 import { fetchEvent, putEvent, deleteEvent } from '../actions/index.js'
 const API = 'https://staging-a-socialtours.herokuapp.com' // need to get from backend
@@ -33,11 +33,11 @@ class UpdateDeleteEvent extends React.Component {
         }
     }
 
-    handleChange = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+	handleChange = e => {
+		this.setState({
+			[e.target.name]: e.target.value
+		});
+	};
 
     handleFetchEvent = async (e, id) => {
         // e.preventDefault();
@@ -81,13 +81,14 @@ class UpdateDeleteEvent extends React.Component {
         console.log("DELETE", deleteEvent)
     }
 
-    myTestEventPost = async () => {// to test the API, not plugged in when working
-        const testEvent = {
-            ...this.state
-        }
-        const myFunction = await axios.post(API + "/api/events", testEvent)
-        console.log(myFunction)
-    }
+	myTestEventPost = async () => {
+		// to test the API, not plugged in when working
+		const testEvent = {
+			...this.state
+		};
+		const myFunction = await axios.post(API + "/api/events", testEvent);
+		console.log(myFunction);
+	};
 
     render() {
         return (
@@ -123,13 +124,12 @@ export default connect(
     { fetchEvent, putEvent, deleteEvent }
 )(UpdateDeleteEvent);
 
-
-// ** Event Details - Objects in WireFrame ** 
+// ** Event Details - Objects in WireFrame **
 // Wir
 // Date Of Event - Where is Date Of Event? Didnt Wilfred just add to DB?
-// Event Type - 
+// Event Type -
 // Location - Location is not in the DB but is in the wireframe for Event Details
-// Topic/ Event Name 
+// Topic/ Event Name
 // Event Image
 // Shareable Social Media Link
 // Event Description

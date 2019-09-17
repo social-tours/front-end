@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Auth from "./Auth";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
-
+import { getSchedules } from "./actions/schedules";
 
 import "./App.css";
-// import Login from "./components/Login";
+import Login from "./components/Login";
+import Register from "./components/Register";
+import RegisterCallback from "./components/RegisterCallback";
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/Callback";
+import Calendar from "./components/EventCalendar";
 
 import TheCreateEvent from './components/createEvent.js'
 import TheCrudEvent from './components/updateDeleteEvent.js'
@@ -21,76 +23,75 @@ import TheCrudEvent from './components/updateDeleteEvent.js'
 //import API_ENDPOINT from "./config/api";
 const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
 class App extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            usersData: [],
-            auth: new Auth()
-        }
-    }
+	state = {
+		usersData: []
+	};
 
-    componentDidMount() {
-        this.props.fetchEvents();
-        axios
-            .get(`${API_ENDPOINT}/api/users`)
+	componentDidMount() {
+		this.props.fetchEvents();
+		axios
+			.get(`${API_ENDPOINT}/api/users`)
 
-            .then(response => {
-                this.setState({ usersData: response.data });
-            })
-            .catch(err => console.log(err));
-    }
+			.then(response => {
+				this.setState({ usersData: response.data });
+			})
+			.catch(err => console.log(err));
+	}
 
-    render() {
-        return (
-            <Router>
-                <Switch>
-                    <Route
-                        exact
-                        path="/"
-                        render={() => <Main auth={this.state.auth} />}
-                    />
-                    <Route
-                        path="/protected"
-                        render={() =>
-                            this.state.auth.isAuthenticated() ? (
-                                <Protected auth={this.state.auth} />
-                            ) : (
-                                    <NotFound />
-                                )
-                        }
-                    />
-                    <Route path="/callback" component={Callback} />
-                    <Route component={NotFound} />
+	render() {
+		return (
+			<Router>
+				<Switch>
+					<Route
+						exact
+						path="/"
+						render={() => <Main auth={this.state.auth} />}
+					/>
+					<Route
+						path="/protected"
+						render={() =>
+							this.state.auth.isAuthenticated() ? (
+								<Protected auth={this.state.auth} />
+							) : (
+									<NotFound />
+								)
+						}
+					/>
+					<Route path="/callback" component={Callback} />
+					<Route component={NotFound} />
 
 
-                </Switch>
-                <Route
-                    path="/createEvent" component={TheCreateEvent}
-                />
+				</Switch>
+				<Route
+					path="/createEvent" component={TheCreateEvent}
+				/>
 
-                {this.props.events.map(event => (
-                    <Route
-                        key={event.id}
-                        path={`/events/${event.id}`}
-                        render={props =>
-                            <TheCrudEvent
-                                {...props}
-                                event={event}
-                            />}
-                    />))}
+				{this.props.events.map(event => (
+					<Route
+						key={event.id}
+						path={`/events/${event.id}`}
+						render={props =>
+							<TheCrudEvent
+								{...props}
+								event={event}
+							/>}
+					/>))}
 
 
-            </Router>
-        );
-    }
+			</Router>
+		);
+	}
 }
 const mapStateToProps = state => {
-    // console.log(state);
-    return {
-        events: state.eventReducer.events
-    };
+	// console.log(state);
+	return {
+		events: state.eventReducer.events
+	};
 };
 export default connect(
-    mapStateToProps,
-    { fetchEvents }
+	mapStateToProps,
+	{
+		fetchEvents,
+		getSchedules
+	}
 )(App);

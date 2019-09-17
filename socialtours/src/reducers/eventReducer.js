@@ -1,5 +1,6 @@
 // import eventReducer from './eventReducer.js'
-import { types } from '../actions/index.js'
+
+import { types } from "../actions/eventActions";
 
 const {
     FETCH_EVENTS,
@@ -57,37 +58,37 @@ const eventReducer = (state = initialState, action) => {
             return {
                 ...state,
                 fetchingEvents: true
-            }
+            };
         case FETCH_EVENT_SUCCESS:
             return {
                 ...state,
                 fetchingEvents: false,
                 events: action.payload
-            }
+            };
         case FETCH_EVENT_FAILURE:
             return {
                 ...state,
                 fetchingEvents: false,
                 error: action.payload
-            }
+            };
 
         case POST_EVENT:
             return {
                 ...state,
                 addingEvent: true
-            }
+            };
         case POST_EVENT_SUCCESS:
             return {
                 ...state,
                 addingEvent: false,
                 events: action.payload
-            }
+            };
         case POST_EVENT_FAILURE:
             return {
                 ...state,
                 addingEvent: false,
                 error: action.payload
-            }
+            };
 
         case DELETE_EVENT:
             return {
@@ -132,5 +133,5 @@ const eventReducer = (state = initialState, action) => {
         default:
             return state;
     }
-}
+};
 export default eventReducer;

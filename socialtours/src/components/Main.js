@@ -1,21 +1,39 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
+import styled from "styled-components";
 import { Link } from "react-router-dom";
 
-export default class Main extends Component {
+import LandingPage from "../components/LandingPage";
+
+import Navigation from "../components/Navigation";
+import Dashboard from "../components/Dashboard";
+
+class Main extends Component {
 	render() {
 		return (
 			<>
-				{/* show login button when not logged in, and vice versa for logout button */}
-				{!this.props.auth.isAuthenticated() && (
-					<button onClick={this.props.auth.login}>login</button>
-				)}
-				{this.props.auth.isAuthenticated() && (
-					<button onClick={this.props.auth.logout}>logout</button>
-				)}
-				<p>
-					<Link to="/protected">Protected page</Link>
-				</p>
+				<SiteWrapper>
+					{this.props.auth.isAuthenticated() ? <Dashboard /> : <LandingPage />}
+				</SiteWrapper>
 			</>
 		);
 	}
 }
+
+const SiteWrapper = styled.div`
+	width: 100%;
+	height: 100vh;
+	background-color: #011638;
+`;
+
+const mapStateToProps = state => {
+	return {
+		auth: state.authReducer.auth
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	null
+)(Main);
