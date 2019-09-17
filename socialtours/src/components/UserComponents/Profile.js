@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import jwtDecode from "jwt-decode";
 
 import { fetchUser, updateUser, deleteUser } from "../../actions";
 
 import * as S from "./FormStyles";
 class Profile extends Component {
-  state = {
-    id: null,
+	state = {
+		id: null,
 		email: "",
 		first_name: "",
 		last_name: "",
@@ -23,37 +24,62 @@ class Profile extends Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-  /**
-   * Method to pre-populate the form with user data
-   * @returns user profile information
-   */
-  prePopulateForm = async id => {
-    await this.props.fetchUser(id)
-    if (this.props.user) {
-      const { id, email, first_name, last_name, phone_nbr, type } = this.props.user
-      this.setState({
-        id,
-        first_name,
-        last_name,
-        email,
-        phone_nbr,
-        type
-      })
-    }
-  }
+	getUserId() {
+		if (localStorage.getItem("api_token")) {
+			return jwtDecode(localStorage.getItem("api_token"));
+		}
+	}
 
-  handleUpdate = e => {
-    e.preventDefault();
-    this.props.updateUser(this.state.id, this.state)
-  }
+	/**
+	 * Method to pre-populate the form with user data
+	 * @returns user profile information
+	 */
+	prePopulateForm = async id => {
+		await this.props.fetchUser(id);
+		if (this.props.user) {
+			const {
+				id,
+				email,
+				first_name,
+				last_name,
+				phone_nbr,
+				password,
+				type
+			} = this.props.user;
+			this.setState({
+				id,
+				first_name,
+				last_name,
+				email,
+				phone_nbr,
+				password,
+				type
+			});
+		}
+	};
 
+	/**
+	 * Method to update user data
+	 * @returns updated user information in props
+	 */
+	handleUpdate = e => {
+		e.preventDefault();
+		this.props.updateUser(this.state.id, this.state);
+	};
 
+	componentDidMount() {
+		this.getUserId();
+		console.log("CDM getUserID: ", this.getUserId());
+		if (this.getUserId()) {
+			this.prePopulateForm(this.getUserId().id);
+		}
+	}
 
 	render() {
 		return (
 			<S.FormContainer>
 				<form>
-					<p>Register</p>
+					<p>User Profile</p>
 					<input
 						name="first_name"
 						value={this.state.first_name}
@@ -91,7 +117,7 @@ class Profile extends Component {
 						placeholder="Password"
 					/>
 					<label htmlFor="password">Minimum length is 8 characters</label>
-					<S.FormButton onClick={this.handleUpdate} Update>
+					<S.FormButton onClick={this.handleUpdate} update>
 						Save Changes
 					</S.FormButton>
 				</form>
