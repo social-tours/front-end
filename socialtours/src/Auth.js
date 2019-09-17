@@ -28,7 +28,8 @@ export default class Auth {
 		});
 	}
 
-	googleLogin = () => {
+	googleLogin = e => {
+		e.preventDefault();
 		this.auth0.authorize({
 			connection: "google-oauth2"
 		});
