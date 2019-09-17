@@ -12,14 +12,13 @@ export const login = creds => async dispatch => {
 	dispatch({ type: types.LOGIN_START });
 
 	try {
-		await axios.post(`${API_ENDPOINT}/api/login`, creds);
-		// localStorage.setItem("token", res.data.payload);
+		let user = await axios.post(`${API_ENDPOINT}/api/login`, creds);
 		console.log("success");
+		localStorage.setItem("token", user.data.token);
 		dispatch({ type: types.LOGIN_SUCCESS });
 	} catch (error) {
 		console.log("login err: ", error);
 		if (error.response && error.response.status === 401) {
-			// localStorage.removeItem("token");
 		}
 		dispatch({ type: types.LOGIN_FAILURE });
 	}
