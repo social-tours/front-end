@@ -11,12 +11,15 @@ import Button from "../DesignComponents/Button";
 export const FormContainer = styled.div`
   width: 600px;
   ${flex("column", "center", "center")};
-  margin: 50px auto;
+  margin: 50px auto 10px auto ;
   border-radius: 5px;
   border: 1px solid ${colorScheme.secondaryBorderColor}
   // box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
-  background: ${color.lightText};
   font-size: ${fontSizing.sm};
+
+  &:last-child {
+    margin-top: 10px;
+  }
 
   @media ${breakpoints[0]} {
     width: 100%;
@@ -38,7 +41,6 @@ export const FormContainer = styled.div`
   form {
     width: 90%;
     ${flex("column", "center")};
-    padding: 20px;
 
 
     @media ${breakpoints[0]} {
@@ -57,7 +59,29 @@ export const FormContainer = styled.div`
       line-height: 1rem;
     }
 
+    label {
+      width: 80%;
+      margin-top: 0;
+      font-size: ${fontSizing.xxxs}
+    }
+
+    p {
+        font-size: ${fontSizing.xxs}
+    }
+
   }
+`;
+
+export const TextContainer = styled.div`
+	width: 600px;
+  ${flex("column", "center", "center")};
+  margin: 0 auto;
+
+	p {
+		font-size: ${fontSizing.xs};
+    font-weight: bold;
+    text-transform: uppercase;
+	}
 `;
 
 export const FormButton = styled(Button)`
