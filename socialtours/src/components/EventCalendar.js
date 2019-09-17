@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 import Calendar from "react-calendar";
 import { getSchedules } from "../actions/schedules";
@@ -75,7 +76,9 @@ class EventCalendar extends Component {
 
 	handleClick(date) {
 		const dates = this.checkSchedule(date.toString());
-		console.log(dates);
+
+		this.props.history.push("ManageEvents");
+		//console.log(dates);
 	}
 
 	render() {
@@ -96,7 +99,9 @@ const mapStateToProps = ({ scheduleReducer }) => {
 	return scheduleReducer;
 };
 
-export default connect(
-	mapStateToProps,
-	{ getSchedules }
-)(EventCalendar);
+export default withRouter(
+	connect(
+		mapStateToProps,
+		{ getSchedules }
+	)(EventCalendar)
+);
