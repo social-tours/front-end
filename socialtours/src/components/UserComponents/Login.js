@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { login } from "../../actions";
 
+import * as S from "./FormStyles";
+
 class Login extends Component {
 	state = {
 		credentials: {
@@ -30,28 +32,47 @@ class Login extends Component {
 	render() {
 		return (
 			<>
-				<button onClick={this.props.auth.googleLogin}>
-					Log in with Google
-				</button>
-				<p>or</p>
 				{this.props.loginError && <p>Error on login, try again</p>}
-				<form onSubmit={this.handleLogin}>
-					<input
-						type="email"
-						name="email"
-						placeholder="email"
-						value={this.state.credentials.email}
-						onChange={this.handleChange}
-					/>
-					<input
-						type="password"
-						name="password"
-						placeholder="password"
-						value={this.state.credentials.password}
-						onChange={this.handleChange}
-					/>
-					<button>Log in</button>
-				</form>
+				<S.FormContainer>
+					<form onSubmit={this.handleLogin}>
+						<input
+							type="email"
+							name="email"
+							placeholder="Email"
+							value={this.state.credentials.email}
+							onChange={this.handleChange}
+						/>
+						<input
+							type="password"
+							name="password"
+							placeholder="Password"
+							value={this.state.credentials.password}
+							onChange={this.handleChange}
+						/>
+						<S.FormButton primary>Log in</S.FormButton>
+					</form>
+				</S.FormContainer>
+				<S.TextContainer>
+					<p>or</p>
+				</S.TextContainer>
+				<S.FormContainer>
+					<form>
+						<S.FormButton
+							onClick={this.props.auth.googleLogin}
+							transparent
+							socialIcon
+						>
+							<div>
+								<img
+									src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"
+									alt="Google Logo"
+									className="socialIcon"
+								/>
+							</div>
+							<div>Login with Google</div>
+						</S.FormButton>
+					</form>
+				</S.FormContainer>
 			</>
 		);
 	}
