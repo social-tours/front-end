@@ -140,6 +140,7 @@ const NewEvent = styled.div`
 	background-color: ${colors.mint};
 	border: 1px solid ${colors.black_plum};
 	box-shadow: #282c34 5px 5px 5px;
+	border-radius: 10px;
 `;
 
 const CalendarWrapper = styled.div`
@@ -152,6 +153,7 @@ const CalendarWrapper = styled.div`
 	background-color: ${colors.mint};
 	border: 1px solid ${colors.black_plum};
 	box-shadow: #282c34 5px 5px 5px;
+	border-radius: 10px;
 `;
 
 const NextEvent = styled.div`
@@ -167,6 +169,7 @@ const NextEvent = styled.div`
 	background-color: ${colors.mint};
 	border: 1px solid ${colors.black_plum};
 	box-shadow: #282c34 5px 5px 5px;
+	border-radius: 10px;
 `;
 
 const DashButton = styled.button`
