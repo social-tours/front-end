@@ -1,9 +1,9 @@
 import React from "react";
 import styled from "styled-components";
-import { connect } from 'react-redux';
-import CreateEvent from './createEvent';
-import { withRouter } from 'react-router-dom';
-import Loader from 'react-loader';
+import { connect } from "react-redux";
+import CreateEvent from "./createEvent";
+import { withRouter } from "react-router-dom";
+import Loader from "react-loader";
 
 //icons
 import StarIcon from "@material-ui/icons/Star";
@@ -18,7 +18,7 @@ import { getSchedules, fetchEvents } from "../actions";
 class Dashboard extends React.Component {
 	state = {
 		events: this.props.events
-	}
+	};
 
 	componentDidMount() {
 		this.props.getSchedules();
@@ -50,49 +50,59 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
-		if (this.state.events.length === 0) return <DashWrapper><Loader/></DashWrapper>;
+		if (this.state.events.length === 0)
+			return (
+				<DashWrapper>
+					<Loader />
+				</DashWrapper>
+			);
 
 		return (
 			<DashWrapper>
 				<LeftItems>
 					<NewEvent>
 						<DashHeader>Create a New Event</DashHeader>
-						<CreateEvent user={this.props.user}/>
+						<CreateEvent user={this.props.user} />
 					</NewEvent>
 					<CalendarWrapper user={this.props.user}>
-						<EventCalendar/>
+						<EventCalendar />
 					</CalendarWrapper>
 				</LeftItems>
 				<NextEvent>
 					<DashHeader>Info on Next Event</DashHeader>
 					<EventItem>
-						<StarIcon/> <span>Event Type</span>
+						<StarIcon /> <span>Event Type</span>
 					</EventItem>
 					<EventItem>
-						<EventNoteIcon/> <span>Date</span>
+						<EventNoteIcon /> <span>Date</span>
 					</EventItem>
 					<EventItem>
-						<PublicIcon/> <span>Location</span>
+						<PublicIcon /> <span>Location</span>
 					</EventItem>
 					<EventItem>
-						<MicIcon/> <span>Name/Title of Event</span>
+						<MicIcon /> <span>Name/Title of Event</span>
 					</EventItem>
 					<DashButton>Details</DashButton>
 				</NextEvent>
 			</DashWrapper>
 		);
 	}
-};
+}
 
-const mapStateToProps = ({scheduleReducer, eventReducer}) => {
+const mapStateToProps = ({ scheduleReducer, eventReducer }) => {
 	console.log("reducer", eventReducer);
 	return {
 		events: scheduleReducer.schedules,
 		userEvents: eventReducer.events
-	}
-}
+	};
+};
 
-export default withRouter(connect(mapStateToProps, {getSchedules, fetchEvents})(Dashboard));
+export default withRouter(
+	connect(
+		mapStateToProps,
+		{ getSchedules, fetchEvents }
+	)(Dashboard)
+);
 
 const DashWrapper = styled.div`
 	margin: 35px auto;
@@ -100,7 +110,7 @@ const DashWrapper = styled.div`
 	max-width: 1000px;
 	height: 95vh;
 	width: 80%;
-	background-color: ${ colors.dirty_concord };
+	background-color: ${colors.dirty_concord};
 `;
 
 const LeftItems = styled.div`

@@ -16,7 +16,7 @@ import NotFound from "./components/NotFound";
 import Callback from "./components/Callback";
 import Calendar from "./components/EventCalendar";
 
-import TheCreateEvent from './components/createEvent.js'
+import TheCreateEvent from "./components/createEvent.js";
 import TheCrudEvent from "./components/updateDeleteEvent.js";
 import ManageEvents from "./components/ManageEvents/ManageEvents";
 import Navigation from "./components/Navigation";

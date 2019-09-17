@@ -19,9 +19,9 @@
 	width: 120%;
 	padding: 10px 0px;
 	-webkit-box-shadow: 0 8px 6px -6px black;
-	   -moz-box-shadow: 0 8px 6px -6px black;
-			box-shadow: 0 8px 6px -6px black;
-	border: .5px solid black;
+	-moz-box-shadow: 0 8px 6px -6px black;
+	box-shadow: 0 8px 6px -6px black;
+	border: 0.5px solid black;
 	border-radius: 5px;
 }
 
@@ -30,7 +30,8 @@
 	width: auto;
 }
 
-.event-card p, .event-card a {
+.event-card p,
+.event-card a {
 	padding: 0 15px 0 15px;
 	margin-bottom: 6px;
 }
@@ -47,7 +48,6 @@
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: flex-start;
-	
 }
 
 .event-details {
