@@ -28,11 +28,11 @@ export default class Auth {
 		});
 	}
 
-	googleLogin() {
+	googleLogin = () => {
 		this.auth0.authorize({
 			connection: "google-oauth2"
 		});
-	}
+	};
 
 	/**
 	 * Method to execute user registration
