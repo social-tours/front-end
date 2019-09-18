@@ -1,6 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import EventFormStyles from '../components/DesignComponents/EventFormStyles.js'
 
 import { fetchEvent, putEvent, deleteEvent } from '../actions/index.js'
 const API = 'https://staging-a-socialtours.herokuapp.com' // need to get from backend
@@ -33,11 +34,11 @@ class UpdateDeleteEvent extends React.Component {
         }
     }
 
-	handleChange = e => {
-		this.setState({
-			[e.target.name]: e.target.value
-		});
-	};
+    handleChange = e => {
+        this.setState({
+            [e.target.name]: e.target.value
+        });
+    };
 
     handleFetchEvent = async (e, id) => {
         // e.preventDefault();
@@ -81,31 +82,35 @@ class UpdateDeleteEvent extends React.Component {
         console.log("DELETE", deleteEvent)
     }
 
-	myTestEventPost = async () => {
-		// to test the API, not plugged in when working
-		const testEvent = {
-			...this.state
-		};
-		const myFunction = await axios.post(API + "/api/events", testEvent);
-		console.log(myFunction);
-	};
+    myTestEventPost = async () => {
+        // to test the API, not plugged in when working
+        const testEvent = {
+            ...this.state
+        };
+        const myFunction = await axios.post(API + "/api/events", testEvent);
+        console.log(myFunction);
+    };
 
     render() {
         return (
-            <form
-            // onSubmit = { this.handleFetchEvent } 
-            >
-                <input name='type' placeholder={this.state.type} onChange={this.handleChange} value={this.state.type} type='number' />
-                <input name='title' placeholder={this.props.title} onChange={this.handleChange} value={this.state.title} />
-                <input name='host_ID' placeholder='host_ID' onChange={this.handleChange} value={this.state.host_ID} type='number' />
-                <input name='description' placeholder='description' onChange={this.handleChange} value={this.state.description} />
-                <input name='event_image' placeholder='event_image' onChange={this.handleChange} value={this.state.event_image} />
-                <input name='capacity' placeholder='capacity' onChange={this.handleChange} value={this.state.capacity} type='number' />
+            <EventFormStyles>
 
-                <button onClick={(e) => this.putEvent(e, this.props.event.id)}>Update This Event</button>
-                <button onClick={(e) => this.deleteEvent(e, this.props.event.id)}>Delete This Event</button>
+                <form
+                // onSubmit = { this.handleFetchEvent } 
+                >
+                    <input name='type' placeholder={this.state.type} onChange={this.handleChange} value={this.state.type} type='number' />
+                    <input name='title' placeholder={this.props.title} onChange={this.handleChange} value={this.state.title} />
+                    <input name='host_ID' placeholder='host_ID' onChange={this.handleChange} value={this.state.host_ID} type='number' />
+                    <input name='description' placeholder='description' onChange={this.handleChange} value={this.state.description} />
+                    <input name='event_image' placeholder='event_image' onChange={this.handleChange} value={this.state.event_image} />
+                    <input name='capacity' placeholder='capacity' onChange={this.handleChange} value={this.state.capacity} type='number' />
 
-            </form>
+                    <button onClick={(e) => this.putEvent(e, this.props.event.id)}>Update This Event</button>
+                    <button onClick={(e) => this.deleteEvent(e, this.props.event.id)}>Delete This Event</button>
+
+                </form>
+            </EventFormStyles>
+
         );
     }
 }
