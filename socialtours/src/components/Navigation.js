@@ -14,6 +14,8 @@ import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import MenuIcon from "@material-ui/icons/Menu";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import MovieFilterIcon from "@material-ui/icons/MovieFilter";
+import InfoIcon from "@material-ui/icons/Info";
+import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import HomeIcon from "@material-ui/icons/Home";
 import LockOpenOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
@@ -73,7 +75,25 @@ function Navigation(props) {
 			<List>
 				<ListItem button>
 					<ListItemIcon>
+						<FormatListBulletedIcon />
+					</ListItemIcon>
+					<ListItemText
+						primary={"Manage Events"}
+						onClick={() => props.history.push("/ManageEvents")}
+					/>
+				</ListItem>
+				<ListItem button>
+					<ListItemIcon>
 						<AssignmentIndIcon />
+					</ListItemIcon>
+					<ListItemText
+						primary={"Profile"}
+						onClick={() => props.history.push("/profile")}
+					/>
+				</ListItem>
+				<ListItem button>
+					<ListItemIcon>
+						<InfoIcon />
 					</ListItemIcon>
 					<ListItemText primary={"About"} />
 				</ListItem>
