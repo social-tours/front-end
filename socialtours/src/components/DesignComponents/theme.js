@@ -9,11 +9,18 @@ const theme = {
 
 	color: {
 		primaryColor: "#265077",
-		primaryDark: "#022140",
-		primaryBgShading: "#F5F8FA",
+		primaryDark: () => {
+			return theme.colors.black_plum;
+		},
+		primaryBgShading: () => {
+			return theme.colors.mint;
+		},
 		secondaryColor: "#e4e5eb",
 		secondaryBgShading: "#C5CAE9",
-		accent: "#51A7F8",
+		accent: "#6558F5",
+		grayShade: () => {
+			return theme.colors.putty;
+		},
 		emphasis: "#212121",
 		darkText: "#595959",
 		lightText: "#FFFFFF",
@@ -53,15 +60,19 @@ const theme = {
 		},
 		defaultBorderColor: () => {
 			return theme.color.primaryDark;
+		},
+		secondaryBorderColor: () => {
+			return theme.color.grayShade;
 		}
 	},
 
 	fontStyles: {
 		logoFont:
-			"'Open Sans', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
+			"-apple-system, BlinkMacSystemFont, Helvetica, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans- serif",
 		headingFont:
-			"Montserrat, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
-		defaultFont: "Lato, cursive, Arial, sans-serif"
+			"-apple-system, BlinkMacSystemFont, Helvetica, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans- serif",
+		defaultFont:
+			"-apple-system, BlinkMacSystemFont, Helvetica, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans- serif"
 	},
 
 	fontSizing: {
