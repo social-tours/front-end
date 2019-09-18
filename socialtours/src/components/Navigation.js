@@ -1,7 +1,6 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
-import { connect } from "react-redux";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -11,12 +10,14 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
-import LockCloseIcon from "@material-ui/icons/Lock";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import MenuIcon from "@material-ui/icons/Menu";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import MovieFilterIcon from "@material-ui/icons/MovieFilter";
+import HomeIcon from "@material-ui/icons/Home";
+import LockOpenOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import VerticalSplitOutlinedIcon from "@material-ui/icons/VerticalSplitOutlined";
 
 const useStyles = makeStyles({
 	list: {
@@ -24,14 +25,10 @@ const useStyles = makeStyles({
 	},
 	fullList: {
 		width: "auto"
-	},
-	a: {
-		textDecoration: "none",
-		color: "initial"
 	}
 });
 
-export function Navigation({ auth }) {
+function Navigation(props) {
 	const classes = useStyles();
 	const [state, setState] = React.useState({
 		top: false,
@@ -59,21 +56,16 @@ export function Navigation({ auth }) {
 			onKeyDown={toggleDrawer(side, false)}
 		>
 			<List>
-				{!auth.isAuthenticated() ? (
+				<ListItem button>{getLink()}</ListItem>
+				{!props.authenticated() && (
 					<ListItem button>
 						<ListItemIcon>
-							<LockOpenIcon />
+							<VerticalSplitOutlinedIcon />
 						</ListItemIcon>
-						<NavLink className={classes.a} to="/login">
-							<ListItemText primary={"Login"} />
-						</NavLink>
-					</ListItem>
-				) : (
-					<ListItem onClick={auth.logout} button>
-						<ListItemIcon>
-							<LockCloseIcon />
-						</ListItemIcon>
-						<ListItemText primary={"Logout"} />
+						<ListItemText
+							primary={"Register"}
+							onClick={() => props.history.push("register")}
+						/>
 					</ListItem>
 				)}
 			</List>
@@ -101,6 +93,43 @@ export function Navigation({ auth }) {
 		</div>
 	);
 
+	const getLink = () => {
+		if (props.location.pathname != "/")
+			return (
+				<>
+					<ListItemIcon>
+						<HomeIcon />
+					</ListItemIcon>
+					<ListItemText
+						primary={"Home"}
+						onClick={() => props.history.push("/")}
+					/>
+				</>
+			);
+		else
+			return (
+				<>
+					<ListItemIcon>
+						{props.authenticated() ? (
+							<LockOutlinedIcon />
+						) : (
+							<LockOpenOutlinedIcon />
+						)}
+					</ListItemIcon>
+
+					{props.authenticated() ? (
+						<ListItemText primary={"Log out"} onClick={() => props.logout()} />
+					) : (
+						<ListItemText
+							primary={"Login"}
+							onClick={() => props.history.push("login")}
+						/>
+					)}
+				</>
+			);
+	};
+
+	//console.log("location", props.location.pathname);
 	return (
 		<NavWrapper>
 			<Button onClick={toggleDrawer("left", true)}>
@@ -113,11 +142,7 @@ export function Navigation({ auth }) {
 	);
 }
 
-const mapStateToProps = state => {
-	return {
-		auth: state.authReducer.auth
-	};
-};
+export default withRouter(Navigation);
 
 const NavWrapper = styled.div`
 	margin: 0 auto;
@@ -127,8 +152,3 @@ const NavWrapper = styled.div`
 	height: 35px;
 	background-color: #dff8eb;
 `;
-
-export default connect(
-	mapStateToProps,
-	{}
-)(Navigation);
