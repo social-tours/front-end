@@ -17,32 +17,30 @@ export const types = {
 
 export const fetchUser = id => async dispatch => {
 	dispatch({ type: types.FETCH_USER_START });
-  try {
-    const user = await axios.get(`${API_ENDPOINT}/api/users/${id}`)
-    dispatch({ type: types.FETCH_USER_SUCCESS, payload: user.data})
-
-  } catch (err) {
-    dispatch({ type: types.FETCH_USER_FAILURE, payload: err})
-  }
+	try {
+		const user = await axios.get(`${API_ENDPOINT}/api/users/${id}`);
+		dispatch({ type: types.FETCH_USER_SUCCESS, payload: user.data });
+	} catch (err) {
+		dispatch({ type: types.FETCH_USER_FAILURE, payload: err });
+	}
 };
 
 export const updateUser = (id, data) => async dispatch => {
-  dispatch({ type: types.UPDATE_USER_START })
-  try {
-    const user = await axios.put(`${API_ENDPOINT}/api/users/${id}`, data)
-    dispatch({ type: types.UPDATE_USER_SUCCESS, payload: user.data })
-  } catch (err) {
-    dispatch({ type: types.UPDATE_USER_FAILURE, payload: err })
-  }
+	dispatch({ type: types.UPDATE_USER_START });
+	try {
+		const user = await axios.put(`${API_ENDPOINT}/api/users/${id}`, data);
+		dispatch({ type: types.UPDATE_USER_SUCCESS, payload: user.data });
+	} catch (err) {
+		dispatch({ type: types.UPDATE_USER_FAILURE, payload: err });
+	}
 };
 
 export const deleteUser = id => async dispatch => {
-  dispatch({ type: types.DELETE_USER_START })
-  try {
-    const data = await axios.delete(`${API_ENDPOINT}/api/users/${id}`)
-    dispatch({ type: types.DELETE_USER_SUCCESS })
-
-  } catch (err) {
-    dispatch({ type: types.DELETE_USER_FAILURE, payload: err})
-  }
-}
+	dispatch({ type: types.DELETE_USER_START });
+	try {
+		const data = await axios.delete(`${API_ENDPOINT}/api/users/${id}`);
+		dispatch({ type: types.DELETE_USER_SUCCESS });
+	} catch (err) {
+		dispatch({ type: types.DELETE_USER_FAILURE, payload: err });
+	}
+};

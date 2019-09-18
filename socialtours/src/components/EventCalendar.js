@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { withRouter } from "react-router-dom";
+import styled from "styled-components";
 
 import Calendar from "react-calendar";
 import { getSchedules } from "../actions/schedules";
+import { colors } from "./DesignComponents/theme";
 
 class EventCalendar extends Component {
 	state = {
@@ -75,17 +78,22 @@ class EventCalendar extends Component {
 
 	handleClick(date) {
 		const dates = this.checkSchedule(date.toString());
-		console.log(dates);
+
+		this.props.history.push("ManageEvents");
+		//console.log(dates);
 	}
 
 	render() {
 		return (
 			<div data-testid="component-calendar">
 				{this.props.schedules.length > 0 && (
-					<Calendar
-						tileDisabled={e => this.isDisabled(e)}
-						onClickDay={e => this.handleClick(e)}
-					/>
+					<CalendarWrapper>
+						<Calendar
+							tileClassName="calTile"
+							tileDisabled={e => this.isDisabled(e)}
+							onClickDay={e => this.handleClick(e)}
+						/>
+					</CalendarWrapper>
 				)}
 			</div>
 		);
@@ -96,7 +104,16 @@ const mapStateToProps = ({ scheduleReducer }) => {
 	return scheduleReducer;
 };
 
-export default connect(
-	mapStateToProps,
-	{ getSchedules }
-)(EventCalendar);
+export default withRouter(
+	connect(
+		mapStateToProps,
+		{ getSchedules }
+	)(EventCalendar)
+);
+
+const CalendarWrapper = styled.div`
+	border-radius: 10px;
+	.react-calendar {
+		border-radius: 10px;
+	}
+`;
