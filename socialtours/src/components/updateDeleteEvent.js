@@ -53,28 +53,18 @@ class UpdateDeleteEvent extends React.Component {
 
     putEvent = async (e, id) => {
         e.preventDefault();
-        let updatedEvent = {
-            ...this.state,
+        let updatedData = {
+            ...this.state
         }
-        // delete updatedEvent.id;
-        console.log("UPDATE SENDING", updatedEvent)
-        const myFunction = await axios.put(API + `/api/events/${id}`, { updatedEvent })
-        console.log("UPDATE RESULTS", myFunction)
-        this.props.putEvent(updatedEvent);
+        delete updatedData.id;
+        // updatedData.host_id = parseInt(updatedData.host_id, 10);
+        // updatedData.capacity = parseInt(updatedData.capacity, 10);
+        console.log("STUFF IM SENDING", updatedData)
+        const myFunction = await axios.put(API + `/api/events/${id}`, updatedData)
+        console.log("UPDATE RESULTS", myFunction.data)
+        // this.props.putEvent(id, updatedData);
         // this.props.toggleUpdate();
     }
-    // putEvent = async (e, id) => {
-    //     e.preventDefault();
-    //     let updatedData = {
-    //         ...this.state
-    //     }
-    //     delete updatedData.id;
-    //     console.log("STUFF IM SENDING", updatedData)
-    //     const myFunction = await axios.put(API + `/api/events/${id}`, { updatedData })
-    //     console.log("UPDATE RESULTS", myFunction)
-    //   // this.props.putEvent(id, updatedData);
-    //         // this.props.toggleUpdate();
-    // }
 
     deleteEvent = (e, id) => {
         // this.props.deleteEvent(this.props.event.id)

@@ -17,7 +17,7 @@ import Callback from "./components/Callback";
 import Calendar from "./components/EventCalendar";
 
 import TheCreateEvent from './components/createEvent.js'
-import TheCrudEvent from './components/updateDeleteEvent.js'
+import UpdateDeleteEvent from './components/updateDeleteEvent.js'
 
 // import Calendar from "./components/EventCalendar";
 //import API_ENDPOINT from "./config/api";
@@ -71,7 +71,7 @@ class App extends Component {
 						key={event.id}
 						path={`/events/${event.id}`}
 						render={props =>
-							<TheCrudEvent
+							<UpdateDeleteEvent
 								{...props}
 								event={event}
 							/>}
