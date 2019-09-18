@@ -16,6 +16,7 @@ import NotFound from "./components/NotFound";
 import Callback from "./components/UserComponents/Callback";
 import Calendar from "./components/EventCalendar";
 
+import TheCreateEvent from './components/createEvent.js'
 import TheCrudEvent from "./components/updateDeleteEvent.js";
 import ManageEvents from "./components/ManageEvents/ManageEvents";
 import Navigation from "./components/Navigation";
@@ -57,6 +58,7 @@ class App extends Component {
 					<Route path="/callback" component={Callback} />
 					<Route path="/calendar" component={Calendar} />
 					{/* <Route component={NotFound} /> Commented out so I can work on code without being 'authorized' on line 65*/}
+					<Route path="/createEvent" component={TheCreateEvent} />
 					<Route path="/events" component={TheCrudEvent} />
 					<Route exact path="/ManageEvents" component={ManageEvents} />
 					<Login />
