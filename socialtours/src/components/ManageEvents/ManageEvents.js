@@ -29,7 +29,7 @@ class ManageEvents extends Component {
 				{/* masterlist below */}
 
 				<div className="events-container events-list">
-					<div className="all-events">
+					<div className="events-all">
 						Your Events
 						<ul>
 							<ul>
