@@ -88,7 +88,7 @@ const mapStateToProps = state => {
 		fetchingSchedule: state.fetchingSchedule,
 		fetchingEvents: state.fetchingEvents,
 		schedules: state.scheduleReducer.schedules,
-		eventsList: state.eventReducer.events // maybe?
+		eventsList: state.eventReducer.events
 	};
 };
 
