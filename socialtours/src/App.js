@@ -12,6 +12,7 @@ import RegisterCallback from "./components/UserComponents/RegisterCallback";
 import Profile from "./components/UserComponents/Profile";
 
 import Main from "./components/Main";
+import Dashboard from "./components/Dashboard";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/UserComponents/Callback";
@@ -57,7 +58,7 @@ class App extends Component {
 					<Route
 						path="/protected"
 						render={() =>
-							this.props.auth.isAuthenticated() ? <Protected /> : <NotFound />
+							this.props.auth.isAuthenticated() ? <Main /> : <NotFound />
 						}
 					/>
 					<Route path="/callback" component={Callback} />
