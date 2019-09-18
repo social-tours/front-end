@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -9,11 +10,14 @@ import Divider from "@material-ui/core/Divider";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
-import LockOpenIcon from "@material-ui/icons/LockOpen";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
 import MenuIcon from "@material-ui/icons/Menu";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import MovieFilterIcon from "@material-ui/icons/MovieFilter";
+import HomeIcon from "@material-ui/icons/Home";
+import LockOpenOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
+import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
+import VerticalSplitOutlinedIcon from "@material-ui/icons/VerticalSplitOutlined";
 
 const useStyles = makeStyles({
 	list: {
@@ -24,7 +28,7 @@ const useStyles = makeStyles({
 	}
 });
 
-export default function Navigation() {
+function Navigation(props) {
 	const classes = useStyles();
 	const [state, setState] = React.useState({
 		top: false,
@@ -52,12 +56,18 @@ export default function Navigation() {
 			onKeyDown={toggleDrawer(side, false)}
 		>
 			<List>
-				<ListItem button>
-					<ListItemIcon>
-						<LockOpenIcon />
-					</ListItemIcon>
-					<ListItemText primary={"Login"} />
-				</ListItem>
+				<ListItem button>{getLink()}</ListItem>
+				{!props.authenticated() && (
+					<ListItem button>
+						<ListItemIcon>
+							<VerticalSplitOutlinedIcon />
+						</ListItemIcon>
+						<ListItemText
+							primary={"Register"}
+							onClick={() => props.history.push("register")}
+						/>
+					</ListItem>
+				)}
 			</List>
 			<Divider />
 			<List>
@@ -83,6 +93,43 @@ export default function Navigation() {
 		</div>
 	);
 
+	const getLink = () => {
+		if (props.location.pathname != "/")
+			return (
+				<>
+					<ListItemIcon>
+						<HomeIcon />
+					</ListItemIcon>
+					<ListItemText
+						primary={"Home"}
+						onClick={() => props.history.push("/")}
+					/>
+				</>
+			);
+		else
+			return (
+				<>
+					<ListItemIcon>
+						{props.authenticated() ? (
+							<LockOutlinedIcon />
+						) : (
+							<LockOpenOutlinedIcon />
+						)}
+					</ListItemIcon>
+
+					{props.authenticated() ? (
+						<ListItemText primary={"Log out"} onClick={() => props.logout()} />
+					) : (
+						<ListItemText
+							primary={"Login"}
+							onClick={() => props.history.push("login")}
+						/>
+					)}
+				</>
+			);
+	};
+
+	//console.log("location", props.location.pathname);
 	return (
 		<NavWrapper>
 			<Button onClick={toggleDrawer("left", true)}>
@@ -94,6 +141,8 @@ export default function Navigation() {
 		</NavWrapper>
 	);
 }
+
+export default withRouter(Navigation);
 
 const NavWrapper = styled.div`
 	margin: 0 auto;

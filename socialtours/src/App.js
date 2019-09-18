@@ -6,16 +6,18 @@ import { fetchEvents } from "./actions/index.js";
 import { getSchedules } from "./actions/schedules";
 
 import "./App.css";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import RegisterCallback from "./components/RegisterCallback";
+import Login from "./components/UserComponents/Login";
+import Register from "./components/UserComponents/Register";
+import RegisterCallback from "./components/UserComponents/RegisterCallback";
+import Profile from "./components/UserComponents/Profile";
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
-import Callback from "./components/Callback";
+import Callback from "./components/UserComponents/Callback";
 import Calendar from "./components/EventCalendar";
 
+import TheCreateEvent from "./components/createEvent.js";
 import TheCrudEvent from "./components/updateDeleteEvent.js";
 import ManageEvents from "./components/ManageEvents/ManageEvents";
 import Navigation from "./components/Navigation";
@@ -42,12 +44,16 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<Navigation authenticated={this.props.auth.isAuthenticated()} />
+				<Navigation
+					logout={this.props.auth.logout}
+					authenticated={this.props.auth.isAuthenticated}
+				/>
 				<Switch>
 					<Route exact path="/" component={Main} />
 					<Route path="/login" component={Login} />
 					<Route path="/register" component={Register} />
 					<Route path="/register/callback" component={RegisterCallback} />
+					<Route path="/profile" component={Profile} />
 					<Route
 						path="/protected"
 						render={() =>
@@ -57,6 +63,7 @@ class App extends Component {
 					<Route path="/callback" component={Callback} />
 					<Route path="/calendar" component={Calendar} />
 					{/* <Route component={NotFound} /> Commented out so I can work on code without being 'authorized' on line 65*/}
+					<Route path="/createEvent" component={TheCreateEvent} />
 					<Route path="/events" component={TheCrudEvent} />
 					<Route exact path="/ManageEvents" component={ManageEvents} />
 					<Login />
