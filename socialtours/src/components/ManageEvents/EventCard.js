@@ -52,7 +52,7 @@ class EventCard extends Component {
 				</div>
 				<div className="event-card-right">
 					<FacebookShareButton
-						// url={url}
+						url={"www.facebook.com"}
 						quote={"I have a new event!"}
 						hashtag={"#NewEvent"}
 					>
@@ -66,7 +66,7 @@ class EventCard extends Component {
 						<TwitterIcon size={size} />
 					</TwitterShareButton>
 					<LinkedinShareButton
-						url={url} // this can be a public facing page in cavas#2 for followers to see
+						url={"www.Linkedin.com"} // this can be a public facing page in cavas#2 for followers to see
 						title={"I have a new event!"}
 						windowWidth={750}
 						windowHeight={600}
@@ -78,6 +78,7 @@ class EventCard extends Component {
 							url={url}
 							size={size}
 							subject={"I have a new event!"}
+							body={"Checkout this new event before tickets sell out!"}
 							seperator={" "}
 							openWindow={true}
 						/>

@@ -15,7 +15,8 @@ class ManageEvents extends Component {
 		return (
 			<div className="events-wrapper">
 				<div className="events-header">
-					<p className="events-title">Mangage Events</p>
+					<p className="events-title">Manage Events</p>
+
 					{this.props.schedules.length > 0 ? (
 						<p>{this.props.schedules.length} total events are on your list</p>
 					) : (
