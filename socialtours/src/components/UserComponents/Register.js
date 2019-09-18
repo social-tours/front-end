@@ -126,7 +126,7 @@ class Register extends Component {
 				<S.TextContainer>
 					<p>or</p>
 				</S.TextContainer>
-				<S.FormContainer>
+				<S.FormContainer something>
 					<form>
 						<S.FormButton
 							onClick={this.handleGoogleRegistration}

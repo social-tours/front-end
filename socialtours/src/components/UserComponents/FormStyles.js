@@ -17,9 +17,11 @@ export const FormContainer = styled.div`
   // box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
   font-size: ${fontSizing.sm};
 
-  &:last-child {
-    margin-top: 10px;
-  }
+  ${props =>
+		props.something &&
+		css`
+			margin-top: 10px;
+		`}
 
   @media ${breakpoints[0]} {
     width: 100%;
@@ -74,13 +76,13 @@ export const FormContainer = styled.div`
 
 export const TextContainer = styled.div`
 	width: 600px;
-  ${flex("column", "center", "center")};
-  margin: 0 auto;
+	${flex("column", "center", "center")};
+	margin: 0 auto;
 
 	p {
 		font-size: ${fontSizing.xs};
-    font-weight: bold;
-    text-transform: uppercase;
+		font-weight: bold;
+		text-transform: uppercase;
 	}
 `;
 

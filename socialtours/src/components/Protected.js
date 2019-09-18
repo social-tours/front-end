@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { API_ENDPOINT } from "../config/api";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 
 import Dashboard from "./Dashboard";
 
@@ -11,6 +12,7 @@ export default class Secret extends Component {
 	};
 
 	componentDidMount() {
+		console.log("CDM API_TOKEN: ", jwtDecode(localStorage.getItem("api_token")));
 		axios
 			.get(
 				`${API_ENDPOINT}/api/users`

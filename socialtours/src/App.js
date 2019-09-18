@@ -9,6 +9,7 @@ import "./App.css";
 import Login from "./components/UserComponents/Login";
 import Register from "./components/UserComponents/Register";
 import RegisterCallback from "./components/UserComponents/RegisterCallback";
+import Profile from "./components/UserComponents/Profile";
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";
@@ -49,6 +50,7 @@ class App extends Component {
 					<Route path="/login" component={Login} />
 					<Route path="/register" component={Register} />
 					<Route path="/register/callback" component={RegisterCallback} />
+					<Route path="/profile" component={Profile} />
 					<Route
 						path="/protected"
 						render={() =>
