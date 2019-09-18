@@ -60,12 +60,7 @@ class TheCreateEvent extends React.Component {
 						value={this.state.capacity}
 						type="number"
 					/>
-					<button
-						onClick={e => {
-							this.addEvent(e, this.state.id);
-							this.redirect();
-						}}
-					>
+					<button onClick={e => this.addEvent(e, this.state.id)}>
 						Create Event
 					</button>
 				</form>
