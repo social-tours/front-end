@@ -4,4 +4,4 @@ const EventFormStyles = styled.div`
 	margin-top: 50px;
 `;
 
-export default EventFormStyles
+export default EventFormStyles;

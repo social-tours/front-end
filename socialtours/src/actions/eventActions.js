@@ -70,13 +70,13 @@ export const fetchEvent = eventID => async dispatch => {
 		const event = await axios.get(API_ENDPOINT + `/api/events/${eventID}`);
 		event.status === 200
 			? dispatch({
-				type: types.FETCH_EVENT_SUCCESS,
-				payload: event.data
-			})
+					type: types.FETCH_EVENT_SUCCESS,
+					payload: event.data
+			  })
 			: dispatch({
-				type: types.FETCH_EVENT_FAILED
-				// payload: event.data
-			});
+					type: types.FETCH_EVENT_FAILED
+					// payload: event.data
+			  });
 	} catch (err) {
 		//types.FETCH_FAILED
 		dispatch({
@@ -95,13 +95,13 @@ export const postEvent = event => async dispatch => {
 		const newEvent = await axios.post(API_ENDPOINT + `/api/events`, event);
 		newEvent.status === 200
 			? dispatch({
-				type: types.POST_EVENT_SUCCESS,
-				payload: newEvent.data
-			})
+					type: types.POST_EVENT_SUCCESS,
+					payload: newEvent.data
+			  })
 			: dispatch({
-				type: types.POST_EVENT_FAILED
-				// payload: event.data
-			});
+					type: types.POST_EVENT_FAILED
+					// payload: event.data
+			  });
 	} catch (err) {
 		//POST_FAILED
 		dispatch({
@@ -120,13 +120,13 @@ export const putEvent = eventID => async dispatch => {
 		const event = await axios.put(API_ENDPOINT + `/api/events/${eventID}`);
 		event.status === 204
 			? dispatch({
-				type: types.PUT_EVENT_SUCCESS,
-				payload: event.data
-			})
+					type: types.PUT_EVENT_SUCCESS,
+					payload: event.data
+			  })
 			: dispatch({
-				type: types.PUT_EVENT_FAILED,
-				payload: event.data
-			});
+					type: types.PUT_EVENT_FAILED,
+					payload: event.data
+			  });
 	} catch (err) {
 		//FETCH_FAILED
 		dispatch({
@@ -145,13 +145,13 @@ export const deleteEvent = eventID => async dispatch => {
 		const event = await axios.delete(API_ENDPOINT + `/events/${eventID}`);
 		event.status === 204
 			? dispatch({
-				type: types.DELETE_EVENT_SUCCESS,
-				payload: event.data
-			})
+					type: types.DELETE_EVENT_SUCCESS,
+					payload: event.data
+			  })
 			: dispatch({
-				type: types.DELETE_EVENT_FAILED,
-				payload: event.data
-			});
+					type: types.DELETE_EVENT_FAILED,
+					payload: event.data
+			  });
 	} catch (err) {
 		//FETCH_FAILED
 		dispatch({
