@@ -6,14 +6,15 @@ import { fetchEvents } from "./actions/index.js";
 import { getSchedules } from "./actions/schedules";
 
 import "./App.css";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import RegisterCallback from "./components/RegisterCallback";
+import Login from "./components/UserComponents/Login";
+import Register from "./components/UserComponents/Register";
+import RegisterCallback from "./components/UserComponents/RegisterCallback";
+import Profile from "./components/UserComponents/Profile";
 
 import Main from "./components/Main";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
-import Callback from "./components/Callback";
+import Callback from "./components/UserComponents/Callback";
 import Calendar from "./components/EventCalendar";
 
 import TheCreateEvent from "./components/createEvent.js";
@@ -49,6 +50,7 @@ class App extends Component {
 					<Route path="/login" component={Login} />
 					<Route path="/register" component={Register} />
 					<Route path="/register/callback" component={RegisterCallback} />
+					<Route path="/profile" component={Profile} />
 					<Route
 						path="/protected"
 						render={() =>
