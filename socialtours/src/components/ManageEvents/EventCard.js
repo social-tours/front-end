@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 import "./ManageEvents.css";
 
@@ -43,9 +44,10 @@ class EventCard extends Component {
 				<div className="event-card-left">
 					<p>ID#: {this.props.id}</p>
 					<p>Title: {this.props.title}</p>
+					<p>Capacity: {this.props.capacity}</p>
 					<p>Description: {this.props.description}</p>
-					<p>Time: {this.props.date}</p>
-					<p>Location: {this.props.location}</p>
+					{/* <p>Time: {this.props.date}</p>
+					<p>Location: {this.props.location}</p> */}
 					<Link type="submit" to={`/events/${this.props.id}`}>
 						EDIT / DELETE
 					</Link>
