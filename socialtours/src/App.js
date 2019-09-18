@@ -44,7 +44,10 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
-				<Navigation authenticated={this.props.auth.isAuthenticated()} />
+				<Navigation
+					logout={this.props.auth.logout}
+					authenticated={this.props.auth.isAuthenticated}
+				/>
 				<Switch>
 					<Route exact path="/" component={Main} />
 					<Route path="/login" component={Login} />
