@@ -29,6 +29,7 @@ class TheCreateEvent extends React.Component {
 		e.preventDefault();
 		const newEvent = this.state;
 		this.props.postEvent(newEvent);
+		this.redirect();
 	};
 
 	render() {
