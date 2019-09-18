@@ -51,7 +51,7 @@ class App extends Component {
 				<Switch>
 					<Route exact path="/" component={Main} />
 					<Route path="/login" component={Login} />
-					<Route path="/register" component={Register} />
+					<Route exact path="/register" component={Register} />
 					<Route path="/register/callback" component={RegisterCallback} />
 					<Route path="/profile" component={Profile} />
 					<Route
