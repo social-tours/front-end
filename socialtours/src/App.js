@@ -6,18 +6,22 @@ import { fetchEvents } from "./actions/index.js";
 import { getSchedules } from "./actions/schedules";
 
 import "./App.css";
-import Login from "./components/Login";
-import Register from "./components/Register";
-import RegisterCallback from "./components/RegisterCallback";
+import Login from "./components/UserComponents/Login";
+import Register from "./components/UserComponents/Register";
+import RegisterCallback from "./components/UserComponents/RegisterCallback";
+import Profile from "./components/UserComponents/Profile";
 
 import Main from "./components/Main";
+import Dashboard from "./components/Dashboard";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
-import Callback from "./components/Callback";
+import Callback from "./components/UserComponents/Callback";
 import Calendar from "./components/EventCalendar";
-
-import TheCreateEvent from './components/createEvent.js'
-import UpdateDeleteEvent from './components/updateDeleteEvent.js'
+import UpdateDeleteEvent from "./components/updateDeleteEvent.js";
+import TheCreateEvent from "./components/createEvent.js";
+import TheCrudEvent from "./components/updateDeleteEvent.js";
+import ManageEvents from "./components/ManageEvents/ManageEvents";
+import Navigation from "./components/Navigation";
 
 // import Calendar from "./components/EventCalendar";
 //import API_ENDPOINT from "./config/api";
@@ -41,43 +45,39 @@ class App extends Component {
 	render() {
 		return (
 			<Router>
+				<Navigation
+					logout={this.props.auth.logout}
+					authenticated={this.props.auth.isAuthenticated}
+				/>
 				<Switch>
-					<Route
-						exact
-						path="/"
-						render={() => <Main auth={this.state.auth} />}
-					/>
+					<Route exact path="/" component={Main} />
+					<Route path="/login" component={Login} />
+					<Route exact path="/register" component={Register} />
+					<Route path="/register/callback" component={RegisterCallback} />
+					<Route path="/profile" component={Profile} />
 					<Route
 						path="/protected"
 						render={() =>
-							this.state.auth.isAuthenticated() ? (
-								<Protected auth={this.state.auth} />
-							) : (
-									<NotFound />
-								)
+							this.props.auth.isAuthenticated() ? <Main /> : <NotFound />
 						}
 					/>
 					<Route path="/callback" component={Callback} />
-					<Route component={NotFound} />
-
-
+					<Route path="/calendar" component={Calendar} />
+					{/* <Route component={NotFound} /> Commented out so I can work on code without being 'authorized' on line 65*/}
+					<Route path="/createEvent" component={TheCreateEvent} />
+					<Route path="/events" component={TheCrudEvent} />
+					<Route exact path="/ManageEvents" component={ManageEvents} />
+					<Login />
 				</Switch>
-				<Route
-					path="/createEvent" component={TheCreateEvent}
-				/>
+				<Route path="/createEvent" component={TheCreateEvent} />
 
 				{this.props.events.map(event => (
 					<Route
 						key={event.id}
 						path={`/events/${event.id}`}
-						render={props =>
-							<UpdateDeleteEvent
-								{...props}
-								event={event}
-							/>}
-					/>))}
-
-
+						render={props => <UpdateDeleteEvent {...props} event={event} />}
+					/>
+				))}
 			</Router>
 		);
 	}

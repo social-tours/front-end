@@ -28,11 +28,13 @@ export default class Auth {
 		});
 	}
 
-	googleLogin() {
+	googleLogin = e => {
+		e.preventDefault();
 		this.auth0.authorize({
-			connection: "google-oauth2"
+			connection: "google-oauth2",
+			redirectUri: `${REDIRECT_URI}/callback`
 		});
-	}
+	};
 
 	/**
 	 * Method to execute user registration
@@ -104,9 +106,7 @@ export default class Auth {
 	}
 
 	logout() {
-		localStorage.removeItem("access_token");
-		localStorage.removeItem("id_token");
-		localStorage.removeItem("expires_at");
+		localStorage.clear();
 		location.pathname = LOGIN_FAILURE_PAGE;
 	}
 
