@@ -53,9 +53,7 @@ class EventCalendar extends Component {
 			Dec: "12"
 		};
 		// Pull the month, day and year from the e.date object
-		let dateData = date.match(
-			/(?:\S+) (?<sMonth>\S+) (?<sDay>\S+) (?<sYear>\S+)/
-		);
+		let dateData = date.match(/(?:\S+) (?<sMonth>\S+) (?<sDay>\S+) (?<sYear>\S+)/);
 
 		// Assign the month, day, and year strings to variables
 		let { sMonth, sDay, sYear } = dateData.groups;
@@ -90,9 +88,7 @@ class EventCalendar extends Component {
 				{this.props.schedules.length > 0 && (
 					<CalendarWrapper>
 						<Calendar
-							tileClassName={e =>
-								this.isDisabled(e) ? "disabled calTile" : "calTile"
-							}
+							tileClassName={e => (this.isDisabled(e) ? "disabled calTile" : "calTile")}
 							tileDisabled={e => this.isDisabled(e)}
 							onClickDay={e => this.handleClick(e)}
 						/>
@@ -126,7 +122,7 @@ const CalendarWrapper = styled.div`
 
 		.disabled {
 			background-color: ${colors.putty};
-			color: silver;
+			color: darkgray;
 		}
 
 		.react-calendar__navigation,

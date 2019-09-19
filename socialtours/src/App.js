@@ -57,9 +57,7 @@ class App extends Component {
 					<Route path="/profile" component={Profile} />
 					<Route
 						path="/protected"
-						render={() =>
-							this.props.auth.isAuthenticated() ? <Main /> : <NotFound />
-						}
+						render={() => (this.props.auth.isAuthenticated() ? <Main /> : <NotFound />)}
 					/>
 					<Route path="/callback" component={Callback} />
 					<Route path="/calendar" component={Calendar} />
