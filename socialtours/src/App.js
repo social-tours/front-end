@@ -65,19 +65,11 @@ class App extends Component {
 					<Route path="/calendar" component={Calendar} />
 					{/* <Route component={NotFound} /> Commented out so I can work on code without being 'authorized' on line 65*/}
 					<Route path="/createEvent" component={TheCreateEvent} />
-					<Route path="/events" component={TheCrudEvent} />
+					<Route path={`/events/:id`} component={UpdateDeleteEvent} />} />
 					<Route exact path="/ManageEvents" component={ManageEvents} />
 					<Login />
 				</Switch>
 				<Route path="/createEvent" component={TheCreateEvent} />
-
-				{this.props.events.map(event => (
-					<Route
-						key={event.id}
-						path={`/events/${event.id}`}
-						render={props => <UpdateDeleteEvent {...props} event={event} />}
-					/>
-				))}
 			</Router>
 		);
 	}

@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import axios from "axios";
 import EventFormStyles from "../components/DesignComponents/EventFormStyles.js";
 
-import { fetchEvent, putEvent, deleteEvent } from "../actions/index.js";
+import { fetchEvent, putEvent, deleteEvent } from "../actions/eventActions";
+import { API_ENDPOINT } from "../config/api.js";
 const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
 
 class UpdateDeleteEvent extends React.Component {
@@ -17,11 +18,23 @@ class UpdateDeleteEvent extends React.Component {
 		capacity: ""
 	};
 
+	componentDidUpdate(prevProps) {
+		// Typical usage (don't forget to compare props):
+		if (this.props.id !== prevProps.id) {
+			this.fetchData(this.props.userID);
+		}
+	}
+
 	componentDidMount = async () => {
 		// How to populate fields with current data - 9/5/19
 		const currentEvent = this.handleFetchEvent();
 		// const events = await axios.get(API + `/api/events/1`)
-		const event = this.props.event;
+		const res = await axios.get(
+			API_ENDPOINT + `/api/events/${this.props.match.params.id}`
+		);
+		const event = res.data;
+		console.log(event);
+
 		// console.log('My CDM Props', event)
 		this.setState({
 			id: event.id,
@@ -68,10 +81,15 @@ class UpdateDeleteEvent extends React.Component {
 		// this.props.toggleUpdate();
 	};
 
-	deleteEvent = (e, id) => {
+	deleteEvent = async (e, id) => {
+		e.preventDefault();
 		// this.props.deleteEvent(this.props.event.id)
+		//await axios.delete(API + `/api/events/2`);
 		this.props.deleteEvent(id);
-		console.log("DELETE", deleteEvent);
+		// do something
+		//alert("Event has been deleted");
+		this.props.history.push("/manageevents");
+		//console.log("DELETE", deleteEvent);
 	};
 
 	myTestEventPost = async () => {
@@ -103,10 +121,10 @@ class UpdateDeleteEvent extends React.Component {
 						value={this.state.title}
 					/>
 					<input
-						name="host_ID"
-						placeholder="host_ID"
+						name="host_id"
+						placeholder="host_id"
 						onChange={this.handleChange}
-						value={this.state.host_ID}
+						value={this.state.host_id}
 						type="number"
 					/>
 					<input
@@ -129,10 +147,10 @@ class UpdateDeleteEvent extends React.Component {
 						type="number"
 					/>
 
-					<button onClick={e => this.putEvent(e, this.props.event.id)}>
+					<button onClick={e => this.putEvent(e, this.props.match.params.id)}>
 						Update This Event
 					</button>
-					<button onClick={e => this.deleteEvent(e, this.props.event.id)}>
+					<button onClick={e => this.deleteEvent(e, this.state.id)}>
 						Delete This Event
 					</button>
 				</form>
