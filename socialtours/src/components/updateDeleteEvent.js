@@ -1,40 +1,40 @@
 import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import EventFormStyles from "../components/DesignComponents/EventFormStyles.js";
 
-import {
-	fetchEvent,
-	postEvent,
-	putEvent,
-	deleteEvent
-} from "../actions/index.js";
+import { fetchEvent, putEvent, deleteEvent } from "../actions/index.js";
 const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
 
-class TheCrudEvent extends React.Component {
+class UpdateDeleteEvent extends React.Component {
 	state = {
 		id: "",
-		type: 1, // hardcoded for testing
+		type: "",
 		title: "",
-		host_id: 2, //FK to user_ID, hardcoded for now to get to work
+		host_id: "", //FK to user_ID
 		description: "",
 		event_image: "",
 		capacity: ""
-		// created_at: '',
-		// updated_at: ''
 	};
 
-	componentDidMount() {
+	componentDidMount = async () => {
+		// How to populate fields with current data - 9/5/19
 		const currentEvent = this.handleFetchEvent();
-		// this.setState({
-		//     id: 12,
-		//     title: currentEvent.title,
-		//     description: currentEvent.description,
-		//     event_image: currentEvent.event_image,
-		//     capacity: currentEvent.capacity
-		// })
-		// if (this.props.forUpdate) {
-		// }
-	}
+		// const events = await axios.get(API + `/api/events/1`)
+		const event = this.props.event;
+		// console.log('My CDM Props', event)
+		this.setState({
+			id: event.id,
+			type: event.type,
+			title: event.title,
+			host_id: event.host_id,
+			description: event.description,
+			event_image: event.event_image,
+			capacity: event.capacity
+		});
+		if (this.props.forUpdate) {
+		}
+	};
 
 	handleChange = e => {
 		this.setState({
@@ -42,38 +42,36 @@ class TheCrudEvent extends React.Component {
 		});
 	};
 
-	handleFetchEvent = async () => {
+	handleFetchEvent = async (e, id) => {
 		// e.preventDefault();
+		let updatedData = {
+			...this.state
+		};
 		// return await this.props.fetchEvent(12)
-		const event = await axios.get(API + `/api/events/12`);
-		console.log("CONSOLE LOG DATA", event);
+		const event = await axios.get(API + `/api/events/${id}`);
+		// console.log('CONSOLE LOG DATA', event)
 		return event;
 	};
 
-	addEvent = e => {
-		e.preventDefault();
-		const newEvent = this.state;
-		// console.log(newEvent, 'Hello from addEvent')
-		this.props.postEvent(newEvent);
-		// this.props.toggleAdding();
-	};
-
-	updateEvent = async (e, id) => {
+	putEvent = async (e, id) => {
 		e.preventDefault();
 		let updatedData = {
 			...this.state
 		};
 		delete updatedData.id;
-		// console.log("STUFF IM SENDING", updatedData)
-		const myFunction = await axios.put(API + "/api/events/12", updatedData);
-		console.log("UPDATE RESULTS", myFunction);
-		// this.props.updatedData(id, updatedData);
+		// updatedData.host_id = parseInt(updatedData.host_id, 10);
+		// updatedData.capacity = parseInt(updatedData.capacity, 10);
+		console.log("STUFF IM SENDING", updatedData);
+		const myFunction = await axios.put(API + `/api/events/${id}`, updatedData);
+		console.log("UPDATE RESULTS", myFunction.data);
+		// this.props.putEvent(id, updatedData);
 		// this.props.toggleUpdate();
 	};
 
-	deleteEvent = () => {
-		this.props.deleteEvent(this.props.event);
-		// this.props.toggleUpdate();
+	deleteEvent = (e, id) => {
+		// this.props.deleteEvent(this.props.event.id)
+		this.props.deleteEvent(id);
+		console.log("DELETE", deleteEvent);
 	};
 
 	myTestEventPost = async () => {
@@ -87,73 +85,75 @@ class TheCrudEvent extends React.Component {
 
 	render() {
 		return (
-			<form>
-				{/* onSubmit={this.props.forUpdate ? this.updateEvent : this.addEvent} goes to form*/}
-				{/* <input name='id' placeholder='id' onChange={this.handleChange} value={this.state.id} /> */}
-				<input
-					name="type"
-					placeholder="type"
-					onChange={this.handleChange}
-					value={this.state.type}
-					type="number"
-				/>
-				<input
-					name="title"
-					placeholder="title"
-					onChange={this.handleChange}
-					value={this.state.title}
-				/>
-				<input
-					name="host_ID"
-					placeholder="host_ID"
-					onChange={this.handleChange}
-					value={this.state.host_ID}
-				/>
-				<input
-					name="description"
-					placeholder="description"
-					onChange={this.handleChange}
-					value={this.state.description}
-				/>
-				<input
-					name="event_image"
-					placeholder="event_image"
-					onChange={this.handleChange}
-					value={this.state.event_image}
-				/>
-				<input
-					name="capacity"
-					placeholder="capacity"
-					onChange={this.handleChange}
-					value={this.state.capacity}
-					type="number"
-				/>
-				{/* {this.props.forUpdate ?
-                    <div>
-                        <button type='submit'>Update event</button>
-                        <button onClick={this.deleteEvent}>Deleted event!</button>
-                    </div>
-                    :
-                } */}
-				<button onClick={e => this.updateEvent(e, this.state.id)}>
-					Update Event
-				</button>
-			</form>
+			<EventFormStyles>
+				<form
+				// onSubmit = { this.handleFetchEvent }
+				>
+					<input
+						name="type"
+						placeholder={this.state.type}
+						onChange={this.handleChange}
+						value={this.state.type}
+						type="number"
+					/>
+					<input
+						name="title"
+						placeholder={this.props.title}
+						onChange={this.handleChange}
+						value={this.state.title}
+					/>
+					<input
+						name="host_ID"
+						placeholder="host_ID"
+						onChange={this.handleChange}
+						value={this.state.host_ID}
+						type="number"
+					/>
+					<input
+						name="description"
+						placeholder="description"
+						onChange={this.handleChange}
+						value={this.state.description}
+					/>
+					<input
+						name="event_image"
+						placeholder="event_image"
+						onChange={this.handleChange}
+						value={this.state.event_image}
+					/>
+					<input
+						name="capacity"
+						placeholder="capacity"
+						onChange={this.handleChange}
+						value={this.state.capacity}
+						type="number"
+					/>
+
+					<button onClick={e => this.putEvent(e, this.props.event.id)}>
+						Update This Event
+					</button>
+					<button onClick={e => this.deleteEvent(e, this.props.event.id)}>
+						Delete This Event
+					</button>
+				</form>
+			</EventFormStyles>
 		);
 	}
 }
 
 const mapStateToProps = state => {
-	// console.log(state, 'hello from TheCrudEvent');
+	// console.log(state, 'hello from UpdateDeleteEvent');
+	// console.log("MSTP update/delete", state)
 	return {
-		events: state.events
+		events: state.events,
+		deletingEvent: state.deletingEvent
 	};
 };
 
 export default connect(
 	mapStateToProps,
-	{ fetchEvent, postEvent, putEvent, deleteEvent }
-)(TheCrudEvent);
+	{ fetchEvent, putEvent, deleteEvent }
+)(UpdateDeleteEvent);
 
 // ** Event Details - Objects in WireFrame **
 // Wir

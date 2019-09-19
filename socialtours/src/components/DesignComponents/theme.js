@@ -59,10 +59,11 @@ const theme = {
 
 	fontStyles: {
 		logoFont:
-			"'Open Sans', 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
+			"-apple-system, BlinkMacSystemFont, Helvetica, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans- serif",
 		headingFont:
-			"Montserrat, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, sans-serif",
-		defaultFont: "Lato, cursive, Arial, sans-serif"
+			"-apple-system, BlinkMacSystemFont, Helvetica, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans- serif",
+		defaultFont:
+			"-apple-system, BlinkMacSystemFont, Helvetica, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans- serif"
 	},
 
 	fontSizing: {

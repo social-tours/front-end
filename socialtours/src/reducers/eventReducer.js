@@ -41,11 +41,11 @@ const eventReducer = (state = initialState, action) => {
 				fetchingEvents: true
 			};
 		case FETCH_EVENTS_SUCCESS:
-			console.log(action.payload);
+			// console.log("FETCH EVENT SUCCESS: ", action.payload)
 			return {
 				...state,
 				fetchingEvents: false,
-				events: action.payload
+				events: [...action.payload]
 			};
 		case FETCH_EVENTS_FAILURE:
 			return {
@@ -96,12 +96,14 @@ const eventReducer = (state = initialState, action) => {
 				deletingEvent: true
 			};
 		case DELETE_EVENT_SUCCESS:
+			console.log("DELETE EVENT SUCCESS: ", action.payload);
 			return {
 				...state,
 				deletingEvent: false,
 				events: action.payload
 			};
 		case DELETE_EVENT_FAILURE:
+			console.log("DELETE EVENT FAILURE: ", action.payload);
 			return {
 				...state,
 				deletingEvent: false,
@@ -113,12 +115,15 @@ const eventReducer = (state = initialState, action) => {
 				updatingEvent: true
 			};
 		case PUT_EVENT_SUCCESS:
+			console.log("PUT EVENT SUCCESS: ", action.payload);
 			return {
 				...state,
 				updatingEvent: false,
 				events: action.payload
 			};
 		case PUT_EVENT_FAILURE:
+			console.log("PUT EVENT FAILURE: ", action.payload);
+
 			return {
 				...state,
 				updatingEvent: false,
