@@ -87,16 +87,16 @@ export const fetchEvent = eventID => async dispatch => {
 };
 
 // Post event
-export const postEvent = eventID => async dispatch => {
+export const postEvent = event => async dispatch => {
 	dispatch({
 		type: types.POST_EVENT
 	}); //greg
 	try {
-		const event = await axios.get(API_ENDPOINT + `/api/events/${eventID}`);
-		event.status === 200
+		const newEvent = await axios.post(API_ENDPOINT + `/api/events`, event);
+		newEvent.status === 200
 			? dispatch({
 					type: types.POST_EVENT_SUCCESS,
-					payload: event.data
+					payload: newEvent.data
 			  })
 			: dispatch({
 					type: types.POST_EVENT_FAILED
