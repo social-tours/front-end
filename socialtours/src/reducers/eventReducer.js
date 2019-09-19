@@ -26,6 +26,7 @@ const {
 
 const initialState = {
 	events: [],
+	event: {},
 	fetchingEvents: false,
 	addingEvent: false,
 	updatingEvent: false,
@@ -63,7 +64,7 @@ const eventReducer = (state = initialState, action) => {
 			return {
 				...state,
 				fetchingEvents: false,
-				events: action.payload
+				event: action.payload
 			};
 		case FETCH_EVENT_FAILURE:
 			return {
@@ -100,14 +101,13 @@ const eventReducer = (state = initialState, action) => {
 			return {
 				...state,
 				deletingEvent: false,
-				events: action.payload
+				events: action.payload.data
 			};
 		case DELETE_EVENT_FAILURE:
 			console.log("DELETE EVENT FAILURE: ", action.payload);
 			return {
 				...state,
-				deletingEvent: false,
-				error: action.payload
+				deletingEvent: false
 			};
 		case PUT_EVENT:
 			return {

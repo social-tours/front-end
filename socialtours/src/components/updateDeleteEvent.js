@@ -164,7 +164,7 @@ const mapStateToProps = state => {
 	// console.log(state, 'hello from UpdateDeleteEvent');
 	// console.log("MSTP update/delete", state)
 	return {
-		events: state.events,
+		event: state.event,
 		deletingEvent: state.deletingEvent
 	};
 };
