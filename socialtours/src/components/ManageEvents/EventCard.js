@@ -51,7 +51,7 @@ class EventCard extends Component {
 						EDIT / DELETE
 					</Link>
 				</div>
-				<div className="event-card-right">
+				<div style={{ paddingRight: "8px" }} className="event-card-right">
 					<FacebookShareButton
 						url={"www.facebook.com"}
 						quote={"I have a new event!"}

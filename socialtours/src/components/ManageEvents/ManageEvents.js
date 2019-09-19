@@ -55,8 +55,7 @@ class ManageEvents extends Component {
 						</ul>
 					</div>
 
-					{/* <div className="events-before">Past Events</div> */}
-					{/* <div className="events-after">
+					<div className="events-after">
 						Upcoming Events
 						<ul>
 							{this.props.schedules.map(schedule => {
@@ -74,7 +73,7 @@ class ManageEvents extends Component {
 								}
 							})}
 						</ul>
-					</div> */}
+					</div>
 				</div>
 			</div>
 		);
