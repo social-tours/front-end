@@ -33,7 +33,7 @@ class ManageEvents extends Component {
 						Your Events
 						<ul>
 							<ul>
-								{this.props.eventsList.map(event => {
+								{this.props.schedules.map(event => {
 									return (
 										<EventCard
 											id={event.id}
