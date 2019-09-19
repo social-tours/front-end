@@ -9,7 +9,8 @@ import { colors } from "./DesignComponents/theme";
 
 class EventCalendar extends Component {
 	state = {
-		schedules: []
+		schedules: [],
+		disabled: false
 	};
 	componentDidMount() {
 		this.props.getSchedules();
@@ -89,7 +90,9 @@ class EventCalendar extends Component {
 				{this.props.schedules.length > 0 && (
 					<CalendarWrapper>
 						<Calendar
-							tileClassName="calTile"
+							tileClassName={e =>
+								this.isDisabled(e) ? "disabled calTile" : "calTile"
+							}
 							tileDisabled={e => this.isDisabled(e)}
 							onClickDay={e => this.handleClick(e)}
 						/>
@@ -115,5 +118,20 @@ const CalendarWrapper = styled.div`
 	border-radius: 10px;
 	.react-calendar {
 		border-radius: 10px;
+		background-color: ${colors.mint};
+		.calTile {
+			background-color: ${colors.mint};
+			color: black;
+		}
+
+		.disabled {
+			background-color: ${colors.putty};
+			color: #443e3e;
+		}
+
+		.react-calendar__navigation,
+		.react-calendar__month-view__weekdays {
+			background-color: ${colors.mint};
+		}
 	}
 `;
