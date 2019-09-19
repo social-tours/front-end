@@ -126,7 +126,7 @@ const CalendarWrapper = styled.div`
 
 		.disabled {
 			background-color: ${colors.putty};
-			color: #443e3e;
+			color: silver;
 		}
 
 		.react-calendar__navigation,
