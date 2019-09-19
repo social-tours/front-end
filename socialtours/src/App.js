@@ -85,7 +85,8 @@ class App extends Component {
 const mapStateToProps = state => {
 	// console.log(state);
 	return {
-		events: state.eventReducer.events
+		events: state.eventReducer.events,
+		auth: state.authReducer.auth
 	};
 };
 export default connect(
