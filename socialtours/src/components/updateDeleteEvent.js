@@ -77,6 +77,7 @@ class UpdateDeleteEvent extends React.Component {
 		console.log("STUFF IM SENDING", updatedData);
 		const myFunction = await axios.put(API + `/api/events/${id}`, updatedData);
 		console.log("UPDATE RESULTS", myFunction.data);
+		this.props.history.push(`/events/${id}`);
 		// this.props.putEvent(id, updatedData);
 		// this.props.toggleUpdate();
 	};
