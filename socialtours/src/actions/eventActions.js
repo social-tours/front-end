@@ -87,16 +87,16 @@ export const fetchEvent = eventID => async dispatch => {
 };
 
 // Post event
-export const postEvent = event => async dispatch => {
+export const postEvent = eventID => async dispatch => {
 	dispatch({
 		type: types.POST_EVENT
 	}); //greg
 	try {
-		const newEvent = await axios.post(API_ENDPOINT + `/api/events`, event);
-		newEvent.status === 200
+		const event = await axios.get(API_ENDPOINT + `/api/events/${eventID}`);
+		event.status === 200
 			? dispatch({
 					type: types.POST_EVENT_SUCCESS,
-					payload: newEvent.data
+					payload: event.data
 			  })
 			: dispatch({
 					type: types.POST_EVENT_FAILED
@@ -118,7 +118,7 @@ export const putEvent = eventID => async dispatch => {
 	}); //greg
 	try {
 		const event = await axios.put(API_ENDPOINT + `/api/events/${eventID}`);
-		event.status === 204
+		event.status === 200
 			? dispatch({
 					type: types.PUT_EVENT_SUCCESS,
 					payload: event.data
@@ -142,8 +142,8 @@ export const deleteEvent = eventID => async dispatch => {
 		type: types.DELETE_EVENT
 	}); //greg
 	try {
-		const event = await axios.delete(API_ENDPOINT + `/events/${eventID}`);
-		event.status === 204
+		const event = await axios.delete(API_ENDPOINT + `/api/events/${eventID}`);
+		event.status === 200
 			? dispatch({
 					type: types.DELETE_EVENT_SUCCESS,
 					payload: event.data

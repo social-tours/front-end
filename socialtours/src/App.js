@@ -17,7 +17,7 @@ import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/UserComponents/Callback";
 import Calendar from "./components/EventCalendar";
-
+import UpdateDeleteEvent from "./components/updateDeleteEvent.js";
 import TheCreateEvent from "./components/createEvent.js";
 import TheCrudEvent from "./components/updateDeleteEvent.js";
 import ManageEvents from "./components/ManageEvents/ManageEvents";
@@ -69,13 +69,23 @@ class App extends Component {
 					<Route exact path="/ManageEvents" component={ManageEvents} />
 					<Login />
 				</Switch>
+				<Route path="/createEvent" component={TheCreateEvent} />
+
+				{this.props.events.map(event => (
+					<Route
+						key={event.id}
+						path={`/events/${event.id}`}
+						render={props => <UpdateDeleteEvent {...props} event={event} />}
+					/>
+				))}
 			</Router>
 		);
 	}
 }
 const mapStateToProps = state => {
-	//console.log(state);
+	// console.log(state);
 	return {
+		events: state.eventReducer.events,
 		auth: state.authReducer.auth
 	};
 };
