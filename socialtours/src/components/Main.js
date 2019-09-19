@@ -12,7 +12,11 @@ class Main extends Component {
 		return (
 			<>
 				<SiteWrapper>
-					{this.props.auth.isAuthenticated() ? <Dashboard user={2} /> : <LandingPage />}
+					{this.props.auth.isAuthenticated() ? (
+						<Dashboard user={2} />
+					) : (
+						<LandingPage />
+					)}
 				</SiteWrapper>
 			</>
 		);
