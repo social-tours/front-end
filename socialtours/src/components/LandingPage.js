@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 import { colors } from "./DesignComponents/theme";
 import PlanImage from "../images/plan2.png";
@@ -26,7 +27,7 @@ const carousel_data = [
 	}
 ];
 
-const LandingPage = () => {
+const LandingPage = ({ history }) => {
 	let [imgIndex, setImgIndex] = useState(0);
 
 	useEffect(() => {
@@ -45,11 +46,13 @@ const LandingPage = () => {
 					<img src={ShareImage} />
 				</HeroCard>
 			</CarouselWrapper>
+			<button onClick={() => history.push("/register")}>Register</button>
+			<button onClick={() => history.push("/login")}>Login</button>
 		</LandingPageWrapper>
 	);
 };
 
-export default LandingPage;
+export default withRouter(LandingPage);
 
 const HeroCard = styled.div`
 	display: flex;
