@@ -11,6 +11,7 @@ class ManageEvents extends Component {
 	componentDidMount() {
 		this.props.getSchedules();
 		this.props.fetchEvents();
+		console.log(this.props.eventsList);
 	}
 
 	render() {
@@ -32,8 +33,8 @@ class ManageEvents extends Component {
 					<div className="events-all">
 						Your Events
 						<ul>
-							<ul>
-								{this.props.eventsList.map(event => {
+							{this.props.eventsList &&
+								this.props.eventsList.map(event => {
 									return (
 										<EventCard
 											id={event.id}
@@ -51,7 +52,6 @@ class ManageEvents extends Component {
 										/>
 									);
 								})}
-							</ul>
 						</ul>
 					</div>
 

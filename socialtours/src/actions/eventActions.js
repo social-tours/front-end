@@ -143,14 +143,14 @@ export const deleteEvent = eventID => async dispatch => {
 	}); //greg
 	try {
 		const event = await axios.delete(API_ENDPOINT + `/api/events/${eventID}`);
+		const events = await axios.get(API_ENDPOINT + `/api/events/`);
 		event.status === 200
 			? dispatch({
 					type: types.DELETE_EVENT_SUCCESS,
-					payload: event.data
+					payload: events
 			  })
 			: dispatch({
-					type: types.DELETE_EVENT_FAILED,
-					payload: event.data
+					type: types.DELETE_EVENT_FAILED
 			  });
 	} catch (err) {
 		//FETCH_FAILED
