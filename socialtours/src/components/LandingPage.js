@@ -46,8 +46,12 @@ const LandingPage = ({ history }) => {
 					<img src={ShareImage} />
 				</HeroCard>
 			</CarouselWrapper>
-			<button onClick={() => history.push("/register")}>Register</button>
-			<button onClick={() => history.push("/login")}>Login</button>
+			<ButtonWrapper>
+				<RegisterButton onClick={() => history.push("/register")}>
+					Register
+				</RegisterButton>
+				<LoginButton onClick={() => history.push("/login")}>Login</LoginButton>
+			</ButtonWrapper>
 		</LandingPageWrapper>
 	);
 };
@@ -101,6 +105,35 @@ const CarouselWrapper = styled.div`
 const CarouselImage = styled.img`
 	width: 100%;
 	max-height: 600px;
+`;
+
+const ButtonWrapper = styled.div`
+	text-align: center;
+	margin-top: 35px;
+`;
+
+const Button = styled.button`
+	padding: 10px 20px;
+	cursor: pointer;
+	text-transform: uppercase;
+	border-radius: 5px;
+	font-size: 1.3rem;
+	border-color: ${colors.black_plum};
+`;
+
+const RegisterButton = styled(Button)`
+	margin-right: 10px;
+	color: ${colors.mint};
+	background-color: ${colors.grape};
+`;
+const LoginButton = styled(Button)`
+	color: ${colors.grape};
+	background-color: ${colors.mint};
+
+	&:hover {
+		color: ${colors.mint};
+		background-color: ${colors.grape};
+	}
 `;
 
 /* Credits
