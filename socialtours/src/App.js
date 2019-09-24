@@ -67,7 +67,6 @@ class App extends Component {
 					<Route path="/createEvent" component={TheCreateEvent} />
 					<Route path={`/events/:id`} component={UpdateDeleteEvent} />} />
 					<Route exact path="/ManageEvents" component={ManageEvents} />
-					<Login />
 				</Switch>
 				<Route path="/createEvent" component={TheCreateEvent} />
 			</Router>

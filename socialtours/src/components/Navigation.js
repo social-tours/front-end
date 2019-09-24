@@ -107,7 +107,10 @@ function Navigation(props) {
 					<ListItemIcon>
 						<MovieFilterIcon />
 					</ListItemIcon>
-					<ListItemText primary={"Credits"} />
+					<ListItemText
+						primary={"Credits"}
+						onClick={() => props.history.push("/credits")}
+					/>
 				</ListItem>
 			</List>
 		</div>
