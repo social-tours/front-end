@@ -9,8 +9,6 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-
-
 const useStyles = makeStyles(theme => ({
   icon: {
     marginRight: theme.spacing(2),
@@ -32,7 +30,8 @@ const useStyles = makeStyles(theme => ({
     flexDirection: 'column',
   },
   cardMedia: {
-    paddingTop: '56.25%', // 16:9
+    paddingTop: '100%',
+
   },
   cardContent: {
     flexGrow: 1,
@@ -43,7 +42,7 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
-const cards = [1, 2, 3];
+const cards = [1];
 
 export default function Album() {
   const classes = useStyles();
@@ -52,25 +51,22 @@ export default function Album() {
     <React.Fragment>
       <CssBaseline />
       <main>
-        {/* Hero unit */}
         <div className={classes.heroContent}>
           <Container maxWidth="sm">
             <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>
               Meet The Team
             </Typography>
 
-
           </Container>
         </div>
         <Container className={classes.cardGrid} maxWidth="md">
-          {/* End hero unit */}
           <Grid container spacing={4}>
             {cards.map(card => (
               <Grid item key={card} xs={12} sm={6} md={4}>
                 <Card className={classes.card}>
                   <CardMedia
                     className={classes.cardMedia}
-                    image="../socialtours/src/images/gannon.png"
+                    image='https://avatars1.githubusercontent.com/u/42745542?s=400&v=4'
                     title="Image title"
                   />
                   <CardContent className={classes.cardContent}>
@@ -86,8 +82,168 @@ export default function Album() {
             ))}
           </Grid>
         </Container>
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container spacing={4}>
+            {cards.map(card => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://avatars3.githubusercontent.com/u/42627304?s=460&v=4"
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2"> Michael Jenkins </Typography>
+                    <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <a target="_blank" href="https://github.com/mjenkins9605"> GitHub </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/michaeljenkins9605/"> LinkedIn </a>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container spacing={4}>
+            {cards.map(card => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://avatars1.githubusercontent.com/u/33568112?s=400&v=4"
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2"> Louis Magdaleno </Typography>
+                    <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <a target="_blank" href="https://github.com/louismagdaleno"> GitHub </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/louis-magdaleno/"> LinkedIn </a>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container spacing={4}>
+            {cards.map(card => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://avatars2.githubusercontent.com/u/29118899?s=400&v=4"
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2"> Wilfred Morgan </Typography>
+                    <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <a target="_blank" href="https://github.com/"> GitHub </a>
+                    <a target="_blank" href="https://www.linkedin.com/"> LinkedIn </a>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container spacing={4}>
+            {cards.map(card => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://avatars3.githubusercontent.com/u/3193391?s=400&v=4"
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2"> Adam Nawrocki </Typography>
+                    <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <a target="_blank" href="https://github.com/bcuz"> GitHub </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/adam-nawrocki-1b0b60b4/"> LinkedIn </a>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container spacing={4}>
+            {cards.map(card => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://avatars2.githubusercontent.com/u/45109302?s=400&v=4"
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2"> Greg Urban </Typography>
+                    <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <a target="_blank" href="https://github.com/GregoryUrban"> GitHub </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/glurban/"> LinkedIn </a>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container spacing={4}>
+            {cards.map(card => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://avatars0.githubusercontent.com/u/12719774?s=400&v=4"
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2"> Rane Wallin </Typography>
+                    <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <a target="_blank" href="https://github.com/RaneWallin"> GitHub </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/rane-wallin"> LinkedIn </a>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
+        <Container className={classes.cardGrid} maxWidth="md">
+          <Grid container spacing={4}>
+            {cards.map(card => (
+              <Grid item key={card} xs={12} sm={6} md={4}>
+                <Card className={classes.card}>
+                  <CardMedia
+                    className={classes.cardMedia}
+                    image="https://avatars0.githubusercontent.com/u/7017183?s=400&v=4"
+                    title="Image title"
+                  />
+                  <CardContent className={classes.cardContent}>
+                    <Typography gutterBottom variant="h5" component="h2"> James Wigdor </Typography>
+                    <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                  </CardContent>
+                  <CardActions>
+                    <a target="_blank" href="https://github.com/jpwigdor"> GitHub </a>
+                    <a target="_blank" href="https://www.linkedin.com/in/jameswigdor/"> LinkedIn </a>
+                  </CardActions>
+                </Card>
+              </Grid>
+            ))}
+          </Grid>
+        </Container>
       </main>
-      {/* Footer */}
       <footer className={classes.footer}>
         <Typography variant="h6" align="center" gutterBottom>
           Footer
@@ -96,7 +252,6 @@ export default function Album() {
           Something here to give the footer a purpose!
         </Typography>
       </footer>
-      {/* End footer */}
     </React.Fragment>
   );
 }
