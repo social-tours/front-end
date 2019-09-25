@@ -23,6 +23,7 @@ import TheCreateEvent from "./components/createEvent.js";
 import TheCrudEvent from "./components/updateDeleteEvent.js";
 import ManageEvents from "./components/ManageEvents/ManageEvents";
 import Navigation from "./components/Navigation";
+import { userHasEvent } from "./utils";
 
 // import Calendar from "./components/EventCalendar";
 //import API_ENDPOINT from "./config/api";
@@ -68,7 +69,13 @@ class App extends Component {
 					{/* <Route component={NotFound} /> Commented out so I can work on code without being 'authorized' on line 65*/}
 					<Route path="/createEvent" component={TheCreateEvent} />
 					<Route path={`/events/:id`} component={UpdateDeleteEvent} />} />
-					<Route exact path="/ManageEvents" component={ManageEvents} />
+					<Route
+						exact
+						path="/ManageEvents"
+						render={() =>
+							userHasEvent(this.props.events) ? <ManageEvents /> : <NotFound />
+						}
+					/>
 				</Switch>
 				<Route path="/createEvent" component={TheCreateEvent} />
 			</Router>
