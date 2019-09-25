@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import LandingPage from "../components/LandingPage";
+import { hasEvent } from "../utils";
 
 import Dashboard from "../components/Dashboard";
 
@@ -12,6 +13,8 @@ class Main extends Component {
 		return (
 			<>
 				<SiteWrapper>
+					{/* if authenticated and has at least one event */}
+
 					{this.props.auth.isAuthenticated() ? (
 						<Dashboard user={2} />
 					) : (
