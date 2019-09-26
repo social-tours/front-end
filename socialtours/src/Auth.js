@@ -60,12 +60,17 @@ export default class Auth {
 	 * activities for user login
 	 * @param {string} path
 	 */
-	handleAuthentication(path = LOGIN_SUCCESS_PAGE) {
+	handleAuthentication(cb) {
 		this.auth0.parseHash((err, authResults) => {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				this.storeAuth0Token(authResults);
 				location.hash = "";
-				location.pathname = path;
+				const loginUser = {
+					email: this.getProfile().email,
+					password: "Placeholder-password"
+				}
+				cb(loginUser)
+				// location.pathname = path;
 			} else if (err) {
 				location.pathname = LOGIN_FAILURE_PAGE;
 				console.error(err);
