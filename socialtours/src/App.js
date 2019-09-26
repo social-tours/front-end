@@ -13,6 +13,7 @@ import Profile from "./components/UserComponents/Profile";
 
 import Main from "./components/Main";
 import Dashboard from "./components/Dashboard";
+import Credits from "./components/Credits";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/UserComponents/Callback";
@@ -63,10 +64,11 @@ class App extends Component {
 						}
 					/>
 					<Route path="/callback" component={Callback} />
+					<Route path="/credits" component={Credits} />
 					<Route path="/calendar" component={Calendar} />
 					{/* <Route component={NotFound} /> Commented out so I can work on code without being 'authorized' on line 65*/}
 					<Route path="/createEvent" component={TheCreateEvent} />
-					<Route path={`/events/:id`} component={UpdateDeleteEvent} />} />
+					<Route path={`/events/:id`} component={UpdateDeleteEvent} /> />
 					<Route exact path="/ManageEvents" component={ManageEvents} />
 					<Route path="/AboutUsContact" component={AboutUsContact} />
 					<Login />
