@@ -124,32 +124,32 @@ class Profile extends Component {
 
 					<p>Select a communication preference: </p>
 					<input
-						type="radio"
-						value="email"
-						checked={this.state.email}
-						onChange={this.handleInput}
-					/>
+							type="radio"
+							value="email"
+							checked={this.state.email}
+							onChange={this.handleInput}
+						/>
 
-					<input
-						type="radio"
-						value="sms"
-						checked={this.state.sms}
-						onChange={this.handleInput}
-					/>
+						<input
+							type="radio"
+							value="sms"
+							checked={this.state.sms}
+							onChange={this.handleInput}
+						/>
 
-					<input
-						type="radio"
-						value="both"
-						checked={this.state.both}
-						onChange={this.handleInput}
-					/>
+						<input
+							type="radio"
+							value="both"
+							checked={this.state.both}
+							onChange={this.handleInput}
+						/>
 
-					<input
-						type="radio"
-						name="none"
-						value={this.state.none}
-						onChange={this.handleInput}
-					/>
+						<input
+							type="radio"
+							value="none"
+							checked={this.state.none}
+							onChange={this.handleInput}
+						/>
 					<label htmlFor="none">Don't tell me about any upcoming events for anyone I follow</label>
 
 					<S.FormButton onClick={this.handleUpdate} update>
