@@ -93,8 +93,8 @@ export default function Album() {
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" href="https://github.com/GannonDetroit"> GitHub </a>
-                      <a target="_blank" href="https://www.linkedin.com/in/gannon-darcy-b8345073/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GannonDetroit"> GitHub </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/gannon-darcy-b8345073/"> LinkedIn </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -114,8 +114,8 @@ export default function Album() {
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" href="https://github.com/mjenkins9605" > GitHub </a>
-                      <a target="_blank" href="https://www.linkedin.com/in/michaeljenkins9605/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/mjenkins9605" > GitHub </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/michaeljenkins9605/"> LinkedIn </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -135,8 +135,8 @@ export default function Album() {
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" href="https://github.com/louismagdaleno"> GitHub </a>
-                      <a target="_blank" href="https://www.linkedin.com/in/louis-magdaleno/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/louismagdaleno"> GitHub </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/louis-magdaleno/"> LinkedIn </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -156,8 +156,8 @@ export default function Album() {
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" href="https://github.com/"> GitHub </a>
-                      <a target="_blank" href="https://www.linkedin.com/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/"> GitHub </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/"> LinkedIn </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -177,8 +177,8 @@ export default function Album() {
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" href="https://github.com/bcuz"> GitHub </a>
-                      <a target="_blank" href="https://www.linkedin.com/in/adam-nawrocki-1b0b60b4/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/bcuz"> GitHub </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/adam-nawrocki-1b0b60b4/"> LinkedIn </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -198,8 +198,8 @@ export default function Album() {
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" href="https://github.com/GregoryUrban"> GitHub </a>
-                      <a target="_blank" href="https://www.linkedin.com/in/glurban/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GregoryUrban"> GitHub </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/glurban/"> LinkedIn </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -219,8 +219,8 @@ export default function Album() {
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" href="https://github.com/RaneWallin"> GitHub </a>
-                      <a target="_blank" href="https://www.linkedin.com/in/rane-wallin"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/RaneWallin"> GitHub </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/rane-wallin"> LinkedIn </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -240,8 +240,8 @@ export default function Album() {
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" href="https://github.com/jpwigdor"> GitHub </a>
-                      <a target="_blank" href="https://www.linkedin.com/in/jameswigdor/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/jpwigdor"> GitHub </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jameswigdor/"> LinkedIn </a>
                     </CardActions>
                   </Card>
                 </Grid>
