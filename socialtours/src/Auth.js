@@ -66,7 +66,6 @@ export default class Auth {
 				this.storeAuth0Token(authResults);
 				location.hash = "";
 
-				alert(!this.getProfile().sub.includes("auth0"));
 				if (!this.getProfile().sub.includes("auth0")) {
 					const loginUser = {
 						email: this.getProfile().email,
