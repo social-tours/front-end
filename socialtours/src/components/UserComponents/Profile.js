@@ -122,7 +122,7 @@ class Profile extends Component {
 
 					<label htmlFor="password">Minimum length is 8 characters</label>
 
-					<div class="radio">
+					<div className="radio">
 
 						<p>Select a communication preference: </p>
 						<label>
