@@ -71,6 +71,14 @@ export default function Album() {
         <div className="masterContainer">
           <Container className={classes.cardGrid} maxWidth="md">
             <Grid container spacing={4}>
+
+
+
+
+
+
+
+              {/* Gannon */}
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
@@ -91,11 +99,8 @@ export default function Album() {
                   </Card>
                 </Grid>
               ))}
-            </Grid>
-          </Container>
 
-          <Container className={classes.cardGrid} maxWidth="md">
-            <Grid container spacing={4}>
+              {/* Michael */}
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
@@ -115,10 +120,8 @@ export default function Album() {
                   </Card>
                 </Grid>
               ))}
-            </Grid>
-          </Container>
-          <Container className={classes.cardGrid} maxWidth="md">
-            <Grid container spacing={4}>
+
+              {/* Louis */}
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
@@ -138,10 +141,8 @@ export default function Album() {
                   </Card>
                 </Grid>
               ))}
-            </Grid>
-          </Container>
-          <Container className={classes.cardGrid} maxWidth="md">
-            <Grid container spacing={4}>
+
+              {/* Wilfred */}
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
@@ -161,10 +162,8 @@ export default function Album() {
                   </Card>
                 </Grid>
               ))}
-            </Grid>
-          </Container>
-          <Container className={classes.cardGrid} maxWidth="md">
-            <Grid container spacing={4}>
+
+              {/* Adam */}
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
@@ -184,10 +183,8 @@ export default function Album() {
                   </Card>
                 </Grid>
               ))}
-            </Grid>
-          </Container>
-          <Container className={classes.cardGrid} maxWidth="md">
-            <Grid container spacing={4}>
+
+              {/* Greg */}
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
@@ -207,10 +204,8 @@ export default function Album() {
                   </Card>
                 </Grid>
               ))}
-            </Grid>
-          </Container>
-          <Container className={classes.cardGrid} maxWidth="md">
-            <Grid container spacing={4}>
+
+              {/* Rane */}
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
@@ -230,10 +225,8 @@ export default function Album() {
                   </Card>
                 </Grid>
               ))}
-            </Grid>
-          </Container>
-          <Container className={classes.cardGrid} maxWidth="md">
-            <Grid container spacing={4}>
+
+              {/* Wigdor */}
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
@@ -253,6 +246,7 @@ export default function Album() {
                   </Card>
                 </Grid>
               ))}
+
             </Grid>
           </Container>
         </div>
