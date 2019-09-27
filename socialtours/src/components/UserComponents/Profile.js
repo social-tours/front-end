@@ -116,7 +116,42 @@ class Profile extends Component {
 						onChange={this.handleInput}
 						placeholder="Password"
 					/>
+					
 					<label htmlFor="password">Minimum length is 8 characters</label>
+
+					<p>Select a communication preference<p/>
+					<input
+						type="radio"
+						name="email"
+						value={this.state.email}
+						onChange={this.handleInput}
+					/>
+					<label htmlFor="email">Email</label>
+
+					<input
+						type="radio"
+						name="sms"
+						value={this.state.password}
+						onChange={this.handleInput}
+					/>
+					<label htmlFor="sms">Text Messages</label>
+
+					<input
+						type="radio"
+						name="both"
+						value={this.state.password}
+						onChange={this.handleInput}
+					/>
+					<label htmlFor="both">Both please!</label>
+
+					<input
+						type="radio"
+						name="none"
+						value={this.state.password}
+						onChange={this.handleInput}
+					/>
+					<label htmlFor="none">Don't tell me about any upcoming events for anyone I follow</label>
+
 					<S.FormButton onClick={this.handleUpdate} update>
 						Save Changes
 					</S.FormButton>
