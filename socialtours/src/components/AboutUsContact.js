@@ -2,14 +2,20 @@ import React from 'react';
 import Card from '@material-ui/core/Card';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import CardMedia from '@material-ui/core/CardMedia';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 
-// import Gannon from "./images/gannon.png";
+import Gannon from "../images/gannon.png";
+import Michael from "../images/michael.png";
+import Louis from "../images/louis.png";
+import Wilfred from "../images/wilfred.png";
+import Adam from "../images/adam.png";
+import Greg from "../images/greg.png";
+import Rane from "../images/rane.png";
+import James from "../images/james.png";
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -38,10 +44,7 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
-  cardMedia: {
-    paddingTop: '100%',
 
-  },
   cardContent: {
     flexGrow: 1,
   },
@@ -72,22 +75,11 @@ export default function Album() {
           <Container className={classes.cardGrid} maxWidth="md">
             <Grid container spacing={4}>
 
-
-
-
-
-
-
               {/* Gannon */}
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image='https://avatars1.githubusercontent.com/u/42745542?s=400&v=4'
-                      // img src={Gannon} alt="Gannon"
-                      title="Image title"
-                    />
+                    <img src={Gannon} alt="Gannon" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Gannon Darcy </Typography>
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
@@ -104,11 +96,7 @@ export default function Album() {
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image="https://avatars3.githubusercontent.com/u/42627304?s=460&v=4"
-                      title="Image title"
-                    />
+                    <img src={Michael} alt="Michael" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Michael Jenkins </Typography>
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
@@ -125,11 +113,7 @@ export default function Album() {
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image="https://avatars1.githubusercontent.com/u/33568112?s=400&v=4"
-                      title="Image title"
-                    />
+                    <img src={Louis} alt="Louis" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Louis Magdaleno </Typography>
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
@@ -146,11 +130,7 @@ export default function Album() {
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image="https://avatars2.githubusercontent.com/u/29118899?s=400&v=4"
-                      title="Image title"
-                    />
+                    <img src={Wilfred} alt="Wilfred" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Wilfred Morgan </Typography>
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
@@ -167,11 +147,7 @@ export default function Album() {
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image="https://avatars3.githubusercontent.com/u/3193391?s=400&v=4"
-                      title="Image title"
-                    />
+                    <img src={Adam} alt="Adam" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Adam Nawrocki </Typography>
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
@@ -188,11 +164,7 @@ export default function Album() {
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image="https://avatars2.githubusercontent.com/u/45109302?s=400&v=4"
-                      title="Image title"
-                    />
+                    <img src={Greg} alt="Greg" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Greg Urban </Typography>
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
@@ -209,11 +181,7 @@ export default function Album() {
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image="https://avatars0.githubusercontent.com/u/12719774?s=400&v=4"
-                      title="Image title"
-                    />
+                    <img src={Rane} alt="Rane" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Rane Wallin </Typography>
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
@@ -230,11 +198,7 @@ export default function Album() {
               {cards.map(card => (
                 <Grid item key={card} xs={3} sm={6} md={4}>
                   <Card className={classes.card}>
-                    <CardMedia
-                      className={classes.cardMedia}
-                      image="https://avatars0.githubusercontent.com/u/7017183?s=400&v=4"
-                      title="Image title"
-                    />
+                    <img src={James} alt="James" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> James Wigdor </Typography>
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
