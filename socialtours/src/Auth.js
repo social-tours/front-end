@@ -65,12 +65,17 @@ export default class Auth {
 			if (authResults && authResults.accessToken && authResults.idToken) {
 				this.storeAuth0Token(authResults);
 				location.hash = "";
-				const loginUser = {
-					email: this.getProfile().email,
-					password: "Placeholder-password"
+
+				alert(!this.getProfile().sub.includes("auth0"));
+				if (!this.getProfile().sub.includes("auth0")) {
+					const loginUser = {
+						email: this.getProfile().email,
+						password: "Placeholder-password"
+					};
+					cb(loginUser);
+				} else {
+					location.pathname = "/";
 				}
-				cb(loginUser)
-				// location.pathname = path;
 			} else if (err) {
 				location.pathname = LOGIN_FAILURE_PAGE;
 				console.error(err);
