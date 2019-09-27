@@ -122,35 +122,53 @@ class Profile extends Component {
 
 					<label htmlFor="password">Minimum length is 8 characters</label>
 
-					<p>Select a communication preference: </p>
-					<input
-							type="radio"
-							value="email"
-							checked={this.state.email}
-							onChange={this.handleInput}
-						/>
+					<div class="radio">
 
-						<input
-							type="radio"
-							value="sms"
-							checked={this.state.sms}
-							onChange={this.handleInput}
-						/>
+						<p>Select a communication preference: </p>
+						<label>
+							<input
+								type="radio"
+								name="comm_preference"
+								value="emails"
+								checked={this.state.comm_preference === "emails"}
+								onChange={this.handleInput}
+							/>
+							Email
+						</label>
 
-						<input
-							type="radio"
-							value="both"
-							checked={this.state.both}
-							onChange={this.handleInput}
-						/>
+						<label>
+							<input
+								type="radio"
+								name="comm_preference"
+								value="sms"
+								checked={this.state.comm_preference === "sms"}
+								onChange={this.handleInput}
+							/>
+							Text Message
+						</label>
 
-						<input
-							type="radio"
-							value="none"
-							checked={this.state.none}
-							onChange={this.handleInput}
-						/>
-					<label htmlFor="none">Don't tell me about any upcoming events for anyone I follow</label>
+						<label>
+							<input
+								type="radio"
+								name="comm_preference"
+								value="both"
+								checked={this.state.comm_preference === "both"}
+								onChange={this.handleInput}
+							/>
+							Both
+						</label>
+
+						<label>
+							<input
+								type="radio"
+								name="comm_preference"
+								value="none"
+								checked={this.state.comm_preference === "none"}
+								onChange={this.handleInput}
+							/>
+							No Notifications
+						</label>
+						</div>
 
 					<S.FormButton onClick={this.handleUpdate} update>
 						Save Changes

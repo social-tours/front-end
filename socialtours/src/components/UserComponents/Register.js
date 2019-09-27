@@ -121,7 +121,7 @@ class Register extends Component {
 						/>
 						<label htmlFor="password">Minimum length is 8 characters</label>
 
-						<div Radio>
+						<div class="radio">
 
 						<p>Select a communication preference: </p>
 						<label>
@@ -165,7 +165,6 @@ class Register extends Component {
 								checked={this.state.comm_preference === "none"}
 								onChange={this.handleInput}
 							/>
-							{/* <label htmlFor="none">You won't be notified about upcoming events for anyone you follow</label> */}
 							No Notifications
 						</label>
 						</div>
