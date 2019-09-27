@@ -145,8 +145,8 @@ class Register extends Component {
 
 						<input
 							type="radio"
-							name="none"
-							value={this.state.none}
+							value="none"
+							checked={this.state.none}
 							onChange={this.handleInput}
 						/>
 						{/* <label htmlFor="none">You won't be notified about upcoming events for anyone you follow</label> */}
