@@ -12,7 +12,8 @@ class Register extends Component {
 		password: "",
 		phone_nbr: "",
 		type: 1,
-		auth0_token: ""
+		auth0_token: "",
+		comm_preference: ""
 	};
 
 	/**
@@ -39,7 +40,8 @@ class Register extends Component {
 				given_name: this.state.first_name,
 				family_name: this.state.last_name,
 				phone: this.state.phone_nbr,
-				name: `${this.state.first_name} ${this.state.last_name}`
+				name: `${this.state.first_name} ${this.state.last_name}`,
+				comm_preference: this.state.comm_preference
 			};
 
 			await this.props.auth0SignUp(newSignUp);
@@ -118,6 +120,38 @@ class Register extends Component {
 							placeholder="Password"
 						/>
 						<label htmlFor="password">Minimum length is 8 characters</label>
+
+						<p>Select a communication preference: </p>
+						<input
+							type="radio"
+							value="email"
+							checked={this.state.email}
+							onChange={this.handleInput}
+						/>
+
+						<input
+							type="radio"
+							value="sms"
+							checked={this.state.sms}
+							onChange={this.handleInput}
+						/>
+
+						<input
+							type="radio"
+							value="both"
+							checked={this.state.both}
+							onChange={this.handleInput}
+						/>
+
+						<input
+							type="radio"
+							name="none"
+							value={this.state.none}
+							onChange={this.handleInput}
+						/>
+						{/* <label htmlFor="none">You won't be notified about upcoming events for anyone you follow</label> */}
+
+
 						<S.FormButton onClick={this.handleRegister} add>
 							Sign Up
 						</S.FormButton>

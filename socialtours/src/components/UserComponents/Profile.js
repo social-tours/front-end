@@ -13,7 +13,8 @@ class Profile extends Component {
 		last_name: "",
 		password: "",
 		phone_nbr: "",
-		type: ""
+		type: "",
+		comm_preference: ""
 	};
 
 	/**
@@ -44,7 +45,8 @@ class Profile extends Component {
 				last_name,
 				phone_nbr,
 				password,
-				type
+				type,
+				comm_preference
 			} = this.props.user;
 			this.setState({
 				id,
@@ -53,7 +55,8 @@ class Profile extends Component {
 				email,
 				phone_nbr,
 				password,
-				type
+				type,
+				comm_preference
 			});
 		}
 	};
@@ -116,38 +119,35 @@ class Profile extends Component {
 						onChange={this.handleInput}
 						placeholder="Password"
 					/>
-					
+
 					<label htmlFor="password">Minimum length is 8 characters</label>
 
-					<p>Select a communication preference<p/>
+					<p>Select a communication preference: </p>
 					<input
 						type="radio"
-						name="email"
-						value={this.state.email}
+						value="email"
+						checked={this.state.email}
 						onChange={this.handleInput}
 					/>
-					<label htmlFor="email">Email</label>
 
 					<input
 						type="radio"
-						name="sms"
-						value={this.state.password}
+						value="sms"
+						checked={this.state.sms}
 						onChange={this.handleInput}
 					/>
-					<label htmlFor="sms">Text Messages</label>
 
 					<input
 						type="radio"
-						name="both"
-						value={this.state.password}
+						value="both"
+						checked={this.state.both}
 						onChange={this.handleInput}
 					/>
-					<label htmlFor="both">Both please!</label>
 
 					<input
 						type="radio"
 						name="none"
-						value={this.state.password}
+						value={this.state.none}
 						onChange={this.handleInput}
 					/>
 					<label htmlFor="none">Don't tell me about any upcoming events for anyone I follow</label>
