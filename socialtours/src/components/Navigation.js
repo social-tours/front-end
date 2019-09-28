@@ -17,6 +17,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import MovieFilterIcon from "@material-ui/icons/MovieFilter";
 import InfoIcon from "@material-ui/icons/Info";
+import AddIcon from "@material-ui/icons/Add";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import HomeIcon from "@material-ui/icons/Home";
 import LockOpenOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
@@ -76,6 +77,15 @@ function Navigation(props) {
 			</List>
 			<Divider />
 			<List>
+				<ListItem button>
+					<ListItemIcon>
+						<AddIcon />
+					</ListItemIcon>
+					<ListItemText
+						primary={"Create Event"}
+						onClick={() => props.history.push("/createEvent")}
+					/>
+				</ListItem>
 				{userHasEvent(props.events) > 0 && (
 					<ListItem button>
 						<ListItemIcon>
