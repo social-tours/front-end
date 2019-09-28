@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
+import { compose } from "redux";
 
 import { makeStyles } from "@material-ui/core/styles";
 import Drawer from "@material-ui/core/Drawer";
@@ -20,6 +22,7 @@ import HomeIcon from "@material-ui/icons/Home";
 import LockOpenOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import VerticalSplitOutlinedIcon from "@material-ui/icons/VerticalSplitOutlined";
+import { userHasEvent } from "../utils";
 
 const useStyles = makeStyles({
 	list: {
@@ -73,15 +76,18 @@ function Navigation(props) {
 			</List>
 			<Divider />
 			<List>
-				<ListItem button>
-					<ListItemIcon>
-						<FormatListBulletedIcon />
-					</ListItemIcon>
-					<ListItemText
-						primary={"Manage Events"}
-						onClick={() => props.history.push("/ManageEvents")}
-					/>
-				</ListItem>
+				{userHasEvent(props.events) > 0 && (
+					<ListItem button>
+						<ListItemIcon>
+							<FormatListBulletedIcon />
+						</ListItemIcon>
+
+						<ListItemText
+							primary={"Manage Events"}
+							onClick={() => props.history.push("/ManageEvents")}
+						/>
+					</ListItem>
+				)}
 				<ListItem button>
 					<ListItemIcon>
 						<AssignmentIndIcon />
@@ -165,7 +171,19 @@ function Navigation(props) {
 	);
 }
 
-export default withRouter(Navigation);
+const mapStateToProps = state => {
+	return {
+		events: state.eventReducer.events
+	};
+};
+
+export default compose(
+	withRouter,
+	connect(
+		mapStateToProps,
+		null
+	)
+)(Navigation);
 
 const NavWrapper = styled.div`
 	margin: 0 auto;
