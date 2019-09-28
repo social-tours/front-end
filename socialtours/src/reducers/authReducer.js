@@ -4,6 +4,7 @@ import Auth from "../Auth";
 const initialState = {
 	loginError: null,
 	loggingIn: false,
+	isLoggedIn: false,
 	auth: new Auth()
 };
 
@@ -19,14 +20,16 @@ const authReducer = (state = initialState, action) => {
 		case types.LOGIN_SUCCESS: {
 			return {
 				...state,
-				loggingIn: false
+				loggingIn: false,
+				isLoggedIn: true
 			};
 		}
 		case types.LOGIN_FAILURE: {
 			return {
 				...state,
 				loginError: "failed login",
-				loggingIn: false
+				loggingIn: false,
+				isLoggedIn: false
 			};
 		}
 
