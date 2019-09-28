@@ -77,7 +77,6 @@ class App extends Component {
 						}
 					/>
 				</Switch>
-				<Route path="/createEvent" component={TheCreateEvent} />
 			</Router>
 		);
 	}
