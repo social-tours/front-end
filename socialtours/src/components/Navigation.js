@@ -86,7 +86,7 @@ function Navigation(props) {
 						onClick={() => props.history.push("/createEvent")}
 					/>
 				</ListItem>
-				{userHasEvent(props.events) > 0 && (
+				{userHasEvent(props.events) && (
 					<ListItem button>
 						<ListItemIcon>
 							<FormatListBulletedIcon />

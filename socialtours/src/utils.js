@@ -6,7 +6,7 @@ function userHasEvent(events) {
 		let userEvents = events.filter(e => e.host_id === userId);
 
 		// 0 is falsy
-		return userEvents.length;
+		return userEvents.length ? true : false;
 	}
 
 	// for now, if no token found let them access the page
