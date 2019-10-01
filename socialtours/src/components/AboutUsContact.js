@@ -7,6 +7,8 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import TextField from "@material-ui/core/TextField";
+import Button from "@material-ui/core/Button";
 
 import Gannon from "../images/gannon.png";
 import Michael from "../images/michael.png";
@@ -44,19 +46,39 @@ const useStyles = makeStyles(theme => ({
     display: 'flex',
     flexDirection: 'column',
   },
-
   cardContent: {
     flexGrow: 1,
   },
-  footer: {
+  contact: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  form: {
+    margin: "0 100px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
+  },
+  textField: {
+    marginLeft: theme.spacing.unit,
+    marginRight: theme.spacing.unit,
+    width: "100%",
+    margin: "15px auto"
+  },
+  button: {
+    background: "#dff8eb",
+    color: "black",
+    margin: "0 auto",
+    "&:hover": {
+      background: "#14e576",
+      color: "black"
+    }
+  }
 }));
 
 const cards = [1];
 
-export default function Album() {
+export default function About() {
   const classes = useStyles();
 
   return (
@@ -215,14 +237,50 @@ export default function Album() {
           </Container>
         </div>
       </main>
-      <footer className={classes.footer}>
-        <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography>
-        <Typography variant="subtitle1" align="center" color="textSecondary" component="p">
-          Something here to give the footer a purpose!
-        </Typography>
-      </footer>
+
+      <contact className={classes.contact}>
+        <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Contact Us</Typography>
+        <form
+          // action="/success"
+          className={classes.form}
+          name="contact"
+        // method="POST"
+        >
+          <input type="hidden" name="form-name" value="contact" />
+          <TextField
+            label="Name"
+            className={classes.textField}
+            margin="normal"
+            name="contact-name"
+            required
+          />
+          <TextField
+            label="Email"
+            className={classes.textField}
+            margin="normal"
+            name="contact-email"
+            required
+          />
+          <TextField
+            label="Message"
+            className={classes.textField}
+            margin="normal"
+            name="contact-message"
+            multiline
+            rows="8"
+            placeholder="Type your message here"
+            variant="outlined"
+            required
+          />
+          <Button
+            className={classes.button}
+            type="submit"
+            variant="outlined"
+          >
+            Submit
+              </Button>
+        </form>
+      </contact>
     </React.Fragment>
   );
 }
