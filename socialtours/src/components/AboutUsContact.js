@@ -241,17 +241,15 @@ export default function About() {
       <contact className={classes.contact}>
         <Typography component="h1" variant="h2" align="center" color="textPrimary" gutterBottom>Contact Us</Typography>
         <form
-          // action="/success"
           className={classes.form}
           name="contact"
-        // method="POST"
         >
           <input type="hidden" name="form-name" value="contact" />
           <TextField
             label="Name"
             className={classes.textField}
             margin="normal"
-            name="contact-name"
+            name="contact-name" variant="outlined"
             required
           />
           <TextField
@@ -259,6 +257,7 @@ export default function About() {
             className={classes.textField}
             margin="normal"
             name="contact-email"
+            variant="outlined"
             required
           />
           <TextField
