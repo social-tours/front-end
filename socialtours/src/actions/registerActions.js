@@ -43,6 +43,7 @@ export const addUser = user => async dispatch => {
 	dispatch({ type: types.ADD_USER_START });
 	try {
 		const addUserData = await axios.post(`${API_ENDPOINT}/api/register`, user);
+		localStorage.setItem("api_token", addUserData.data.token);
 		dispatch({ type: types.ADD_USER_SUCCESS, payload: addUserData.data });
 	} catch (err) {
 		dispatch({ type: types.ADD_USER_FAILURE, payload: err });
