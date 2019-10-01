@@ -43,7 +43,25 @@ class ManageEvents extends Component {
 
 					{/* masterlist below */}
 
-					<EventSectionTitle>All Events</EventSectionTitle>
+					<EventSectionTitle>Upcoming Events</EventSectionTitle>
+					<EventsWrapper>
+						{this.props.schedules.map(schedule => {
+							if (schedule.start_date_time > moment().format()) {
+								return (
+									<EventCard
+										id={schedule.id}
+										key={schedule.id}
+										title={schedule.title}
+										description={schedule.description}
+										date={schedule.start_date_time}
+										location={schedule.location}
+									/>
+								);
+							}
+						})}
+					</EventsWrapper>
+
+					<EventSectionTitle>Past Events</EventSectionTitle>
 					<EventsWrapper>
 						{this.props.eventsList &&
 							this.props.eventsList.map(event => {
@@ -64,24 +82,6 @@ class ManageEvents extends Component {
 									/>
 								);
 							})}
-					</EventsWrapper>
-
-					<EventSectionTitle>Upcoming Events</EventSectionTitle>
-					<EventsWrapper>
-						{this.props.schedules.map(schedule => {
-							if (schedule.start_date_time > moment().format()) {
-								return (
-									<EventCard
-										id={schedule.id}
-										key={schedule.id}
-										title={schedule.title}
-										description={schedule.description}
-										date={schedule.start_date_time}
-										location={schedule.location}
-									/>
-								);
-							}
-						})}
 					</EventsWrapper>
 				</EventContainer>
 			</EventsContainerContainer>
