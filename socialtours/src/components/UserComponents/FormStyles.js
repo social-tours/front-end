@@ -44,7 +44,8 @@ export const FormContainer = styled.div`
   form {
     width: 100%;
     ${flex("column", "center")};
-    background-color: ${color.primaryDark};
+    background-color: ${colors.black_plum};
+    color: ${colors.putty};
 
 
     @media ${breakpoints[0]} {
@@ -59,7 +60,7 @@ export const FormContainer = styled.div`
       width: 80%;
       padding: 10px;
       border: 1px solid ${color.primaryBgShading};
-      background: ${colors.black_plum};     
+      background: ${colors.dirty_concord};     
       color: white;
       line-height: 1rem;
       ::placeholder {
