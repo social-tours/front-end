@@ -13,7 +13,7 @@ import Profile from "./components/UserComponents/Profile";
 
 import Main from "./components/Main";
 import Dashboard from "./components/Dashboard";
-import Credits from "./components/Credits";
+import Credits from "./components/MediaComponents/Credits";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/UserComponents/Callback";

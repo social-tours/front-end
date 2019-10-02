@@ -1,6 +1,7 @@
 import styled, { css } from "styled-components";
 import {
 	color,
+	colors,
 	colorScheme,
 	fontSizing,
 	flex,
@@ -41,8 +42,10 @@ export const FormContainer = styled.div`
   }  
 
   form {
-    width: 90%;
+    width: 100%;
     ${flex("column", "center")};
+    background-color: ${colors.black_plum};
+    color: ${colors.putty};
 
 
     @media ${breakpoints[0]} {
@@ -56,9 +59,13 @@ export const FormContainer = styled.div`
     input {
       width: 80%;
       padding: 10px;
-      border: 1px solid ${colorScheme.secondaryBorderColor};
-      // background: ${color.primaryBgShading};     
+      border: 1px solid ${color.primaryBgShading};
+      background: ${colors.dirty_concord};     
+      color: white;
       line-height: 1rem;
+      ::placeholder {
+      	color: ${color.lightText}
+      }
     }
 
     label {
@@ -92,7 +99,9 @@ export const FormButton = styled(Button)`
 	border-radius: 5px;
 	font-weight: normal;
 	font-size: ${fontSizing.xxs};
-
+	border: 1px solid ${color.primaryBgShading};
+	background-color: ${colors.putty};
+	color: black;
 	${props =>
 		props.socialIcon &&
 		css`
@@ -107,7 +116,7 @@ export const FormButton = styled(Button)`
 				width: 100%;
 				height: auto;
 			}
-		`}
+		`};
 `;
 
 export default FormContainer;
