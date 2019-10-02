@@ -1,8 +1,11 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import styled from "styled-components";
+
 import { login } from "../../actions";
 
 import * as S from "./FormStyles";
+import { colors } from "../DesignComponents/theme";
 
 class Login extends Component {
 	state = {
@@ -31,7 +34,7 @@ class Login extends Component {
 
 	render() {
 		return (
-			<>
+			<FormWrapper>
 				<S.FormContainer>
 					{this.props.loginError && (
 						<S.TextContainer>
@@ -77,7 +80,7 @@ class Login extends Component {
 						</S.FormButton>
 					</form>
 				</S.FormContainer>
-			</>
+			</FormWrapper>
 		);
 	}
 }
@@ -94,3 +97,9 @@ export default connect(
 	mapStateToProps,
 	{ login }
 )(Login);
+
+const FormWrapper = styled.div`
+	background-color: ${colors.putty};
+	height: 100vh;
+	padding-top: 30px;
+`;

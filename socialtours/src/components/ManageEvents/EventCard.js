@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-import "./ManageEvents.css";
+import { EventCardWrapper } from "./ManageEventsStyles";
 
 import {
 	FacebookShareButton,
@@ -39,7 +39,7 @@ class EventCard extends Component {
 		} = this.props;
 
 		return (
-			<div className="event-card">
+			<EventCardWrapper>
 				<div className="event-card-left">
 					<p>ID#: {this.props.id}</p>
 					<p>Title: {this.props.title}</p>
@@ -85,7 +85,7 @@ class EventCard extends Component {
 						/>
 					</EmailShareButton>
 				</div>
-			</div>
+			</EventCardWrapper>
 		);
 	}
 }

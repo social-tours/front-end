@@ -10,12 +10,12 @@ const theme = {
 
 	color: {
 		primaryColor: "#265077",
-		primaryDark: "#022140",
-		primaryBgShading: "#F5F8FA",
-		secondaryColor: "#e4e5eb",
-		secondaryBgShading: "#C5CAE9",
-		accent: "#51A7F8",
-		emphasis: "#212121",
+		primaryDark: "#34344A",
+		primaryBgShading: "#011638",
+		secondaryColor: "#46237A",
+		secondaryBgShading: "#34344A",
+		accent: "#DFF8EB",
+		emphasis: "#214E34",
 		darkText: "#595959",
 		lightText: "#FFFFFF",
 		danger: "red"
