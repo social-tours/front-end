@@ -9,6 +9,8 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io';
+
 
 import Gannon from "../images/gannon.png";
 import Michael from "../images/michael.png";
@@ -18,6 +20,7 @@ import Adam from "../images/adam.png";
 import Greg from "../images/greg.png";
 import Rane from "../images/rane.png";
 import James from "../images/james.png";
+import { fontSize } from '@material-ui/system';
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -49,6 +52,12 @@ const useStyles = makeStyles(theme => ({
   cardContent: {
     flexGrow: 1,
   },
+  CardActions: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    fontSize: '30px',
+
+  },
   contact: {
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
@@ -74,6 +83,9 @@ const useStyles = makeStyles(theme => ({
       color: "black"
     }
   }
+  // .react-icons {
+  //   vertical-align: middle;
+  // }
 }));
 
 const cards = [1];
@@ -107,8 +119,8 @@ export default function About() {
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GannonDetroit"> GitHub </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/gannon-darcy-b8345073/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GannonDetroit"> <IoLogoGithub /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/gannon-darcy-b8345073/"> <IoLogoLinkedin /> </a>
                     </CardActions>
                   </Card>
                 </Grid>

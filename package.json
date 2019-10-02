@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/social-tours/front-end/issues"
   },
-  "homepage": "https://github.com/social-tours/front-end#readme"
+  "homepage": "https://github.com/social-tours/front-end#readme",
+  "dependencies": {
+    "react-icons": "^3.7.0"
+  }
 }
