@@ -93,10 +93,11 @@ export const postEvent = event => async dispatch => {
 	}); //greg
 	try {
 		const newEvent = await axios.post(API_ENDPOINT + `/api/events`, event);
-		newEvent.status === 200
+		const events = await axios.get(API_ENDPOINT + `/api/events/`);
+		newEvent.status === 201 && events.status === 200
 			? dispatch({
 					type: types.POST_EVENT_SUCCESS,
-					payload: newEvent.data
+					payload: events.data
 			  })
 			: dispatch({
 					type: types.POST_EVENT_FAILED
