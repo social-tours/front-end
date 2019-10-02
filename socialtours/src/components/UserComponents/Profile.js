@@ -6,15 +6,16 @@ import { fetchUser, updateUser, deleteUser } from "../../actions";
 
 import * as S from "./FormStyles";
 class Profile extends Component {
-	state = {
-		id: null,
-		email: "",
-		first_name: "",
-		last_name: "",
-		password: "",
-		phone_nbr: "",
-		type: ""
-	};
+		state = {
+			id: null,
+			email: "",
+			first_name: "",
+			last_name: "",
+			password: "",
+			phone_nbr: "",
+			type: "",
+			isUpdated: false
+		};
 
 	/**
 	 * Method to handle form input
@@ -64,14 +65,44 @@ class Profile extends Component {
 	 */
 	handleUpdate = e => {
 		e.preventDefault();
-		this.props.updateUser(this.state.id, this.state);
+		const {
+			id,
+			email,
+			first_name,
+			last_name,
+			phone_nbr,
+			password,
+			type
+		} = this.state;
+
+		const updatedData = {
+			id,
+			first_name,
+			last_name,
+			email,
+			phone_nbr,
+			password,
+			type
+		};
+		this.props.updateUser(this.state.id, updatedData);
 	};
 
 	componentDidMount() {
 		this.getUserId();
 		console.log("CDM getUserID: ", this.getUserId());
+		console.log("CDM this.props.user", this.props.user);
 		if (this.getUserId()) {
 			this.prePopulateForm(this.getUserId().id);
+			console.log("CDM this.props.user AFTER prepopulate: ", this.props.user);
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		//console.log("CDU this.props.user", this.props.user);
+		if (prevProps.user && prevProps.user !== this.props.user) {
+			console.log("CDU prevProps.user", prevProps.user);
+			console.log("CDU this.props.user has changed", this.props.user);
+			this.setState({ isUpdated: true });
 		}
 	}
 
@@ -120,6 +151,9 @@ class Profile extends Component {
 					<S.FormButton onClick={this.handleUpdate} update>
 						Save Changes
 					</S.FormButton>
+					{this.state.isUpdated && (
+						<S.MessageContainer>User settings updated</S.MessageContainer>
+					)}
 				</form>
 			</S.FormContainer>
 		);
