@@ -9,7 +9,7 @@ class TheCreateEvent extends React.Component {
 	state = {
 		type: 1, // hardcoded for testing
 		title: "",
-		// id 2 as fallback while register token not working yet
+		// hardcode to 2 if the token isnt found
 		host_id: localStorage.getItem("api_token")
 			? jwt_decode(localStorage.getItem("api_token")).id
 			: 2,
