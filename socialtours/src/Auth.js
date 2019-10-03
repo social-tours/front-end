@@ -4,7 +4,7 @@ import jwtDecode from "jwt-decode";
 
 import { REDIRECT_URI } from "./config/api";
 
-const LOGIN_SUCCESS_PAGE = "/protected";
+//const LOGIN_SUCCESS_PAGE = "/protected";
 const LOGIN_FAILURE_PAGE = "/";
 const auth0Settings = {
 	domain: "dev-r8zrga7p.auth0.com",
