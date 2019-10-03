@@ -148,7 +148,7 @@ export const deleteEvent = eventID => async dispatch => {
 		event.status === 200
 			? dispatch({
 					type: types.DELETE_EVENT_SUCCESS,
-					payload: events
+					payload: events.data
 			  })
 			: dispatch({
 					type: types.DELETE_EVENT_FAILED
