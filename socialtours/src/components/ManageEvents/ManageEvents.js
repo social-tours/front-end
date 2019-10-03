@@ -50,6 +50,7 @@ class ManageEvents extends Component {
 								return (
 									<EventCard
 										id={schedule.id}
+										userId={schedule.host_id}
 										key={schedule.id}
 										title={schedule.title}
 										description={schedule.description}
@@ -68,6 +69,7 @@ class ManageEvents extends Component {
 								return (
 									<EventCard
 										id={event.id}
+										userId={event.host_id}
 										key={event.id}
 										title={event.title}
 										capacity={event.capacity}
@@ -105,6 +107,6 @@ export default connect(
 	{ getSchedules, fetchEvents }
 )(ManageEvents);
 
-const ManageEventWrapper = styled.div`
-	background-color: colors.putty;
-`;
+// const ManageEventWrapper = styled.div`
+// 	background-color: colors.putty
+// `;
