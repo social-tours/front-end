@@ -82,10 +82,11 @@ const useStyles = makeStyles(theme => ({
       background: "#14e576",
       color: "black"
     }
+  },
+  IoLogoGithub: {
+    width: "30px",
+    heigth: "30px",
   }
-  // .react-icons {
-  //   vertical-align: middle;
-  // }
 }));
 
 const cards = [1];
@@ -119,7 +120,7 @@ export default function About() {
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GannonDetroit"> <IoLogoGithub /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GannonDetroit" > <IoLogoGithub width="30px" heigth="30px" /> </a>
                       <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/gannon-darcy-b8345073/"> <IoLogoLinkedin /> </a>
                     </CardActions>
                   </Card>
