@@ -24,17 +24,17 @@ export const types ={
     DELETE_SUBSCRIPTION_SUCCESS: "DELETE_SUBSCRIPTION_SUCCESS"
 }   
 
-export const getSubscriptions = () => async dispact => {
+export const getSubscriptions = () => async dispatch => {
     dispatchEvent({ type: types.FETCHING_SUBSCRIPTION });
     try {
         const subscriptions = await axios.get(API_ENDPOINT + SUBSCRIPTIONS);
         if (subscriptions.status === SUCCESS) {
-            dispatchEvent({
+            dispatch({
                 type: types.FETCH_SUBSCRIPTION_SUCCESS,
                 payload: subscriptions.data
             })
         } else {
-            dispatchEvent({
+            dispatch({
                 type: types.FETCH_SUBSCRIPTION_FAILED
             })
         }
