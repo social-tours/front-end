@@ -62,6 +62,11 @@ class ManageEvents extends Component {
 						})}
 					</EventsWrapper>
 
+					<EventSectionTitle>Your Subscriptions</EventSectionTitle>
+					<EventsWrapper>
+						subscription cards here
+					</EventsWrapper>
+
 					<EventSectionTitle>Past Events</EventSectionTitle>
 					<EventsWrapper>
 						{this.props.eventsList &&
