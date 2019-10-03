@@ -6,6 +6,8 @@ import styled from "styled-components";
 import EventCard from "./EventCard";
 import { getSchedules } from "../../actions/schedules";
 import { fetchEvents } from "../../actions/eventActions";
+import { getSubscriptions } from "../../actions/subscriptionActions"
+
 import {
 	EventContainer,
 	EventsWrapper,
@@ -15,12 +17,13 @@ import {
 	EventSectionTitle,
 	ManageEventsSub
 } from "./ManageEventsStyles";
+import SubscriptionCards from "./SubscriptionCards";
 
 class ManageEvents extends Component {
 	componentDidMount() {
 		this.props.getSchedules();
 		this.props.fetchEvents();
-		console.log(this.props.eventsList);
+		this.props.getSubscriptions();
 	}
 
 	render() {
@@ -65,6 +68,21 @@ class ManageEvents extends Component {
 					<EventSectionTitle>Your Subscriptions</EventSectionTitle>
 					<EventsWrapper>
 						subscription cards here
+						{/* {this.props.subscriptions.map(subscription => {
+							return(
+								<SubscriptionCards 
+								id={schedule.id}
+								userId={schedule.host_id}
+								key={schedule.id}
+								title={schedule.title}
+								description={schedule.description}
+								date={schedule.start_date_time}
+								location={schedule.location}
+
+								/>
+							)
+						})} */}
+
 					</EventsWrapper>
 
 					<EventSectionTitle>Past Events</EventSectionTitle>
@@ -109,7 +127,7 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ getSchedules, fetchEvents }
+	{ getSchedules, fetchEvents,getSubscriptions }
 )(ManageEvents);
 
 // const ManageEventWrapper = styled.div`
