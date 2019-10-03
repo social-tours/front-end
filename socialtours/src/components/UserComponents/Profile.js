@@ -6,7 +6,9 @@ import { fetchUser, updateUser, deleteUser } from "../../actions";
 
 import * as S from "./FormStyles";
 class Profile extends Component {
-		state = {
+	constructor(props) {
+		super(props)
+		this.state = {
 			id: null,
 			email: "",
 			first_name: "",
@@ -16,6 +18,9 @@ class Profile extends Component {
 			type: "",
 			isUpdated: false
 		};
+
+		this.buttonDOM = React.createRef()
+	}
 
 	/**
 	 * Method to handle form input
@@ -85,6 +90,7 @@ class Profile extends Component {
 			type
 		};
 		this.props.updateUser(this.state.id, updatedData);
+		this.buttonDOM.current.blur()
 	};
 
 	componentDidMount() {
@@ -148,7 +154,7 @@ class Profile extends Component {
 						placeholder="Password"
 					/>
 					<label htmlFor="password">Minimum length is 8 characters</label>
-					<S.FormButton onClick={this.handleUpdate} update>
+					<S.FormButton onClick={this.handleUpdate} ref={this.buttonDOM} update> 
 						Save Changes
 					</S.FormButton>
 					{this.state.isUpdated && (
