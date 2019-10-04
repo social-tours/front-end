@@ -1,11 +1,20 @@
 import React, { Component } from "react";
 import moment from "moment";
 import { connect } from "react-redux";
-import EventCard from "./EventCard";
+import styled from "styled-components";
 
+import EventCard from "./EventCard";
 import { getSchedules } from "../../actions/schedules";
 import { fetchEvents } from "../../actions/eventActions";
-import "./ManageEvents.css";
+import {
+	EventContainer,
+	EventsWrapper,
+	EventsContainerContainer,
+	EventHeader,
+	EventsTitle,
+	EventSectionTitle,
+	ManageEventsSub
+} from "./ManageEventsStyles";
 
 class ManageEvents extends Component {
 	componentDidMount() {
@@ -16,66 +25,66 @@ class ManageEvents extends Component {
 
 	render() {
 		return (
-			<div className="events-wrapper">
-				<div className="events-header">
-					<p className="events-title">Manage Events</p>
+			<EventsContainerContainer>
+				<EventContainer>
+					<EventHeader>
+						<EventsTitle>Manage Events</EventsTitle>
 
-					{this.props.schedules.length > 0 ? (
-						<p>{this.props.eventsList.length} total events are on your list</p>
-					) : (
-						<></>
-					)}
-				</div>
+						<ManageEventsSub>
+							{this.props.schedules.length > 0 ? (
+								<p>
+									{this.props.eventsList.length} total events are on your list
+								</p>
+							) : (
+								<></>
+							)}
+						</ManageEventsSub>
+					</EventHeader>
 
-				{/* masterlist below */}
+					{/* masterlist below */}
 
-				<div className="events-container events-list">
-					<div className="events-all">
-						Your Events
-						<ul>
-							{this.props.eventsList &&
-								this.props.eventsList.map(event => {
-									return (
-										<EventCard
-											id={event.id}
-											key={event.id}
-											title={event.title}
-											capacity={event.capacity}
-											description={event.description}
-											// commenting out below for now
-											// id={schedule.id}
-											// key={schedule.id}
-											// title={schedule.title}
-											// description={schedule.description}
-											// date={schedule.start_date_time}
-											// location={schedule.location}
-										/>
-									);
-								})}
-						</ul>
-					</div>
+					<EventSectionTitle>Upcoming Events</EventSectionTitle>
+					<EventsWrapper>
+						{this.props.schedules.map(schedule => {
+							if (schedule.start_date_time > moment().format()) {
+								return (
+									<EventCard
+										id={schedule.id}
+										key={schedule.id}
+										title={schedule.title}
+										description={schedule.description}
+										date={schedule.start_date_time}
+										location={schedule.location}
+									/>
+								);
+							}
+						})}
+					</EventsWrapper>
 
-					<div className="events-after">
-						Upcoming Events
-						<ul>
-							{this.props.schedules.map(schedule => {
-								if (schedule.start_date_time > moment().format()) {
-									return (
-										<EventCard
-											id={schedule.id}
-											key={schedule.id}
-											title={schedule.title}
-											description={schedule.description}
-											date={schedule.start_date_time}
-											location={schedule.location}
-										/>
-									);
-								}
+					<EventSectionTitle>Past Events</EventSectionTitle>
+					<EventsWrapper>
+						{this.props.eventsList &&
+							this.props.eventsList.map(event => {
+								return (
+									<EventCard
+										id={event.id}
+										key={event.id}
+										title={event.title}
+										capacity={event.capacity}
+										description={event.description}
+										// commenting out below for now
+										// id={schedule.id}
+										// key={schedule.id}
+										// title={schedule.title}
+										// description={schedule.description}
+										// date={schedule.start_date_time}
+										// location={schedule.location}
+									/>
+								);
 							})}
-						</ul>
-					</div>
-				</div>
-			</div>
+					</EventsWrapper>
+				</EventContainer>
+			</EventsContainerContainer>
 		);
 	}
 }
@@ -95,3 +104,7 @@ export default connect(
 	mapStateToProps,
 	{ getSchedules, fetchEvents }
 )(ManageEvents);
+
+const ManageEventWrapper = styled.div`
+	background-color: colors.putty;
+`;
