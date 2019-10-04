@@ -24,9 +24,7 @@ class Profile extends Component {
 	handleInput = e => {
 		this.setState({ [e.target.name]: e.target.value }, () => {
 			console.log("first_name",this.state.first_name)
-			console.log("last_name",this.state.last_name)
-			console.log("phone_nbr",this.state.phone_nbr)
-			console.log("PREFERENCE",this.state.comm_preference)
+
 		});
 	};
 
