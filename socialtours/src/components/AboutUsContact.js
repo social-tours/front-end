@@ -10,6 +10,7 @@ import Container from '@material-ui/core/Container';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { IoLogoGithub, IoLogoLinkedin } from 'react-icons/io';
+import styled from "styled-components";
 
 
 import Gannon from "../images/gannon.png";
@@ -89,6 +90,20 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
+const StlyedIoLogoGithub = styled(IoLogoGithub)`
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: space-around;
+`
+const StlyedIoLogoLinkedin = styled(IoLogoLinkedin)`
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: space-around;
+`
+
+
 const cards = [1];
 
 export default function About() {
@@ -120,8 +135,8 @@ export default function About() {
                       <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GannonDetroit" > <IoLogoGithub width="30px" heigth="30px" /> </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/gannon-darcy-b8345073/"> <IoLogoLinkedin /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GannonDetroit"> <StlyedIoLogoGithub /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/gannon-darcy-b8345073/"> <StlyedIoLogoLinkedin /> </a>
                     </CardActions>
                   </Card>
                 </Grid>
