@@ -25,7 +25,7 @@ class UpdateDeleteEvent extends React.Component {
 	}
 
 	componentDidMount = async () => {
-		const currentEvent = this.handleFetchEvent();
+		// const currentEvent = this.handleFetchEvent();
 		const res = await axios.get(
 			API_ENDPOINT + `/api/events/${this.props.match.params.id}`
 		);

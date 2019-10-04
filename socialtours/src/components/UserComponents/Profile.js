@@ -22,7 +22,12 @@ class Profile extends Component {
 	 * @returns new local state with form data
 	 */
 	handleInput = e => {
-		this.setState({ [e.target.name]: e.target.value });
+		this.setState({ [e.target.name]: e.target.value }, () => {
+			console.log("first_name",this.state.first_name)
+			console.log("last_name",this.state.last_name)
+			console.log("phone_nbr",this.state.phone_nbr)
+			console.log("PREFERENCE",this.state.comm_preference)
+		});
 	};
 
 	getUserId() {
@@ -129,8 +134,8 @@ class Profile extends Component {
 							<input
 								type="radio"
 								name="comm_preference"
-								value="emails"
-								checked={this.state.comm_preference === "emails"}
+								value="0"
+								checked={this.state.comm_preference === "0"}
 								onChange={this.handleInput}
 							/>
 							Email
@@ -140,8 +145,8 @@ class Profile extends Component {
 							<input
 								type="radio"
 								name="comm_preference"
-								value="sms"
-								checked={this.state.comm_preference === "sms"}
+								value="1"
+								checked={this.state.comm_preference === "1"}
 								onChange={this.handleInput}
 							/>
 							Text Message
@@ -151,8 +156,8 @@ class Profile extends Component {
 							<input
 								type="radio"
 								name="comm_preference"
-								value="both"
-								checked={this.state.comm_preference === "both"}
+								value="2"
+								checked={this.state.comm_preference === "2"}
 								onChange={this.handleInput}
 							/>
 							Both
@@ -162,8 +167,8 @@ class Profile extends Component {
 							<input
 								type="radio"
 								name="comm_preference"
-								value="none"
-								checked={this.state.comm_preference === "none"}
+								value="3"
+								checked={this.state.comm_preference === "3"}
 								onChange={this.handleInput}
 							/>
 							No Notifications

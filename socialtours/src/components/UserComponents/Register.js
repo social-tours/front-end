@@ -13,7 +13,7 @@ class Register extends Component {
 		phone_nbr: "",
 		type: 1,
 		auth0_token: "",
-		comm_preference: ""
+		comm_preference: "" //set default to both for new user (Greg)
 	};
 
 	/**
@@ -21,7 +21,9 @@ class Register extends Component {
 	 * @returns new local state with form data
 	 */
 	handleInput = e => {
-		this.setState({ [e.target.name]: e.target.value });
+		this.setState({ [e.target.name]: e.target.value } = () => {
+
+		});
 	};
 
 	/**
@@ -123,49 +125,49 @@ class Register extends Component {
 
 						<div className="radio">
 
-						<p>Select a communication preference: </p>
-						<label>
-							<input
-								type="radio"
-								name="comm_preference"
-								value="emails"
-								checked={this.state.comm_preference === "emails"}
-								onChange={this.handleInput}
-							/>
-							Email
+							<p>Select a communication preference: </p>
+							<label>
+								<input
+									type="radio"
+									name="comm_preference"
+									value="0"
+									checked={this.state.comm_preference === "0"}
+									onChange={this.handleInput}
+								/>
+								Email
 						</label>
 
-						<label>
-							<input
-								type="radio"
-								name="comm_preference"
-								value="sms"
-								checked={this.state.comm_preference === "sms"}
-								onChange={this.handleInput}
-							/>
-							Text Message
+							<label>
+								<input
+									type="radio"
+									name="comm_preference"
+									value="1"
+									checked={this.state.comm_preference === "1"}
+									onChange={this.handleInput}
+								/>
+								Text Message
 						</label>
 
-						<label>
-							<input
-								type="radio"
-								name="comm_preference"
-								value="both"
-								checked={this.state.comm_preference === "both"}
-								onChange={this.handleInput}
-							/>
-							Both
+							<label>
+								<input
+									type="radio"
+									name="comm_preference"
+									value="2"
+									checked={this.state.comm_preference === "2"}
+									onChange={this.handleInput}
+								/>
+								Both
 						</label>
 
-						<label>
-							<input
-								type="radio"
-								name="comm_preference"
-								value="none"
-								checked={this.state.comm_preference === "none"}
-								onChange={this.handleInput}
-							/>
-							No Notifications
+							<label>
+								<input
+									type="radio"
+									name="comm_preference"
+									value="3"
+									checked={this.state.comm_preference === "3"}
+									onChange={this.handleInput}
+								/>
+								No Notifications
 						</label>
 						</div>
 
