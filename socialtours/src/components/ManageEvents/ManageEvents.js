@@ -46,47 +46,53 @@ class ManageEvents extends Component {
 
 					{/* masterlist below */}
 
-					<EventSectionTitle>Scheduled Events</EventSectionTitle>
-					<EventsWrapper>
-						{this.props.scheduledEvents.map(schedule => {
-							if (schedule.start_date_time > moment().format()) {
-								return (
-									<EventCard
-										id={schedule.id}
-										key={schedule.id}
-										title={schedule.title}
-										description={schedule.description}
-										date={schedule.start_date_time}
-										location={schedule.location}
-									/>
-								);
-							}
-						})}
-					</EventsWrapper>
+					<ManageEventsWrapper>
+						<EventsSection>
+							<EventSectionTitle>Scheduled Events</EventSectionTitle>
+							<EventsWrapper>
+								{this.props.scheduledEvents.map(schedule => {
+									if (schedule.start_date_time > moment().format()) {
+										return (
+											<EventCard
+												id={schedule.id}
+												key={schedule.id}
+												title={schedule.title}
+												description={schedule.description}
+												date={schedule.start_date_time}
+												location={schedule.location}
+											/>
+										);
+									}
+								})}
+							</EventsWrapper>
+						</EventsSection>
 
-					<EventSectionTitle>Unscheduled Events</EventSectionTitle>
-					<EventsWrapper>
-						{this.props.unscheduledEvents &&
-							this.props.unscheduledEvents.map(event => {
-								if (event.schedule.length === 0)
-									return (
-										<EventCard
-											id={event.id}
-											key={event.id}
-											title={event.title}
-											capacity={event.capacity}
-											description={event.description}
-											// commenting out below for now
-											// id={schedule.id}
-											// key={schedule.id}
-											// title={schedule.title}
-											// description={schedule.description}
-											// date={schedule.start_date_time}
-											// location={schedule.location}
-										/>
-									);
-							})}
-					</EventsWrapper>
+						<EventsSection>
+							<EventSectionTitle>Unscheduled Events</EventSectionTitle>
+							<EventsWrapper>
+								{this.props.unscheduledEvents &&
+									this.props.unscheduledEvents.map(event => {
+										if (event.schedule.length === 0)
+											return (
+												<EventCard
+													id={event.id}
+													key={event.id}
+													title={event.title}
+													capacity={event.capacity}
+													description={event.description}
+													// commenting out below for now
+													// id={schedule.id}
+													// key={schedule.id}
+													// title={schedule.title}
+													// description={schedule.description}
+													// date={schedule.start_date_time}
+													// location={schedule.location}
+												/>
+											);
+									})}
+							</EventsWrapper>
+						</EventsSection>
+					</ManageEventsWrapper>
 				</EventContainer>
 			</EventsContainerContainer>
 		);
@@ -118,3 +124,13 @@ export default connect(
 	mapStateToProps,
 	{ getSchedules, fetchEvents }
 )(ManageEvents);
+
+const ManageEventsWrapper = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+`;
+const EventsSection = styled.div`
+	display: flex;
+	flex-direction: column;
+`;
