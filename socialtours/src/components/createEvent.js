@@ -3,12 +3,16 @@ import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import { fetchEvent, postEvent } from "../actions/index.js";
 import EventFormStyles from "./EventFormStyles.js";
+import jwt_decode from "jwt-decode";
 
 class TheCreateEvent extends React.Component {
 	state = {
 		type: 1, // hardcoded for testing
 		title: "",
-		host_id: 2, //FK to user_ID, hardcoded for now to get to work
+		// hardcode to 2 if the token isnt found
+		host_id: localStorage.getItem("api_token")
+			? jwt_decode(localStorage.getItem("api_token")).id
+			: 2,
 		description: "",
 		event_image: "",
 		capacity: ""
