@@ -12,7 +12,8 @@ class Register extends Component {
 		password: "",
 		phone_nbr: "",
 		type: 1,
-		auth0_token: ""
+		auth0_token: "",
+		comm_preference: ""
 	};
 
 	/**
@@ -20,7 +21,9 @@ class Register extends Component {
 	 * @returns new local state with form data
 	 */
 	handleInput = e => {
-		this.setState({ [e.target.name]: e.target.value });
+		this.setState({ [e.target.name]: e.target.value }, () => {
+			console.log("first_name", this.state.first_name)
+		});
 	};
 
 	/**
@@ -39,7 +42,8 @@ class Register extends Component {
 				given_name: this.state.first_name,
 				family_name: this.state.last_name,
 				phone: this.state.phone_nbr,
-				name: `${this.state.first_name} ${this.state.last_name}`
+				name: `${this.state.first_name} ${this.state.last_name}`,
+				comm_preference: this.state.comm_preference
 			};
 
 			await this.props.auth0SignUp(newSignUp);
@@ -118,6 +122,57 @@ class Register extends Component {
 							placeholder="Password"
 						/>
 						<label htmlFor="password">Minimum length is 8 characters</label>
+
+						<div className="radio">
+
+							<p>Select a communication preference: </p>
+							<label>
+								<input
+									type="radio"
+									name="comm_preference"
+									value="0"
+									checked={this.state.comm_preference === "0"}
+									onChange={this.handleInput}
+								/>
+								Email
+						</label>
+
+							<label>
+								<input
+									type="radio"
+									name="comm_preference"
+									value="1"
+									checked={this.state.comm_preference === "1"}
+									onChange={this.handleInput}
+								/>
+								Text Message
+						</label>
+
+							<label>
+								<input
+									defaultChecked={true}
+									type="radio"
+									name="comm_preference"
+									value="2"
+									ref={this.input}
+									onChange={this.handleInput}
+								// this is to prepopulate both when registering user
+								/>
+								Both
+						</label>
+
+							<label>
+								<input
+									type="radio"
+									name="comm_preference"
+									value="3"
+									checked={this.state.comm_preference === "3"}
+									onChange={this.handleInput}
+								/>
+								No Notifications
+						</label>
+						</div>
+
 						<S.FormButton onClick={this.handleRegister} add>
 							Sign Up
 						</S.FormButton>
