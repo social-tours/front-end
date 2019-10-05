@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import moment from "moment";
 import { connect } from "react-redux";
 import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 import EventCard from "./EventCard";
 import { getSchedules } from "../../actions/schedules";
@@ -16,7 +17,9 @@ import {
 	EventSectionTitle,
 	ManageEventsSub,
 	ManageEventsWrapper,
-	EventsSection
+	EventsSection,
+	EventsHeadline,
+	CEButton
 } from "./ManageEventsStyles";
 
 class ManageEvents extends Component {
@@ -30,8 +33,12 @@ class ManageEvents extends Component {
 			<EventsContainerContainer>
 				<EventContainer>
 					<EventHeader>
-						<EventsTitle>Manage Events</EventsTitle>
-
+						<EventsHeadline>
+							<EventsTitle>Manage Events</EventsTitle>
+							<CEButton onClick={e => this.props.history.push("createEvent")}>
+								Create New Event
+							</CEButton>
+						</EventsHeadline>
 						<ManageEventsSub>
 							{this.props.scheduledEvents.length > 0 ||
 							this.props.unscheduledEvents.length > 0 ? (
@@ -125,4 +132,4 @@ const mapStateToProps = state => {
 export default connect(
 	mapStateToProps,
 	{ getSchedules, fetchEvents }
-)(ManageEvents);
+)(withRouter(ManageEvents));
