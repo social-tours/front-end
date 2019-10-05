@@ -97,7 +97,7 @@ export const EventContainer = styled.div`
 	min-height: calc(100vh - 35px - 25px);
 	margin: 0 auto;
 	margin-top: 35px;
-	width: 80%;
+	width: 90%;
 	background-color: #cdcdcd;
 `;
 
@@ -111,4 +111,19 @@ export const EventsWrapper = styled.ul`
 	flex-direction: row;
 	flex-wrap: wrap;
 	width: 100%;
+`;
+
+export const ManageEventsWrapper = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	@media (max-width: 900px) {
+		flex-direction: column;
+	}
+`;
+
+export const EventsSection = styled.div`
+	display: flex;
+	flex-direction: column;
+	flex-basis: 50%;
 `;

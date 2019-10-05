@@ -14,7 +14,9 @@ import {
 	EventHeader,
 	EventsTitle,
 	EventSectionTitle,
-	ManageEventsSub
+	ManageEventsSub,
+	ManageEventsWrapper,
+	EventsSection
 } from "./ManageEventsStyles";
 
 class ManageEvents extends Component {
@@ -124,13 +126,3 @@ export default connect(
 	mapStateToProps,
 	{ getSchedules, fetchEvents }
 )(ManageEvents);
-
-const ManageEventsWrapper = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: space-around;
-`;
-const EventsSection = styled.div`
-	display: flex;
-	flex-direction: column;
-`;
