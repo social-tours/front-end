@@ -21,7 +21,7 @@ class Register extends Component {
 	 * @returns new local state with form data
 	 */
 	handleInput = e => {
-		this.setState({ [e.target.name]: e.target.value }, ()=>{
+		this.setState({ [e.target.name]: e.target.value }, () => {
 			console.log("first_name", this.state.first_name)
 		});
 	};
@@ -122,12 +122,12 @@ class Register extends Component {
 							placeholder="Password"
 						/>
 						<label htmlFor="password">Minimum length is 8 characters</label>
-						
+
 						<div className="radio">
 
- 							<p>Select a communication preference: </p>
- 							<label>
- 								<input
+							<p>Select a communication preference: </p>
+							<label>
+								<input
 									type="radio"
 									name="comm_preference"
 									value="0"
@@ -150,11 +150,13 @@ class Register extends Component {
 
 							<label>
 								<input
+									defaultChecked={true}
 									type="radio"
 									name="comm_preference"
 									value="2"
-									checked={this.state.comm_preference === "2"}
+									ref={this.input}
 									onChange={this.handleInput}
+								// this is to prepopulate both when registering user
 								/>
 								Both
 						</label>
@@ -170,7 +172,7 @@ class Register extends Component {
 								No Notifications
 						</label>
 						</div>
-						
+
 						<S.FormButton onClick={this.handleRegister} add>
 							Sign Up
 						</S.FormButton>

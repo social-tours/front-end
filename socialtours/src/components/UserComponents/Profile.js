@@ -23,7 +23,7 @@ class Profile extends Component {
 	 */
 	handleInput = e => {
 		this.setState({ [e.target.name]: e.target.value }, () => {
-			console.log("first_name",this.state.first_name)
+			console.log("first_name", this.state.first_name)
 
 		});
 	};
@@ -171,7 +171,7 @@ class Profile extends Component {
 							/>
 							No Notifications
 						</label>
-						</div>
+					</div>
 
 					<S.FormButton onClick={this.handleUpdate} update>
 						Save Changes
