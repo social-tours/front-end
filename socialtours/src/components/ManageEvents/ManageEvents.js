@@ -6,6 +6,7 @@ import styled from "styled-components";
 import EventCard from "./EventCard";
 import { getSchedules } from "../../actions/schedules";
 import { fetchEvents } from "../../actions/eventActions";
+import { getUserId } from "../../utils";
 import {
 	EventContainer,
 	EventsWrapper,
@@ -21,6 +22,8 @@ class ManageEvents extends Component {
 		this.props.getSchedules();
 		this.props.fetchEvents();
 		console.log(this.props.eventsList);
+
+		//console.log(getUserId());
 	}
 
 	render() {
@@ -63,8 +66,8 @@ class ManageEvents extends Component {
 
 					<EventSectionTitle>Past Events</EventSectionTitle>
 					<EventsWrapper>
-						{this.props.eventsList &&
-							this.props.eventsList.map(event => {
+						{this.props.events &&
+							this.props.events.map(event => {
 								return (
 									<EventCard
 										id={event.id}
@@ -90,13 +93,17 @@ class ManageEvents extends Component {
 }
 
 const mapStateToProps = state => {
-	console.log("ManageEvents State: ", state);
+	//console.log("ManageEvents State: ", state);
+	let { events } = state.eventReducer;
+	let { schedules } = state.scheduleReducer;
+
+	events = events.filter(event => event.host_id === getUserId());
+	schedules = schedules.filter(schedule => schedule.host_id === getUserId());
 	return {
-		events: state.events,
+		events: events,
 		fetchingSchedule: state.fetchingSchedule,
 		fetchingEvents: state.fetchingEvents,
-		schedules: state.scheduleReducer.schedules,
-		eventsList: state.eventReducer.events
+		schedules: schedules
 	};
 };
 
@@ -104,7 +111,3 @@ export default connect(
 	mapStateToProps,
 	{ getSchedules, fetchEvents }
 )(ManageEvents);
-
-const ManageEventWrapper = styled.div`
-	background-color: colors.putty;
-`;

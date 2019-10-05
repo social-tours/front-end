@@ -19,4 +19,4 @@ function getUserId() {
 	}
 }
 
-export { userHasEvent };
+export { userHasEvent, getUserId };
