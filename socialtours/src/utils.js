@@ -13,4 +13,10 @@ function userHasEvent(events) {
 	}
 }
 
+function getUserId() {
+	if (localStorage.getItem("api_token")) {
+		return jwt_decode(localStorage.getItem("api_token")).id;
+	}
+}
+
 export { userHasEvent };
