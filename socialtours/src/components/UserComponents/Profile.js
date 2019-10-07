@@ -7,7 +7,7 @@ import { fetchUser, updateUser, deleteUser } from "../../actions";
 import * as S from "./FormStyles";
 class Profile extends Component {
 	constructor(props) {
-		super(props)
+		super(props);
 		this.state = {
 			id: null,
 			email: "",
@@ -19,7 +19,7 @@ class Profile extends Component {
 			isUpdated: false
 		};
 
-		this.buttonDOM = React.createRef()
+		this.buttonDOM = React.createRef();
 	}
 	state = {
 		id: null,
@@ -38,8 +38,7 @@ class Profile extends Component {
 	 */
 	handleInput = e => {
 		this.setState({ [e.target.name]: e.target.value }, () => {
-			console.log("first_name", this.state.first_name)
-
+			console.log("comm_preference", this.state.comm_preference);
 		});
 	};
 
@@ -75,7 +74,7 @@ class Profile extends Component {
 				password,
 				type,
 				comm_preference
-			});
+			}, () => console.log("this.state AFTER pre-populate: ", this.state));
 		}
 	};
 
@@ -92,7 +91,8 @@ class Profile extends Component {
 			last_name,
 			phone_nbr,
 			password,
-			type
+			type,
+			comm_preference
 		} = this.state;
 
 		const updatedData = {
@@ -102,10 +102,11 @@ class Profile extends Component {
 			email,
 			phone_nbr,
 			password,
-			type
+			type,
+			comm_preference
 		};
 		this.props.updateUser(this.state.id, updatedData);
-		this.buttonDOM.current.blur()
+		this.buttonDOM.current.blur();
 	};
 
 	componentDidMount() {
@@ -170,17 +171,15 @@ class Profile extends Component {
 					/>
 
 					<label htmlFor="password">Minimum length is 8 characters</label>
-					
 
 					<div className="radio">
-
 						<p>Select a communication preference: </p>
 						<label>
 							<input
 								type="radio"
 								name="comm_preference"
-								value="0"
-								checked={this.state.comm_preference === "0"}
+								value="1"
+								checked={this.state.comm_preference == 1}
 								onChange={this.handleInput}
 							/>
 							Email
@@ -190,19 +189,19 @@ class Profile extends Component {
 							<input
 								type="radio"
 								name="comm_preference"
-								value="1"
-								checked={this.state.comm_preference === "1"}
+								value="2"
+								checked={this.state.comm_preference == 2}
 								onChange={this.handleInput}
 							/>
-							Text Message
+							SMS
 						</label>
 
 						<label>
 							<input
 								type="radio"
 								name="comm_preference"
-								value="2"
-								checked={this.state.comm_preference === "2"}
+								value="3"
+								checked={this.state.comm_preference == 3}
 								onChange={this.handleInput}
 							/>
 							Both
@@ -212,15 +211,15 @@ class Profile extends Component {
 							<input
 								type="radio"
 								name="comm_preference"
-								value="3"
-								checked={this.state.comm_preference === "3"}
+								value="0"
+								checked={this.state.comm_preference == 0}
 								onChange={this.handleInput}
 							/>
-							No Notifications
+							None
 						</label>
 					</div>
 
-					<S.FormButton onClick={this.handleUpdate} ref={this.buttonDOM} update> 
+					<S.FormButton onClick={this.handleUpdate} ref={this.buttonDOM} update>
 						Save Changes
 					</S.FormButton>
 					{this.state.isUpdated && (
