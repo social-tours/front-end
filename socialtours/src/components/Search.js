@@ -9,13 +9,11 @@ class Search extends React.Component {
         search: 'Search for an influencer'
 	};
 
-	// componentDidUpdate(prevProps, prevState, snapshot) {
-	// 	if (prevState.results != this.props.results) {
-	// 		this.setState({
-	// 			results: this.fetchResults
-	// 		});
-	// 	}
-	// }
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		if (prevState.results != this.state.results) {
+			this.fetchResults();
+		}
+	}
 
     handleChange(e) {
         e.preventDefault();
@@ -26,7 +24,7 @@ class Search extends React.Component {
 
     fetchResults = e => {
         e.preventDefault();
-        axios.get(API_ENDPOINT + '/search')
+        axios.get(API_ENDPOINT + `/search/${this.state.search}`)
         .then(res => {
             this.setState({
                 results : res.data
