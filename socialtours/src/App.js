@@ -25,6 +25,7 @@ import ManageEvents from "./components/ManageEvents/ManageEvents";
 import Navigation from "./components/Navigation";
 import { userHasEvent } from "./utils";
 import AboutUsContact from "./components/AboutUsContact.js";
+import Search from "./components/Search";
 
 // import Calendar from "./components/EventCalendar";
 //import API_ENDPOINT from "./config/api";
@@ -77,6 +78,7 @@ class App extends Component {
 							userHasEvent(this.props.events) ? <ManageEvents /> : <NotFound />
 						}
 					/>
+					<Route path="/search" component={Search} />
 					<Route path="/AboutUsContact" component={AboutUsContact} />
 				</Switch>
 			</Router>
