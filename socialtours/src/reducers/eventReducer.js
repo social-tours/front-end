@@ -101,7 +101,7 @@ const eventReducer = (state = initialState, action) => {
 			return {
 				...state,
 				deletingEvent: false,
-				events: action.payload.data
+				events: action.payload
 			};
 		case DELETE_EVENT_FAILURE:
 			console.log("DELETE EVENT FAILURE: ", action.payload);

@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import LandingPage from "../components/LandingPage";
+import { userHasEvent } from "../utils";
 
 import Dashboard from "../components/Dashboard";
 
@@ -12,7 +13,9 @@ class Main extends Component {
 		return (
 			<>
 				<SiteWrapper>
-					{this.props.auth.isAuthenticated() ? (
+					{/* if authenticated and has at least one event */}
+					{this.props.auth.isAuthenticated() &&
+					userHasEvent(this.props.events) ? (
 						<Dashboard user={2} />
 					) : (
 						<LandingPage />
@@ -31,7 +34,8 @@ const SiteWrapper = styled.div`
 
 const mapStateToProps = state => {
 	return {
-		auth: state.authReducer.auth
+		auth: state.authReducer.auth,
+		events: state.eventReducer.events
 	};
 };
 

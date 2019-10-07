@@ -21,13 +21,26 @@ class Profile extends Component {
 
 		this.buttonDOM = React.createRef()
 	}
+	state = {
+		id: null,
+		email: "",
+		first_name: "",
+		last_name: "",
+		password: "",
+		phone_nbr: "",
+		type: "",
+		comm_preference: ""
+	};
 
 	/**
 	 * Method to handle form input
 	 * @returns new local state with form data
 	 */
 	handleInput = e => {
-		this.setState({ [e.target.name]: e.target.value });
+		this.setState({ [e.target.name]: e.target.value }, () => {
+			console.log("first_name", this.state.first_name)
+
+		});
 	};
 
 	getUserId() {
@@ -50,7 +63,8 @@ class Profile extends Component {
 				last_name,
 				phone_nbr,
 				password,
-				type
+				type,
+				comm_preference
 			} = this.props.user;
 			this.setState({
 				id,
@@ -59,7 +73,8 @@ class Profile extends Component {
 				email,
 				phone_nbr,
 				password,
-				type
+				type,
+				comm_preference
 			});
 		}
 	};
@@ -153,7 +168,58 @@ class Profile extends Component {
 						onChange={this.handleInput}
 						placeholder="Password"
 					/>
+
 					<label htmlFor="password">Minimum length is 8 characters</label>
+					
+
+					<div className="radio">
+
+						<p>Select a communication preference: </p>
+						<label>
+							<input
+								type="radio"
+								name="comm_preference"
+								value="0"
+								checked={this.state.comm_preference === "0"}
+								onChange={this.handleInput}
+							/>
+							Email
+						</label>
+
+						<label>
+							<input
+								type="radio"
+								name="comm_preference"
+								value="1"
+								checked={this.state.comm_preference === "1"}
+								onChange={this.handleInput}
+							/>
+							Text Message
+						</label>
+
+						<label>
+							<input
+								type="radio"
+								name="comm_preference"
+								value="2"
+								checked={this.state.comm_preference === "2"}
+								onChange={this.handleInput}
+							/>
+							Both
+						</label>
+
+						<label>
+							<input
+								type="radio"
+								name="comm_preference"
+								value="3"
+								checked={this.state.comm_preference === "3"}
+								onChange={this.handleInput}
+							/>
+							No Notifications
+						</label>
+					</div>
+
 					<S.FormButton onClick={this.handleUpdate} ref={this.buttonDOM} update> 
 						Save Changes
 					</S.FormButton>
