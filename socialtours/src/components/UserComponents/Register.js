@@ -21,9 +21,7 @@ class Register extends Component {
 	 * @returns new local state with form data
 	 */
 	handleInput = e => {
-		this.setState({ [e.target.name]: e.target.value }, () => {
-			console.log("first_name", this.state.first_name)
-		});
+		this.setState({ [e.target.name]: e.target.value }, () => {});
 	};
 
 	/**
@@ -124,53 +122,50 @@ class Register extends Component {
 						<label htmlFor="password">Minimum length is 8 characters</label>
 
 						<div className="radio">
-
 							<p>Select a communication preference: </p>
 							<label>
 								<input
 									type="radio"
 									name="comm_preference"
-									value="0"
-									checked={this.state.comm_preference === "0"}
+									value="1"
+									checked={this.state.comm_preference == 1}
 									onChange={this.handleInput}
 								/>
 								Email
-						</label>
+							</label>
 
 							<label>
 								<input
-									type="radio"
-									name="comm_preference"
-									value="1"
-									checked={this.state.comm_preference === "1"}
-									onChange={this.handleInput}
-								/>
-								Text Message
-						</label>
-
-							<label>
-								<input
-									defaultChecked={true}
 									type="radio"
 									name="comm_preference"
 									value="2"
-									ref={this.input}
+									checked={this.state.comm_preference == 2}
 									onChange={this.handleInput}
-								// this is to prepopulate both when registering user
 								/>
-								Both
-						</label>
+								SMS
+							</label>
 
 							<label>
 								<input
 									type="radio"
 									name="comm_preference"
 									value="3"
-									checked={this.state.comm_preference === "3"}
+									checked={this.state.comm_preference == 3}
 									onChange={this.handleInput}
 								/>
-								No Notifications
-						</label>
+								Both
+							</label>
+
+							<label>
+								<input
+									type="radio"
+									name="comm_preference"
+									value="0"
+									checked={this.state.comm_preference == 0}
+									onChange={this.handleInput}
+								/>
+								None
+							</label>
 						</div>
 
 						<S.FormButton onClick={this.handleRegister} add>
