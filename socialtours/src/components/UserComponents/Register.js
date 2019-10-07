@@ -13,7 +13,7 @@ class Register extends Component {
 		phone_nbr: "",
 		type: 1,
 		auth0_token: "",
-		comm_preference: ""
+		comm_preference: 3
 	};
 
 	/**
