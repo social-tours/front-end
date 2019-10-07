@@ -218,13 +218,12 @@ class Profile extends Component {
 							None
 						</label>
 					</div>
-
-					<S.FormButton onClick={this.handleUpdate} ref={this.buttonDOM} update>
-						Save Changes
-					</S.FormButton>
 					{this.state.isUpdated && (
 						<S.MessageContainer>User settings updated</S.MessageContainer>
 					)}
+					<S.FormButton onClick={this.handleUpdate} ref={this.buttonDOM} update>
+						Save Changes
+					</S.FormButton>
 				</form>
 			</S.FormContainer>
 		);
