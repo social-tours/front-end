@@ -27,8 +27,6 @@ class ManageEvents extends Component {
 	}
 
 	render() {
-		console.log("this.props.subscriptions", this.props.subscriptions);
-		console.log("this.props.schedules", this.props.schedules);
 		return (
 			<EventsContainerContainer>
 				<EventContainer>
@@ -69,7 +67,6 @@ class ManageEvents extends Component {
 
 					<EventSectionTitle>Your Subscriptions</EventSectionTitle>
 					<EventsWrapper>
-						subscription cards here
 						{this.props.subscriptions.map(subscription => {
 							return (
 								<SubscriptionCard

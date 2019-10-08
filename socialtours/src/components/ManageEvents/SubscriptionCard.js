@@ -14,8 +14,6 @@ class SubscriptionCard extends Component {
 
 		return (
 			<EventCardWrapper>
-				{/* TODO: input props here */}
-				<h2>Your current subscriptions</h2>
 				<div>Your User ID#: {this.props.userId} </div>
 				<div>You're subscribed to: {this.props.influencerId}</div>
 			</EventCardWrapper>
