@@ -18,7 +18,6 @@ import {
 	EventSectionTitle,
 	ManageEventsSub
 } from "./ManageEventsStyles";
-import SubscriptionCards from "./SubscriptionCards";
 
 class ManageEvents extends Component {
 	componentDidMount() {
@@ -28,6 +27,8 @@ class ManageEvents extends Component {
 	}
 
 	render() {
+		console.log("this.props.subscriptions", this.props.subscriptions);
+		console.log("this.props.schedules", this.props.schedules);
 		return (
 			<EventsContainerContainer>
 				<EventContainer>
@@ -69,19 +70,16 @@ class ManageEvents extends Component {
 					<EventSectionTitle>Your Subscriptions</EventSectionTitle>
 					<EventsWrapper>
 						subscription cards here
-						{this.props.subscriptions.map(subscription => {
+						{/* {this.props.subscriptions.map(subscription => {
 							return (
 								<SubscriptionCard
-									id={schedule.id}
-									userId={schedule.host_id}
-									key={schedule.id}
-									title={schedule.title}
-									description={schedule.description}
-									date={schedule.start_date_time}
-									location={schedule.location}
+									id={subscription.id}
+									key={subscription.id}
+									userId={subscription.user_id}
+									influencerId={subscription.influencerId}
 								/>
 							);
-						})}
+						})} */}
 					</EventsWrapper>
 
 					<EventSectionTitle>Past Events</EventSectionTitle>
@@ -120,7 +118,8 @@ const mapStateToProps = state => {
 		fetchingSchedule: state.fetchingSchedule,
 		fetchingEvents: state.fetchingEvents,
 		schedules: state.scheduleReducer.schedules,
-		eventsList: state.eventReducer.events
+		eventsList: state.eventReducer.events,
+		subscriptions: state.subscriptions
 	};
 };
 

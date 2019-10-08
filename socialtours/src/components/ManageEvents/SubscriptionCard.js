@@ -1,26 +1,26 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
-import { EventCardWrapper } from "./ManageEventsStyles"
+import { EventCardWrapper } from "./ManageEventsStyles";
 
 class SubscriptionCard extends Component {
-    constructor(props) {
-        super(props);
-    }
+	constructor(props) {
+		super(props);
+	}
 
-    // Methods
+	// Methods
 
-    render() {
-        // Constants here
+	render() {
+		// Constants here
 
-        return(
-            <EventCardWrapper>
-                {/* TODO: input props here */}
-                <div>Event Title: </div>
-                <div>Description: </div>
-                <div>Capacity: </div>
-            </EventCardWrapper>
-        )
-    }
+		return (
+			<EventCardWrapper>
+				{/* TODO: input props here */}
+				<h2>Your current subscriptions</h2>
+				<div>Your User ID#: {this.props.userId} </div>
+				<div>You're subscribed to: {this.props.influencerId}</div>
+			</EventCardWrapper>
+		);
+	}
 }
 
 export default SubscriptionCard;
