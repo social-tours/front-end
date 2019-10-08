@@ -68,7 +68,7 @@ class ManageEvents extends Component {
 					<EventSectionTitle>Your Subscriptions</EventSectionTitle>
 					<EventsWrapper>
 						subscription cards here
-						{this.props.subscriptions.map(subscription => {
+						{/* {this.props.subscriptions.map(subscription => {
 							return (
 								<SubscriptionCards
 									id={schedule.id}
@@ -80,7 +80,7 @@ class ManageEvents extends Component {
 									location={schedule.location}
 								/>
 							);
-						})}
+						})} */}
 					</EventsWrapper>
 
 					<EventSectionTitle>Past Events</EventSectionTitle>
