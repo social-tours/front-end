@@ -70,16 +70,16 @@ class ManageEvents extends Component {
 					<EventSectionTitle>Your Subscriptions</EventSectionTitle>
 					<EventsWrapper>
 						subscription cards here
-						{/* {this.props.subscriptions.map(subscription => {
+						{this.props.subscriptions.map(subscription => {
 							return (
 								<SubscriptionCard
 									id={subscription.id}
 									key={subscription.id}
 									userId={subscription.user_id}
-									influencerId={subscription.influencerId}
+									influencerId={subscription.influencer_id}
 								/>
 							);
-						})} */}
+						})}
 					</EventsWrapper>
 
 					<EventSectionTitle>Past Events</EventSectionTitle>
@@ -119,7 +119,7 @@ const mapStateToProps = state => {
 		fetchingEvents: state.fetchingEvents,
 		schedules: state.scheduleReducer.schedules,
 		eventsList: state.eventReducer.events,
-		subscriptions: state.subscriptions
+		subscriptions: state.subscriptionReducer.subscriptions
 	};
 };
 
