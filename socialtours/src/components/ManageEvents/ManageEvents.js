@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import EventCard from "./EventCard";
+import SubscriptionCard from "./SubscriptionCard";
 import { getSchedules } from "../../actions/schedules";
 import { fetchEvents } from "../../actions/eventActions";
 import { getSubscriptions } from "../../actions/subscriptionActions";
@@ -70,7 +71,7 @@ class ManageEvents extends Component {
 						subscription cards here
 						{this.props.subscriptions.map(subscription => {
 							return (
-								<SubscriptionCards
+								<SubscriptionCard
 									id={schedule.id}
 									userId={schedule.host_id}
 									key={schedule.id}
