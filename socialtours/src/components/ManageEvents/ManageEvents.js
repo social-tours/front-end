@@ -4,6 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import EventCard from "./EventCard";
+import SubscriptionCard from "./SubscriptionCard";
 import { getSchedules } from "../../actions/schedules";
 import { fetchEvents } from "../../actions/eventActions";
 import { getSubscriptions } from "../../actions/subscriptionActions";
@@ -17,7 +18,6 @@ import {
 	EventSectionTitle,
 	ManageEventsSub
 } from "./ManageEventsStyles";
-import SubscriptionCards from "./SubscriptionCards";
 
 class ManageEvents extends Component {
 	componentDidMount() {
@@ -67,17 +67,13 @@ class ManageEvents extends Component {
 
 					<EventSectionTitle>Your Subscriptions</EventSectionTitle>
 					<EventsWrapper>
-						subscription cards here
 						{this.props.subscriptions.map(subscription => {
 							return (
-								<SubscriptionCards
-									id={schedule.id}
-									userId={schedule.host_id}
-									key={schedule.id}
-									title={schedule.title}
-									description={schedule.description}
-									date={schedule.start_date_time}
-									location={schedule.location}
+								<SubscriptionCard
+									id={subscription.id}
+									key={subscription.id}
+									userId={subscription.user_id}
+									influencerId={subscription.influencer_id}
 								/>
 							);
 						})}
@@ -119,7 +115,8 @@ const mapStateToProps = state => {
 		fetchingSchedule: state.fetchingSchedule,
 		fetchingEvents: state.fetchingEvents,
 		schedules: state.scheduleReducer.schedules,
-		eventsList: state.eventReducer.events
+		eventsList: state.eventReducer.events,
+		subscriptions: state.subscriptionReducer.subscriptions
 	};
 };
 
