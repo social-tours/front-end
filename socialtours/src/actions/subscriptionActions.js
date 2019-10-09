@@ -43,3 +43,19 @@ export const getSubscriptions = () => async dispatch => {
 		console.log("getSubscriptions() error: ", err);
 	}
 };
+
+export const toggleMarketing = (id, marketing_opt_in) => async dispatch => {
+	let body = { marketing_opt_in: !marketing_opt_in };
+
+	try {
+		let sub = await axios.put(`${API_ENDPOINT}${SUBSCRIPTIONS}/${id}`, body);
+
+		dispatch({
+			type: types.UPDATE_SUBSCRIPTION_SUCCESS,
+			updatedSub: sub.data
+		});
+	} catch (err) {
+		console.log(err);
+		return false;
+	}
+};

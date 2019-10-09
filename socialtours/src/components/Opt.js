@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { getSubscriptions } from "../actions/subscriptionActions";
+import {
+	getSubscriptions,
+	toggleMarketing
+} from "../actions/subscriptionActions";
 
 class Opt extends Component {
 	componentDidMount() {
@@ -11,7 +14,17 @@ class Opt extends Component {
 		return (
 			<ul style={{ marginTop: "40px" }}>
 				{this.props.subscriptions.map(sub => (
-					<li>{sub.influencer_name}</li>
+					<li>
+						{sub.influencer_name}
+						<input
+							id="checkid"
+							type="checkbox"
+							checked={sub.marketing_opt_in}
+							onChange={() =>
+								this.props.toggleMarketing(sub.id, sub.marketing_opt_in)
+							}
+						/>
+					</li>
 				))}
 			</ul>
 		);
@@ -27,5 +40,5 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ getSubscriptions }
+	{ getSubscriptions, toggleMarketing }
 )(Opt);
