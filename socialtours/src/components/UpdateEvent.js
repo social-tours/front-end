@@ -9,7 +9,7 @@ import { fetchEvent, putEvent, deleteEvent } from "../actions/eventActions";
 import { API_ENDPOINT } from "../config/api.js";
 const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
 
-class UpdateDeleteEvent extends React.Component {
+class UpdateEvent extends React.Component {
 	state = {
 		id: "",
 		type: "",
@@ -174,7 +174,7 @@ const mapStateToProps = state => {
 export default connect(
 	mapStateToProps,
 	{ fetchEvent, putEvent, deleteEvent }
-)(UpdateDeleteEvent);
+)(UpdateEvent);
 
 // ** Event Details - Objects in WireFrame **
 // Wir
