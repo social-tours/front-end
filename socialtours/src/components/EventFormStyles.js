@@ -3,10 +3,11 @@ import styled from "styled-components";
 import { colors } from "./DesignComponents/theme";
 
 const EventFormStyles = styled.div`
-	margin: 20px auto;
+	margin: 50px auto;
 	//margin-top: 50px;
 	display: flex;
 	width: 100%;
+	max-width: 300px;
 	align-content: center;
 	align-items: center;
 	justify-content: space-between;

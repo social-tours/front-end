@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
+
+import EventFormStyles from "./EventFormStyles";
 const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
 
 class EditEvent extends React.Component {
@@ -52,57 +54,59 @@ class EditEvent extends React.Component {
 
 	render() {
 		return (
-			<form
-				style={{
-					margin: "0 auto",
-					marginTop: "40px",
-					height: "50vh",
-					width: "50%",
-					display: "flex",
-					flexDirection: "column"
-				}}
-				onSubmit={this.updateEvent}
-			>
-				<input
-					name="type"
-					placeholder="type"
-					onChange={this.handleChange}
-					value={this.state.type}
-					type="number"
-				/>
-				<input
-					name="title"
-					placeholder="title"
-					onChange={this.handleChange}
-					value={this.state.title}
-				/>
-				<input
-					name="host_ID"
-					placeholder="host_ID"
-					onChange={this.handleChange}
-					value={this.state.host_ID}
-				/>
-				<input
-					name="description"
-					placeholder="description"
-					onChange={this.handleChange}
-					value={this.state.description}
-				/>
-				<input
-					name="event_image"
-					placeholder="event_image"
-					onChange={this.handleChange}
-					value={this.state.event_image}
-				/>
-				<input
-					name="capacity"
-					placeholder="capacity"
-					onChange={this.handleChange}
-					value={this.state.capacity}
-					type="number"
-				/>
-				<button type="submit">Update Event</button>
-			</form>
+			<EventFormStyles>
+				<form
+					style={{
+						margin: "0 auto",
+						marginTop: "40px",
+						height: "50vh",
+						width: "50%",
+						display: "flex",
+						flexDirection: "column"
+					}}
+					onSubmit={this.updateEvent}
+				>
+					<input
+						name="type"
+						placeholder="type"
+						onChange={this.handleChange}
+						value={this.state.type}
+						type="number"
+					/>
+					<input
+						name="title"
+						placeholder="title"
+						onChange={this.handleChange}
+						value={this.state.title}
+					/>
+					<input
+						name="host_ID"
+						placeholder="host_ID"
+						onChange={this.handleChange}
+						value={this.state.host_ID}
+					/>
+					<input
+						name="description"
+						placeholder="description"
+						onChange={this.handleChange}
+						value={this.state.description}
+					/>
+					<input
+						name="event_image"
+						placeholder="event_image"
+						onChange={this.handleChange}
+						value={this.state.event_image}
+					/>
+					<input
+						name="capacity"
+						placeholder="capacity"
+						onChange={this.handleChange}
+						value={this.state.capacity}
+						type="number"
+					/>
+					<button type="submit">Update Event</button>
+				</form>
+			</EventFormStyles>
 		);
 	}
 }

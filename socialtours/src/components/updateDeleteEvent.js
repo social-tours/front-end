@@ -1,7 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import EventFormStyles from "../components/DesignComponents/EventFormStyles.js";
+//import EventFormStyles from "../components/DesignComponents/EventFormStyles.js";
+
+import EventFormStyles from "./EventFormStyles";
 
 import { fetchEvent, putEvent, deleteEvent } from "../actions/eventActions";
 import { API_ENDPOINT } from "../config/api.js";
