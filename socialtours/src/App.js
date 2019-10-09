@@ -16,6 +16,7 @@ import Dashboard from "./components/Dashboard";
 import Credits from "./components/MediaComponents/Credits";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
+import Opt from "./components/Opt";
 import Callback from "./components/UserComponents/Callback";
 import Calendar from "./components/EventCalendar";
 import UpdateDeleteEvent from "./components/updateDeleteEvent.js";
@@ -78,6 +79,7 @@ class App extends Component {
 						}
 					/>
 					<Route path="/AboutUsContact" component={AboutUsContact} />
+					<Route path="/opt" component={Opt} />
 				</Switch>
 			</Router>
 		);
