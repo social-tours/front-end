@@ -5,8 +5,8 @@ import { API_ENDPOINT } from '../config/api';
 
 class Search extends React.Component {
 	state = {
-        results: [],
-        search: 'Search for an influencer'
+		results: [],
+		search: 'Search for an influencer'
 	};
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
@@ -15,53 +15,53 @@ class Search extends React.Component {
 		}
 	}
 
-    handleChange(e) {
-        e.preventDefault();
-        this.setState({
-            [e.target.name] : e.target.value
-        })
-    }
+	handleChange = (e) => {
+		e.preventDefault();
+		this.setState({
+			search: e.target.value
+		})
+	}
 
-    fetchResults = e => {
-        e.preventDefault();
-        axios.get(API_ENDPOINT + `/search/${this.state.search}`)
-        .then(res => {
-            this.setState({
-                results : res.data
-            })
-        })
-        .catch(e => {
-            console.log(e);
-        })
-    };
+	fetchResults = e => {
+		e.preventDefault();
+		axios.get(API_ENDPOINT + `/search/${this.state.search}`)
+			.then(res => {
+				this.setState({
+					results: res.data
+				})
+			})
+			.catch(e => {
+				console.log(e);
+			})
+	};
 
 	render() {
 		if (this.state.results.length === 0)
 			return (
 				<Section>
-                    <SearchBar />
-                    <SearchResults placeholder="Search for an influencer"
-                                name="search"
-                                value={this.state.search}
-                                onChange={this.handleChange} 
-                    />
-                    <SearchBtn onClick={this.fetchResults}>Search</SearchBtn>
-                </Section>
+					<SearchBar placeholder="Search for an influencer"
+						name="search"
+						value={this.state.search}
+						onChange={this.handleChange} />
+					<SearchResults
+					/>
+					<SearchBtn onClick={this.fetchResults}>Search</SearchBtn>
+				</Section>
 			);
 
 		return (
-            <Section>
-                <SearchBar />
-                <SearchResults placeholder="Search for an influencer"
-                               name="search"
-                               value={this.state.search}
-                               onChange={this.handleChange} 
-                />
-                <SearchBtn onClick={this.fetchResults}>Search</SearchBtn>
-                <SearchResults >
-                    {this.state.results && this.state.results.map(result => <SearchResult {...result} />)}
-                </SearchResults>
-            </Section>
+			<Section>
+				<SearchBar placeholder="Search for an influencer"
+					name="search"
+					value={this.state.search}
+					onChange={this.handleChange} />
+				<SearchResults
+				/>
+				<SearchBtn onClick={this.fetchResults}>Search</SearchBtn>
+				<SearchResults >
+					{this.state.results && this.state.results.map(result => <SearchResult {...result} />)}
+				</SearchResults>
+			</Section>
 		);
 	}
 }
