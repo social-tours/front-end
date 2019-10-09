@@ -47,9 +47,15 @@ class EventCard extends Component {
 					<p>Description: {this.props.description}</p>
 					{/* <p>Time: {this.props.date}</p>
 					<p>Location: {this.props.location}</p> */}
-					<Link type="submit" to={`/events/${this.props.id}`}>
-						EDIT / DELETE
-					</Link>
+					<button
+						type="submit"
+						onClick={() => this.props.history.push(`/events/${this.props.id}`)}
+					>
+						Edit
+					</button>
+					<button onClick={e => this.deleteEvent(e, this.state.id)}>
+						Delete
+					</button>
 				</div>
 				<div style={{ paddingRight: "8px" }} className="event-card-right">
 					<FacebookShareButton

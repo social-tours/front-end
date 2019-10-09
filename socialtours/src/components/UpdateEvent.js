@@ -153,9 +153,6 @@ class UpdateEvent extends React.Component {
 					<button onClick={e => this.putEvent(e, this.props.match.params.id)}>
 						Update This Event
 					</button>
-					<button onClick={e => this.deleteEvent(e, this.state.id)}>
-						Delete This Event
-					</button>
 				</form>
 			</EventFormStyles>
 		);
