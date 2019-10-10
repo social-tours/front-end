@@ -3,7 +3,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
-import { getSchedules } from "./actions/schedules";
+import { getSchedules } from "./actions/scheduleActions";
 
 import "./App.css";
 import Login from "./components/UserComponents/Login";

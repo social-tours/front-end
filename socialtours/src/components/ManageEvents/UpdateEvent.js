@@ -151,8 +151,7 @@ class UpdateEvent extends React.Component {
 }
 
 const mapStateToProps = state => {
-	// console.log(state, 'hello from UpdateDeleteEvent');
-	// console.log("MSTP update/delete", state)
+	console.log(state.scheduleReducer);
 	return {
 		event: state.event,
 		deletingEvent: state.deletingEvent

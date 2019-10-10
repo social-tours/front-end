@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
 import EventCard from "./EventCard";
-import { getSchedules } from "../../actions/schedules";
+import { getSchedules } from "../../actions/scheduleActions";
 import { fetchEvents } from "../../actions/eventActions";
 import { getUserId } from "../../utils";
 import {

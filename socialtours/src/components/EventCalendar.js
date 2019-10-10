@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 import Calendar from "react-calendar";
-import { getSchedules } from "../actions/schedules";
+import { getSchedules } from "../actions/scheduleActions";
 import { colors } from "./DesignComponents/theme";
 
 class EventCalendar extends Component {
