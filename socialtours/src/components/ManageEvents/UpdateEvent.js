@@ -3,10 +3,12 @@ import { connect } from "react-redux";
 import axios from "axios";
 //import EventFormStyles from "../components/DesignComponents/EventFormStyles.js";
 
+import ScheduleEvent from "./ScheduleEvent";
+
 import EventFormStyles from "./EventFormStyles";
 
-import { fetchEvent, putEvent, deleteEvent } from "../actions/eventActions";
-import { API_ENDPOINT } from "../config/api.js";
+import { fetchEvent, putEvent, deleteEvent } from "../../actions/eventActions";
+import { API_ENDPOINT } from "../../config/api.js";
 const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
 
 class UpdateEvent extends React.Component {
@@ -84,17 +86,6 @@ class UpdateEvent extends React.Component {
 		// this.props.toggleUpdate();
 	};
 
-	deleteEvent = async (e, id) => {
-		e.preventDefault();
-		// this.props.deleteEvent(this.props.event.id)
-		//await axios.delete(API + `/api/events/2`);
-		this.props.deleteEvent(id);
-		// do something
-		//alert("Event has been deleted");
-		this.props.history.push("/manageevents");
-		//console.log("DELETE", deleteEvent);
-	};
-
 	myTestEventPost = async () => {
 		// to test the API, not plugged in when working
 		const testEvent = {
@@ -149,7 +140,7 @@ class UpdateEvent extends React.Component {
 						value={this.state.capacity}
 						type="number"
 					/>
-
+					<ScheduleEvent />
 					<button onClick={e => this.putEvent(e, this.props.match.params.id)}>
 						Update This Event
 					</button>

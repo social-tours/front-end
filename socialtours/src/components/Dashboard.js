@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import CreateEvent from "./createEvent";
+import CreateEvent from "./ManageEvents/createEvent";
 import moment from "moment";
 import { withRouter } from "react-router-dom";
 import Loader from "react-loader";

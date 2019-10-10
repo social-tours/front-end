@@ -2,7 +2,7 @@ import React from "react";
 import axios from "axios";
 import { Redirect } from "react-router-dom";
 
-import EventFormStyles from "./EventFormStyles";
+import EventFormStyles from "./ManageEvents/EventFormStyles";
 const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
 
 class EditEvent extends React.Component {

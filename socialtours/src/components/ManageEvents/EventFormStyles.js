@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { colors } from "./DesignComponents/theme";
+import { colors } from "../DesignComponents/theme";
 
 const EventFormStyles = styled.div`
 	margin: 50px auto;

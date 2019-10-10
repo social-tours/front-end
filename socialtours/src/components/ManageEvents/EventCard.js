@@ -1,6 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
+import { connect } from "react-redux";
 
+import { deleteEvent } from "../../actions";
 import { EventCardWrapper } from "./ManageEventsStyles";
 
 import {
@@ -31,6 +33,18 @@ class EventCard extends Component {
 
 		return newDate.join("-");
 	};
+
+	deleteEvent = async (e, id) => {
+		e.preventDefault();
+		// this.props.deleteEvent(this.props.event.id)
+		//await axios.delete(API + `/api/events/2`);
+		this.props.deleteEvent(id);
+		// do something
+		//alert("Event has been deleted");
+		this.props.history.push("/manageevents");
+		//console.log("DELETE", deleteEvent);
+	};
+
 	render() {
 		const {
 			size = "2.5rem",
@@ -53,7 +67,7 @@ class EventCard extends Component {
 					>
 						Edit
 					</button>
-					<button onClick={e => this.deleteEvent(e, this.state.id)}>
+					<button onClick={e => this.deleteEvent(e, this.props.id)}>
 						Delete
 					</button>
 				</div>
@@ -96,4 +110,7 @@ class EventCard extends Component {
 	}
 }
 
-export default EventCard;
+export default connect(
+	null,
+	{ deleteEvent }
+)(withRouter(EventCard));
