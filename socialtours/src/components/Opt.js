@@ -7,6 +7,7 @@ import {
 
 class Opt extends Component {
 	componentDidMount() {
+		// change to get by userId
 		this.props.getSubscriptions();
 	}
 

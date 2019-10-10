@@ -44,6 +44,8 @@ export const getSubscriptions = () => async dispatch => {
 	}
 };
 
+// add get by userId action
+
 export const toggleMarketing = (id, marketing_opt_in) => async dispatch => {
 	let body = { marketing_opt_in: !marketing_opt_in };
 
