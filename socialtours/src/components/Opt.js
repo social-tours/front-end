@@ -1,14 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
-	getSubscriptions,
+	getSubscriptionsByUserId,
 	toggleMarketing
 } from "../actions/subscriptionActions";
 
 class Opt extends Component {
 	componentDidMount() {
-		// change to get by userId
-		this.props.getSubscriptions();
+		this.props.getSubscriptionsByUserId();
 	}
 
 	render() {
@@ -16,7 +15,8 @@ class Opt extends Component {
 			<ul style={{ marginTop: "40px" }}>
 				{this.props.subscriptions.map(sub => (
 					<li>
-						{sub.influencer_name}
+						{/* change to influencer name later  */}
+						{sub.influencer_id}
 						<input
 							id="checkid"
 							type="checkbox"
@@ -41,5 +41,5 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ getSubscriptions, toggleMarketing }
+	{ getSubscriptionsByUserId, toggleMarketing }
 )(Opt);

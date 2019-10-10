@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 import { API_ENDPOINT } from "../config/api";
 
 const SUBSCRIPTIONS = "/api/subscriptions";
@@ -44,7 +45,26 @@ export const getSubscriptions = () => async dispatch => {
 	}
 };
 
-// add get by userId action
+export const getSubscriptionsByUserId = () => async dispatch => {
+	let userId = jwt_decode(localStorage.getItem("api_token")).id;
+
+	try {
+		let subs = await axios.get(`${API_ENDPOINT}${SUBSCRIPTIONS}/${userId}`);
+		subs.status === 200
+			? dispatch({
+					type: types.FETCH_SUBSCRIPTION_SUCCESS,
+					payload: subs.data
+			  })
+			: dispatch({
+					type: types.FETCH_SUBSCRIPTION_FAILED
+			  });
+	} catch (err) {
+		dispatch({
+			type: types.FETCH_SUBSCRIPTION_FAILED
+		});
+		console.log(err);
+	}
+};
 
 export const toggleMarketing = (id, marketing_opt_in) => async dispatch => {
 	let body = { marketing_opt_in: !marketing_opt_in };
