@@ -16,7 +16,7 @@ class Opt extends Component {
 				{this.props.subscriptions.map(sub => (
 					<li>
 						{/* change to influencer name later  */}
-						{sub.influencer_id}
+						{sub.influencer_name}
 						<input
 							id="checkid"
 							type="checkbox"
