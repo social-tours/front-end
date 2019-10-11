@@ -110,16 +110,14 @@ export default class Auth {
 	};
 
 	isAuthenticated() {
-		let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
-		return new Date().getTime() < expiresAt;
-		// if (localStorage.getItem("api_token")) {
-		// 	let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
-		// 	return new Date().getTime() < expiresAt;
-		// } else {
-		// 	console.log("User is NOT authenticated");
-		// 	// localStorage.clear();
-		// 	return false;
-		// }
+		if (localStorage.getItem("api_token")) {
+			let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
+			return new Date().getTime() < expiresAt;
+		} else {
+			console.log("User is NOT authenticated");
+			// localStorage.clear();
+			return false;
+		}
 	}
 
 	logout() {
