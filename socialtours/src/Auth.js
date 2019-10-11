@@ -115,7 +115,7 @@ export default class Auth {
 			return new Date().getTime() < expiresAt;
 		} else {
 			console.log("User is NOT authenticated");
-			localStorage.clear();
+			// localStorage.clear();
 			return false;
 		}
 	}
