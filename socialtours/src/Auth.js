@@ -4,7 +4,7 @@ import jwtDecode from "jwt-decode";
 
 import { REDIRECT_URI } from "./config/api";
 
-const LOGIN_SUCCESS_PAGE = "/protected";
+//const LOGIN_SUCCESS_PAGE = "/protected";
 const LOGIN_FAILURE_PAGE = "/";
 const auth0Settings = {
 	domain: "dev-r8zrga7p.auth0.com",
@@ -110,8 +110,13 @@ export default class Auth {
 	};
 
 	isAuthenticated() {
-		let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
-		return new Date().getTime() < expiresAt;
+		if (localStorage.getItem("api_token")) {
+			let expiresAt = JSON.parse(localStorage.getItem("expires_at"));
+			return new Date().getTime() < expiresAt;
+		} else {
+			console.log("User is NOT authenticated");
+			return false;
+		}
 	}
 
 	logout() {

@@ -119,4 +119,9 @@ export const FormButton = styled(Button)`
 		`};
 `;
 
+export const MessageContainer = styled.div`
+	text-align: center;
+	font-size: ${fontSizing.xxs};
+`;
+
 export default FormContainer;

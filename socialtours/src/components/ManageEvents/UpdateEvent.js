@@ -23,23 +23,19 @@ class UpdateEvent extends React.Component {
 	};
 
 	componentDidUpdate(prevProps) {
-		// Typical usage (don't forget to compare props):
 		if (this.props.id !== prevProps.id) {
 			this.fetchData(this.props.userID);
 		}
 	}
 
 	componentDidMount = async () => {
-		// How to populate fields with current data - 9/5/19
-		const currentEvent = this.handleFetchEvent();
-		// const events = await axios.get(API + `/api/events/1`)
+		// const currentEvent = this.handleFetchEvent();
 		const res = await axios.get(
 			API_ENDPOINT + `/api/events/${this.props.match.params.id}`
 		);
 		const event = res.data;
 		console.log(event);
 
-		// console.log('My CDM Props', event)
 		this.setState({
 			id: event.id,
 			type: event.type,
@@ -60,13 +56,10 @@ class UpdateEvent extends React.Component {
 	};
 
 	handleFetchEvent = async (e, id) => {
-		// e.preventDefault();
 		let updatedData = {
 			...this.state
 		};
-		// return await this.props.fetchEvent(12)
 		const event = await axios.get(API + `/api/events/${id}`);
-		// console.log('CONSOLE LOG DATA', event)
 		return event;
 	};
 
@@ -76,18 +69,19 @@ class UpdateEvent extends React.Component {
 			...this.state
 		};
 		delete updatedData.id;
-		// updatedData.host_id = parseInt(updatedData.host_id, 10);
-		// updatedData.capacity = parseInt(updatedData.capacity, 10);
 		console.log("STUFF IM SENDING", updatedData);
 		const myFunction = await axios.put(API + `/api/events/${id}`, updatedData);
 		console.log("UPDATE RESULTS", myFunction.data);
 		this.props.history.push(`/events/${id}`);
-		// this.props.putEvent(id, updatedData);
-		// this.props.toggleUpdate();
+	};
+
+	deleteEvent = async (e, id) => {
+		e.preventDefault();
+		this.props.deleteEvent(id);
+		this.props.history.push("/manageevents");
 	};
 
 	myTestEventPost = async () => {
-		// to test the API, not plugged in when working
 		const testEvent = {
 			...this.state
 		};
@@ -98,9 +92,7 @@ class UpdateEvent extends React.Component {
 	render() {
 		return (
 			<EventFormStyles>
-				<form
-				// onSubmit = { this.handleFetchEvent }
-				>
+				<form>
 					<input
 						name="type"
 						placeholder={this.state.type}
@@ -140,18 +132,22 @@ class UpdateEvent extends React.Component {
 						value={this.state.capacity}
 						type="number"
 					/>
-					<ScheduleEvent />
 					<button onClick={e => this.putEvent(e, this.props.match.params.id)}>
 						Update This Event
 					</button>
 				</form>
+				<ScheduleEvent
+					title={this.state.title}
+					description={this.state.description}
+					event_id={this.state.id}
+					host_id={this.state.host_id}
+				/>
 			</EventFormStyles>
 		);
 	}
 }
 
 const mapStateToProps = state => {
-	console.log(state.scheduleReducer);
 	return {
 		event: state.event,
 		deletingEvent: state.deletingEvent
