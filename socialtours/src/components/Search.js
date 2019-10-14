@@ -24,7 +24,7 @@ class Search extends React.Component {
 
 	fetchResults = e => {
 		e.preventDefault();
-		axios.get(API_ENDPOINT + `/search/${this.state.search}`)
+		axios.get(API_ENDPOINT + `/api/search/${this.state.search}`)
 			.then(res => {
 				this.setState({
 					results: res.data
