@@ -4,8 +4,11 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import EventCard from "./EventCard";
+import SubscriptionCard from "./SubscriptionCard";
 import { getSchedules } from "../../actions/schedules";
 import { fetchEvents } from "../../actions/eventActions";
+import { getSubscriptions } from "../../actions/subscriptionActions";
+
 import {
 	EventContainer,
 	EventsWrapper,
@@ -20,7 +23,7 @@ class ManageEvents extends Component {
 	componentDidMount() {
 		this.props.getSchedules();
 		this.props.fetchEvents();
-		console.log(this.props.eventsList);
+		this.props.getSubscriptions();
 	}
 
 	render() {
@@ -50,6 +53,7 @@ class ManageEvents extends Component {
 								return (
 									<EventCard
 										id={schedule.id}
+										userId={schedule.host_id}
 										key={schedule.id}
 										title={schedule.title}
 										description={schedule.description}
@@ -61,6 +65,21 @@ class ManageEvents extends Component {
 						})}
 					</EventsWrapper>
 
+					{/* Debugging code below for Subscriptions */}
+					{/* <EventSectionTitle>Your Subscriptions</EventSectionTitle>
+					<EventsWrapper>
+						{this.props.subscriptions.map(subscription => {
+							return (
+								<SubscriptionCard
+									id={subscription.id}
+									key={subscription.id}
+									userId={subscription.user_id}
+									influencerId={subscription.influencer_id}
+								/>
+							);
+						})}
+					</EventsWrapper> */}
+
 					<EventSectionTitle>Past Events</EventSectionTitle>
 					<EventsWrapper>
 						{this.props.eventsList &&
@@ -68,6 +87,7 @@ class ManageEvents extends Component {
 								return (
 									<EventCard
 										id={event.id}
+										userId={event.host_id}
 										key={event.id}
 										title={event.title}
 										capacity={event.capacity}
@@ -96,15 +116,16 @@ const mapStateToProps = state => {
 		fetchingSchedule: state.fetchingSchedule,
 		fetchingEvents: state.fetchingEvents,
 		schedules: state.scheduleReducer.schedules,
-		eventsList: state.eventReducer.events
+		eventsList: state.eventReducer.events,
+		subscriptions: state.subscriptionReducer.subscriptions
 	};
 };
 
 export default connect(
 	mapStateToProps,
-	{ getSchedules, fetchEvents }
+	{ getSchedules, fetchEvents, getSubscriptions }
 )(ManageEvents);
 
-const ManageEventWrapper = styled.div`
-	background-color: colors.putty;
-`;
+// const ManageEventWrapper = styled.div`
+// 	background-color: colors.putty
+// `;
