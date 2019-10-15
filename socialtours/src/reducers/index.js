@@ -3,6 +3,7 @@ import authReducer from "./authReducer.js";
 import scheduleReducer from "./scheduleReducer";
 import registerReducer from "./registerReducer";
 import userReducer from "./userReducers";
+import subscriptionReducer from "./subscriptionReducer";
 
 import { combineReducers } from "redux";
 
@@ -11,5 +12,6 @@ export default combineReducers({
 	authReducer,
 	scheduleReducer,
 	registerReducer,
-	userReducer
+	userReducer,
+	subscriptionReducer
 });

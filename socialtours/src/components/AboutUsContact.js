@@ -9,6 +9,9 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { IoLogoGithub, IoLogoLinkedin, IoLogoTwitter } from 'react-icons/io';
+import styled from "styled-components";
+
 
 import Gannon from "../images/gannon.png";
 import Michael from "../images/michael.png";
@@ -18,6 +21,7 @@ import Adam from "../images/adam.png";
 import Greg from "../images/greg.png";
 import Rane from "../images/rane.png";
 import James from "../images/james.png";
+import { typography } from '@material-ui/system';
 
 const useStyles = makeStyles(theme => ({
   icon: {
@@ -48,6 +52,7 @@ const useStyles = makeStyles(theme => ({
   },
   cardContent: {
     flexGrow: 1,
+  
   },
   contact: {
     backgroundColor: theme.palette.background.paper,
@@ -73,8 +78,23 @@ const useStyles = makeStyles(theme => ({
       background: "#14e576",
       color: "black"
     }
-  }
+  },
 }));
+
+
+const StlyedIoLogoGithub = styled(IoLogoGithub)`
+  width: 2.5rem;
+  height: 2.5rem;
+`
+const StlyedIoLogoLinkedin = styled(IoLogoLinkedin)`
+  width: 2.5rem;
+  height: 2.5rem;
+`
+
+const StlyedIoLogoTwitter = styled(IoLogoTwitter)`
+  width: 2.5rem;
+  height: 2.5rem;
+`
 
 const cards = [1];
 
@@ -104,11 +124,14 @@ export default function About() {
                     <img src={Gannon} alt="Gannon" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Gannon Darcy </Typography>
-                      <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                      <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
+                      <Typography>
+                        <a target="_blank" rel="noopener noreferrer"href="https://www.gannon.dev">Portfolio Website</a>
+                      </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GannonDetroit"> GitHub </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/gannon-darcy-b8345073/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GannonDetroit"> <StlyedIoLogoGithub /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/gannon-darcy-b8345073/"> <StlyedIoLogoLinkedin /> </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -121,11 +144,14 @@ export default function About() {
                     <img src={Michael} alt="Michael" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Michael Jenkins </Typography>
-                      <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                      <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
+                      <Typography>
+                        <a target="_blank" rel="noopener noreferrer"href="https://fullstackurban.com">Portfolio Website</a>
+                      </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/mjenkins9605" > GitHub </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/michaeljenkins9605/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/mjenkins9605" > <StlyedIoLogoGithub /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/michaeljenkins9605/"> <StlyedIoLogoLinkedin /> </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -138,11 +164,11 @@ export default function About() {
                     <img src={Louis} alt="Louis" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Louis Magdaleno </Typography>
-                      <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                      <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/louismagdaleno"> GitHub </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/louis-magdaleno/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/louismagdaleno"> <StlyedIoLogoGithub /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/louis-magdaleno/"> <StlyedIoLogoLinkedin /> </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -155,11 +181,11 @@ export default function About() {
                     <img src={Wilfred} alt="Wilfred" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Wilfred Morgan </Typography>
-                      <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                      <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/"> GitHub </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/"> <StlyedIoLogoGithub /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/"> <StlyedIoLogoLinkedin /> </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -172,11 +198,11 @@ export default function About() {
                     <img src={Adam} alt="Adam" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Adam Nawrocki </Typography>
-                      <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                      <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/bcuz"> GitHub </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/adam-nawrocki-1b0b60b4/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/bcuz"> <StlyedIoLogoGithub /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/adam-nawrocki-1b0b60b4/"> <StlyedIoLogoLinkedin /> </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -189,11 +215,11 @@ export default function About() {
                     <img src={Greg} alt="Greg" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Greg Urban </Typography>
-                      <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                      <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GregoryUrban"> GitHub </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/glurban/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/GregoryUrban"> <StlyedIoLogoGithub /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/glurban/"> <StlyedIoLogoLinkedin /> </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -206,11 +232,15 @@ export default function About() {
                     <img src={Rane} alt="Rane" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Rane Wallin </Typography>
-                      <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                      <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
+                      <Typography>
+                        <a target="_blank" rel="noopener noreferrer"href="https://blasph.me">Portfolio Website</a>
+                      </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/RaneWallin"> GitHub </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/rane-wallin"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/RaneWallin"> <StlyedIoLogoGithub /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/rane-wallin"> <StlyedIoLogoLinkedin /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/Jim_Wig"> <StlyedIoLogoTwitter /> </a>                      
                     </CardActions>
                   </Card>
                 </Grid>
@@ -223,11 +253,12 @@ export default function About() {
                     <img src={James} alt="James" height="300" width="300" />
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> James Wigdor </Typography>
-                      <Typography className={"AboutTitle"} variant={"h6"}> Full-Stack Developer </Typography>
+                      <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
                     </CardContent>
                     <CardActions>
-                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/jpwigdor"> GitHub </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jameswigdor/"> LinkedIn </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://github.com/jpwigdor"> <StlyedIoLogoGithub /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jameswigdor/"> <StlyedIoLogoLinkedin /> </a>
+                      <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/rane_wallin"> <StlyedIoLogoTwitter /> </a>                      
                     </CardActions>
                   </Card>
                 </Grid>

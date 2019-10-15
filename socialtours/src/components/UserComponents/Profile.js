@@ -6,6 +6,21 @@ import { fetchUser, updateUser, deleteUser } from "../../actions";
 
 import * as S from "./FormStyles";
 class Profile extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			id: null,
+			email: "",
+			first_name: "",
+			last_name: "",
+			password: "",
+			phone_nbr: "",
+			type: "",
+			isUpdated: false
+		};
+
+		this.buttonDOM = React.createRef();
+	}
 	state = {
 		id: null,
 		email: "",
@@ -23,8 +38,7 @@ class Profile extends Component {
 	 */
 	handleInput = e => {
 		this.setState({ [e.target.name]: e.target.value }, () => {
-			console.log("first_name", this.state.first_name)
-
+			console.log("comm_preference", this.state.comm_preference);
 		});
 	};
 
@@ -60,7 +74,7 @@ class Profile extends Component {
 				password,
 				type,
 				comm_preference
-			});
+			}, () => console.log("this.state AFTER pre-populate: ", this.state));
 		}
 	};
 
@@ -70,14 +84,47 @@ class Profile extends Component {
 	 */
 	handleUpdate = e => {
 		e.preventDefault();
-		this.props.updateUser(this.state.id, this.state);
+		const {
+			id,
+			email,
+			first_name,
+			last_name,
+			phone_nbr,
+			password,
+			type,
+			comm_preference
+		} = this.state;
+
+		const updatedData = {
+			id,
+			first_name,
+			last_name,
+			email,
+			phone_nbr,
+			password,
+			type,
+			comm_preference
+		};
+		this.props.updateUser(this.state.id, updatedData);
+		this.buttonDOM.current.blur();
 	};
 
 	componentDidMount() {
 		this.getUserId();
 		console.log("CDM getUserID: ", this.getUserId());
+		console.log("CDM this.props.user", this.props.user);
 		if (this.getUserId()) {
 			this.prePopulateForm(this.getUserId().id);
+			console.log("CDM this.props.user AFTER prepopulate: ", this.props.user);
+		}
+	}
+
+	componentDidUpdate(prevProps, prevState) {
+		//console.log("CDU this.props.user", this.props.user);
+		if (prevProps.user && prevProps.user !== this.props.user) {
+			console.log("CDU prevProps.user", prevProps.user);
+			console.log("CDU this.props.user has changed", this.props.user);
+			this.setState({ isUpdated: true });
 		}
 	}
 
@@ -126,14 +173,13 @@ class Profile extends Component {
 					<label htmlFor="password">Minimum length is 8 characters</label>
 
 					<div className="radio">
-
 						<p>Select a communication preference: </p>
 						<label>
 							<input
 								type="radio"
 								name="comm_preference"
-								value="0"
-								checked={this.state.comm_preference === "0"}
+								value="1"
+								checked={this.state.comm_preference == 1}
 								onChange={this.handleInput}
 							/>
 							Email
@@ -143,19 +189,19 @@ class Profile extends Component {
 							<input
 								type="radio"
 								name="comm_preference"
-								value="1"
-								checked={this.state.comm_preference === "1"}
+								value="2"
+								checked={this.state.comm_preference == 2}
 								onChange={this.handleInput}
 							/>
-							Text Message
+							SMS
 						</label>
 
 						<label>
 							<input
 								type="radio"
 								name="comm_preference"
-								value="2"
-								checked={this.state.comm_preference === "2"}
+								value="3"
+								checked={this.state.comm_preference == 3}
 								onChange={this.handleInput}
 							/>
 							Both
@@ -165,15 +211,17 @@ class Profile extends Component {
 							<input
 								type="radio"
 								name="comm_preference"
-								value="3"
-								checked={this.state.comm_preference === "3"}
+								value="0"
+								checked={this.state.comm_preference == 0}
 								onChange={this.handleInput}
 							/>
-							No Notifications
+							None
 						</label>
 					</div>
-
-					<S.FormButton onClick={this.handleUpdate} update>
+					{this.state.isUpdated && (
+						<S.MessageContainer>User settings updated</S.MessageContainer>
+					)}
+					<S.FormButton onClick={this.handleUpdate} ref={this.buttonDOM} update>
 						Save Changes
 					</S.FormButton>
 				</form>
