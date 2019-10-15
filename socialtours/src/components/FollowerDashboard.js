@@ -1,7 +1,9 @@
 import React from "react";
 import axios from "axios";
+import { connect } from "react-redux";
 import { API_ENDPOINT } from "../config/api";
 import styled from "styled-components";
+import { fetchEvents } from "../actions/eventActions";
 
 // TODO -- get userID from global state and send it in GET request to subscriptions
 
@@ -13,31 +15,7 @@ class FollowerDashboard extends React.Component {
 	};
 
 	componentDidMount = () => {
-		let newEvents = [];
-		let newFollowed = [];
-
-		axios
-			.get(API_ENDPOINT + "/api/events")
-			.then(res => {
-				newEvents = res.data;
-			})
-			.catch(err => {
-				console.log(err);
-			});
-
-		axios
-			.get(API_ENDPOINT + `/api/subscriptions/${this.state.userId}`)
-			.then(res => {
-				newFollowed = res.data;
-			})
-			.catch(err => {
-				console.log(err);
-			});
-
-		this.setState({
-			events: newEvents,
-			followed: newFollowed
-		});
+		this.props.fetchEvents();
 	};
 
 	render = () => {
@@ -45,8 +23,8 @@ class FollowerDashboard extends React.Component {
 			<Wrapper>
 				<h1>Follower Dashboard</h1>
 				<div className="events">
-					{this.state.events &&
-						this.state.events.map(event => <div>{event.title}</div>)}
+					{this.props.events &&
+						this.props.events.map(event => <div>{event.title}</div>)}
 				</div>
 				<div className="followed">
 					{this.state.followed &&
@@ -66,4 +44,13 @@ const Wrapper = styled.div`
 	color: #fff;
 `;
 
-export default FollowerDashboard;
+const mapStateToProps = state => {
+	return {
+		events: state.eventReducer.events
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	{ fetchEvents }
+)(FollowerDashboard);
