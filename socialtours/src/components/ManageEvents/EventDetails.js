@@ -21,11 +21,10 @@ const useStyles = makeStyles(theme => ({
 
 const EventDetails = props => {
 	const classes = useStyles();
-	console.log(props);
 
 	return (
 		<div className={classes.root}>
-			<ExpansionPanel>
+			<ExpansionPanel expanded={props.expanded}>
 				<ExpansionPanelSummary
 					expandIcon={<ExpandMoreIcon />}
 					id={`${props.id}_header`}
@@ -34,7 +33,8 @@ const EventDetails = props => {
 				</ExpansionPanelSummary>
 				<ExpansionPanelDetails>
 					<div>
-						{props.schedule.length > 0 &&
+						{props.schedule &&
+							props.schedule.length > 0 &&
 							props.schedule.map(schd => {
 								let date = new Date(schd.start_date_time);
 								return (

@@ -64,7 +64,6 @@ const EventCalendar = props => {
 
 		// check for any schedules that match the date
 		if (schedules && schedules.length > 0) {
-			console.log("schedules in checkSchedule", schedules);
 			dates = schedules.filter(schedule => {
 				//console.log(schedule);
 				return schedule.start_date_time.includes(`${sYear}-${sMonth}-${sDay}`);

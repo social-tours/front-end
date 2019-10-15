@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
+import styled from "styled-components";
 //import EventFormStyles from "../components/DesignComponents/EventFormStyles.js";
 
 import ScheduleEvent from "./ScheduleEvent";
+import EventDetails from "./EventDetails";
 
 import EventFormStyles from "./EventFormStyles";
 
@@ -19,7 +21,8 @@ class UpdateEvent extends React.Component {
 		host_id: "", //FK to user_ID
 		description: "",
 		event_image: "",
-		capacity: ""
+		capacity: "",
+		event: {}
 	};
 
 	componentDidUpdate(prevProps) {
@@ -34,7 +37,6 @@ class UpdateEvent extends React.Component {
 			API_ENDPOINT + `/api/events/${this.props.match.params.id}`
 		);
 		const event = res.data;
-		console.log(event);
 
 		this.setState({
 			id: event.id,
@@ -43,7 +45,8 @@ class UpdateEvent extends React.Component {
 			host_id: event.host_id,
 			description: event.description,
 			event_image: event.event_image,
-			capacity: event.capacity
+			capacity: event.capacity,
+			event
 		});
 		if (this.props.forUpdate) {
 		}
@@ -69,9 +72,7 @@ class UpdateEvent extends React.Component {
 			...this.state
 		};
 		delete updatedData.id;
-		console.log("STUFF IM SENDING", updatedData);
 		const myFunction = await axios.put(API + `/api/events/${id}`, updatedData);
-		console.log("UPDATE RESULTS", myFunction.data);
 		this.props.history.push(`/events/${id}`);
 	};
 
@@ -86,7 +87,6 @@ class UpdateEvent extends React.Component {
 			...this.state
 		};
 		const myFunction = await axios.post(API + "/api/events", testEvent);
-		console.log(myFunction);
 	};
 
 	render() {
@@ -136,6 +136,10 @@ class UpdateEvent extends React.Component {
 						Update This Event
 					</button>
 				</form>
+				<Heading>Current Schedules</Heading>
+				{this.state.event && (
+					<EventDetails expanded={true} {...this.state.event} />
+				)}
 				<ScheduleEvent
 					title={this.state.title}
 					description={this.state.description}
@@ -169,3 +173,9 @@ export default connect(
 // Shareable Social Media Link
 // Event Description
 // Event and Delete buttons
+
+const Heading = styled.h2`
+	font-size: 1.5rem;
+	font-weight: bolder;
+	margin: 10px auto;
+`;

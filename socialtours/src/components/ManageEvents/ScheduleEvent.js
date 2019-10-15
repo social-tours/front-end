@@ -42,6 +42,7 @@ class ScheduleEvent extends Component {
 	}
 
 	handleSubmit = e => {
+		console.log(e);
 		e.preventDefault();
 		let {
 			title,
@@ -69,6 +70,18 @@ class ScheduleEvent extends Component {
 			event_id,
 			postal_code
 		});
+
+		this.setState({
+			location: "",
+			city: "",
+			postal_code: "",
+			country: "",
+			title: this.props.title || "",
+			description: this.props.description || "",
+			event_id: this.props.event_id || null,
+			start_date_time: new Date(),
+			end_date_time: new Date()
+		});
 	};
 
 	render() {
@@ -78,7 +91,7 @@ class ScheduleEvent extends Component {
 				<EventFormStyles>
 					<ScheduleWrapper>
 						<h2> Add schedule </h2>
-						<form onClick={this.handleSubmit}>
+						<form onSubmit={this.handleSubmit}>
 							<input
 								value={this.state.title}
 								placeholder="Title"

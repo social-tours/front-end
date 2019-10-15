@@ -107,7 +107,6 @@ const NewEvent = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	//padding-bottom: 5%;
 	height: 45%;
 	width: 45%;
 	background-color: ${colors.mint};

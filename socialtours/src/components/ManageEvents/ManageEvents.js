@@ -29,6 +29,7 @@ class ManageEvents extends Component {
 	}
 
 	render() {
+		console.log(this.props.scheduledEvents);
 		return (
 			<EventsContainerContainer>
 				<EventContainer>
@@ -59,20 +60,16 @@ class ManageEvents extends Component {
 						<EventsSection>
 							<EventSectionTitle>Scheduled Events</EventSectionTitle>
 							<EventsWrapper>
-								{this.props.scheduledEvents.map(schedule => {
-									if (schedule.start_date_time > moment().format()) {
-										return (
-											<EventCard
-												id={schedule.id}
-												key={schedule.id}
-												title={schedule.title}
-												description={schedule.description}
-												date={schedule.start_date_time}
-												location={schedule.location}
-											/>
-										);
-									}
-								})}
+								{this.props.scheduledEvents.map(schedule => (
+									<EventCard
+										id={schedule.id}
+										key={schedule.id}
+										title={schedule.title}
+										description={schedule.description}
+										date={schedule.start_date_time}
+										location={schedule.location}
+									/>
+								))}
 							</EventsWrapper>
 						</EventsSection>
 
