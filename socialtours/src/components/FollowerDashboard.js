@@ -4,18 +4,16 @@ import { connect } from "react-redux";
 import { API_ENDPOINT } from "../config/api";
 import styled from "styled-components";
 import { fetchEvents } from "../actions/eventActions";
-
+import {
+	getSubscriptionsByUserId,
+	toggleMarketing
+} from "../actions/subscriptionActions";
 // TODO -- get userID from global state and send it in GET request to subscriptions
 
 class FollowerDashboard extends React.Component {
-	state = {
-		events: [],
-		followed: [],
-		userId: 1
-	};
-
 	componentDidMount = () => {
 		this.props.fetchEvents();
+		this.props.getSubscriptionsByUserId();
 	};
 
 	render = () => {
@@ -29,12 +27,19 @@ class FollowerDashboard extends React.Component {
 				</DataWrapper>
 				<DataWrapper className="followed">
 					<Heading2>Following</Heading2>
-					{this.state.followed &&
-						this.state.followed.map(person => (
-							<div>
-								{person.first_name} {person.last_name}
-							</div>
-						))}
+					{this.props.subscriptions.map(sub => (
+						<p>
+							<input
+								id="checkid"
+								type="checkbox"
+								checked={sub.marketing_opt_in}
+								onChange={() =>
+									this.props.toggleMarketing(sub.id, sub.marketing_opt_in)
+								}
+							/>
+							{sub.influencer_name}
+						</p>
+					))}
 				</DataWrapper>
 			</Wrapper>
 		);
@@ -64,11 +69,12 @@ const DataWrapper = styled.div`
 
 const mapStateToProps = state => {
 	return {
-		events: state.eventReducer.events
+		events: state.eventReducer.events,
+		subscriptions: state.subscriptionReducer.subscriptions
 	};
 };
 
 export default connect(
 	mapStateToProps,
-	{ fetchEvents }
+	{ fetchEvents, getSubscriptionsByUserId, toggleMarketing }
 )(FollowerDashboard);
