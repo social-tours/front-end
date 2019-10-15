@@ -65,7 +65,8 @@ class ManageEvents extends Component {
 						})}
 					</EventsWrapper>
 
-					<EventSectionTitle>Your Subscriptions</EventSectionTitle>
+					{/* Debugging code below for Subscriptions */}
+					{/* <EventSectionTitle>Your Subscriptions</EventSectionTitle>
 					<EventsWrapper>
 						{this.props.subscriptions.map(subscription => {
 							return (
@@ -77,7 +78,7 @@ class ManageEvents extends Component {
 								/>
 							);
 						})}
-					</EventsWrapper>
+					</EventsWrapper> */}
 
 					<EventSectionTitle>Past Events</EventSectionTitle>
 					<EventsWrapper>
