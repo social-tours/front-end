@@ -6,14 +6,14 @@ import { API_ENDPOINT } from "../config/api";
 class Search extends React.Component {
 	state = {
 		results: [],
-		search: "Search for an influencer"
+		search: ""
 	};
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
-		if (prevState.results != this.state.results) {
-			this.fetchResults();
-		}
-	}
+	// componentDidUpdate(prevProps, prevState, snapshot) {
+	// 	if (prevState.results != this.state.results) {
+	// 		this.fetchResults();
+	// 	}
+	// }
 
 	handleChange = e => {
 		e.preventDefault();
@@ -63,7 +63,13 @@ class Search extends React.Component {
 				<SearchBtn onClick={this.fetchResults}>Search</SearchBtn>
 				<SearchResults>
 					{this.state.results &&
-						this.state.results.map(result => <SearchResult {...result} />)}
+						this.state.results.map(result => {
+							return (
+								<SearchResult
+									key={result.id}
+								>{`${result.first_name} ${result.last_name}`}</SearchResult>
+							);
+						})}
 				</SearchResults>
 			</Section>
 		);
