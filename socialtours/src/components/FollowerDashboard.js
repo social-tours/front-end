@@ -63,6 +63,7 @@ class FollowerDashboard extends React.Component {
 
 const Wrapper = styled.div`
 	margin-top: 35px;
+	color: #fff;
 `;
 
 export default FollowerDashboard;
