@@ -49,6 +49,7 @@ export const addSchedule = schedule => async dispatch => {
 	dispatch({ type: types.INSERTING_SCHEDULE });
 	try {
 		const res = await axios.post(API_ENDPOINT + SCHEDULES, schedule);
+		console.log("Adding schedule", schedule, res);
 		if (res.status === SUCCESS) {
 			dispatch({
 				type: types.INSERT_SCHEDULE_SUCCESS

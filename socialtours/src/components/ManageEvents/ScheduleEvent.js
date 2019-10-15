@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import Flatpickr from "react-flatpickr";
 import styled from "styled-components";
 import Loader from "react-loader";
 import { connect } from "react-redux";
 
+import "../../../node_modules/flatpickr/dist/themes/light.css";
 import EventFormStyles from "./EventFormStyles";
 import { addSchedule } from "../../actions";
 
@@ -12,23 +12,23 @@ class ScheduleEvent extends Component {
 	state = {
 		location: "",
 		city: "",
-		postal: "",
+		postal_code: "",
 		country: "",
 		title: this.props.title || "",
 		description: this.props.description || "",
 		event_id: this.props.event_id || null,
-		host_id: this.props.host_id || null,
-		date: "",
-		start_time: "",
-		end_time: ""
+		start_date_time: new Date(),
+		end_date_time: new Date()
 	};
 
 	handleDateChange = date => {
-		console.log(date);
-		this.setState({ date });
+		//console.log(start_date_time);
+		date = date[0];
+		this.setState({
+			start_date_time: date,
+			end_date_time: date
+		});
 	};
-	handleStartTimeChange = start_time => this.setState({ start_time });
-	handleEndTimeChange = end_time => this.setState({ end_time });
 
 	componentDidUpdate(prevProps) {
 		if (prevProps.event_id != this.props.event_id) {
@@ -43,30 +43,31 @@ class ScheduleEvent extends Component {
 
 	handleSubmit = e => {
 		e.preventDefault();
-		const {
+		let {
 			title,
 			description,
 			location,
-			start_time,
-			date,
+			start_date_time,
+			end_date_time,
 			city,
-			postal,
+			postal_code,
 			country,
-			event_id,
-			host_id
+			event_id
 		} = this.state;
+
+		start_date_time = start_date_time.toUTCString();
+		end_date_time = end_date_time.toUTCString();
 
 		this.props.addSchedule({
 			title,
 			description,
 			location,
-			start_time,
-			date,
+			start_date_time,
+			end_date_time,
 			city,
 			country,
 			event_id,
-			host_id,
-			postal
+			postal_code
 		});
 	};
 
@@ -99,9 +100,9 @@ class ScheduleEvent extends Component {
 								onChange={e => this.setState({ city: e.target.value })}
 							/>
 							<input
-								value={this.state.postal}
+								value={this.state.postal_code}
 								placeholder="Postal"
-								onChange={e => this.setState({ postal: e.target.value })}
+								onChange={e => this.setState({ postal_code: e.target.value })}
 							/>
 							<input
 								value={this.state.country}
@@ -110,15 +111,15 @@ class ScheduleEvent extends Component {
 							/>
 							<PickerGroup>
 								<label>Date</label>
-								<DatePicker
-									id="datePicker"
-									selected={this.state.date}
-									onChange={this.handleDateChange}
-									value={this.state.date}
-									showTimeSelect
-									timeIntervals={15}
-									timeCaption="time"
-									dateFormat="MMMM d, yyyy h:mm aa"
+								<Flatpickr
+									data-enable-time
+									onChange={date => this.handleDateChange(date)}
+									value={this.state.start_date_time}
+									options={{
+										altInput: true,
+										altFormat: "F j, Y h:i K",
+										dateFormat: "Y-m-d h:i K"
+									}}
 								/>
 							</PickerGroup>
 							<button>Add Schedule</button>
