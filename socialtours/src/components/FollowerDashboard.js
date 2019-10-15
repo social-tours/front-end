@@ -21,27 +21,45 @@ class FollowerDashboard extends React.Component {
 	render = () => {
 		return (
 			<Wrapper>
-				<h1>Follower Dashboard</h1>
-				<div className="events">
+				<Heading1>Follower Dashboard</Heading1>
+				<DataWrapper className="events">
+					<Heading2>Events list</Heading2>
 					{this.props.events &&
 						this.props.events.map(event => <div>{event.title}</div>)}
-				</div>
-				<div className="followed">
+				</DataWrapper>
+				<DataWrapper className="followed">
+					<Heading2>Following</Heading2>
 					{this.state.followed &&
 						this.state.followed.map(person => (
 							<div>
 								{person.first_name} {person.last_name}
 							</div>
 						))}
-				</div>
+				</DataWrapper>
 			</Wrapper>
 		);
 	};
 }
 
 const Wrapper = styled.div`
-	margin-top: 35px;
+	margin: 0 auto;
+	max-width: 1000px;
 	color: #fff;
+	display: flex;
+	flex-wrap: wrap;
+`;
+const Heading1 = styled.h1`
+	margin: 35px 0;
+	text-align: center;
+	flex: 0 0 100%;
+	font-size: 1.2em;
+`;
+const Heading2 = styled.h2`
+	font-size: 1.1em;
+	text-decoration: underline;
+`;
+const DataWrapper = styled.div`
+	flex: 1;
 `;
 
 const mapStateToProps = state => {
