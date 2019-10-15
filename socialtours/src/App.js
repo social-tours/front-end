@@ -13,6 +13,7 @@ import Profile from "./components/UserComponents/Profile";
 
 import Main from "./components/Main";
 import Dashboard from "./components/Dashboard";
+import FollowerDashboard from "./components/FollowerDashboard";
 import Credits from "./components/MediaComponents/Credits";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
@@ -80,6 +81,7 @@ class App extends Component {
 						}
 					/>
 					<Route path="/search" component={Search} />
+					<Route path="/FollowerDash" component={FollowerDashboard} />
 					<Route path="/AboutUsContact" component={AboutUsContact} />
 					<Route path="/opt" component={Opt} />
 				</Switch>
