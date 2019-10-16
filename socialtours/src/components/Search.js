@@ -1,7 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 import { API_ENDPOINT } from "../config/api";
+
+import SubscriptionCard from "./ManageEvents/SubscriptionCard.js";
 
 class Search extends React.Component {
 	state = {
@@ -36,7 +39,30 @@ class Search extends React.Component {
 			});
 	};
 
+	subscribe = (e, influencer_id) => {
+		e.preventDefault();
+
+		axios
+			.post(API_ENDPOINT + `/api/subscriptions`, {
+				user_id: this.getUserId().id,
+				influencer_id
+			})
+			.then(res => {
+				this.setState({});
+			})
+			.catch(error => {
+				console.log(error);
+			});
+	};
+
+	getUserId() {
+		if (localStorage.getItem("api_token")) {
+			return jwtDecode(localStorage.getItem("api_token"));
+		}
+	}
+
 	render() {
+		console.log("This State HURR: ", this.state);
 		if (this.state.results.length === 0)
 			return (
 				<Section>
@@ -65,10 +91,29 @@ class Search extends React.Component {
 					{this.state.results &&
 						this.state.results.map(result => {
 							return (
-								<SearchResult
-									key={result.id}
-								>{`${result.first_name} ${result.last_name}`}</SearchResult>
+								<div key={result.id}>
+									<SearchResult>
+										{`
+								FirstName: ${result.first_name}
+								${result.last_name}
+								`}
+									</SearchResult>
+									<button onClick={e => this.subscribe(e, result.id)}>
+										Subscribe to Me
+									</button>
+								</div>
 							);
+
+							// return (
+							// 	<SubscriptionCard
+							// 		id={result.id}
+							// 		key={result.id}
+							// 		firstName={result.first_name}
+							// 		lastName={result.last_name}
+							// 		userId={result.id}
+							// 		influencerId={result.influencer_id}
+							// 	/>
+							// );
 						})}
 				</SearchResults>
 			</Section>
@@ -99,6 +144,8 @@ const SearchBtn = styled.span`
 	padding: 2x;
 `;
 const SearchResults = styled.div``;
-const SearchResult = styled.div``;
+const SearchResult = styled.div`
+	border: 1px solid red;
+`;
 
 export default Search;
