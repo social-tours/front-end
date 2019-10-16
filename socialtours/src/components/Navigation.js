@@ -13,6 +13,7 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
 import AssignmentIndIcon from "@material-ui/icons/AssignmentInd";
+import DirectionsWalkIcon from "@material-ui/icons/DirectionsWalk";
 import MenuIcon from "@material-ui/icons/Menu";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import MovieFilterIcon from "@material-ui/icons/MovieFilter";
@@ -113,12 +114,21 @@ function Navigation(props) {
 				)}
 				<ListItem button>
 					<ListItemIcon>
-						<AssignmentIndIcon />
+						<DirectionsWalkIcon />
 					</ListItemIcon>
 					<ListItemText
 						primary={"Profile"}
-						onClick={() => props.history.push("/profile")}
+						onClick={() => props.history.push("/search")}
 					/>
+					<ListItem button>
+						<ListItemIcon>
+							<AssignmentIndIcon />
+						</ListItemIcon>
+						<ListItemText
+							primary={"Profile"}
+							onClick={() => props.history.push("/profile")}
+						/>
+					</ListItem>
 				</ListItem>
 				<ListItem button>
 					<ListItemIcon>
