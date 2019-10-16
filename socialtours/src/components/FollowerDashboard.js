@@ -18,39 +18,46 @@ class FollowerDashboard extends React.Component {
 
 	render = () => {
 		return (
-			<Wrapper>
-				<Heading1>Follower Dashboard</Heading1>
-				<DataWrapper className="events">
-					<Heading2>Events list</Heading2>
-					{this.props.events &&
-						this.props.events.map(event => <div>{event.title}</div>)}
-				</DataWrapper>
-				<DataWrapper className="followed">
-					<Heading2>Following</Heading2>
-					<span>Enable/disable notifications</span>
-					{this.props.subscriptions.map(sub => (
-						<p>
-							<input
-								id="checkid"
-								type="checkbox"
-								checked={sub.marketing_opt_in}
-								onChange={() =>
-									this.props.toggleMarketing(sub.id, sub.marketing_opt_in)
-								}
-							/>
-							{sub.influencer_name}
-						</p>
-					))}
-				</DataWrapper>
-			</Wrapper>
+			<SiteWrapper>
+				<Wrapper>
+					<Heading1>Follower Dashboard</Heading1>
+					<DataWrapper className="events">
+						<Heading2>Events list</Heading2>
+						{this.props.events &&
+							this.props.events.map(event => <div>{event.title}</div>)}
+					</DataWrapper>
+					<DataWrapper className="followed">
+						<Heading2>Following</Heading2>
+						<span>Enable/disable notifications</span>
+						{this.props.subscriptions.map(sub => (
+							<p>
+								<input
+									id="checkid"
+									type="checkbox"
+									checked={sub.marketing_opt_in}
+									onChange={() =>
+										this.props.toggleMarketing(sub.id, sub.marketing_opt_in)
+									}
+								/>
+								{sub.influencer_name}
+							</p>
+						))}
+					</DataWrapper>
+				</Wrapper>
+			</SiteWrapper>
 		);
 	};
 }
 
+const SiteWrapper = styled.div`
+	width: 100%;
+	height: 100vh;
+	background-color: #011638;
+	color: #fff;
+`;
 const Wrapper = styled.div`
 	margin: 0 auto;
 	max-width: 1000px;
-	color: #fff;
 	display: flex;
 	flex-wrap: wrap;
 `;
@@ -65,6 +72,8 @@ const Heading2 = styled.h2`
 	text-decoration: underline;
 `;
 const DataWrapper = styled.div`
+	max-width: 50%;
+	float: left;
 	flex: 1;
 `;
 
