@@ -1,4 +1,4 @@
-	import { colors } from "../DesignComponents/theme";
+import { colors } from "../DesignComponents/theme";
 import styled from "styled-components";
 
 export const EventsAll = styled.div`

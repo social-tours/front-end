@@ -1,13 +1,22 @@
-import React from "react";
+import React, { Component } from "react";
 import styled from "styled-components";
 import axios from "axios";
 import { API_ENDPOINT } from "../config/api";
+import { getSubscriptions } from "../actions/subscriptionActions";
 
-class Search extends React.Component {
+import { EventsWrapper } from "./ManageEvents/ManageEventsStyles.js";
+import SubscriptionCard from "./ManageEvents/SubscriptionCard.js";
+import { connect } from "net";
+
+class Search extends Component {
 	state = {
 		results: [],
 		search: ""
 	};
+
+	componentDidMount() {
+		this.props.getSubscriptions();
+	}
 
 	// componentDidUpdate(prevProps, prevState, snapshot) {
 	// 	if (prevState.results != this.state.results) {
@@ -65,9 +74,13 @@ class Search extends React.Component {
 					{this.state.results &&
 						this.state.results.map(result => {
 							return (
-								<SearchResult
+								<SubscriptionCard
 									key={result.id}
-								>{`${result.first_name} ${result.last_name}`}</SearchResult>
+									id={result.id}
+									key={result.id}
+									userId={result.user_id}
+									influencerId={result.influencer_id}
+								>{`${result.first_name} ${result.last_name}`}</SubscriptionCard>
 							);
 						})}
 				</SearchResults>
@@ -98,7 +111,18 @@ const SearchBtn = styled.span`
 	outline: 0.5px solid black;
 	padding: 2x;
 `;
-const SearchResults = styled.div``;
-const SearchResult = styled.div``;
+const SearchResults = styled.div`
+	border: 1px solid blue;
+`;
 
-export default Search;
+const mapStateToProps = state => {
+	console.log("Search State: ", state);
+	return {
+		subscriptions: state.subscriptionReducer.subscriptions
+	};
+};
+
+export default connect(
+	mapStateToProps,
+	{ getSubscriptions }
+)(Search);
