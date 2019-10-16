@@ -111,8 +111,10 @@ function Navigation(props) {
 					<ListItemIcon>
 						<InfoIcon />
 					</ListItemIcon>
-					<ListItemText primary={"About & Contact"}
-						onClick={() => props.history.push("/aboutuscontact")} />
+					<ListItemText
+						primary={"About & Contact"}
+						onClick={() => props.history.push("/aboutuscontact")}
+					/>
 				</ListItem>
 				<ListItem button>
 					<ListItemIcon>
@@ -147,18 +149,18 @@ function Navigation(props) {
 						{props.authenticated() ? (
 							<LockOutlinedIcon />
 						) : (
-								<LockOpenOutlinedIcon />
-							)}
+							<LockOpenOutlinedIcon />
+						)}
 					</ListItemIcon>
 
 					{props.authenticated() ? (
 						<ListItemText primary={"Log out"} onClick={() => props.logout()} />
 					) : (
-							<ListItemText
-								primary={"Login"}
-								onClick={() => props.history.push("login")}
-							/>
-						)}
+						<ListItemText
+							primary={"Login"}
+							onClick={() => props.history.push("login")}
+						/>
+					)}
 				</>
 			);
 	};
