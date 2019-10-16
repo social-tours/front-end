@@ -44,7 +44,7 @@ class Search extends React.Component {
 
 		axios
 			.post(API_ENDPOINT + `/api/subscriptions`, {
-				id: this.getUserId().id,
+				user_id: this.getUserId().id,
 				influencer_id
 			})
 			.then(res => {
