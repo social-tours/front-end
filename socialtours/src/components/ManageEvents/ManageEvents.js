@@ -5,9 +5,12 @@ import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
 import EventCard from "./EventCard";
+import SubscriptionCard from "./SubscriptionCard";
 import { getSchedules } from "../../actions/scheduleActions";
 import { fetchEvents } from "../../actions/eventActions";
 import { getUserId } from "../../utils";
+import { getSubscriptions } from "../../actions/subscriptionActions";
+
 import {
 	EventContainer,
 	EventsWrapper,
@@ -26,10 +29,10 @@ class ManageEvents extends Component {
 	componentDidMount() {
 		this.props.getSchedules();
 		this.props.fetchEvents();
+		this.props.getSubscriptions();
 	}
 
 	render() {
-		console.log(this.props.scheduledEvents);
 		return (
 			<EventsContainerContainer>
 				<EventContainer>
@@ -63,6 +66,7 @@ class ManageEvents extends Component {
 								{this.props.scheduledEvents.map(schedule => (
 									<EventCard
 										id={schedule.id}
+										userId={schedule.host_id}
 										key={schedule.id}
 										title={schedule.title}
 										description={schedule.description}
@@ -120,13 +124,18 @@ const mapStateToProps = state => {
 		}
 	});
 	return {
+		fetchingEvents: state.fetchingEvents,
+		subscriptions: state.subscriptionReducer.subscriptions,
 		scheduledEvents,
-		unscheduledEvents,
-		fetchingEvents: state.fetchingEvents
+		unscheduledEvents
 	};
 };
 
 export default connect(
 	mapStateToProps,
-	{ getSchedules, fetchEvents }
+	{ getSchedules, fetchEvents, getSubscriptions }
 )(withRouter(ManageEvents));
+
+// const ManageEventWrapper = styled.div`
+// 	background-color: colors.putty
+// `;
