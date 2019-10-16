@@ -10,16 +10,10 @@
 		"jwt-decode": "^2.2.0",
 		"marked": "^0.7.0",
 		"moment": "^2.24.0",
-<<<<<<< HEAD
-		"react": "^16.10.2",
-		"react-calendar": "^2.19.2",
-		"react-dom": "^16.10.2",
-=======
 		"react": "^16.9.0",
 		"react-calendar": "^2.19.1",
 		"react-dom": "^16.9.0",
 		"react-flatpickr": "^3.9.1",
->>>>>>> 68a82284139a84dc64fd71c49c899aabf4cb8b77
 		"react-icons": "^3.7.0",
 		"react-loader": "^2.4.5",
 		"react-redux": "^7.1.1",

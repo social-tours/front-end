@@ -1,22 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import styled from "styled-components";
 import axios from "axios";
+import jwtDecode from "jwt-decode";
 import { API_ENDPOINT } from "../config/api";
-import { getSubscriptions } from "../actions/subscriptionActions";
 
-import { EventsWrapper } from "./ManageEvents/ManageEventsStyles.js";
 import SubscriptionCard from "./ManageEvents/SubscriptionCard.js";
-import { connect } from "net";
 
-class Search extends Component {
+class Search extends React.Component {
 	state = {
 		results: [],
 		search: ""
 	};
-
-	componentDidMount() {
-		this.props.getSubscriptions();
-	}
 
 	// componentDidUpdate(prevProps, prevState, snapshot) {
 	// 	if (prevState.results != this.state.results) {
@@ -45,7 +39,30 @@ class Search extends Component {
 			});
 	};
 
+	subscribe = (e, influencer_id) => {
+		e.preventDefault();
+
+		axios
+			.post(API_ENDPOINT + `/api/subscriptions`, {
+				id: this.getUserId().id,
+				influencer_id
+			})
+			.then(res => {
+				this.setState({});
+			})
+			.catch(error => {
+				console.log(error);
+			});
+	};
+
+	getUserId() {
+		if (localStorage.getItem("api_token")) {
+			return jwtDecode(localStorage.getItem("api_token"));
+		}
+	}
+
 	render() {
+		console.log("This State HURR: ", this.state);
 		if (this.state.results.length === 0)
 			return (
 				<Section>
@@ -74,14 +91,29 @@ class Search extends Component {
 					{this.state.results &&
 						this.state.results.map(result => {
 							return (
-								<SubscriptionCard
-									key={result.id}
-									id={result.id}
-									key={result.id}
-									userId={result.user_id}
-									influencerId={result.influencer_id}
-								>{`${result.first_name} ${result.last_name}`}</SubscriptionCard>
+								<div key={result.id}>
+									<SearchResult>
+										{`
+								FirstName: ${result.first_name}
+								${result.last_name}
+								`}
+									</SearchResult>
+									<button onClick={e => this.subscribe(e, result.id)}>
+										Subscribe to Me
+									</button>
+								</div>
 							);
+
+							// return (
+							// 	<SubscriptionCard
+							// 		id={result.id}
+							// 		key={result.id}
+							// 		firstName={result.first_name}
+							// 		lastName={result.last_name}
+							// 		userId={result.id}
+							// 		influencerId={result.influencer_id}
+							// 	/>
+							// );
 						})}
 				</SearchResults>
 			</Section>
@@ -111,18 +143,9 @@ const SearchBtn = styled.span`
 	outline: 0.5px solid black;
 	padding: 2x;
 `;
-const SearchResults = styled.div`
-	border: 1px solid blue;
+const SearchResults = styled.div``;
+const SearchResult = styled.div`
+	border: 1px solid red;
 `;
 
-const mapStateToProps = state => {
-	console.log("Search State: ", state);
-	return {
-		subscriptions: state.subscriptionReducer.subscriptions
-	};
-};
-
-export default connect(
-	mapStateToProps,
-	{ getSubscriptions }
-)(Search);
+export default Search;
