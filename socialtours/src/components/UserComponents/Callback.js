@@ -14,7 +14,7 @@ class Callback extends Component {
 	}
 
 	componentDidUpdate(prevProps, prevState) {
-		console.log("CDU nextProps: ", prevProps)
+		console.log("CDU nextProps: ", prevProps);
 		if (prevProps.auth.isLoggedIn !== this.props.auth.isLoggedIn) {
 			location.pathname = LOGIN_SUCCESS_PAGE;
 		}

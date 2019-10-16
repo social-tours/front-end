@@ -65,16 +65,19 @@ class Profile extends Component {
 				type,
 				comm_preference
 			} = this.props.user;
-			this.setState({
-				id,
-				first_name,
-				last_name,
-				email,
-				phone_nbr,
-				password,
-				type,
-				comm_preference
-			}, () => console.log("this.state AFTER pre-populate: ", this.state));
+			this.setState(
+				{
+					id,
+					first_name,
+					last_name,
+					email,
+					phone_nbr,
+					password,
+					type,
+					comm_preference
+				},
+				() => console.log("this.state AFTER pre-populate: ", this.state)
+			);
 		}
 	};
 

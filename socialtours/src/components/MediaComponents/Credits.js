@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import marked from "marked";
 
-import * as S from './CreditStyles'
+import * as S from "./CreditStyles";
 
 const renderer = new marked.Renderer();
 
@@ -21,14 +21,14 @@ class Credits extends Component {
 	 * @param {string} content
 	 * @returns setState with content
 	 */
-	getContent = async (content) => {
+	getContent = async content => {
 		try {
 			const newContent = await fetch(content);
 			this.setState({ content: await newContent.text() });
 		} catch (err) {
 			console.log("Error fetching content: ", err);
 		}
-	}
+	};
 
 	componentDidMount() {
 		const content = require("./MEDIA.md");

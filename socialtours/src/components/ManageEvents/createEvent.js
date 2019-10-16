@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { fetchEvent, postEvent } from "../actions/index.js";
+import { fetchEvent, postEvent } from "../../actions";
 import EventFormStyles from "./EventFormStyles.js";
 import jwt_decode from "jwt-decode";
 

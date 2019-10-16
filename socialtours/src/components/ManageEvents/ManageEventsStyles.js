@@ -1,4 +1,4 @@
-	import { colors } from "../DesignComponents/theme";
+import { colors } from "../DesignComponents/theme";
 import styled from "styled-components";
 
 export const EventsAll = styled.div`
@@ -19,6 +19,13 @@ export const EventsTitle = styled.h1`
 	font-weight: bolder;
 	margin-top: 15px;
 	margin-bottom: 10px;
+	align-self: center;
+	margin-right: 15px;
+	transform: translate(50%, 0);
+
+	@media (max-width: 800px) {
+		transform: translate(0);
+	}
 `;
 
 export const EventSectionTitle = styled.h2`
@@ -97,7 +104,7 @@ export const EventContainer = styled.div`
 	min-height: calc(100vh - 35px - 25px);
 	margin: 0 auto;
 	margin-top: 35px;
-	width: 80%;
+	width: 90%;
 	background-color: #cdcdcd;
 `;
 
@@ -111,4 +118,46 @@ export const EventsWrapper = styled.ul`
 	flex-direction: row;
 	flex-wrap: wrap;
 	width: 100%;
+`;
+
+export const ManageEventsWrapper = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	@media (max-width: 900px) {
+		flex-direction: column;
+		margin-top: 50px;
+	}
+`;
+
+export const EventsSection = styled.div`
+	display: flex;
+	flex-direction: column;
+	flex-basis: 50%;
+`;
+
+export const EventsHeadline = styled.div`
+	display: flex;
+	flex-direction: row;
+	@media (max-width: 800px) {
+		flex-direction: column;
+	}
+`;
+
+export const CEButton = styled.button`
+	transform: translate(130%, 0);
+	padding: 10px;
+	max-width: 150px;
+	max-height: 50px;
+	margin-top: 15px;
+	border-radius: 5px;
+	box-shadow: ${colors.dirty_concord} 2px 2px 2px;
+	background-color: ${colors.grape};
+	border: 1px solid ${colors.dirty_concord};
+	color: ${colors.putty};
+
+	@media (max-width: 800px) {
+		transform: translate(0);
+		align-self: center;
+	}
 `;

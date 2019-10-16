@@ -1,13 +1,19 @@
 import React from "react";
 import { connect } from "react-redux";
 import axios from "axios";
-import EventFormStyles from "../components/DesignComponents/EventFormStyles.js";
+import styled from "styled-components";
+//import EventFormStyles from "../components/DesignComponents/EventFormStyles.js";
 
-import { fetchEvent, putEvent, deleteEvent } from "../actions/eventActions";
-import { API_ENDPOINT } from "../config/api.js";
+import ScheduleEvent from "./ScheduleEvent";
+import EventDetails from "./EventDetails";
+
+import EventFormStyles from "./EventFormStyles";
+
+import { fetchEvent, putEvent, deleteEvent } from "../../actions/eventActions";
+import { API_ENDPOINT } from "../../config/api.js";
 const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
 
-class UpdateDeleteEvent extends React.Component {
+class UpdateEvent extends React.Component {
 	state = {
 		id: "",
 		type: "",
@@ -15,7 +21,8 @@ class UpdateDeleteEvent extends React.Component {
 		host_id: "", //FK to user_ID
 		description: "",
 		event_image: "",
-		capacity: ""
+		capacity: "",
+		event: {}
 	};
 
 	componentDidUpdate(prevProps) {
@@ -30,7 +37,6 @@ class UpdateDeleteEvent extends React.Component {
 			API_ENDPOINT + `/api/events/${this.props.match.params.id}`
 		);
 		const event = res.data;
-		console.log(event);
 
 		this.setState({
 			id: event.id,
@@ -39,7 +45,8 @@ class UpdateDeleteEvent extends React.Component {
 			host_id: event.host_id,
 			description: event.description,
 			event_image: event.event_image,
-			capacity: event.capacity
+			capacity: event.capacity,
+			event
 		});
 		if (this.props.forUpdate) {
 		}
@@ -65,9 +72,7 @@ class UpdateDeleteEvent extends React.Component {
 			...this.state
 		};
 		delete updatedData.id;
-		console.log("STUFF IM SENDING", updatedData);
 		const myFunction = await axios.put(API + `/api/events/${id}`, updatedData);
-		console.log("UPDATE RESULTS", myFunction.data);
 		this.props.history.push(`/events/${id}`);
 	};
 
@@ -82,14 +87,12 @@ class UpdateDeleteEvent extends React.Component {
 			...this.state
 		};
 		const myFunction = await axios.post(API + "/api/events", testEvent);
-		console.log(myFunction);
 	};
 
 	render() {
 		return (
 			<EventFormStyles>
-				<form
-				>
+				<form>
 					<input
 						name="type"
 						placeholder={this.state.type}
@@ -129,14 +132,20 @@ class UpdateDeleteEvent extends React.Component {
 						value={this.state.capacity}
 						type="number"
 					/>
-
 					<button onClick={e => this.putEvent(e, this.props.match.params.id)}>
 						Update This Event
 					</button>
-					<button onClick={e => this.deleteEvent(e, this.state.id)}>
-						Delete This Event
-					</button>
 				</form>
+				<Heading>Current Schedules</Heading>
+				{this.state.event && (
+					<EventDetails expanded={true} {...this.state.event} />
+				)}
+				<ScheduleEvent
+					title={this.state.title}
+					description={this.state.description}
+					event_id={this.state.id}
+					host_id={this.state.host_id}
+				/>
 			</EventFormStyles>
 		);
 	}
@@ -152,7 +161,7 @@ const mapStateToProps = state => {
 export default connect(
 	mapStateToProps,
 	{ fetchEvent, putEvent, deleteEvent }
-)(UpdateDeleteEvent);
+)(UpdateEvent);
 
 // ** Event Details - Objects in WireFrame **
 // Wir
@@ -164,3 +173,9 @@ export default connect(
 // Shareable Social Media Link
 // Event Description
 // Event and Delete buttons
+
+const Heading = styled.h2`
+	font-size: 1.5rem;
+	font-weight: bolder;
+	margin: 10px auto;
+`;

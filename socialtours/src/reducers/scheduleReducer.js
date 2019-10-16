@@ -1,4 +1,4 @@
-import { types } from "../actions/schedules";
+import { types } from "../actions/scheduleActions";
 
 const initialState = {
 	fetchingSchedule: false,
