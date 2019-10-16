@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { API_ENDPOINT } from "../config/api";
+import styled from "styled-components";
 
 // TODO -- get userID from global state and send it in GET request to subscriptions
 
@@ -41,7 +42,8 @@ class FollowerDashboard extends React.Component {
 
 	render = () => {
 		return (
-			<div>
+			<SiteWrapper>
+				<Title>Follower Dashboard</Title>
 				<div className="events">
 					{this.state.events &&
 						this.state.events.map(event => <div>{event.title}</div>)}
@@ -54,9 +56,20 @@ class FollowerDashboard extends React.Component {
 							</div>
 						))}
 				</div>
-			</div>
+			</SiteWrapper>
 		);
 	};
 }
+
+const Title = styled.h1`
+	margin-top: 35px;
+`;
+
+const SiteWrapper = styled.div`
+	width: 100%;
+	height: 100vh;
+	background-color: #011638;
+	color: #fff;
+`;
 
 export default FollowerDashboard;
