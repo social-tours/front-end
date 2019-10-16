@@ -27,6 +27,7 @@ class FollowerDashboard extends React.Component {
 				</DataWrapper>
 				<DataWrapper className="followed">
 					<Heading2>Following</Heading2>
+					<span>Enable/disable notifications</span>
 					{this.props.subscriptions.map(sub => (
 						<p>
 							<input
