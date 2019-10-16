@@ -117,7 +117,7 @@ function Navigation(props) {
 						<DirectionsWalkIcon />
 					</ListItemIcon>
 					<ListItemText
-						primary={"Profile"}
+						primary={"Search"}
 						onClick={() => props.history.push("/search")}
 					/>
 					<ListItem button>
