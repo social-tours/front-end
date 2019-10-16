@@ -20,6 +20,7 @@ import InfoIcon from "@material-ui/icons/Info";
 import AddIcon from "@material-ui/icons/Add";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import HomeIcon from "@material-ui/icons/Home";
+import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import LockOpenOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import VerticalSplitOutlinedIcon from "@material-ui/icons/VerticalSplitOutlined";
@@ -95,6 +96,18 @@ function Navigation(props) {
 						<ListItemText
 							primary={"Manage Events"}
 							onClick={() => props.history.push("/ManageEvents")}
+						/>
+					</ListItem>
+				)}
+				{userHasEvent(props.events) && (
+					<ListItem button>
+						<ListItemIcon>
+							<PeopleOutlineIcon />
+						</ListItemIcon>
+
+						<ListItemText
+							primary={"Following"}
+							onClick={() => props.history.push("/FollowerDash")}
 						/>
 					</ListItem>
 				)}
