@@ -24,13 +24,13 @@ class FollowerDashboard extends React.Component {
 					<DataWrapper className="events">
 						<Heading2>Events list</Heading2>
 						{this.props.events &&
-							this.props.events.map(event => <div>{event.title}</div>)}
+							this.props.events.map(event => <Item>{event.title}</Item>)}
 					</DataWrapper>
 					<DataWrapper className="followed">
 						<Heading2>Following</Heading2>
-						<span>Enable/disable notifications</span>
+						<Item>Enable/disable notifications</Item>
 						{this.props.subscriptions.map(sub => (
-							<p>
+							<Item>
 								<input
 									id="checkid"
 									type="checkbox"
@@ -40,7 +40,7 @@ class FollowerDashboard extends React.Component {
 									}
 								/>
 								{sub.influencer_name}
-							</p>
+							</Item>
 						))}
 					</DataWrapper>
 				</Wrapper>
@@ -60,15 +60,19 @@ const Wrapper = styled.div`
 	max-width: 1000px;
 	display: flex;
 	flex-wrap: wrap;
+	font-size: 1.2em;
+`;
+const Item = styled.div`
+	margin-top: 5px;
 `;
 const Heading1 = styled.h1`
 	margin: 35px 0;
 	text-align: center;
 	flex: 0 0 100%;
-	font-size: 1.2em;
+	font-size: 1.4em;
 `;
 const Heading2 = styled.h2`
-	font-size: 1.1em;
+	font-size: 1.3em;
 	text-decoration: underline;
 `;
 const DataWrapper = styled.div`
