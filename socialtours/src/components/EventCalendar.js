@@ -1,31 +1,28 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 import Calendar from "react-calendar";
-import { getSchedules } from "../actions/schedules";
+import { getSchedules } from "../actions/scheduleActions";
 import { colors } from "./DesignComponents/theme";
 
-class EventCalendar extends Component {
-	state = {
-		schedules: [],
-		disabled: false
-	};
-	componentDidMount() {
-		this.props.getSchedules();
-	}
+const EventCalendar = props => {
+	let [schedules, setSchedules] = useState([]);
 
-	componentDidUpdate(prevProps, prevState, snapshot) {
-		if (this.props.schedules.length === 0) return;
-		if (
-			prevState.schedules.length > 0 &&
-			prevState.schedules === this.props.schedules
-		)
-			return;
+	useEffect(() => {
+		//console.log("In schedules useEffect");
+		let updatedSchedules = [...schedules];
 
-		this.setState({ schedules: this.props.schedules });
-	}
+		props.events.forEach(event => {
+			if (event.schedules && event.schedules.length > 0)
+				updatedSchedules.push(...event.schedules);
+		});
+
+		if (updatedSchedules != schedules) setSchedules(updatedSchedules);
+
+		console.log("the value of schedules is", schedules);
+	}, [schedules]);
 
 	/**
 	 * Called by the calendar tile and passed the calendar tile as
@@ -35,8 +32,10 @@ class EventCalendar extends Component {
 	 * @param e
 	 * @returns {boolean}
 	 */
-	checkSchedule(date) {
-		if (this.props.schedules.length === 0) return;
+	const checkSchedule = date => {
+		let dates;
+
+		if (schedules.length === 0) return;
 		// Month abbreviations and corresponding number as string
 		let months = {
 			Jan: "01",
@@ -64,47 +63,49 @@ class EventCalendar extends Component {
 		sMonth = months[sMonth];
 
 		// check for any schedules that match the date
-		let dates = this.state.schedules.filter(schedule => {
-			//console.log(schedule);
-			return schedule.start_date_time.includes(`${sYear}-${sMonth}-${sDay}`);
-		});
-		return dates;
-	}
+		if (schedules && schedules.length > 0) {
+			dates = schedules.filter(schedule => {
+				//console.log(schedule);
+				return schedule.start_date_time.includes(`${sYear}-${sMonth}-${sDay}`);
+			});
+		}
 
-	isDisabled(e) {
-		const dates = this.checkSchedule(e.date.toString());
+		return dates || null;
+	};
 
-		return dates.length === 0;
-	}
+	const isDisabled = e => {
+		//const dates = checkSchedule(e.date.toString());
+		//return dates.length === 0;
+	};
 
-	handleClick(date) {
-		const dates = this.checkSchedule(date.toString());
+	const handleClick = date => {
+		//const dates = checkSchedule(date.toString());
 
-		this.props.history.push("ManageEvents");
+		props.history.push("ManageEvents");
 		//console.log(dates);
-	}
+	};
 
-	render() {
-		return (
-			<div data-testid="component-calendar">
-				{this.props.schedules.length > 0 && (
-					<CalendarWrapper>
-						<Calendar
-							tileClassName={e =>
-								this.isDisabled(e) ? "disabled calTile" : "calTile"
-							}
-							tileDisabled={e => this.isDisabled(e)}
-							onClickDay={e => this.handleClick(e)}
-						/>
-					</CalendarWrapper>
-				)}
-			</div>
-		);
-	}
-}
+	return (
+		<div data-testid="component-calendar">
+			{schedules.length > 0 && (
+				<CalendarWrapper>
+					<Calendar
+						tileClassName={e =>
+							isDisabled(e) ? "disabled calTile" : "calTile"
+						}
+						tileDisabled={e => isDisabled(e)}
+						onClickDay={e => handleClick(e)}
+					/>
+				</CalendarWrapper>
+			)}
+		</div>
+	);
+};
 
-const mapStateToProps = ({ scheduleReducer }) => {
-	return scheduleReducer;
+const mapStateToProps = ({ eventReducer }) => {
+	return {
+		events: eventReducer.events
+	};
 };
 
 export default withRouter(

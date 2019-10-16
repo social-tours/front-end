@@ -20,6 +20,7 @@ import InfoIcon from "@material-ui/icons/Info";
 import AddIcon from "@material-ui/icons/Add";
 import FormatListBulletedIcon from "@material-ui/icons/FormatListBulleted";
 import HomeIcon from "@material-ui/icons/Home";
+import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
 import LockOpenOutlinedIcon from "@material-ui/icons/LockOpenOutlined";
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import VerticalSplitOutlinedIcon from "@material-ui/icons/VerticalSplitOutlined";
@@ -98,6 +99,18 @@ function Navigation(props) {
 						/>
 					</ListItem>
 				)}
+				{userHasEvent(props.events) && (
+					<ListItem button>
+						<ListItemIcon>
+							<PeopleOutlineIcon />
+						</ListItemIcon>
+
+						<ListItemText
+							primary={"Following"}
+							onClick={() => props.history.push("/FollowerDash")}
+						/>
+					</ListItem>
+				)}
 				<ListItem button>
 					<ListItemIcon>
 						<AssignmentIndIcon />
@@ -111,8 +124,10 @@ function Navigation(props) {
 					<ListItemIcon>
 						<InfoIcon />
 					</ListItemIcon>
-					<ListItemText primary={"About & Contact"}
-						onClick={() => props.history.push("/aboutuscontact")} />
+					<ListItemText
+						primary={"About & Contact"}
+						onClick={() => props.history.push("/aboutuscontact")}
+					/>
 				</ListItem>
 				<ListItem button>
 					<ListItemIcon>
@@ -147,18 +162,18 @@ function Navigation(props) {
 						{props.authenticated() ? (
 							<LockOutlinedIcon />
 						) : (
-								<LockOpenOutlinedIcon />
-							)}
+							<LockOpenOutlinedIcon />
+						)}
 					</ListItemIcon>
 
 					{props.authenticated() ? (
 						<ListItemText primary={"Log out"} onClick={() => props.logout()} />
 					) : (
-							<ListItemText
-								primary={"Login"}
-								onClick={() => props.history.push("login")}
-							/>
-						)}
+						<ListItemText
+							primary={"Login"}
+							onClick={() => props.history.push("login")}
+						/>
+					)}
 				</>
 			);
 	};

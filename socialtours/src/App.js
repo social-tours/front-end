@@ -3,7 +3,7 @@ import axios from "axios";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
-import { getSchedules } from "./actions/schedules";
+import { getSchedules } from "./actions/scheduleActions";
 
 import "./App.css";
 import Login from "./components/UserComponents/Login";
@@ -13,14 +13,15 @@ import Profile from "./components/UserComponents/Profile";
 
 import Main from "./components/Main";
 import Dashboard from "./components/Dashboard";
+import FollowerDashboard from "./components/FollowerDashboard";
 import Credits from "./components/MediaComponents/Credits";
 import Protected from "./components/Protected";
 import NotFound from "./components/NotFound";
 import Callback from "./components/UserComponents/Callback";
 import Calendar from "./components/EventCalendar";
-import UpdateDeleteEvent from "./components/updateDeleteEvent.js";
-import TheCreateEvent from "./components/createEvent.js";
-import TheCrudEvent from "./components/updateDeleteEvent.js";
+import UpdateEvent from "./components/ManageEvents/UpdateEvent.js";
+import TheCreateEvent from "./components/ManageEvents/createEvent.js";
+//import TheCrudEvent from "./components/updateDeleteEvent.js";
 import ManageEvents from "./components/ManageEvents/ManageEvents";
 import Navigation from "./components/Navigation";
 import { userHasEvent } from "./utils";
@@ -70,7 +71,7 @@ class App extends Component {
 					<Route path="/calendar" component={Calendar} />
 					{/* <Route component={NotFound} /> Commented out so I can work on code without being 'authorized' on line 65*/}
 					<Route path="/createEvent" component={TheCreateEvent} />
-					<Route path={`/events/:id`} component={UpdateDeleteEvent} />
+					<Route path={`/events/:id`} component={UpdateEvent} />
 					<Route
 						exact
 						path="/ManageEvents"
@@ -79,6 +80,7 @@ class App extends Component {
 						}
 					/>
 					<Route path="/search" component={Search} />
+					<Route path="/FollowerDash" component={FollowerDashboard} />
 					<Route path="/AboutUsContact" component={AboutUsContact} />
 				</Switch>
 			</Router>
