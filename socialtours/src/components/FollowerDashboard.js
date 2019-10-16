@@ -15,41 +15,48 @@ class FollowerDashboard extends React.Component {
 		let newEvents = [];
 		let newFollowed = [];
 
-		axios.get(API_ENDPOINT + '/api/events')
+		axios
+			.get(API_ENDPOINT + "/api/events")
 			.then(res => {
 				newEvents = res.data;
 			})
 			.catch(err => {
-				console.log(err)
-			})
+				console.log(err);
+			});
 
-		axios.get(API_ENDPOINT + `/api/subscriptions/${this.state.userId}`)
+		axios
+			.get(API_ENDPOINT + `/api/subscriptions/${this.state.userId}`)
 			.then(res => {
 				newFollowed = res.data;
 			})
 			.catch(err => {
 				console.log(err);
-			})
+			});
 
 		this.setState({
 			events: newEvents,
 			followed: newFollowed
-		})
-	}
+		});
+	};
 
 	render = () => {
 		return (
 			<div>
 				<div className="events">
-					{this.state.events && this.state.events.map(event => <div>{event.title}</div>)}
+					{this.state.events &&
+						this.state.events.map(event => <div>{event.title}</div>)}
 				</div>
 				<div className="followed">
-					{this.state.followed && this.state.followed.map(person => <div>{person.first_name} {person.last_name}</div>)}
+					{this.state.followed &&
+						this.state.followed.map(person => (
+							<div>
+								{person.first_name} {person.last_name}
+							</div>
+						))}
 				</div>
 			</div>
-		)
-	}
-
+		);
+	};
 }
 
 export default FollowerDashboard;
