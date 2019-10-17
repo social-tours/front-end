@@ -47,17 +47,20 @@ export const getSubscriptions = () => async dispatch => {
 
 export const getSubscriptionsByUserId = () => async dispatch => {
 	let userId = jwt_decode(localStorage.getItem("api_token")).id;
+	console.log("My UserId: ", userId)
 
 	try {
 		let subs = await axios.get(`${API_ENDPOINT}${SUBSCRIPTIONS}/${userId}`);
+
 		subs.status === 200
 			? dispatch({
-					type: types.FETCH_SUBSCRIPTION_SUCCESS,
-					payload: subs.data
-			  })
+				type: types.FETCH_SUBSCRIPTION_SUCCESS,
+				payload: subs.data,
+			})
 			: dispatch({
-					type: types.FETCH_SUBSCRIPTION_FAILED
-			  });
+				type: types.FETCH_SUBSCRIPTION_FAILED
+			});
+		console.log("SUBS DATA from ac: ", subs.data)
 	} catch (err) {
 		dispatch({
 			type: types.FETCH_SUBSCRIPTION_FAILED

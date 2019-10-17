@@ -1,10 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import { connect } from "react-redux";
-import CreateEvent from "./ManageEvents/createEvent";
-import moment from "moment";
 import { withRouter } from "react-router-dom";
+import moment from "moment";
 import Loader from "react-loader";
+
+//components
+import CreateEvent from "./ManageEvents/createEvent";
+import DashCard from "./DashCard"
 
 //icons
 import StarIcon from "@material-ui/icons/Star";
@@ -16,14 +19,17 @@ import { colors } from "./DesignComponents/theme";
 //import EventCalendar from "./EventCalendar";
 import UpcomingEvents from "./ManageEvents/UpcomingEvents";
 import { fetchEvents } from "../actions";
+import { getSubscriptionsByUserId } from "../actions/subscriptionActions";
 
 class Dashboard extends React.Component {
 	state = {
-		events: this.props.events
+		events: this.props.events,
+		// subs: []
 	};
 
 	componentDidMount() {
 		this.props.fetchEvents();
+		this.props.getSubscriptionsByUserId();
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
@@ -35,6 +41,10 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
+		console.log("DASH Subscriptions: ", this.props.subs)
+		console.log("DASH influencer_ids: ", this.props.subs.influencer_id)
+		console.log("DASH events: ", this.props.events)
+		console.log("DASH state: ", this.props.subs)
 		if (this.state.events.length === 0)
 			return (
 				<DashWrapper>
@@ -53,28 +63,45 @@ class Dashboard extends React.Component {
 						<DashHeader>Create a New Event</DashHeader>
 						<CreateEvent user={this.props.user} />
 					</NewEvent>
+					<br />
 				</Items>
+				<EventsListDash>
+					<DashHeader>Events You're Subscribed to!</DashHeader>
+					{this.props.subs.map(event => {
+						return (
+							<DashCard
+								id={event.id}
+								key={event.id}
+								influencerName={event.influencer_name}
+							// time={event.}
+							// location={event.}
+							/>
+						)
+					})}
+				</EventsListDash>
 			</DashWrapper>
 		);
 	}
 }
 
-const mapStateToProps = ({ scheduleReducer, eventReducer }) => {
+const mapStateToProps = ({ subscriptionReducer, eventReducer }) => {
 	return {
-		events: eventReducer.events
+		events: eventReducer.events,
+		subs: subscriptionReducer.subscriptions
 	};
 };
 
 export default withRouter(
 	connect(
 		mapStateToProps,
-		{ fetchEvents }
+		{ fetchEvents, getSubscriptionsByUserId }
 	)(Dashboard)
 );
 
 const DashWrapper = styled.div`
 	margin: 35px auto;
 	display: flex;
+	flex-direction: column;
 	max-width: 1000px;
 	align-items: center;
 	align-content: center;
@@ -107,8 +134,20 @@ const NewEvent = styled.div`
 	flex-direction: column;
 	justify-content: space-between;
 	align-items: center;
-	height: 45%;
+	height: 100%;
 	width: 45%;
+	background-color: ${colors.mint};
+	border: 1px solid ${colors.black_plum};
+	box-shadow: #282c34 5px 5px 5px;
+	border-radius: 10px;
+`;
+
+const EventsListDash = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-wrap: wrap;
+	width: 80%;
 	background-color: ${colors.mint};
 	border: 1px solid ${colors.black_plum};
 	box-shadow: #282c34 5px 5px 5px;
