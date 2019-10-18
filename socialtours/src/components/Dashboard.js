@@ -24,12 +24,44 @@ import { getSubscriptionsByUserId } from "../actions/subscriptionActions";
 class Dashboard extends React.Component {
 	state = {
 		events: this.props.events,
-		// subs: []
+		myInfluencers: [],
+		myEvents: []
 	};
 
 	componentDidMount() {
 		this.props.fetchEvents();
 		this.props.getSubscriptionsByUserId();
+
+		this.setState({
+			myInfluencers: this.props.subs.map((props) => {
+				return { 'influencer_id': this.props.subs.influencer_id };
+
+			})
+		})
+		console.log("setState: ", myInfluencers)
+
+		// TODO: PSUDO CODE to list out events. pulling in influencer id's and returning events for just those members.
+		// this.setState({
+		// 	myEvents: this.props.scheuledEvents.filter(event => {
+		// 		event.host_id.includes[this.state.myInfluencers](
+		// 			<EventCard />
+		// 		)
+		// 	})
+		// })
+
+
+		//TODO: idea 2 for pulling in influencer ids to state
+		// this.setState({
+		// 	myInfluencers: this.props.subs.influencer_id
+		// })
+
+		//TODO: dont filter this, filter events and compare that to influencer IDs instead.
+		// const influencers = this.props.subs.filter(person => person.influencer_id)
+		// this.setState({
+		// 	myInfluencers: influencers.influencer_id
+		// })
+		// console.log("myInfluencers: ", myInfluencers)
+		// console.log("influencers: ", influencers)
 	}
 
 	componentDidUpdate(prevProps, prevState, snapshot) {
@@ -41,10 +73,11 @@ class Dashboard extends React.Component {
 	}
 
 	render() {
+		console.log("myInfluencers: ", myInfluencers)
 		console.log("DASH Subscriptions: ", this.props.subs)
 		console.log("DASH influencer_ids: ", this.props.subs.influencer_id)
 		console.log("DASH events: ", this.props.events)
-		console.log("DASH state: ", this.props.subs)
+		console.log("DASH state: ", this.state)
 		if (this.state.events.length === 0)
 			return (
 				<DashWrapper>
