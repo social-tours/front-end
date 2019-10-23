@@ -27,10 +27,11 @@ import Navigation from "./components/Navigation";
 import { userHasEvent } from "./utils";
 import AboutUsContact from "./components/AboutUsContact.js";
 import Search from "./components/Search";
+import Payment from "./components/PaymentComponents/Payment";
 
 // import Calendar from "./components/EventCalendar";
-//import API_ENDPOINT from "./config/api";
-const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
+import { API_ENDPOINT } from "./config/api";
+//const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
 class App extends Component {
 	state = {
 		usersData: []
@@ -82,6 +83,7 @@ class App extends Component {
 					<Route path="/search" component={Search} />
 					<Route path="/FollowerDash" component={FollowerDashboard} />
 					<Route path="/AboutUsContact" component={AboutUsContact} />
+					<Route path="/payment" component={Payment} />
 				</Switch>
 			</Router>
 		);
