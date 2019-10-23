@@ -5,7 +5,13 @@ const theme = {
 		putty: "#CDCDCD",
 		mint: "#DFF8EB",
 		spruce: "#214E34",
-		dirty_concord: "#34344A"
+		dirty_concord: "#34344A",
+		/////// Theme Colors for 3rd Canvas
+		red: "#fb3640",
+		grey: "#605f5e",
+		dark_blue: "#1d3461",
+		blue: "#1f487e",
+		light_blue: "#247ba0"
 	},
 
 	color: {
