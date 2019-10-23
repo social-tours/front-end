@@ -32,7 +32,7 @@ class Main extends Component {
 const SiteWrapper = styled.div`
 	width: 100%;
 	height: 100vh;
-	background-color: #011638;
+	background-color: #ffffff;
 `;
 
 const mapStateToProps = state => {
