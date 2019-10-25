@@ -33,11 +33,16 @@ const EventFormStyles = styled.div`
 	}
 
 	button {
-		background-color: ${colors.grape};
-		color: ${colors.putty};
+		background-color: ${colors.red};
+		color: ${colors.black};
 		height: 35px;
 		width: 85%;
 		border-radius: 5px;
+		font-weight: bold;
+
+		border-width: 2px;
+		border-color: black;
+		border-style: solid;
 	}
 `;
 
