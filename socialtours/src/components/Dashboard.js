@@ -104,7 +104,7 @@ const Events = styled.div`
 	background-color: ${colors.grey};
 	/* background-image: url(https://i.imgur.com/7dgNXOp.png); */
 	text-align: center;
-	height: 100%;
+	${"" /* height: 100%; */}
 	border-radius: 10px;
 
 	border: 1px solid ${colors.white};
