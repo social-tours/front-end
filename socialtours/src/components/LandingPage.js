@@ -3,61 +3,97 @@ import styled from "styled-components";
 import { withRouter } from "react-router-dom";
 
 import { colors } from "./DesignComponents/theme";
-import PlanImage from "../images/plan2.png";
-import ShareImage from "../images/share.png";
+
+// PREVIOUS LP images
+// import PlanImage from "../images/plan2.png";
+// import ShareImage from "../images/share.png";
+import Meeting1 from "../images/meeting1.jpg";
+import Meeting2 from "../images/meeting2.jpg";
+import Concert1 from "../images/concert1.jpg";
+import Concert2 from "../images/concert2.jpg";
+import CoffeeShop from "../images/coffeeshop.jpg";
+
+// Me poking at things
+// const LandingPage = () => {
+// 	return (
+// 		<h1>hiljkaklasjdlaksjdlksj</h1>
+// 	)
+// }
+
+
+
 
 const carousel_data = [
 	{
-		imgUrl: require("../images/tattoo.jpg"),
+		imgUrl: require("../images/meeting1.jpg"),
 		attributionUrl:
-			"https://www.flickr.com/photos/jimmyg/5158673824/in/photolist-8RRy19-7DQfZo-i82Rfj-SELhrn-deZBCo-9oAQ5r-gjr1WB-RrC7zg-6vsi4p-9LjssX-bgS1yR-gjs9VR-4sFeLS-7DQfKA-gjqCaJ-gjr2go-Py8UX9-hRhjYH-gjrF5b-7DLrxv-i84oCV-7DQg3C-gjrfso-gjrEEx-gjqXn3-zngdj-qPjcct-9oB4Hk-2cEhYFD-EAizaJ-3aJmUc-UdQuFf-9oE8Wy-Z1EAKk-u3Wn42-Sjrhmj-qPm5Lr-2cV6gkd-TwS8ML-HLWy6T-VKXujo-XMh8Rc-RKLmnu-SYH4Z1-9oEam9-rHdvBd-9oB7ce-U66rR8-2cD5xbv-gjre1L",
-		photographer: "Jimmy G"
+			"https://images.unsplash.com/photo-1528605105345-5344ea20e269?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+		photographer: "Photo by Priscilla Du Preez on Unsplash"
 	},
 	{
-		imgUrl: require("../images/woman_at_event.jpg"),
+		imgUrl: require("../images/concert1.jpg"),
 		attributionUrl:
-			"https://www.flickr.com/photos/ministeriebz/40050169453/in/photolist-2426A3Z-2exWGrG-5DnRak-nS82Sq-7aLpUn-bqUX2k-TG1K6c-znuGac-ap6U8D-5Si95Q-WTvJxa-TRc1WS-zBJ6Ud-phXugh-yGXJ4C-nLrVoF-2bqtzsR-bZxNvU-SupU6h-2426ySc-SupTV7-qbJxfD-2dwxB9u-2dwxAPS-WvPWmv-2exWFZE-2dwxAKy-2deLLqH-2deLL5x-2dwxAc9-2426yWF-2dwxzBm-SupTww-Ve3YtQ-2dwxAWL-eAgSp2-SDGNgP-dEeTm7-5ZPRHp-THiPsP-5ZU4Wy-eAgZvg-5VShRc-n975Gb-o7z7ns-dEeTaY-8ajySR-eYiVv5-o3QjHm-mbip9X",
-		photographer: "Kirsten van Sant"
+			"https://images.unsplash.com/photo-1504680177321-2e6a879aac86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+		photographer: "Photo by Danny Howe on Unsplash"
 	},
 	{
-		imgUrl: require("../images/selfie.jpg"),
+		imgUrl: require("../images/coffeeshop.jpg"),
 		attributionUrl:
-			"https://www.flickr.com/photos/rodriuru/22068562203/in/photolist-zC89FM-oXsnut-o7nnm9-24zKCkg-oKm57E-2bn4gVT-rPfzdq-pjiiFK-j63YXK-qgTALB-dS5898-r4HA7c-n3UuQ5-qsyWPz-22UY9Lc-2fkGGvF-ToKLgp-J5qZMK-22E8cQe-StJnap-2fmtw8s-28oWPcs-CdxQrG-rbxGEV-U3WfG5-of3kFF-nSaEFf-VTP9A4-dharnt-z9a36x-ThQPUq-G8pUzp-FKbyV1-fB1BgY-smxafn-goBpEC-fuLEPG-gcLNPx-VR49R8-HpSbey-oChK9h-oYgHnb-fwNUnv-23qjvbu-rEKf2L-puk4aJ-2diRYp4-E1KTLn-kaCbkg-Y9F9ff",
-		photographer: "Rodrigo Olivera"
+			"https://images.unsplash.com/photo-1494346480775-936a9f0d0877?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2006&q=80",
+		photographer: "Photo by Nick Hillier on Unsplash"
+	},
+	{
+		imgUrl: require("../images/meeting2.jpg"),
+		attributionUrl:
+			"https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80",
+		photographer: "Photo by Teemu Paananen on Unsplash"
+	},
+	{
+		imgUrl: require("../images/concert2.jpg"),
+		attributionUrl:
+			"https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
+		photographer: "Photo by Noiseporn on Unsplash"
 	}
 ];
 
+
+// PREVIOUS LP RETURN
 const LandingPage = ({ history }) => {
 	let [imgIndex, setImgIndex] = useState(0);
 
 	useEffect(() => {
 		setTimeout(() => {
 			setImgIndex((imgIndex + 1) % carousel_data.length);
-		}, 3000);
+		}, 6000);
 	}, [imgIndex]);
 
 	return (
 		<LandingPageWrapper>
 			<CarouselWrapper>
+				<LPTextWrapper>
+					<h1>Hello!!!!</h1>
+					<ButtonWrapper>
+						<RegisterButton onClick={() => history.push("/register")}>
+							Register
+						</RegisterButton>
+						<LoginButton onClick={() => history.push("/login")}>Login</LoginButton>
+					</ButtonWrapper>
+				</LPTextWrapper>
 				<CarouselImage src={carousel_data[imgIndex].imgUrl} />
-				<HeroCard>
+				{/* <HeroCard>
 					<h2>Connect with Followers</h2>
 					<img src={PlanImage} />
 					<img src={ShareImage} />
-				</HeroCard>
+				</HeroCard> */}
 			</CarouselWrapper>
-			<ButtonWrapper>
-				<RegisterButton onClick={() => history.push("/register")}>
-					Register
-				</RegisterButton>
-				<LoginButton onClick={() => history.push("/login")}>Login</LoginButton>
-			</ButtonWrapper>
 		</LandingPageWrapper>
 	);
 };
 
 export default withRouter(LandingPage);
 
+
+// PREVIOUS LP STYLINGS
 const HeroCard = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -97,20 +133,36 @@ const LandingPageWrapper = styled.div`
 
 const CarouselWrapper = styled.div`
 	margin: 0 auto;
-	width: 1000px;
-	background-color: ${colors.mint};
-	height: 600px;
+	position: relative;
+	align-items: center;
+	display: inline-block;
+	/* width: 1000px; */
+	/* background-color: ${colors.mint}; */
+	/* height: 600px; */
+	/* display: flex; */
 `;
 
 const CarouselImage = styled.img`
 	width: 100%;
-	max-height: 600px;
+	max-height: 100vh;
+`;
+
+const LPTextWrapper = styled.div`
+	text-align: center;
+	margin: 0 auto;
+	align-items: center;
+	width: 50%;
+	/* margin-top:45%;
+	margin-left: 50%; */
+	position: absolute;
+	/* margin: 40%; */
+	display: flex;
 `;
 
 const ButtonWrapper = styled.div`
-	text-align: center;
-	margin-top: 35px;
-`;
+justify-content: center;
+align-items: center;
+`
 
 const Button = styled.button`
 	padding: 10px 20px;
@@ -125,6 +177,11 @@ const RegisterButton = styled(Button)`
 	margin-right: 10px;
 	color: ${colors.mint};
 	background-color: ${colors.grape};
+
+	&:hover {
+		color: ${colors.grape};
+		background-color: ${colors.mint};
+	}
 `;
 const LoginButton = styled(Button)`
 	color: ${colors.grape};
