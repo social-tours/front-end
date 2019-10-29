@@ -101,7 +101,7 @@ export const EventHeader = styled.div`
 `;
 
 export const EventContainer = styled.div`
-	min-height: calc(100vh - 35px - 25px);
+	height: 100vh;
 	margin: 0 auto;
 	margin-top: 35px;
 	width: 90%;
