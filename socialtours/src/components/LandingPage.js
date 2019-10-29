@@ -71,11 +71,8 @@ const LandingPage = ({ history }) => {
 		<LandingPageWrapper>
 			<CarouselWrapper>
 				<LPTextWrapper>
-					<h1>Hello!!!!</h1>
 					<ButtonWrapper>
-						<RegisterButton onClick={() => history.push("/register")}>
-							Register
-						</RegisterButton>
+						<RegisterButton onClick={() => history.push("/register")}>Register</RegisterButton>
 						<LoginButton onClick={() => history.push("/login")}>Login</LoginButton>
 					</ButtonWrapper>
 				</LPTextWrapper>
@@ -144,25 +141,23 @@ const CarouselWrapper = styled.div`
 
 const CarouselImage = styled.img`
 	width: 100%;
-	max-height: 100vh;
+	max-height: 736px;
 `;
 
 const LPTextWrapper = styled.div`
-	text-align: center;
-	margin: 0 auto;
-	align-items: center;
-	width: 50%;
-	/* margin-top:45%;
-	margin-left: 50%; */
 	position: absolute;
-	/* margin: 40%; */
-	display: flex;
+	left: 0;
+	right: 0;
+	margin: auto;
+	top: 70%;
+	margin-top: -50px;
 `;
 
 const ButtonWrapper = styled.div`
-justify-content: center;
-align-items: center;
-`
+	display: flex;
+	justify-content: center;
+	align-content: center;
+`;
 
 const Button = styled.button`
 	padding: 10px 20px;
