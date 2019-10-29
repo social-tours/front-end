@@ -20,7 +20,7 @@ class UpdateEvent extends React.Component {
 		title: "",
 		host_id: "", //FK to user_ID
 		description: "",
-		event_image: ""
+		event_image: "",
 		event: {}
 	};
 
@@ -43,7 +43,7 @@ class UpdateEvent extends React.Component {
 			title: event.title,
 			host_id: event.host_id,
 			description: event.description,
-			event_image: event.event_image
+			event_image: event.event_image,
 			event
 		});
 		if (this.props.forUpdate) {
