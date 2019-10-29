@@ -14,8 +14,7 @@ class TheCreateEvent extends React.Component {
 			? jwt_decode(localStorage.getItem("api_token")).id
 			: 2,
 		description: "",
-		event_image: "",
-		capacity: ""
+		event_image: ""
 	};
 
 	handleChange = e => {
@@ -56,13 +55,6 @@ class TheCreateEvent extends React.Component {
 						placeholder="event_image"
 						onChange={this.handleChange}
 						value={this.state.event_image}
-					/>
-					<input
-						name="capacity"
-						placeholder="capacity"
-						onChange={this.handleChange}
-						value={this.state.capacity}
-						type="number"
 					/>
 					<button
 						onClick={e => {
