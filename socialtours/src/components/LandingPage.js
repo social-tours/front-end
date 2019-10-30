@@ -149,7 +149,7 @@ const LPTextWrapper = styled.div`
 	left: 0;
 	right: 0;
 	margin: auto;
-	top: 70%;
+	top: 80%;
 	margin-top: -50px;
 `;
 

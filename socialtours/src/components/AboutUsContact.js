@@ -52,7 +52,7 @@ const useStyles = makeStyles(theme => ({
   },
   cardContent: {
     flexGrow: 1,
-  
+
   },
   contact: {
     backgroundColor: theme.palette.background.paper,
@@ -126,7 +126,7 @@ export default function About() {
                       <Typography gutterBottom variant="h5" component="h2"> Gannon Darcy </Typography>
                       <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
                       <Typography>
-                        <a target="_blank" rel="noopener noreferrer"href="https://www.gannon.dev">Portfolio Website</a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://www.gannon.dev">Portfolio Website</a>
                       </Typography>
                     </CardContent>
                     <CardActions>
@@ -145,9 +145,6 @@ export default function About() {
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Michael Jenkins </Typography>
                       <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
-                      <Typography>
-                        <a target="_blank" rel="noopener noreferrer"href="https://fullstackurban.com">Portfolio Website</a>
-                      </Typography>
                     </CardContent>
                     <CardActions>
                       <a target="_blank" rel="noopener noreferrer" href="https://github.com/mjenkins9605" > <StlyedIoLogoGithub /> </a>
@@ -216,6 +213,9 @@ export default function About() {
                     <CardContent className={classes.cardContent}>
                       <Typography gutterBottom variant="h5" component="h2"> Greg Urban </Typography>
                       <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
+                      <Typography>
+                        <a target="_blank" rel="noopener noreferrer" href="https://fullstackurban.com">Portfolio Website</a>
+                      </Typography>
                     </CardContent>
                     <CardActions>
                       <a target="_blank" rel="noopener noreferrer" href="https://github.com/GregoryUrban"> <StlyedIoLogoGithub /> </a>
@@ -234,13 +234,13 @@ export default function About() {
                       <Typography gutterBottom variant="h5" component="h2"> Rane Wallin </Typography>
                       <Typography className={"AboutTitle"} variant={"p"}> Full-Stack Developer </Typography>
                       <Typography>
-                        <a target="_blank" rel="noopener noreferrer"href="https://blasph.me">Portfolio Website</a>
+                        <a target="_blank" rel="noopener noreferrer" href="https://blasph.me">Portfolio Website</a>
                       </Typography>
                     </CardContent>
                     <CardActions>
                       <a target="_blank" rel="noopener noreferrer" href="https://github.com/RaneWallin"> <StlyedIoLogoGithub /> </a>
                       <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/rane-wallin"> <StlyedIoLogoLinkedin /> </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/Jim_Wig"> <StlyedIoLogoTwitter /> </a>                      
+                      <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/rane_wallin"> <StlyedIoLogoTwitter /> </a>
                     </CardActions>
                   </Card>
                 </Grid>
@@ -258,7 +258,7 @@ export default function About() {
                     <CardActions>
                       <a target="_blank" rel="noopener noreferrer" href="https://github.com/jpwigdor"> <StlyedIoLogoGithub /> </a>
                       <a target="_blank" rel="noopener noreferrer" href="https://www.linkedin.com/in/jameswigdor/"> <StlyedIoLogoLinkedin /> </a>
-                      <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/rane_wallin"> <StlyedIoLogoTwitter /> </a>                      
+                      <a target="_blank" rel="noopener noreferrer" href="https://twitter.com/Jim_Wig"> <StlyedIoLogoTwitter /> </a>
                     </CardActions>
                   </Card>
                 </Grid>
