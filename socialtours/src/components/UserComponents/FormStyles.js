@@ -46,8 +46,11 @@ export const FormContainer = styled.div`
     border-radius: 5px;
     ${flex("column", "center")};
     border: 1px solid ${colors.black_plum};
-    background-color: ${colors.black_plum};
-    color: ${colors.putty};
+    background-color: ${colors.blue};
+    background-image: linear-gradient(to bottom right, ${colors.blue}, ${
+	colors.light_blue
+});
+    color: ${colors.white};
 
 
     @media ${breakpoints[0]} {
@@ -62,11 +65,11 @@ export const FormContainer = styled.div`
       width: 80%;
       padding: 10px;
       border: 1px solid ${color.primaryBgShading};
-      background: ${colors.dirty_concord};     
-      color: white;
+      background: ${colors.white};     
+      color: #000;
       line-height: 1rem;
       ::placeholder {
-      	color: ${color.lightText}
+      	color: ${colors.black}
       }
     }
 
@@ -101,14 +104,15 @@ export const FormButton = styled(Button)`
 	border-radius: 5px;
 	font-weight: normal;
 	font-size: ${fontSizing.xxs};
-	border: 1px solid ${color.primaryBgShading};
-	background-color: ${colors.putty};
+	border: 1px solid ${colors.dark_blue};
+	background-color: ${colors.red};
 	color: black;
 	${props =>
 		props.socialIcon &&
 		css`
 			${flex("row", "center", "space-evenly")};
 			padding: 1px 10px;
+			background-color: ${colors.white};
 
 			div:first-child {
 				width: 20px;
