@@ -22,6 +22,7 @@ export const FormContainer = styled.div`
 		props.something &&
 		css`
 			margin-top: 10px;
+			padding-top: 0px;
 		`}
 
   @media ${breakpoints[0]} {
@@ -95,6 +96,7 @@ export const TextContainer = styled.div`
 		font-size: ${fontSizing.xs};
 		font-weight: bold;
 		text-transform: uppercase;
+		color: #fff;
 	}
 `;
 
