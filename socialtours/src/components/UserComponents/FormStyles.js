@@ -43,6 +43,7 @@ export const FormContainer = styled.div`
 
   form {
     width: 100%;
+    border-radius: 5px;
     ${flex("column", "center")};
     border: 1px solid ${colors.black_plum};
     background-color: ${colors.black_plum};
