@@ -21,7 +21,6 @@ class UpdateEvent extends React.Component {
 		host_id: "", //FK to user_ID
 		description: "",
 		event_image: "",
-		capacity: "",
 		event: {}
 	};
 
@@ -45,7 +44,6 @@ class UpdateEvent extends React.Component {
 			host_id: event.host_id,
 			description: event.description,
 			event_image: event.event_image,
-			capacity: event.capacity,
 			event
 		});
 		if (this.props.forUpdate) {
@@ -124,13 +122,6 @@ class UpdateEvent extends React.Component {
 						placeholder="event_image"
 						onChange={this.handleChange}
 						value={this.state.event_image}
-					/>
-					<input
-						name="capacity"
-						placeholder="capacity"
-						onChange={this.handleChange}
-						value={this.state.capacity}
-						type="number"
 					/>
 					<button onClick={e => this.putEvent(e, this.props.match.params.id)}>
 						Update This Event

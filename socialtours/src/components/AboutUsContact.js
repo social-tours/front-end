@@ -91,7 +91,6 @@ const StlyedIoLogoTwitter = styled(IoLogoTwitter)`
 	width: 2.5rem;
 	height: 2.5rem;
 `;
-
 const Wrapper = styled.div`
 	background-color: #fff;
 	padding: 48px 0;
