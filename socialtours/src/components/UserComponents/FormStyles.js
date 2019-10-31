@@ -106,7 +106,7 @@ export const FormButton = styled(Button)`
 	border-radius: 5px;
 	font-weight: normal;
 	font-size: ${fontSizing.xxs};
-	border: 1px solid ${colors.dark_blue};
+	border: 1px solid ${colors.black};
 	background-color: ${colors.red};
 	color: black;
 	${props =>
