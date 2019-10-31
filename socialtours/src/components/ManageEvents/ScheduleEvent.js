@@ -14,6 +14,7 @@ class ScheduleEvent extends Component {
 		city: "",
 		postal_code: "",
 		country: "",
+		capacity: null,
 		title: this.props.title || "",
 		description: this.props.description || "",
 		event_id: this.props.event_id || null,
@@ -50,6 +51,7 @@ class ScheduleEvent extends Component {
 			location,
 			start_date_time,
 			end_date_time,
+			capacity,
 			city,
 			postal_code,
 			country,
@@ -65,6 +67,7 @@ class ScheduleEvent extends Component {
 			location,
 			start_date_time,
 			end_date_time,
+			capacity,
 			city,
 			country,
 			event_id,
@@ -76,6 +79,7 @@ class ScheduleEvent extends Component {
 			city: "",
 			postal_code: "",
 			country: "",
+			capacity: null,
 			title: this.props.title || "",
 			description: this.props.description || "",
 			event_id: this.props.event_id || null,
@@ -116,6 +120,11 @@ class ScheduleEvent extends Component {
 								value={this.state.postal_code}
 								placeholder="Postal"
 								onChange={e => this.setState({ postal_code: e.target.value })}
+							/>
+							<input
+								value={this.state.capacity}
+								placeholder="Capacity"
+								onChange={e => this.setState({ capacity: e.target.value })}
 							/>
 							<input
 								value={this.state.country}

@@ -58,7 +58,6 @@ class EventCard extends Component {
 					<p>Event ID#: {this.props.id}</p>
 					<p>User ID#: {this.props.userId}</p>
 					<p>Title: {this.props.title}</p>
-					<p>Capacity: {this.props.capacity}</p>
 					<p>Description: {this.props.description}</p>
 					{/* <p>Time: {this.props.date}</p>
 					<p>Location: {this.props.location}</p> */}
