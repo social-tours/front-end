@@ -64,19 +64,15 @@ class UpdateEvent extends React.Component {
 		return event;
 	};
 
-	putEvent = async (e, id) => {
+	handlePutEvent = async e => {
 		e.preventDefault();
 		let updatedData = {
-			type: this.state.type,
-			title: this.state.title,
-			host_id: this.state.host_id, //FK to user_ID
-			description: this.state.description,
-			event_image: this.state.event_image
+			...this.state
 		};
-
-		const updateEvent = await axios.put(`${API_ENDPOINT}/api/events/${id}`, updatedData);
+		delete updatedData.event // Remove unnecessary object to prevent db update errors
+		const updateEvent = await axios.put(`${API_ENDPOINT}/api/events/${updatedData.id}`, updatedData);
 		console.log("UPDATEEVENT: ", updateEvent)
-		this.props.history.push(`/events/${id}`);
+		this.props.history.push(`/events/${updatedData.id}`);
 	};
 
 	deleteEvent = async (e, id) => {
@@ -128,7 +124,7 @@ class UpdateEvent extends React.Component {
 						onChange={this.handleChange}
 						value={this.state.event_image}
 					/>
-					<button onClick={e => this.putEvent(e, this.props.match.params.id)}>
+					<button onClick={this.handlePutEvent}>
 						Update This Event
 					</button>
 				</form>
