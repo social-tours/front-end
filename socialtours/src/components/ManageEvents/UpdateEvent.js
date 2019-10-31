@@ -11,7 +11,7 @@ import EventFormStyles from "./EventFormStyles";
 
 import { fetchEvent, putEvent, deleteEvent } from "../../actions/eventActions";
 import { API_ENDPOINT } from "../../config/api.js";
-const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
+//const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
 
 class UpdateEvent extends React.Component {
 	state = {
@@ -60,17 +60,22 @@ class UpdateEvent extends React.Component {
 		let updatedData = {
 			...this.state
 		};
-		const event = await axios.get(API + `/api/events/${id}`);
+		const event = await axios.get(API_ENDPOINT + `/api/events/${id}`);
 		return event;
 	};
 
 	putEvent = async (e, id) => {
 		e.preventDefault();
 		let updatedData = {
-			...this.state
+			type: this.state.type,
+			title: this.state.title,
+			host_id: this.state.host_id, //FK to user_ID
+			description: this.state.description,
+			event_image: this.state.event_image
 		};
-		delete updatedData.id;
-		const myFunction = await axios.put(API + `/api/events/${id}`, updatedData);
+
+		const updateEvent = await axios.put(`${API_ENDPOINT}/api/events/${id}`, updatedData);
+		console.log("UPDATEEVENT: ", updateEvent)
 		this.props.history.push(`/events/${id}`);
 	};
 
@@ -84,7 +89,7 @@ class UpdateEvent extends React.Component {
 		const testEvent = {
 			...this.state
 		};
-		const myFunction = await axios.post(API + "/api/events", testEvent);
+		const myFunction = await axios.post(API_ENDPOINT + "/api/events", testEvent);
 	};
 
 	render() {
