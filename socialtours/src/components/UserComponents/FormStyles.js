@@ -12,9 +12,9 @@ import Button from "../DesignComponents/Button";
 export const FormContainer = styled.div`
   width: 600px;
   ${flex("column", "center", "center")};
-  margin: 50px auto 10px auto ;
+  margin: 0px auto 10px auto;
+  padding-top 50px;
   border-radius: 5px;
-  border: 1px solid ${colorScheme.secondaryBorderColor}
   // box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
   font-size: ${fontSizing.sm};
 
@@ -44,6 +44,7 @@ export const FormContainer = styled.div`
   form {
     width: 100%;
     ${flex("column", "center")};
+    border: 1px solid ${colors.black_plum};
     background-color: ${colors.black_plum};
     color: ${colors.putty};
 

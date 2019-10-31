@@ -124,7 +124,6 @@ const LogoImage = styled.img`
 const LandingPageWrapper = styled.div`
 	width: 100%;
 	margin-top: 35px;
-	background-color: ${colors.black_plum};
 	height: 100vh;
 `;
 

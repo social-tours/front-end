@@ -98,7 +98,6 @@ export default connect(
 )(Login);
 
 const FormWrapper = styled.div`
-	background-color: ${colors.putty};
 	height: 100vh;
 	padding-top: 30px;
 `;
