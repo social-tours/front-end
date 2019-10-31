@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
 	width: 90%;
 	${flex("column", "center")}
 	margin: 0 auto;
-	margin-top: 50px;
+	padding-top: 50px;
 `;
 
 export const Table = styled.div`

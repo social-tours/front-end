@@ -52,7 +52,6 @@ class FollowerDashboard extends React.Component {
 const SiteWrapper = styled.div`
 	width: 100%;
 	height: 100vh;
-	background-color: #011638;
 	color: #fff;
 `;
 const Wrapper = styled.div`

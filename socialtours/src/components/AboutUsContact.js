@@ -53,8 +53,7 @@ const useStyles = makeStyles(theme => ({
 		flexGrow: 1
 	},
 	contact: {
-		backgroundColor: theme.palette.background.paper,
-		padding: theme.spacing(6)
+		backgroundColor: theme.palette.background.paper
 	},
 	form: {
 		margin: "0 100px",
@@ -91,6 +90,10 @@ const StlyedIoLogoLinkedin = styled(IoLogoLinkedin)`
 const StlyedIoLogoTwitter = styled(IoLogoTwitter)`
 	width: 2.5rem;
 	height: 2.5rem;
+`;
+const Wrapper = styled.div`
+	background-color: #fff;
+	padding: 48px 0;
 `;
 
 const cards = [1];
@@ -461,50 +464,52 @@ export default function About() {
 				</div>
 			</main>
 
-			<contact className={classes.contact}>
-				<Typography
-					component="h1"
-					variant="h2"
-					align="center"
-					color="textPrimary"
-					gutterBottom
-				>
-					Contact Us
-				</Typography>
-				<form className={classes.form} name="contact">
-					<input type="hidden" name="form-name" value="contact" />
-					<TextField
-						label="Name"
-						className={classes.textField}
-						margin="normal"
-						name="contact-name"
-						variant="outlined"
-						required
-					/>
-					<TextField
-						label="Email"
-						className={classes.textField}
-						margin="normal"
-						name="contact-email"
-						variant="outlined"
-						required
-					/>
-					<TextField
-						label="Message"
-						className={classes.textField}
-						margin="normal"
-						name="contact-message"
-						multiline
-						rows="8"
-						placeholder="Type your message here"
-						variant="outlined"
-						required
-					/>
-					<Button className={classes.button} type="submit" variant="outlined">
-						Submit
-					</Button>
-				</form>
-			</contact>
+			<Wrapper>
+				<contact className={classes.contact}>
+					<Typography
+						component="h1"
+						variant="h2"
+						align="center"
+						color="textPrimary"
+						gutterBottom
+					>
+						Contact Us
+					</Typography>
+					<form className={classes.form} name="contact">
+						<input type="hidden" name="form-name" value="contact" />
+						<TextField
+							label="Name"
+							className={classes.textField}
+							margin="normal"
+							name="contact-name"
+							variant="outlined"
+							required
+						/>
+						<TextField
+							label="Email"
+							className={classes.textField}
+							margin="normal"
+							name="contact-email"
+							variant="outlined"
+							required
+						/>
+						<TextField
+							label="Message"
+							className={classes.textField}
+							margin="normal"
+							name="contact-message"
+							multiline
+							rows="8"
+							placeholder="Type your message here"
+							variant="outlined"
+							required
+						/>
+						<Button className={classes.button} type="submit" variant="outlined">
+							Submit
+						</Button>
+					</form>
+				</contact>
+			</Wrapper>
 		</React.Fragment>
 	);
 }
