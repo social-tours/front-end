@@ -21,22 +21,24 @@ class UpdateEvent extends React.Component {
 		host_id: "", //FK to user_ID
 		description: "",
 		event_image: "",
-		event: {}
+		event: null
 	};
 
-	componentDidUpdate(prevProps) {
+	componentDidUpdate(prevProps, prevState) {
 		if (this.props.id !== prevProps.id) {
 			this.fetchData(this.props.userID);
 		}
 	}
 
 	componentDidMount = async () => {
-		// const currentEvent = this.handleFetchEvent();
-		const res = await axios.get(
-			API_ENDPOINT + `/api/events/${this.props.match.params.id}`
-		);
-		const event = res.data;
+		const event = await this.handleFetchEvent(this.props.match.params.id);
+		console.log("CDM event: ", event)
+		if (event) {
+			this.prePopulateForm(event)
+		}
+	};
 
+	prePopulateForm = event => {
 		this.setState({
 			id: event.id,
 			type: event.type,
@@ -44,11 +46,9 @@ class UpdateEvent extends React.Component {
 			host_id: event.host_id,
 			description: event.description,
 			event_image: event.event_image,
-			event
-		});
-		if (this.props.forUpdate) {
-		}
-	};
+			event: event
+		})
+	}
 
 	handleChange = e => {
 		this.setState({
@@ -56,37 +56,46 @@ class UpdateEvent extends React.Component {
 		});
 	};
 
-	handleFetchEvent = async (e, id) => {
-		let updatedData = {
-			...this.state
-		};
-		const event = await axios.get(API_ENDPOINT + `/api/events/${id}`);
-		return event;
+	handleFetchEvent = async id => {
+		try {
+			const event = await axios.get(`${API_ENDPOINT}/api/events/${id}`);
+			return event.data;
+		} catch (err) {
+			console.log("handleFetchEvent error: ", err)
+		}
 	};
 
 	handlePutEvent = async e => {
 		e.preventDefault();
-		let updatedData = {
-			...this.state
-		};
-		delete updatedData.event // Remove unnecessary object to prevent db update errors
-		const updateEvent = await axios.put(`${API_ENDPOINT}/api/events/${updatedData.id}`, updatedData);
-		console.log("UPDATEEVENT: ", updateEvent)
-		this.props.history.push(`/events/${updatedData.id}`);
+		try {
+			let updatedData = {
+				...this.state
+			};
+			delete updatedData.event // Remove unnecessary object to prevent db update errors
+			const updateEvent = await axios.put(`${API_ENDPOINT}/api/events/${updatedData.id}`, updatedData);
+			console.log("UPDATEEVENT: ", updateEvent)
+			this.props.history.push(`/events/${updatedData.id}`);
+		} catch (err) {
+			console.log("handlePutEvent error: ", err)
+		}
 	};
 
-	deleteEvent = async (e, id) => {
+	handleDeleteEvent = async (e, id) => {
 		e.preventDefault();
-		this.props.deleteEvent(id);
-		this.props.history.push("/manageevents");
+		try {
+			this.props.deleteEvent(id);
+			this.props.history.push("/manageevents");
+		} catch (err) {
+			console.log("handleDeleteEvent error: ", err)
+		}
 	};
 
-	myTestEventPost = async () => {
-		const testEvent = {
-			...this.state
-		};
-		const myFunction = await axios.post(API_ENDPOINT + "/api/events", testEvent);
-	};
+	// myTestEventPost = async () => {
+	// 	const testEvent = {
+	// 		...this.state
+	// 	};
+	// 	const myFunction = await axios.post(API_ENDPOINT + "/api/events", testEvent);
+	// };
 
 	render() {
 		return (
