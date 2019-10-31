@@ -172,18 +172,18 @@ function Navigation(props) {
 						{props.authenticated() ? (
 							<LockOutlinedIcon />
 						) : (
-							<LockOpenOutlinedIcon />
-						)}
+								<LockOpenOutlinedIcon />
+							)}
 					</ListItemIcon>
 
 					{props.authenticated() ? (
 						<ListItemText primary={"Log out"} onClick={() => props.logout()} />
 					) : (
-						<ListItemText
-							primary={"Login"}
-							onClick={() => props.history.push("login")}
-						/>
-					)}
+							<ListItemText
+								primary={"Login"}
+								onClick={() => props.history.push("login")}
+							/>
+						)}
 				</>
 			);
 	};
@@ -192,7 +192,7 @@ function Navigation(props) {
 	return (
 		<NavWrapper>
 			<Button onClick={toggleDrawer("left", true)}>
-				<MenuIcon />
+				<MenuIcon style={{ color: "#fff" }} />
 			</Button>
 			<Drawer open={state.left} onClose={toggleDrawer("left", false)}>
 				{sideList("left")}
@@ -221,5 +221,5 @@ const NavWrapper = styled.div`
 	top: 0;
 	width: 100%;
 	height: 35px;
-	background-color: #dff8eb;
+	background-color: #605f5e;
 `;

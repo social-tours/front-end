@@ -81,7 +81,10 @@ const DashWrapper = styled.div`
 	align-content: center;
 	height: 95vh;
 	width: 100%;
-	background-color: ${colors.blue};
+	${"" /* background-color: ${colors.blue}; */}
+	background-image: linear-gradient(to bottom right, ${colors.blue}, ${
+	colors.light_blue
+});
 	/* background-image: url(https://cdn.pixabay.com/photo/2016/11/29/05/45/astronomy-1867616__340.jpg); */
 `;
 
@@ -98,10 +101,10 @@ const Events = styled.div`
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;
-	background-color: ${colors.light_blue};
+	background-color: ${colors.grey};
 	/* background-image: url(https://i.imgur.com/7dgNXOp.png); */
 	text-align: center;
-	height: 100%;
+	${"" /* height: 100%; */}
 	border-radius: 10px;
 
 	border: 1px solid ${colors.white};
@@ -116,7 +119,7 @@ const NewEvent = styled.div`
 	align-items: center;
 	height: 45%;
 	width: 45%;
-	background-color: ${colors.light_blue};
+	background-color: ${colors.grey};
 	/* background-image: url(https://i.imgur.com/7dgNXOp.png); */
 
 	border: 1px solid ${colors.white};
