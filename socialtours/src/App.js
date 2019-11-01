@@ -28,6 +28,7 @@ import { userHasEvent } from "./utils";
 import AboutUsContact from "./components/AboutUsContact.js";
 import Search from "./components/Search";
 import Payment from "./components/PaymentComponents/Payment";
+import EventsDashboard from "./components/ManageEvents/EventsDashboard"
 
 // import Calendar from "./components/EventCalendar";
 import { API_ENDPOINT } from "./config/api";
@@ -83,6 +84,7 @@ class App extends Component {
 					<Route path="/search" component={Search} />
 					<Route path="/FollowerDash" component={FollowerDashboard} />
 					<Route path="/AboutUsContact" component={AboutUsContact} />
+					<Route path="/eventsdashboard" component={EventsDashboard} />
 					<Route path="/payment" component={Payment} />
 				</Switch>
 			</Router>

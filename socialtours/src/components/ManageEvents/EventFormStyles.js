@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-import { colors } from "../DesignComponents/theme";
+import { color, colors, fontSizing, flex, breakpoints } from "../DesignComponents/theme";
 
-const EventFormStyles = styled.div`
+export const EventFormStyles = styled.div`
 	margin: 50px auto;
 	//margin-top: 50px;
 	display: flex;
@@ -45,5 +45,56 @@ const EventFormStyles = styled.div`
 		border-style: solid;
 	}
 `;
+
+export const DashBoardContainer = styled.div`
+	width: 90%;
+	${flex('column', 'center')};
+	margin: 0 auto;
+	margin-top 50px;
+	padding: 20px;
+	border-radius:3px;
+  border: 1px solid #e5e5e5;
+  
+	.tab {
+		width: 100%;
+		padding: 20px;
+	}
+
+	ul {
+		width: 100%;
+		${flex('row', 'center', 'space-between')};
+	}
+
+	ul.inline{
+		list-style:none;
+		padding: 0;
+		margin-bottom:0;
+
+		li {
+			display: inline-block;
+			margin: 0 auto;
+			padding: 10px;
+			border-bottom: 2px solid #eee;
+			transition: all .5s;
+			font-weight: 300;
+			cursor: pointer;
+			color: #aaa;
+		}
+	}	
+`
+
+export const Preview = styled.div`
+	width: 90%;
+	min-width: 300px;
+	${flex('row', 'center', 'space-between')}
+	margin: 10px 0;
+	padding: 10px;
+	border: 1px solid ${color.defaultFontColor};
+	cursor: pointer;
+
+	&:hover {
+		text-decoration: underline;
+	}
+`
 
 export default EventFormStyles;
