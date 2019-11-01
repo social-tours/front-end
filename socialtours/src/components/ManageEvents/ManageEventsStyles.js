@@ -46,6 +46,7 @@ export const EventCardWrapper = styled.div`
 	margin-top: 10px;
 	margin-bottom: 20px;
 	width: 340px;
+	font-size: 1.1rem;
 	padding: 10px 0px;
 	-webkit-box-shadow: 0 8px 6px -6px black;
 	-moz-box-shadow: 0 8px 6px -6px black;
