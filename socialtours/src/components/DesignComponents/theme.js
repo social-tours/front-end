@@ -7,7 +7,7 @@ const theme = {
 		spruce: "#214E34",
 		dirty_concord: "#34344A",
 		/////// Theme Colors for 3rd Canvas
-		white: "FFFFFF",
+		white: "#FFFFFF",
 		red: "#fb3640",
 		grey: "#605f5e",
 		dark_blue: "#1d3461",

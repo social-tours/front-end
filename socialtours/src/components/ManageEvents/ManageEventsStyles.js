@@ -9,13 +9,14 @@ export const EventsAll = styled.div`
 
 export const ManageEventsSub = styled.p`
 	margin: 10px;
+	color: ${colors.white};
 `;
 
 export const EventsTitle = styled.h1`
 	display: block;
 	text-align: center;
 	font-size: 2.5rem;
-	color: ${colors.spruce};
+	color: ${colors.white};
 	font-weight: bolder;
 	margin-top: 15px;
 	margin-bottom: 10px;
@@ -31,7 +32,7 @@ export const EventsTitle = styled.h1`
 export const EventSectionTitle = styled.h2`
 	text-align: center;
 	font-size: 2rem;
-	color: ${colors.spruce};
+	color: ${colors.white};
 	margin-top: 75px;
 	margin-bottom: 20px;
 	font-weight: bold;
@@ -51,8 +52,8 @@ export const EventCardWrapper = styled.div`
 	box-shadow: 0 8px 6px -6px black;
 	border: 0.5px solid black;
 	border-radius: 5px;
-	background-color: ${colors.dirty_concord};
-	color: ${colors.putty};
+	background-color: ${colors.grey};
+	color: ${colors.black};
 
 	img {
 		height: 80px;
@@ -104,13 +105,14 @@ export const EventContainer = styled.div`
 	height: 100vh;
 	margin: 0 auto;
 	margin-top: 35px;
-	width: 90%;
-	background-color: #cdcdcd;
+	width: 70%;
+	background-image: linear-gradient(to bottom right, ${colors.blue}, ${
+	colors.light_blue
+});
 `;
 
 export const EventsContainerContainer = styled.div`
 	width: 100%;
-	background-color: #cdcdcd;
 `;
 
 export const EventsWrapper = styled.ul`
@@ -151,10 +153,11 @@ export const CEButton = styled.button`
 	max-height: 50px;
 	margin-top: 15px;
 	border-radius: 5px;
+	font-weight: bold;
 	box-shadow: ${colors.dirty_concord} 2px 2px 2px;
-	background-color: ${colors.grape};
-	border: 1px solid ${colors.dirty_concord};
-	color: ${colors.putty};
+	background-color: ${colors.red};
+	border: 1px solid ${colors.black};
+	color: ${colors.black};
 
 	@media (max-width: 800px) {
 		transform: translate(0);
