@@ -20,7 +20,7 @@ import Adam from "../images/adam.png";
 import Greg from "../images/greg.png";
 import Rane from "../images/rane.png";
 import James from "../images/james.png";
-import { typography } from "@material-ui/system";
+// import { typography } from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
 	icon: {
