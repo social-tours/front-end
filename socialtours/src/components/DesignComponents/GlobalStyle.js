@@ -22,10 +22,6 @@ body {
 	-moz-osx-font-smoothing: grayscale;
 }
 
-ul.inline, li.selected {
-	border-bottom: 3px solid #337ab7;
-}
-
 code {
 	font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
 		monospace;

@@ -14,7 +14,7 @@ class Tabs extends Component {
       <>
         <ul>
           {this.props.children.map((elem, index) => {
-            let style = index === this.state.selected ? "selected" : ""
+            let style = index === this.state.selected ? "selected tab-title" : "tab-title"
             return (
               <li
                 key={index}

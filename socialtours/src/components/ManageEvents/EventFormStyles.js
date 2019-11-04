@@ -53,7 +53,16 @@ export const DashBoardContainer = styled.div`
 	margin-top 50px;
 	padding: 20px;
 	border-radius:3px;
-  border: 1px solid #e5e5e5;
+	border: 1px solid #e5e5e5;
+	
+	.tab-title {
+		cursor: pointer;
+
+		&.selected {
+			padding-bottom: 5px;
+			border-bottom: 3px solid #337ab7;
+		}
+	}
   
 	.tab {
 		width: 100%;
