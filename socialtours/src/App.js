@@ -28,8 +28,8 @@ import { userHasEvent } from "./utils";
 import AboutUsContact from "./components/AboutUsContact.js";
 import Search from "./components/Search";
 import Payment from "./components/PaymentComponents/Payment";
-import EventsDashboard from "./components/ManageEvents/EventsDashboard"
-
+import EventsDashboard from "./components/ManageEvents/EventsDashboard";
+import ScheduleDetails from "./components/ScheduleComponents/ScheduleDetails";
 // import Calendar from "./components/EventCalendar";
 import { API_ENDPOINT } from "./config/api";
 //const API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
@@ -40,6 +40,7 @@ class App extends Component {
 
 	componentDidMount() {
 		this.props.fetchEvents();
+		this.props.getSchedules();
 		axios
 			.get(`${API_ENDPOINT}/api/users`)
 
@@ -73,7 +74,7 @@ class App extends Component {
 					<Route path="/calendar" component={Calendar} />
 					{/* <Route component={NotFound} /> Commented out so I can work on code without being 'authorized' on line 65*/}
 					<Route path="/createEvent" component={TheCreateEvent} />
-					<Route path={`/events/:id`} component={UpdateEvent} />
+					<Route exact path={`/events/:id`} component={UpdateEvent} />
 					<Route
 						exact
 						path="/ManageEvents"
@@ -87,6 +88,13 @@ class App extends Component {
 					<Route path="/eventsdashboard" component={EventsDashboard} />
 					<Route path="/payment" component={Payment} />
 				</Switch>
+				{this.props.schedules.map(schedule => (
+					<Route
+						key={schedule.id}
+						path={`/events/${schedule.event_id}/schedules/${schedule.id}`}
+						render={props => <ScheduleDetails {...props} schedule={schedule} />}
+					/>
+				))}
 			</Router>
 		);
 	}
@@ -95,6 +103,7 @@ const mapStateToProps = state => {
 	// console.log(state);
 	return {
 		events: state.eventReducer.events,
+		schedules: state.scheduleReducer.schedules,
 		auth: state.authReducer.auth
 	};
 };
