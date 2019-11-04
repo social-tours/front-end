@@ -55,17 +55,27 @@ export const DashBoardContainer = styled.div`
 	border: 1px solid #e5e5e5;
 	
 	.tab-title {
+		padding: 10px;
+		border-radius: 5px;
 		cursor: pointer;
+		font-size: ${fontSizing.xxxs};
+		color: ${color.lightText};
+		text-transform: uppercase;
+		word-spacing: 4px;
 
 		&.selected {
-			padding-bottom: 5px;
-			border-bottom: 3px solid #337ab7;
+			background: ${colors.light_blue};
 		}
 	}
   
 	.tab {
 		width: 100%;
 		padding: 20px;
+
+		& a {
+			text-decoration: none;
+			color: ${color.lightText};
+		}
 	}
 
 	ul {
@@ -97,11 +107,13 @@ export const Preview = styled.div`
 	${flex('row', 'center', 'space-between')}
 	margin: 10px 0;
 	padding: 10px;
-	border: 1px solid ${color.defaultFontColor};
+	border: 1px solid ${color.lightText};
+	border-radius: 5px;
 	cursor: pointer;
 
 	&:hover {
-		text-decoration: underline;
+		border-color: transparent;
+		background: ${colors.light_blue};
 	}
 `
 
