@@ -10,26 +10,37 @@ class ScheduleDetails extends Component {
   }
 
   render() {
-    console.log("Schedule Details render: ", this.props.schedule)
 		const {
 			title,
 			description,
 			start_date_time,
 			location,
-			city,
-			postal_code,
-			country
+			city
 		} = this.props.schedule;
 		return (
 			<S.Container>
-				<p>{title}</p>
-				<p>{description}</p>
-				<p>{moment(start_date_time).format("MMMM Do YYYY, h:mm:ss a")}</p>
-				<p>{location}</p>
-				<p>{city}</p>
-				<p>{postal_code}</p>
-				<p>{country}</p>
-				<button>Buy Tickets</button>
+				<S.Banner>
+					<img src={this.props.event.event_image} />
+					</S.Banner>
+				<S.EventInfoWrapper>
+					<S.EventSummary>
+						<S.EventDate>
+							<p className="event-month">{moment(start_date_time).format("MMM")}</p>
+							<p className="event-date">{moment(start_date_time).format("Do")}</p>
+						</S.EventDate>
+						<S.EventTitle>
+							{title}
+						</S.EventTitle>
+					</S.EventSummary>
+					<S.ScheduleSummary>
+						<p className="event-description">{description}</p>
+						<div className="event-details">
+							<p>{moment(start_date_time).format("MMMM Do YYYY, h:mm:ss a")}</p>
+							<p>{location} - {city}</p>
+						</div>
+					</S.ScheduleSummary>
+				</S.EventInfoWrapper>
+				<S.PayButton primary>Buy Tickets</S.PayButton>
 			</S.Container>
 		);
 	}
