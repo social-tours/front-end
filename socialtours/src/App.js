@@ -58,7 +58,7 @@ class App extends Component {
 					authenticated={this.props.auth.isAuthenticated}
 				/>
 				<Switch>
-					<Route exact path="/" component={Main} />
+					<Route exact path="/" component={EventsDashboard} />
 					<Route path="/login" component={Login} />
 					<Route exact path="/register" component={Register} />
 					<Route path="/register/callback" component={RegisterCallback} />
@@ -66,7 +66,7 @@ class App extends Component {
 					<Route
 						path="/protected"
 						render={() =>
-							this.props.auth.isAuthenticated() ? <Main /> : <NotFound />
+							this.props.auth.isAuthenticated() ? <EventsDashboard /> : <NotFound />
 						}
 					/>
 					<Route path="/callback" component={Callback} />
