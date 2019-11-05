@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { API_ENDPOINT } from "../config/api";
-
+import { colors } from "./DesignComponents/theme";
 import SubscriptionCard from "./ManageEvents/SubscriptionCard.js";
 
 class Search extends React.Component {
@@ -72,7 +72,6 @@ class Search extends React.Component {
 						value={this.state.search}
 						onChange={this.handleChange}
 					/>
-					<SearchResults />
 					<SearchBtn onClick={this.fetchResults}>Search</SearchBtn>
 				</Section>
 			);
@@ -85,7 +84,6 @@ class Search extends React.Component {
 					value={this.state.search}
 					onChange={this.handleChange}
 				/>
-				<SearchResults />
 				<SearchBtn onClick={this.fetchResults}>Search</SearchBtn>
 				<SearchResults>
 					{this.state.results &&
@@ -94,13 +92,13 @@ class Search extends React.Component {
 								<div key={result.id}>
 									<SearchResult>
 										{`
-								FirstName: ${result.first_name}
+								${result.first_name}
 								${result.last_name}
 								`}
+										<button onClick={e => this.subscribe(e, result.id)}>
+											Subscribe
+										</button>
 									</SearchResult>
-									<button onClick={e => this.subscribe(e, result.id)}>
-										Subscribe to Me
-									</button>
 								</div>
 							);
 
@@ -124,15 +122,19 @@ class Search extends React.Component {
 const Section = styled.div`
 	box-sizing: border-box;
 	display: flex;
-	width: 200px;
+	width: 400px;
 	flex-direction: column;
 	justify-content: space-between;
 	padding-top: 60px;
-	height: 140px;
+	// height: 140px;
 	margin: 0 auto;
 	align-items: center;
 `;
-const SearchBar = styled.input``;
+const SearchBar = styled.input`
+	::placeholder {
+		color: ${colors.black};
+	}
+`;
 const SearchBtn = styled.span`
 	cursor: pointer;
 	display: flex;
@@ -140,12 +142,27 @@ const SearchBtn = styled.span`
 	align-items: center;
 	width: 80px;
 	margin-top: 5px;
-	outline: 0.5px solid black;
-	padding: 2x;
+	border: 1px solid black;
+	padding: 10px;
+	background-color: ${colors.red};
+	border-radius: 5px;
 `;
-const SearchResults = styled.div``;
+const SearchResults = styled.div`
+	width: 300px;
+	background-image: linear-gradient(
+		to bottom right,
+		${colors.blue},
+		${colors.light_blue}
+	);
+	border: 1px solid ${colors.black};
+	color: ${colors.white};
+	margin-top: 20px;
+	padding: 0 10px;
+`;
 const SearchResult = styled.div`
-	border: 1px solid red;
+	margin: 10px 0;
+	display: flex;
+	justify-content: space-between;
 `;
 
 export default Search;
