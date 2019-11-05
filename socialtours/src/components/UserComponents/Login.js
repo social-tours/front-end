@@ -61,7 +61,7 @@ class Login extends Component {
 				<S.TextContainer>
 					<p>or</p>
 				</S.TextContainer>
-				<S.FormContainer>
+				<S.FormContainer something>
 					<form>
 						<S.FormButton
 							onClick={this.props.auth.googleLogin}
