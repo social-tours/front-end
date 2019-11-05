@@ -58,7 +58,8 @@ export const DashBoardContainer = styled.div`
 		padding: 10px;
 		border-radius: 5px;
 		cursor: pointer;
-		font-size: ${fontSizing.xxxs};
+		font-size: ${fontSizing.s};
+		font-weight: bold;
 		color: ${color.lightText};
 		text-transform: uppercase;
 		word-spacing: 4px;
