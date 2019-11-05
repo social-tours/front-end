@@ -40,12 +40,13 @@ const EventDetails = props => {
 								let date = new Date(schd.start_date_time);
 								return (
 									<Link to={`/events/${schd.event_id}/schedules/${schd.id}`}>
-									<ScheduleWrapper key={schd.id}>
-											<span>{`${schd.location} ${moment(date).format(
-												"MMMM Do YYYY, h:mm:ss a"
+										<ScheduleWrapper key={schd.id}>
+											<span>
+												{`${schd.location} ${moment(date).format(
+													"MMMM Do YYYY, h:mm:ss a"
 												)}`}
 											</span>
-									</ScheduleWrapper>
+										</ScheduleWrapper>
 									</Link>
 								);
 							})}

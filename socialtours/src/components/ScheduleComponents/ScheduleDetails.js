@@ -4,13 +4,12 @@ import moment from "moment";
 import * as S from "./ScheduleStyles";
 
 class ScheduleDetails extends Component {
+	componentDidMount() {
+		document.title = "Schedule Details | Social Tours";
+	}
 
-  componentDidMount() {
-    document.title = "Schedule Details | Social Tours"
-  }
-
-  render() {
-    console.log("Schedule Details render: ", this.props.schedule)
+	render() {
+		console.log("Schedule Details render: ", this.props.schedule);
 		const {
 			title,
 			description,

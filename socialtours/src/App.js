@@ -66,7 +66,11 @@ class App extends Component {
 					<Route
 						path="/protected"
 						render={() =>
-							this.props.auth.isAuthenticated() ? <EventsDashboard /> : <NotFound />
+							this.props.auth.isAuthenticated() ? (
+								<EventsDashboard />
+							) : (
+								<NotFound />
+							)
 						}
 					/>
 					<Route path="/callback" component={Callback} />
