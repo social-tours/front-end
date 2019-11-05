@@ -11,6 +11,8 @@ import EventFormStyles from "./EventFormStyles";
 
 import { fetchEvent, putEvent, deleteEvent } from "../../actions/eventActions";
 import { API_ENDPOINT } from "../../config/api.js";
+import { getUserId } from "../../utils";
+
 //const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
 
 class UpdateEvent extends React.Component {
@@ -100,7 +102,21 @@ class UpdateEvent extends React.Component {
 	// 	const myFunction = await axios.post(API_ENDPOINT + "/api/events", testEvent);
 	// };
 
+	getSchedules = () => {
+		return [
+			<Heading>Current Schedules</Heading>,
+			<ScheduleEvent
+				title={this.state.title}
+				description={this.state.description}
+				event_id={this.state.id}
+				host_id={this.state.host_id}
+			/>
+		];
+	};
+
 	render() {
+		const thisUser = getUserId() === this.state.host_id;
+		//console.log("user host", this.props.userID, this.props.host_id);
 		return (
 			<EventFormStyles>
 				<form>
@@ -136,18 +152,16 @@ class UpdateEvent extends React.Component {
 						onChange={this.handleChange}
 						value={this.state.event_image}
 					/>
-					<button onClick={this.handlePutEvent}>Update This Event</button>
+					{thisUser ? (
+						<button onClick={this.handlePutEvent}>Update This Event</button>
+					) : (
+						""
+					)}
 				</form>
-				<Heading>Current Schedules</Heading>
 				{this.state.event && (
 					<EventDetails expanded={true} {...this.state.event} />
 				)}
-				<ScheduleEvent
-					title={this.state.title}
-					description={this.state.description}
-					event_id={this.state.id}
-					host_id={this.state.host_id}
-				/>
+				{thisUser ? this.getSchedules() : ""}
 			</EventFormStyles>
 		);
 	}

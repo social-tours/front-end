@@ -107,9 +107,11 @@ export const EventContainer = styled.div`
 	margin: 0 auto;
 	margin-top: 35px;
 	width: 70%;
-	background-image: linear-gradient(to bottom right, ${colors.blue}, ${
-	colors.light_blue
-});
+	background-image: linear-gradient(
+		to bottom right,
+		${colors.blue},
+		${colors.light_blue}
+	);
 `;
 
 export const EventsContainerContainer = styled.div`
