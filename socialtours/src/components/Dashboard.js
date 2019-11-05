@@ -107,7 +107,7 @@ const Events = styled.div`
 	${"" /* height: 100%; */}
 	border-radius: 10px;
 
-	border: 1px solid ${colors.white};
+	// border: 1px solid ${colors.white};
 	box-shadow: #282c34 5px 5px 5px;
 	border-radius: 10px;
 `;
@@ -122,7 +122,7 @@ const NewEvent = styled.div`
 	background-color: ${colors.grey};
 	/* background-image: url(https://i.imgur.com/7dgNXOp.png); */
 
-	border: 1px solid ${colors.white};
+	// border: 1px solid ${colors.white};
 	box-shadow: #282c34 5px 5px 5px;
 	border-radius: 10px;
 `;
