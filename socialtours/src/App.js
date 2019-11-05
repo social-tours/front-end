@@ -3,7 +3,6 @@ import axios from "axios";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
-import { getSchedules } from "./actions/scheduleActions";
 
 import "./App.css";
 import Login from "./components/UserComponents/Login";
@@ -40,7 +39,6 @@ class App extends Component {
 
 	componentDidMount() {
 		this.props.fetchEvents();
-		this.props.getSchedules();
 		axios
 			.get(`${API_ENDPOINT}/api/users`)
 
@@ -88,13 +86,13 @@ class App extends Component {
 					<Route path="/eventsdashboard" component={EventsDashboard} />
 					<Route path="/payment" component={Payment} />
 				</Switch>
-				{this.props.schedules.map(schedule => (
+				{this.props.events.map(event => event.schedule.map(schedule => (			
 					<Route
 						key={schedule.id}
 						path={`/events/${schedule.event_id}/schedules/${schedule.id}`}
-						render={props => <ScheduleDetails {...props} schedule={schedule} />}
+						render={props => <ScheduleDetails {...props} event={event} schedule={schedule} />}
 					/>
-				))}
+				)))}
 			</Router>
 		);
 	}
@@ -103,14 +101,12 @@ const mapStateToProps = state => {
 	// console.log(state);
 	return {
 		events: state.eventReducer.events,
-		schedules: state.scheduleReducer.schedules,
 		auth: state.authReducer.auth
 	};
 };
 export default connect(
 	mapStateToProps,
 	{
-		fetchEvents,
-		getSchedules
+		fetchEvents
 	}
 )(App);
