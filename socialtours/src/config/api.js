@@ -17,8 +17,8 @@ if (hostname === "www.socialtours.io") {
 	// API_ENDPOINT = "https://staging-b-socialtours.herokuapp.com";
 	REDIRECT_URI = "https://staging-b-socialtours.netlify.com";
 } else {
-	// API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
-	API_ENDPOINT = "http://localhost:8080";
+	API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
+	// API_ENDPOINT = "http://localhost:8080";
 	REDIRECT_URI = "http://localhost:3000";
 }
 

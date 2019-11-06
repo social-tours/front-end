@@ -8,6 +8,13 @@ import Panel from "./Panel";
 import Tabs from "./Tabs";
 import * as S from "./EventFormStyles";
 
+import ExpansionPanel from "@material-ui/core/ExpansionPanel";
+import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
+import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
+import Typography from "@material-ui/core/Typography";
+import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
+
+
 class EventsDashboard extends Component {
 	state = {
 		userId: null
@@ -44,7 +51,34 @@ class EventsDashboard extends Component {
 							.filter(event => event.host_id === this.state.userId)
 							.map(event => (
 								<Link key={event.id} to={`/events/${event.id}`}>
-									<S.Preview key={event.id}>{event.title}</S.Preview>
+									<S.Preview key={event.id}>{event.title}
+									<div className={classes.root}>
+										<ExpansionPanel expanded={props.expanded}>
+											<ExpansionPanelSummary
+												expandIcon={<ExpandMoreIcon />}
+												id={`${props.id}_header`}
+											>
+												<Typography className={classes.heading}>{props.title}</Typography>
+											</ExpansionPanelSummary>
+											<ExpansionPanelDetails>
+												<div>
+													{props.schedule &&
+														props.schedule.length > 0 &&
+														props.schedule.map(schd => {
+															let date = new Date(schd.start_date_time);
+															return (
+																<ScheduleWrapper>
+																	<span>{`${schd.location} ${moment(date).format(
+																		"MMMM Do YYYY, h:mm:ss a"
+																	)}`}</span>
+																</ScheduleWrapper>
+															);
+														})}
+												</div>
+											</ExpansionPanelDetails>
+										</ExpansionPanel>
+									</div>
+									</S.Preview>
 								</Link>
 							))}
 					</Panel>
@@ -85,3 +119,9 @@ export default connect(
 	mapStateToProps,
 	{ fetchEvents, getSubscriptionsByUserId }
 )(EventsDashboard);
+
+
+// INstructions
+// It needs the following:
+// -A create new event button
+// -Some type of drop down that shows a schedule list underneath the event item (something similar to the attached screenshot)
