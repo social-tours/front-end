@@ -51,9 +51,8 @@ const EventFormStyles = styled.div`
 export const DashBoardContainer = styled.div`
 	width: 90%;
 	${flex("column", "center")};
-	margin: 0 auto;
+	margin: 20px auto 0;
 	padding: 20px;
-	padding-top: 50px;
 	border-radius: 3px;
 	border: 1px solid #e5e5e5;
 
