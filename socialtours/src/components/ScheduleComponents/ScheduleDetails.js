@@ -10,6 +10,7 @@ import * as S from "./ScheduleStyles";
 class ScheduleDetails extends Component {
 	state = {
 		edit: false,
+		id: this.props.schedule.id,
 		title: "",
 		description: "",
 		start_date_time: new Date(),
@@ -61,19 +62,17 @@ class ScheduleDetails extends Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
-	handleDateChange = date => {
-		date = date[0];
-		this.setState({
-			start_date_time: date,
-			end_date_time: date
-		});
-	};
-
-	handleUpdate = e => {
+	handleUpdate = async e => {
 		e.preventDefault();
-		const updatedData = this.state;
-		delete updatedData.edit;
-		console.log("SCHEDULE DATA TO UPDATE: ", updatedData);
+		try {
+			const updatedData = this.state;
+			delete updatedData.edit;
+			console.log("SCHEDULE DATA TO UPDATE: ", updatedData);
+			await this.props.updateSchedule(updatedData);
+			await this.props.fetchEvents();
+		} catch (err) {
+			console.error(err);
+		}
 	};
 
 	componentDidMount() {
@@ -122,7 +121,8 @@ class ScheduleDetails extends Component {
 								) : (
 									<Flatpickr
 										data-enable-time
-										onChange={date => this.handleDateChange(date)}
+										name="start_date_time"
+										onChange={date => this.setState({ start_date_time: date })}
 										value={this.state.start_date_time}
 										options={{
 											altInput: true,
@@ -137,8 +137,9 @@ class ScheduleDetails extends Component {
 								) : (
 									<Flatpickr
 										data-enable-time
-										onChange={date => this.handleDateChange(date)}
-										value={this.state.start_date_time}
+										name="end_date_time"
+										onChange={date => this.setState({ end_date_time: date })}
+										value={this.state.end_date_time}
 										options={{
 											altInput: true,
 											altFormat: "F j, Y h:i K",
