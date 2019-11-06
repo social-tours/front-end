@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import jwtDecode from "jwt-decode";
+import Search from "../Search";
 
 import { fetchEvents, getSubscriptionsByUserId } from "../../actions/";
 import Panel from "./Panel";
@@ -37,39 +38,43 @@ class EventsDashboard extends Component {
 
 	render() {
 		return (
-			<S.DashBoardContainer>
-				<Tabs>
-					<Panel title="My Events">
-						{this.props.events
-							.filter(event => event.host_id === this.state.userId)
-							.map(event => (
+			<>
+				<Search />
+
+				<S.DashBoardContainer>
+					<Tabs>
+						<Panel title="My Events">
+							{this.props.events
+								.filter(event => event.host_id === this.state.userId)
+								.map(event => (
+									<Link key={event.id} to={`/events/${event.id}`}>
+										<S.Preview key={event.id}>{event.title}</S.Preview>
+									</Link>
+								))}
+						</Panel>
+						<Panel title="Influencer Events">
+							{this.props.events
+								.filter(event =>
+									this.props.subscriptions
+										.map(sub => sub.influencer_id)
+										.includes(event.host_id)
+								)
+								.map(event => (
+									<Link key={event.id} to={`/events/${event.id}`}>
+										<S.Preview key={event.id}>{event.title}</S.Preview>
+									</Link>
+								))}
+						</Panel>
+						<Panel title="All Events">
+							{this.props.events.map(event => (
 								<Link key={event.id} to={`/events/${event.id}`}>
 									<S.Preview key={event.id}>{event.title}</S.Preview>
 								</Link>
 							))}
-					</Panel>
-					<Panel title="Influencer Events">
-						{this.props.events
-							.filter(event =>
-								this.props.subscriptions
-									.map(sub => sub.influencer_id)
-									.includes(event.host_id)
-							)
-							.map(event => (
-								<Link key={event.id} to={`/events/${event.id}`}>
-									<S.Preview key={event.id}>{event.title}</S.Preview>
-								</Link>
-							))}
-					</Panel>
-					<Panel title="All Events">
-						{this.props.events.map(event => (
-							<Link key={event.id} to={`/events/${event.id}`}>
-								<S.Preview key={event.id}>{event.title}</S.Preview>
-							</Link>
-						))}
-					</Panel>
-				</Tabs>
-			</S.DashBoardContainer>
+						</Panel>
+					</Tabs>
+				</S.DashBoardContainer>
+			</>
 		);
 	}
 }

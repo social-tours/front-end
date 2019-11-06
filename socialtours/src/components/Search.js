@@ -156,7 +156,7 @@ const SearchResults = styled.div`
 	);
 	border: 1px solid ${colors.black};
 	color: ${colors.white};
-	margin-top: 20px;
+	margin-top: 10px;
 	padding: 0 10px;
 `;
 const SearchResult = styled.div`
