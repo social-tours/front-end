@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { API_ENDPOINT } from "../config/api";
-import { colors } from "./DesignComponents/theme";
+import { color, colors } from "./DesignComponents/theme";
 import SubscriptionCard from "./ManageEvents/SubscriptionCard.js";
 
 class Search extends React.Component {
@@ -131,6 +131,12 @@ const Section = styled.div`
 	align-items: center;
 `;
 const SearchBar = styled.input`
+	width: 80%;
+	padding: 10px;
+	border: 1px solid ${color.primaryBgShading};
+	background: ${colors.white};
+	color: #000;
+	line-height: 1rem;
 	::placeholder {
 		color: ${colors.black};
 	}
