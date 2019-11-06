@@ -1,8 +1,10 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import jwtDecode from "jwt-decode";
 import moment from "moment";
 import Flatpickr from "react-flatpickr";
 
+import { updateSchedule, deleteSchedule, fetchEvents } from "../../actions";
 import * as S from "./ScheduleStyles";
 
 class ScheduleDetails extends Component {
@@ -67,12 +69,11 @@ class ScheduleDetails extends Component {
 		});
 	};
 
-
 	handleUpdate = e => {
 		e.preventDefault();
-		const updatedData = this.state
-		delete updatedData.edit
-		console.log("SCHEDULE DATA TO UPDATE: ", updatedData)
+		const updatedData = this.state;
+		delete updatedData.edit;
+		console.log("SCHEDULE DATA TO UPDATE: ", updatedData);
 	};
 
 	componentDidMount() {
@@ -92,11 +93,11 @@ class ScheduleDetails extends Component {
 
 		return (
 			<S.Container>
-				{this.props.event.host_id === this.getUserId().id &&
+				{this.props.event.host_id === this.getUserId().id && (
 					<header>
 						<i className="far fa-edit" onClick={() => this.toggleEdit()}></i>
 					</header>
-				}
+				)}
 				<S.Banner>
 					<img src={this.props.event.event_image} />
 				</S.Banner>
@@ -116,8 +117,9 @@ class ScheduleDetails extends Component {
 						<p className="event-description">{description}</p>
 						<div className="event-details">
 							<p>
-								{!this.state.edit ?
-									moment(start_date_time).format("MMMM Do YYYY, h:mm:ss a") :
+								{!this.state.edit ? (
+									moment(start_date_time).format("MMMM Do YYYY, h:mm:ss a")
+								) : (
 									<Flatpickr
 										data-enable-time
 										onChange={date => this.handleDateChange(date)}
@@ -128,9 +130,11 @@ class ScheduleDetails extends Component {
 											dateFormat: "Y-m-d h:i K"
 										}}
 									/>
-								} - {" "}
-								{!this.state.edit ? 
-									moment(end_date_time).format("h:mm:ss a") :
+								)}{" "}
+								-{" "}
+								{!this.state.edit ? (
+									moment(end_date_time).format("h:mm:ss a")
+								) : (
 									<Flatpickr
 										data-enable-time
 										onChange={date => this.handleDateChange(date)}
@@ -141,44 +145,57 @@ class ScheduleDetails extends Component {
 											dateFormat: "Y-m-d h:i K"
 										}}
 									/>
-								}
+								)}
 							</p>
 							<p>
-								{!this.state.edit ? location :
+								{!this.state.edit ? (
+									location
+								) : (
 									<input
-									name="location"
-									value={this.state.location}
-									placeholder="location"
-									onChange={this.handleInput}
+										name="location"
+										value={this.state.location}
+										placeholder="location"
+										onChange={this.handleInput}
 									/>
-								}
-								- {!this.state.edit ? city :
+								)}
+								-{" "}
+								{!this.state.edit ? (
+									city
+								) : (
 									<input
 										name="city"
 										value={this.state.city}
 										placeholder="city"
 										onChange={this.handleInput}
 									/>
-								} {!this.state.edit ? postal_code : 
+								)}{" "}
+								{!this.state.edit ? (
+									postal_code
+								) : (
 									<input
 										name="postal_code"
 										value={this.state.postal_code}
 										placeholder="zip code"
 										onChange={this.handleInput}
 									/>
-								}
+								)}
 							</p>
 						</div>
 					</S.ScheduleSummary>
 				</S.EventInfoWrapper>
-				{
-					!this.state.edit ?
-						<S.PayButton primary>Buy Tickets</S.PayButton> :
-						<S.UpdateButton update onClick={this.handleUpdate}>Save Changes</S.UpdateButton>
-				}
+				{!this.state.edit ? (
+					<S.PayButton primary>Buy Tickets</S.PayButton>
+				) : (
+					<S.UpdateButton update onClick={this.handleUpdate}>
+						Save Changes
+					</S.UpdateButton>
+				)}
 			</S.Container>
 		);
 	}
 }
 
-export default ScheduleDetails;
+export default connect(
+	null,
+	{ updateSchedule, deleteSchedule, fetchEvents }
+)(ScheduleDetails);
