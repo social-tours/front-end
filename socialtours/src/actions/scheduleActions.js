@@ -15,9 +15,9 @@ export const types = {
 	FETCH_SCHEDULE_SUCCESS: "FETCH_SCHEDULE_SUCCESS",
 
 	// POST
-	INSERT_SCHEDULE_START: "INSERT_SCHEDULE_START",
-	INSERT_SCHEDULE_FAILED: "INSERT_SCHEDULE_FAILED",
-	INSERT_SCHEDULE_SUCCESS: "INSERT_SCHEDULE_SUCCESS",
+	ADD_SCHEDULE_START: "ADD_SCHEDULE_START",
+	ADD_SCHEDULE_FAILED: "ADD_SCHEDULE_FAILED",
+	ADD_SCHEDULE_SUCCESS: "ADD_SCHEDULE_SUCCESS",
 	// PUT
 	UPDATE_SCHEDULE_START: "UPDATE_SCHEDULE_START",
 	UPDATE_SCHEDULE_FAILED: "UPDATE_SCHEDULE_FAILED",
@@ -67,20 +67,20 @@ export const getSchedule = id => async dispatch => {
 }
 
 export const addSchedule = schedule => async dispatch => {
-	dispatch({ type: types.INSERTING_SCHEDULE });
+	dispatch({ type: types.ADD_SCHEDULE_START });
 	try {
 		const res = await axios.post(`${API_ENDPOINT}/api/schedules`, schedule);
 		console.log("Adding schedule", schedule, res);
 		if (res.status === SUCCESS) {
 			dispatch({
-				type: types.INSERT_SCHEDULE_SUCCESS,
+				type: types.ADD_SCHEDULE_SUCCESS,
 				payload: res.data
 			});
 		}
 	} catch (err) {
 		console.error(err);
 		dispatch({
-			type: types.FETCH_SCHEDULE_FAILED,
+			type: types.ADD_SCHEDULE_FAILED,
 			payload: err
 		});
 	}
