@@ -59,8 +59,20 @@ class ScheduleDetails extends Component {
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
+	handleDateChange = date => {
+		date = date[0];
+		this.setState({
+			start_date_time: date,
+			end_date_time: date
+		});
+	};
+
+
 	handleUpdate = e => {
 		e.preventDefault();
+		const updatedData = this.state
+		delete updatedData.edit
+		console.log("SCHEDULE DATA TO UPDATE: ", updatedData)
 	};
 
 	componentDidMount() {
@@ -80,6 +92,11 @@ class ScheduleDetails extends Component {
 
 		return (
 			<S.Container>
+				{this.props.event.host_id === this.getUserId().id &&
+					<header>
+						<i className="far fa-edit" onClick={() => this.toggleEdit()}></i>
+					</header>
+				}
 				<S.Banner>
 					<img src={this.props.event.event_image} />
 				</S.Banner>
@@ -99,8 +116,32 @@ class ScheduleDetails extends Component {
 						<p className="event-description">{description}</p>
 						<div className="event-details">
 							<p>
-								{moment(start_date_time).format("MMMM Do YYYY, h:mm:ss a")} -{" "}
-								{moment(end_date_time).format("h:mm:ss a")}
+								{!this.state.edit ?
+									moment(start_date_time).format("MMMM Do YYYY, h:mm:ss a") :
+									<Flatpickr
+										data-enable-time
+										onChange={date => this.handleDateChange(date)}
+										value={this.state.start_date_time}
+										options={{
+											altInput: true,
+											altFormat: "F j, Y h:i K",
+											dateFormat: "Y-m-d h:i K"
+										}}
+									/>
+								} - {" "}
+								{!this.state.edit ? 
+									moment(end_date_time).format("h:mm:ss a") :
+									<Flatpickr
+										data-enable-time
+										onChange={date => this.handleDateChange(date)}
+										value={this.state.start_date_time}
+										options={{
+											altInput: true,
+											altFormat: "F j, Y h:i K",
+											dateFormat: "Y-m-d h:i K"
+										}}
+									/>
+								}
 							</p>
 							<p>
 								{!this.state.edit ? location :
@@ -130,7 +171,11 @@ class ScheduleDetails extends Component {
 						</div>
 					</S.ScheduleSummary>
 				</S.EventInfoWrapper>
-				<S.PayButton primary>Buy Tickets</S.PayButton>
+				{
+					!this.state.edit ?
+						<S.PayButton primary>Buy Tickets</S.PayButton> :
+						<S.UpdateButton update onClick={this.handleUpdate}>Save Changes</S.UpdateButton>
+				}
 			</S.Container>
 		);
 	}

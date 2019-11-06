@@ -15,12 +15,29 @@ export const Container = styled.div`
 	width: 90%;
   max-width: 600px;
 	${flex('column', 'center')};
-	margin: 0 auto;
-  padding: 20px;
-  padding-top: 50px;
+	margin: 50px auto;
+	padding-bottom: 20px;
   border: 1px solid ${colorScheme.secondarytBorderColor};
 	border-radius:3px;
 	background: ${color.lightText};
+
+	header {
+		width: 100%;
+		${flex('row', 'center', 'flex-end')};
+		margin-bottom: 20px;
+		padding: 10px;
+		border-radius: 5px 5px 0 0;
+		background: linear-gradient(to top, #cccccc 0%, #d6d6d6 1px, #ebebeb 100%); 
+		
+		@media ${breakpoints[0]} {
+			padding: 5px;
+		}
+		i {
+				margin: 0 10px;
+				font-size: ${fontSizing.xs};
+				cursor: pointer;
+		}
+	}
 `;
 
 export const Banner = styled.div`
@@ -89,6 +106,11 @@ export const ScheduleSummary = styled.div`
 			font-size: ${fontSizing.s};
 		}
 	}
+`
+
+export const UpdateButton = styled(Button)`
+	width: 150px;
+	text-transform: uppercase;
 `
 
 export const PayButton = styled(Button)`
