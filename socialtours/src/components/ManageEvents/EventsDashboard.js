@@ -8,12 +8,22 @@ import Panel from "./Panel";
 import Tabs from "./Tabs";
 import * as S from "./EventFormStyles";
 
+import { makeStyles } from "@material-ui/core/styles";
 import ExpansionPanel from "@material-ui/core/ExpansionPanel";
 import ExpansionPanelSummary from "@material-ui/core/ExpansionPanelSummary";
 import ExpansionPanelDetails from "@material-ui/core/ExpansionPanelDetails";
 import Typography from "@material-ui/core/Typography";
 import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 
+const classes = makeStyles(theme => ({
+	root: {
+		width: "100%"
+	},
+	heading: {
+		fontSize: theme.typography.pxToRem(15),
+		fontWeight: theme.typography.fontWeightRegular
+	}
+}));
 
 class EventsDashboard extends Component {
 	state = {
@@ -51,6 +61,8 @@ class EventsDashboard extends Component {
 							.filter(event => event.host_id === this.state.userId)
 							.map(event => (
 								<Link key={event.id} to={`/events/${event.id}`}>
+
+									{/* Added in to show a dropdown of the events' schedules' */}
 									<S.Preview key={event.id}>{event.title}
 									<div className={classes.root}>
 										<ExpansionPanel expanded={props.expanded}>
@@ -79,6 +91,8 @@ class EventsDashboard extends Component {
 										</ExpansionPanel>
 									</div>
 									</S.Preview>
+
+
 								</Link>
 							))}
 					</Panel>
