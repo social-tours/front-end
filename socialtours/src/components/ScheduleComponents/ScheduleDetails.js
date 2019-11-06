@@ -3,7 +3,8 @@ import { connect } from "react-redux";
 import jwtDecode from "jwt-decode";
 import moment from "moment";
 import Flatpickr from "react-flatpickr";
-
+import { confirmAlert } from "react-confirm-alert";
+import "react-confirm-alert/src/react-confirm-alert.css";
 import { updateSchedule, deleteSchedule, fetchEvents } from "../../actions";
 import * as S from "./ScheduleStyles";
 
@@ -75,10 +76,23 @@ class ScheduleDetails extends Component {
 		}
 	};
 
-	handleDelete = async id => {
-		await this.props.deleteSchedule(id)
-		this.props.history.push("/")
-	}
+	handleDelete = id => {
+		confirmAlert({
+			title: "Confirm to delete",
+			buttons: [
+				{
+					label: "Delete",
+					onClick: async () => {
+						await this.props.deleteSchedule(id)
+						this.props.history.push(`/events/${this.props.event.id}`)
+					}
+				},
+				{
+					label: "Cancel"
+				}
+			]
+		});
+	};
 
 	componentDidMount() {
 		document.title = "Schedule Details | Social Tours";
@@ -101,7 +115,7 @@ class ScheduleDetails extends Component {
 				{this.props.event.host_id === this.getUserId().id && (
 					<header>
 						<i className="far fa-edit" onClick={() => this.toggleEdit()}></i>
-						<i className="fa fa-trash" onClick={() => this.handleDelete(id)}></i>
+						<i className="fa fa-trash" onClick={() => this.handleDelete()}></i>
 					</header>
 				)}
 				<S.Banner>
