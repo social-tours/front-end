@@ -37,9 +37,9 @@ export const getAllSchedules = () => async dispatch => {
 				type: types.FETCH_ALL_SCHEDULES_SUCCESS,
 				payload: schedules.data
 			});
-		} else throw err
+		}
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 		dispatch({
 			type: types.FETCH_ALL_SCHEDULES_FAILED,
 			payload: err
@@ -48,7 +48,7 @@ export const getAllSchedules = () => async dispatch => {
 };
 
 export const getSchedule = id => async dispatch => {
-	dispatch({ type: FETCH_SCHEDULE_START })
+	dispatch({ type: types.FETCH_SCHEDULE_START })
 	try {
 		const schedule = await axios.get(`${API_ENDPOINT}/api/schedules/${id}`);
 		if (schedule.status === SUCCESS) {
@@ -56,9 +56,9 @@ export const getSchedule = id => async dispatch => {
 				type: types.FETCH_SCHEDULE_SUCCESS,
 				payload: schedule.data
 			});
-		} else throw err
+		}
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 		dispatch({
 			type: types.FETCH_SCHEDULE_FAILED,
 			payload: err
@@ -76,9 +76,9 @@ export const addSchedule = schedule => async dispatch => {
 				type: types.INSERT_SCHEDULE_SUCCESS,
 				payload: res.data
 			});
-		} else throw err
+		}
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 		dispatch({
 			type: types.FETCH_SCHEDULE_FAILED,
 			payload: err
@@ -87,17 +87,17 @@ export const addSchedule = schedule => async dispatch => {
 };
 
 export const updateSchedule = schedule => async dispatch => {
-	dispatch({ type: UPDATE_SCHEDULE_START })
+	dispatch({ type: types.UPDATE_SCHEDULE_START })
 	try {
-		const res = await axios.get(`${API_ENDPOINT}/api/schedules/${schedule.id}`, schedule);
+		const res = await axios.put(`${API_ENDPOINT}/api/schedules/${schedule.id}`, schedule);
 		if (res.status === SUCCESS) {
 			dispatch({
 				type: types.UPDATE_SCHEDULE_SUCCESS,
 				payload: res.data
 			});
-		} else throw err
+		}
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 		dispatch({
 			type: types.UPDATE_SCHEDULE_FAILED,
 			payload: err
@@ -106,16 +106,16 @@ export const updateSchedule = schedule => async dispatch => {
 }
 
 export const deleteSchedule = id => async dispatch => {
-	dispatch({ type: DELETE_SCHEDULE_START })
+	dispatch({ type: types.DELETE_SCHEDULE_START })
 	try {
 		const schedule = await axios.delete(`${API_ENDPOINT}/api/schedules/${id}`);
 		if (schedule.status === SUCCESS) {
 			dispatch({
 				type: types.DELETE_SCHEDULE_SUCCESS
 			});
-		} else throw err
+		}
 	} catch (err) {
-		console.log(err);
+		console.error(err);
 		dispatch({
 			type: types.DELETE_SCHEDULE_FAILED,
 			payload: err
