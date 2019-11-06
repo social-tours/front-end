@@ -47,7 +47,10 @@ class ScheduleDetails extends Component {
 
 	toggleEdit() {
 		if (this.props.event.host_id === this.getUserId().id) {
-			this.setState(prevState => ({ edit: !prevState.edit }));
+			this.setState(
+				prevState => ({ edit: !prevState.edit }),
+				() => this.prePopulateForm()
+			);
 		} else console.log("Not authorized to edit.");
 	}
 
@@ -100,7 +103,29 @@ class ScheduleDetails extends Component {
 								{moment(end_date_time).format("h:mm:ss a")}
 							</p>
 							<p>
-								{location} - {city} {postal_code}
+								{!this.state.edit ? location :
+									<input
+									name="location"
+									value={this.state.location}
+									placeholder="location"
+									onChange={this.handleInput}
+									/>
+								}
+								- {!this.state.edit ? city :
+									<input
+										name="city"
+										value={this.state.city}
+										placeholder="city"
+										onChange={this.handleInput}
+									/>
+								} {!this.state.edit ? postal_code : 
+									<input
+										name="postal_code"
+										value={this.state.postal_code}
+										placeholder="zip code"
+										onChange={this.handleInput}
+									/>
+								}
 							</p>
 						</div>
 					</S.ScheduleSummary>
