@@ -1,7 +1,7 @@
 import React, { Component } from "react";
+import jwtDecode from "jwt-decode";
 import moment from "moment";
 import Flatpickr from "react-flatpickr";
-import axios from 'axios'
 
 import * as S from "./ScheduleStyles";
 
@@ -46,12 +46,8 @@ class ScheduleDetails extends Component {
 	};
 
 	toggleEdit() {
-		if (this.props.event.host_id === this.getUserId.id) {
-			this.setState(prevState => {
-				{
-					edit: !prevState.edit;
-				}
-			});
+		if (this.props.event.host_id === this.getUserId().id) {
+			this.setState(prevState => ({ edit: !prevState.edit }));
 		} else console.log("Not authorized to edit.");
 	}
 
@@ -62,9 +58,7 @@ class ScheduleDetails extends Component {
 
 	handleUpdate = e => {
 		e.preventDefault();
-
-
-	}
+	};
 
 	componentDidMount() {
 		document.title = "Schedule Details | Social Tours";
