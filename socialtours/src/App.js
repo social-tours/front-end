@@ -58,7 +58,7 @@ class App extends Component {
 					authenticated={this.props.auth.isAuthenticated}
 				/>
 				<Switch>
-					<Route exact path="/" component={EventsDashboard} />
+					<Route exact path="/" component={Main} />
 					<Route path="/login" component={Login} />
 					<Route exact path="/register" component={Register} />
 					<Route path="/register/callback" component={RegisterCallback} />
