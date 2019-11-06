@@ -75,12 +75,18 @@ class ScheduleDetails extends Component {
 		}
 	};
 
+	handleDelete = async id => {
+		await this.props.deleteSchedule(id)
+		this.props.history.push("/")
+	}
+
 	componentDidMount() {
 		document.title = "Schedule Details | Social Tours";
 	}
 
 	render() {
 		const {
+			id,
 			title,
 			description,
 			start_date_time,
@@ -95,6 +101,7 @@ class ScheduleDetails extends Component {
 				{this.props.event.host_id === this.getUserId().id && (
 					<header>
 						<i className="far fa-edit" onClick={() => this.toggleEdit()}></i>
+						<i className="fa fa-trash" onClick={() => this.handleDelete(id)}></i>
 					</header>
 				)}
 				<S.Banner>
