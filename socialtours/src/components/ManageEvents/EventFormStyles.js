@@ -13,7 +13,7 @@ const EventFormStyles = styled.div`
 	padding: 50px 0;
 	display: flex;
 	width: 100%;
-	max-width: 300px;
+	max-width: 450px;
 	align-content: center;
 	align-items: center;
 	justify-content: space-between;

@@ -8,6 +8,7 @@ import ScheduleEvent from "./ScheduleEvent";
 import EventDetails from "./EventDetails";
 
 import EventFormStyles from "./EventFormStyles";
+import { colors } from "../DesignComponents/theme";
 
 import { fetchEvent, putEvent, deleteEvent } from "../../actions/eventActions";
 import { API_ENDPOINT } from "../../config/api.js";
@@ -120,38 +121,55 @@ class UpdateEvent extends React.Component {
 		return (
 			<EventFormStyles>
 				<form>
-					<input
-						name="type"
-						placeholder={this.state.type}
-						onChange={this.handleChange}
-						value={this.state.type}
-						type="number"
-					/>
-					<input
-						name="title"
-						placeholder={this.props.title}
-						onChange={this.handleChange}
-						value={this.state.title}
-					/>
-					<input
-						name="host_id"
-						placeholder="host_id"
-						onChange={this.handleChange}
-						value={this.state.host_id}
-						type="number"
-					/>
-					<input
-						name="description"
-						placeholder="description"
-						onChange={this.handleChange}
-						value={this.state.description}
-					/>
-					<input
-						name="event_image"
-						placeholder="event_image"
-						onChange={this.handleChange}
-						value={this.state.event_image}
-					/>
+					<InputWrapper>
+						<label>Type</label>
+						<EventInput
+							name="type"
+							placeholder={this.state.type}
+							onChange={this.handleChange}
+							value={this.state.type}
+							disabled={!thisUser}
+							type="number"
+						/>
+					</InputWrapper>
+					<InputWrapper>
+						<label>Title</label>
+						<EventInput
+							name="title"
+							placeholder={this.props.title}
+							onChange={this.handleChange}
+							disabled={!thisUser}
+							value={this.state.title}
+						/>
+					</InputWrapper>
+					<InputWrapper>
+						<label>Host ID</label>
+						<EventInput
+							name="host_id"
+							placeholder="host_id"
+							onChange={this.handleChange}
+							value={this.state.host_id}
+							disabled={!thisUser}
+							type="number"
+						/>
+					</InputWrapper>
+					<InputWrapper>
+						<label>Description</label>
+						<EventInput
+							name="description"
+							placeholder="description"
+							onChange={this.handleChange}
+							value={this.state.description}
+							disabled={!thisUser}
+						/>
+					</InputWrapper>
+					{/*<EventInput*/}
+					{/*	name="event_image"*/}
+					{/*	placeholder="event_image"*/}
+					{/*	onChange={this.handleChange}*/}
+					{/*	value={this.state.event_image}*/}
+					{/*	disabled={!thisUser}*/}
+					{/*/>*/}
 					{thisUser ? (
 						<button onClick={this.handlePutEvent}>Update This Event</button>
 					) : (
@@ -195,4 +213,22 @@ const Heading = styled.h2`
 	color: #fff;
 	font-weight: bolder;
 	margin: 10px auto;
+`;
+
+const EventInput = styled.input`
+	background-color: ${props => (props.disabled ? "#162a4f" : "white")};
+	color: ${props => (props.disabled ? "white" : "black")};
+	margin: 5px auto;
+`;
+
+const InputWrapper = styled.div`
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	width: 100%;
+	label {
+		color: white;
+		margin-right: 15px;
+		min-width: 75px;
+	}
 `;
