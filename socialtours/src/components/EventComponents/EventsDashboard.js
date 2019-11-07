@@ -40,7 +40,6 @@ class EventsDashboard extends Component {
 		return (
 			<>
 				<Search />
-
 				<S.DashBoardContainer>
 					<Tabs>
 						<Panel title="My Events">
