@@ -56,6 +56,7 @@ const LandingPage = ({ history }) => {
 			<CarouselWrapper>
 				<LPTextWrapper>
 					<h1>Social Tours</h1>
+					<p>The go to option for influencers and fans to unite</p>
 					<ButtonWrapper>
 						<RegisterButton onClick={() => history.push("/register")}>
 							Register
@@ -145,7 +146,14 @@ const LPTextWrapper = styled.div`
 			1px 1px 0 #000;
 
 		color: ${colors.white};
-		margin-bottom: 20px;
+	}
+
+	p {
+		color: ${colors.white};
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+			1px 1px 0 #000;
+		font-size: 1.5rem;
+		margin: 20px 0;
 	}
 `;
 
