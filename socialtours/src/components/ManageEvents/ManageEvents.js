@@ -6,7 +6,7 @@ import { withRouter } from "react-router-dom";
 
 import EventCard from "./EventCard";
 import SubscriptionCard from "./SubscriptionCard";
-import { getSchedules } from "../../actions/scheduleActions";
+import { getAllSchedules } from "../../actions/scheduleActions";
 import { fetchEvents } from "../../actions/eventActions";
 import { getUserId } from "../../utils";
 import { getSubscriptions } from "../../actions/subscriptionActions";
@@ -27,7 +27,7 @@ import {
 
 class ManageEvents extends Component {
 	componentDidMount() {
-		this.props.getSchedules();
+		this.props.getAllSchedules();
 		this.props.fetchEvents();
 		this.props.getSubscriptions();
 	}
@@ -133,7 +133,7 @@ const mapStateToProps = state => {
 
 export default connect(
 	mapStateToProps,
-	{ getSchedules, fetchEvents, getSubscriptions }
+	{ getAllSchedules, fetchEvents, getSubscriptions }
 )(withRouter(ManageEvents));
 
 // const ManageEventWrapper = styled.div`

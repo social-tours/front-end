@@ -4,7 +4,7 @@ import { withRouter } from "react-router-dom";
 import styled from "styled-components";
 
 import Calendar from "react-calendar";
-import { getSchedules } from "../actions/scheduleActions";
+import { getAllSchedules } from "../actions/scheduleActions";
 import { colors } from "./DesignComponents/theme";
 
 const EventCalendar = props => {
@@ -111,7 +111,7 @@ const mapStateToProps = ({ eventReducer }) => {
 export default withRouter(
 	connect(
 		mapStateToProps,
-		{ getSchedules }
+		{ getAllSchedules }
 	)(EventCalendar)
 );
 

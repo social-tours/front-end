@@ -18,7 +18,7 @@ const theme = {
 
 	color: {
 		primaryColor: "#265077",
-		primaryDark: "#34344A",
+		primaryDark: "#1d3461",
 		primaryBgShading: "#011638",
 		secondaryColor: "#46237A",
 		secondaryBgShading: "#34344A",
