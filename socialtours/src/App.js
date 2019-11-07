@@ -28,6 +28,7 @@ import AboutUsContact from "./components/AboutUsContact.js";
 import Search from "./components/Search";
 import Payment from "./components/PaymentComponents/Payment";
 import EventsDashboard from "./components/EventComponents/EventsDashboard";
+import EventItem from "./components/EventComponents/EventItem";
 import ScheduleDetails from "./components/ScheduleComponents/ScheduleDetails";
 // import Calendar from "./components/EventCalendar";
 import { API_ENDPOINT } from "./config/api";
@@ -76,7 +77,7 @@ class App extends Component {
 					<Route path="/calendar" component={Calendar} />
 					{/* <Route component={NotFound} /> Commented out so I can work on code without being 'authorized' on line 65*/}
 					<Route path="/createEvent" component={TheCreateEvent} />
-					<Route exact path={`/events/:id`} component={UpdateEvent} />
+					{/* <Route exact path={`/events/:id`} component={UpdateEvent} /> */}
 					<Route
 						exact
 						path="/ManageEvents"
@@ -90,13 +91,25 @@ class App extends Component {
 					<Route path="/eventsdashboard" component={EventsDashboard} />
 					<Route path="/payment" component={Payment} />
 				</Switch>
-				{this.props.events.map(event => event.schedule.map(schedule => (			
+				{this.props.events.map(event => (
 					<Route
-						key={schedule.id}
-						path={`/events/${schedule.event_id}/schedules/${schedule.id}`}
-						render={props => <ScheduleDetails {...props} event={event} schedule={schedule} />}
+						exact
+						path={`/events/${event.id}`}
+						key={event.id}
+						render={props => <EventItem {...props} event={event} />}
 					/>
-				)))}
+				))}
+				{this.props.events.map(event =>
+					event.schedule.map(schedule => (
+						<Route
+							key={schedule.id}
+							path={`/events/${schedule.event_id}/schedules/${schedule.id}`}
+							render={props => (
+								<ScheduleDetails {...props} event={event} schedule={schedule} />
+							)}
+						/>
+					))
+				)}
 			</Router>
 		);
 	}
