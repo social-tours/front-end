@@ -156,20 +156,20 @@ const Button = styled.button`
 
 const RegisterButton = styled(Button)`
 	margin-right: 10px;
-	color: ${colors.mint};
-	background-color: ${colors.grape};
+	color: ${colors.black};
+	background-color: ${colors.red};
 
 	&:hover {
-		color: ${colors.grape};
-		background-color: ${colors.mint};
+		// color: ${colors.grape};
+		background-color: #f9202b;
 	}
 `;
 const LoginButton = styled(Button)`
-	color: ${colors.grape};
-	background-color: ${colors.mint};
+	color: ${colors.black};
+	background-color: ${colors.white};
 
-	&:hover {
-		color: ${colors.mint};
-		background-color: ${colors.grape};
-	}
+	// &:hover {
+	// 	color: ${colors.mint};
+	// 	background-color: ${colors.grape};
+	// }
 `;
