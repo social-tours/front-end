@@ -20,9 +20,6 @@ import CoffeeShop from "../images/coffeeshop.jpg";
 // 	)
 // }
 
-
-
-
 const carousel_data = [
 	{
 		imgUrl: require("../images/meeting1.jpg"),
@@ -56,7 +53,6 @@ const carousel_data = [
 	}
 ];
 
-
 // PREVIOUS LP RETURN
 const LandingPage = ({ history }) => {
 	let [imgIndex, setImgIndex] = useState(0);
@@ -72,8 +68,12 @@ const LandingPage = ({ history }) => {
 			<CarouselWrapper>
 				<LPTextWrapper>
 					<ButtonWrapper>
-						<RegisterButton onClick={() => history.push("/register")}>Register</RegisterButton>
-						<LoginButton onClick={() => history.push("/login")}>Login</LoginButton>
+						<RegisterButton onClick={() => history.push("/register")}>
+							Register
+						</RegisterButton>
+						<LoginButton onClick={() => history.push("/login")}>
+							Login
+						</LoginButton>
 					</ButtonWrapper>
 				</LPTextWrapper>
 				<CarouselImage src={carousel_data[imgIndex].imgUrl} />
@@ -88,7 +88,6 @@ const LandingPage = ({ history }) => {
 };
 
 export default withRouter(LandingPage);
-
 
 // PREVIOUS LP STYLINGS
 const HeroCard = styled.div`
