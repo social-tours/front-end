@@ -4,7 +4,7 @@ import axios from "axios";
 import styled from "styled-components";
 //import EventFormStyles from "../components/DesignComponents/EventFormStyles.js";
 
-import ScheduleEvent from "./ScheduleEvent";
+import ScheduleEvent from "../ScheduleComponents/ScheduleEvent";
 import EventDetails from "./EventDetails";
 
 import EventFormStyles from "./EventFormStyles";
