@@ -4,6 +4,7 @@ import styled from "styled-components";
 import Loader from "react-loader";
 import { connect } from "react-redux";
 
+import { colors } from "../DesignComponents/theme";
 import "../../../node_modules/flatpickr/dist/themes/light.css";
 import EventFormStyles from "./EventFormStyles";
 import { addSchedule } from "../../actions";
@@ -158,6 +159,7 @@ export default connect(
 )(ScheduleEvent);
 
 const ScheduleWrapper = styled.div`
+	background-color: ${colors.grey};
 	display: flex;
 	flex-direction: column;
 	margin: 0 auto;

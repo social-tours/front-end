@@ -38,10 +38,7 @@ const EventFormStyles = styled.div`
 		width: 85%;
 		border-radius: 5px;
 		font-weight: bold;
-
-		border-width: 2px;
-		border-color: black;
-		border-style: solid;
+		border: 2px solid ${colors.black};
 	}
 `;
 

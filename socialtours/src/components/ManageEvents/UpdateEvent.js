@@ -167,6 +167,7 @@ export default connect(
 
 const Heading = styled.h2`
 	font-size: 1.5rem;
+	color: #fff;
 	font-weight: bolder;
 	margin: 10px auto;
 `;
