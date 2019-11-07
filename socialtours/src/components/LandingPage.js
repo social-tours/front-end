@@ -22,12 +22,6 @@ import Concert2 from "../images/concert2.jpg";
 
 const carousel_data = [
 	{
-		imgUrl: require("../images/concert1.jpg"),
-		attributionUrl:
-			"https://images.unsplash.com/photo-1504680177321-2e6a879aac86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
-		photographer: "Photo by Danny Howe on Unsplash"
-	},
-	{
 		imgUrl: require("../images/meeting2.jpg"),
 		attributionUrl:
 			"https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80",
@@ -38,6 +32,12 @@ const carousel_data = [
 		attributionUrl:
 			"https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
 		photographer: "Photo by Noiseporn on Unsplash"
+	},
+	{
+		imgUrl: require("../images/concert1.jpg"),
+		attributionUrl:
+			"https://images.unsplash.com/photo-1504680177321-2e6a879aac86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
+		photographer: "Photo by Danny Howe on Unsplash"
 	}
 ];
 
