@@ -48,7 +48,7 @@ const LandingPage = ({ history }) => {
 	useEffect(() => {
 		setTimeout(() => {
 			setImgIndex((imgIndex + 1) % carousel_data.length);
-		}, 6000);
+		}, 2700);
 	}, [imgIndex]);
 
 	return (
