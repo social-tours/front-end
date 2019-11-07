@@ -21,8 +21,9 @@ const theme = {
 		primaryDark: "#1d3461",
 		primaryBgShading: "#011638",
 		secondaryColor: "#46237A",
-		secondaryBgShading: "#34344A",
+		secondaryBgShading: "#F6F8F9",
 		accent: "#DFF8EB",
+		grayShade: "#D6D6D6",
 		emphasis: "#214E34",
 		darkText: "#595959",
 		lightText: "#FFFFFF",
@@ -64,7 +65,7 @@ const theme = {
 			return theme.color.primaryDark;
 		},
 		secondaryBorderColor: () => {
-			return theme.color.secondaryBgShading;
+			return theme.color.grayShade;
 		}
 	},
 
@@ -89,7 +90,7 @@ const theme = {
 		l: "calc(.625 * 3rem)", // for big emphasis
 		xl: "calc(.625 * 4rem)", // ultra large
 		xxl: "calc(.625 * 5rem)", // site banner headline
-		xxxl: "calc(.625 * 6rem)", // site banner headline
+		xxxl: "calc(.625 * 6rem)" // site banner headline
 	},
 
 	breakpoints: [
