@@ -7,6 +7,7 @@ import { fetchEvents, getSubscriptionsByUserId } from "../../actions/";
 import Panel from "./Panel";
 import Tabs from "./Tabs";
 import * as S from "./EventFormStyles";
+import styled from "styled-components";
 
 import EventDetails from "./EventDetails.js";
 
@@ -51,15 +52,16 @@ class EventsDashboard extends Component {
                         {this.props.events
                             .filter(event => event.host_id === this.state.userId)
                             .map(event => (
-                                <Link key={event.id} to={`/events/${event.id}`}>
-                                    <S.Preview key={event.id}>{event.title}
 
-                                        <EventDetails>
+                                <S.Preview>
+                                    <Link key={event.id} to={`/events/${event.id}`}>
+                                        <S.Event key={event.id}>{event.title}</S.Event>
+                                    </Link>
 
-                                        </EventDetails>
+                                    <EventDetails {...event}>
 
-                                    </S.Preview>
-                                </Link>
+                                    </EventDetails>
+                                </S.Preview>
                             ))}
                     </Panel>
                     <Panel title="Influencer Events">
@@ -102,6 +104,18 @@ export default connect(
     mapStateToProps,
     { fetchEvents, getSubscriptionsByUserId }
 )(EventsDashboard);
+
+
+// const EventsWrapper = styled.div`
+// 	display: flex;
+// 	flex-direction: row;
+// 	width: 100%;
+// `;
+
+const EventsDetails = styled.div`
+	width: 50%;
+`;
+
 
 
 

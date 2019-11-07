@@ -117,4 +117,20 @@ export const Preview = styled.div`
 	}
 `
 
+export const Event = styled.div`
+	width: 50%;
+	min-width: 300px;
+	${flex('row', 'center', 'space-between')}
+	margin: 10px 0;
+	padding: 10px;
+	border: 1px solid ${color.lightText};
+	border-radius: 5px;
+	cursor: pointer;
+
+	&:hover {
+		border-color: transparent;
+		background: ${colors.light_blue};
+	}
+`
+
 export default EventFormStyles;
