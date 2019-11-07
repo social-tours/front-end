@@ -1,13 +1,19 @@
 import styled from "styled-components";
 
-import { color, colors, fontSizing, flex, breakpoints } from "../DesignComponents/theme";
+import {
+	color,
+	colors,
+	fontSizing,
+	flex,
+	breakpoints
+} from "../DesignComponents/theme";
 
 const EventFormStyles = styled.div`
 	margin: 0 auto;
 	padding: 50px 0;
 	display: flex;
 	width: 100%;
-	max-width: 300px;
+	max-width: 450px;
 	align-content: center;
 	align-items: center;
 	justify-content: space-between;
@@ -21,6 +27,7 @@ const EventFormStyles = styled.div`
 		justify-content: space-between;
 		align-items: center;
 		align-content: center;
+		margin-bottom: 25px;
 
 		input {
 			width: 80%;
@@ -36,8 +43,11 @@ const EventFormStyles = styled.div`
 		color: ${colors.black};
 		height: 35px;
 		width: 85%;
+		max-width: 150px;
 		border-radius: 5px;
 		font-weight: bold;
+		margin: 25px auto;
+		align-self: flex-end;
 
 		border-width: 2px;
 		border-color: black;
@@ -47,13 +57,13 @@ const EventFormStyles = styled.div`
 
 export const DashBoardContainer = styled.div`
 	width: 90%;
-	${flex('column', 'center')};
+	${flex("column", "center")};
 	margin: 0 auto;
 	padding: 20px;
 	padding-top: 50px;
-	border-radius:3px;
+	border-radius: 3px;
 	border: 1px solid #e5e5e5;
-	
+
 	.tab-title {
 		padding: 10px;
 		border-radius: 5px;
@@ -68,7 +78,7 @@ export const DashBoardContainer = styled.div`
 			background: ${colors.light_blue};
 		}
 	}
-  
+
 	.tab {
 		width: 100%;
 		padding: 20px;
@@ -81,31 +91,31 @@ export const DashBoardContainer = styled.div`
 
 	ul {
 		width: 100%;
-		${flex('row', 'center', 'space-between')};
+		${flex("row", "center", "space-between")};
 	}
 
-	ul.inline{
-		list-style:none;
+	ul.inline {
+		list-style: none;
 		padding: 0;
-		margin-bottom:0;
+		margin-bottom: 0;
 
 		li {
 			display: inline-block;
 			margin: 0 auto;
 			padding: 10px;
 			border-bottom: 2px solid #eee;
-			transition: all .5s;
+			transition: all 0.5s;
 			font-weight: 300;
 			cursor: pointer;
 			color: #aaa;
 		}
-	}	
-`
+	}
+`;
 
 export const Preview = styled.div`
 	width: 90%;
 	min-width: 300px;
-	${flex('row', 'center', 'space-between')}
+	${flex("row", "center", "space-between")}
 	margin: 10px 0;
 	padding: 10px;
 	border: 1px solid ${color.lightText};
@@ -116,6 +126,6 @@ export const Preview = styled.div`
 		border-color: transparent;
 		background: ${colors.light_blue};
 	}
-`
+`;
 
 export default EventFormStyles;

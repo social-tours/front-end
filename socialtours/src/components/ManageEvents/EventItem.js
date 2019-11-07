@@ -32,9 +32,9 @@ class UpdateEvent extends React.Component {
 
 	componentDidMount = async () => {
 		const event = await this.handleFetchEvent(this.props.match.params.id);
-		console.log("CDM event: ", event)
+		console.log("CDM event: ", event);
 		if (event) {
-			this.prePopulateForm(event)
+			this.prePopulateForm(event);
 		}
 	};
 
@@ -47,8 +47,8 @@ class UpdateEvent extends React.Component {
 			description: event.description,
 			event_image: event.event_image,
 			event: event
-		})
-	}
+		});
+	};
 
 	handleChange = e => {
 		this.setState({
@@ -61,7 +61,7 @@ class UpdateEvent extends React.Component {
 			const event = await axios.get(`${API_ENDPOINT}/api/events/${id}`);
 			return event.data;
 		} catch (err) {
-			console.log("handleFetchEvent error: ", err)
+			console.log("handleFetchEvent error: ", err);
 		}
 	};
 
@@ -71,12 +71,15 @@ class UpdateEvent extends React.Component {
 			let updatedData = {
 				...this.state
 			};
-			delete updatedData.event // Remove unnecessary object to prevent db update errors
-			const updateEvent = await axios.put(`${API_ENDPOINT}/api/events/${updatedData.id}`, updatedData);
-			console.log("UPDATEEVENT: ", updateEvent)
+			delete updatedData.event; // Remove unnecessary object to prevent db update errors
+			const updateEvent = await axios.put(
+				`${API_ENDPOINT}/api/events/${updatedData.id}`,
+				updatedData
+			);
+			console.log("UPDATEEVENT: ", updateEvent);
 			this.props.history.push(`/events/${updatedData.id}`);
 		} catch (err) {
-			console.log("handlePutEvent error: ", err)
+			console.log("handlePutEvent error: ", err);
 		}
 	};
 
@@ -86,7 +89,7 @@ class UpdateEvent extends React.Component {
 			this.props.deleteEvent(id);
 			this.props.history.push("/manageevents");
 		} catch (err) {
-			console.log("handleDeleteEvent error: ", err)
+			console.log("handleDeleteEvent error: ", err);
 		}
 	};
 
@@ -133,9 +136,7 @@ class UpdateEvent extends React.Component {
 						onChange={this.handleChange}
 						value={this.state.event_image}
 					/>
-					<button onClick={this.handlePutEvent}>
-						Update This Event
-					</button>
+					<button onClick={this.handlePutEvent}>Update This Event</button>
 				</form>
 				<Heading>Current Schedules</Heading>
 				{this.state.event && (

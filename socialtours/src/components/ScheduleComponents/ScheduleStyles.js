@@ -6,7 +6,7 @@ import {
 	fontSizing,
 	flex,
 	breakpoints,
-  colorScheme
+	colorScheme
 } from "../DesignComponents/theme";
 
 import Button from "../DesignComponents/Button"
@@ -14,13 +14,12 @@ import Button from "../DesignComponents/Button"
 export const Container = styled.div`
 	width: 90%;
   max-width: 600px;
-	${flex('column', 'center')};
+	${flex("column", "center")};
 	margin: 0 auto;
-  padding: 20px;
-  padding-top: 50px;
-  border: 1px solid ${colorScheme.secondarytBorderColor};
-	border-radius:3px;
-	background: ${color.lightText};
+	padding: 20px;
+	padding-top: 50px;
+	border: 1px solid ${colorScheme.defaultBorderColor};
+	border-radius: 3px;
 `;
 
 export const Banner = styled.div`
@@ -42,7 +41,7 @@ export const EventInfoWrapper = styled.div`
 
 export const EventSummary = styled.div`
 		width: 100%;
-		${flex('row', 'center')};
+		${flex("row", "center")};
 		padding: 10px;
 		border-bottom: 1px solid ${colorScheme.defaultBorderColor};
 `
@@ -61,7 +60,7 @@ export const EventTitle = styled.h2`
 export const EventDate = styled.div`
 		width: 20%;
 		padding: 5px;
-		${flex('column', 'center')};
+		${flex("column", "center")};
 		font-size: ${fontSizing.ml};
 		& * {
 			margin: 2px 0;
