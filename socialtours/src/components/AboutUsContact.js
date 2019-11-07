@@ -21,7 +21,7 @@ import Adam from "../images/adam.png";
 import Greg from "../images/greg.png";
 import Rane from "../images/rane.png";
 import James from "../images/james.png";
-import { typography } from "@material-ui/system";
+// import { typography } from "@material-ui/system";
 
 const useStyles = makeStyles(theme => ({
 	icon: {
@@ -176,15 +176,6 @@ export default function About() {
 												{" "}
 												Full-Stack Developer{" "}
 											</Typography>
-											<Typography>
-												<a
-													target="_blank"
-													rel="noopener noreferrer"
-													href="https://fullstackurban.com"
-												>
-													Portfolio Website
-												</a>
-											</Typography>
 										</CardContent>
 										<CardActions>
 											<a
@@ -333,6 +324,15 @@ export default function About() {
 												{" "}
 												Full-Stack Developer{" "}
 											</Typography>
+											<Typography>
+												<a
+													target="_blank"
+													rel="noopener noreferrer"
+													href="https://fullstackurban.com"
+												>
+													Portfolio Website
+												</a>
+											</Typography>
 										</CardContent>
 										<CardActions>
 											<a
@@ -400,7 +400,7 @@ export default function About() {
 											<a
 												target="_blank"
 												rel="noopener noreferrer"
-												href="https://twitter.com/Jim_Wig"
+												href="https://twitter.com/rane_wallin"
 											>
 												{" "}
 												<StlyedIoLogoTwitter />{" "}
@@ -445,7 +445,7 @@ export default function About() {
 											<a
 												target="_blank"
 												rel="noopener noreferrer"
-												href="https://twitter.com/rane_wallin"
+												href="https://twitter.com/Jim_Wig"
 											>
 												{" "}
 												<StlyedIoLogoTwitter />{" "}
