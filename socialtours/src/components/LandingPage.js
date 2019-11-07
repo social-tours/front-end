@@ -73,6 +73,22 @@ const LandingPage = ({ history }) => {
 					<img src={ShareImage} />
 				</HeroCard> */}
 			</CarouselWrapper>
+			<Supporting>
+				<Container>
+					<div className="col">
+						<h2>Meet</h2>
+						<p>Make meeting your followers easy</p>
+					</div>
+					<div className="col">
+						<h2>Follow</h2>
+						<p>Get all of your favorite influencer's events in one place</p>
+					</div>
+					<div className="col">
+						<h2>Engage</h2>
+						<p>Get social online and off</p>
+					</div>
+				</Container>
+			</Supporting>
 		</LandingPageWrapper>
 	);
 };
@@ -161,6 +177,33 @@ const ButtonWrapper = styled.div`
 	// display: flex;
 	// justify-content: center;
 	// align-content: center;
+`;
+
+const Supporting = styled.div``;
+
+const Container = styled.div`
+	max-width: 1120px;
+	margin: 50px auto 0;
+	display: flex;
+	justify-content: space-between;
+	color: ${colors.white};
+	// background-color: lightblue;
+
+	h2 {
+		text-transform: uppercase;
+		font-size: 1.5rem;
+		font-weight: bold;
+	}
+
+	.col {
+		text-align: center;
+		width: 33%;
+	}
+
+	p {
+		margin: 20px;
+		font-size: 1.2rem;
+	}
 `;
 
 const Button = styled.button`
