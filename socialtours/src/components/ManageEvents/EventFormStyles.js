@@ -27,6 +27,7 @@ const EventFormStyles = styled.div`
 		justify-content: space-between;
 		align-items: center;
 		align-content: center;
+		margin-bottom: 25px;
 
 		input {
 			width: 80%;
@@ -42,8 +43,11 @@ const EventFormStyles = styled.div`
 		color: ${colors.black};
 		height: 35px;
 		width: 85%;
+		max-width: 150px;
 		border-radius: 5px;
 		font-weight: bold;
+		margin: 25px auto;
+		align-self: flex-end;
 
 		border-width: 2px;
 		border-color: black;
