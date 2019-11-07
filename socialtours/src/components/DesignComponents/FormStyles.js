@@ -1,11 +1,11 @@
 import styled, { css } from "styled-components";
 import {
-	color,
-	colors,
-	colorScheme,
-	fontSizing,
-	flex,
-	breakpoints
+  color,
+  colors,
+  colorScheme,
+  fontSizing,
+  flex,
+  breakpoints
 } from "./theme";
 import Button from "./Button";
 
@@ -19,8 +19,8 @@ export const FormContainer = styled.div`
   font-size: ${fontSizing.sm};
 
   ${props =>
-		props.something &&
-		css`
+    props.something &&
+    css`
 			margin-top: 10px;
 		`}
 
@@ -103,8 +103,8 @@ export const FormButton = styled(Button)`
 	background-color: ${colors.putty};
 	color: black;
 	${props =>
-		props.socialIcon &&
-		css`
+    props.socialIcon &&
+    css`
 			${flex("row", "center", "space-evenly")};
 			padding: 1px 10px;
 
