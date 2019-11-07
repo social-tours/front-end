@@ -29,7 +29,7 @@ const EventDetails = props => {
 					expandIcon={<ExpandMoreIcon />}
 					id={`${props.id}_header`}
 				>
-					<StyledTypography className={classes.heading}></StyledTypography>
+					<Typography className={classes.heading}>Venue's and Date's</Typography>
 				</ExpansionPanelSummary>
 				<ExpansionPanelDetails>
 					<div>
@@ -59,12 +59,4 @@ const ScheduleWrapper = styled.div`
 	flex-direction: column;
 	width: 100%;
 `;
-
-const StyledTypography = styled(Typography)`
-	color: blue,
-	width: 0%
-`;
-
-
-
 

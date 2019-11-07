@@ -8,6 +8,7 @@ import Panel from "./Panel";
 import Tabs from "./Tabs";
 import * as S from "./EventFormStyles";
 import styled from "styled-components";
+import Typography from "@material-ui/core/Typography";
 
 import EventDetails from "./EventDetails.js";
 
@@ -55,12 +56,15 @@ class EventsDashboard extends Component {
 
                                 <S.Preview>
                                     <Link key={event.id} to={`/events/${event.id}`}>
-                                        <S.Event key={event.id}>{event.title}</S.Event>
+                                        <S.Event key={event.id}> Click for {event.title}</S.Event>
                                     </Link>
 
-                                    <EventDetails {...event}>
+                                    <StyledTypography>
+                                        <EventDetails {...event}>
 
-                                    </EventDetails>
+                                        </EventDetails>
+
+                                    </StyledTypography>
                                 </S.Preview>
                             ))}
                     </Panel>
@@ -116,6 +120,12 @@ const EventsDetails = styled.div`
 	width: 50%;
 `;
 
+
+const StyledTypography = styled(Typography)`
+width: 100%;
+color: white;
+background-color: transparent;
+`;
 
 
 

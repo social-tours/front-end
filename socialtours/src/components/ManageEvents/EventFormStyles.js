@@ -104,7 +104,7 @@ export const DashBoardContainer = styled.div`
 export const Preview = styled.div`
 	width: 90%;
 	min-width: 300px;
-	${flex('row', 'center', 'space-between')}
+	${flex('row', 'center', 'space-around')}
 	margin: 10px 0;
 	padding: 10px;
 	border: 1px solid ${color.lightText};
@@ -118,18 +118,20 @@ export const Preview = styled.div`
 `
 
 export const Event = styled.div`
-	width: 50%;
+	width: 100%;
 	min-width: 300px;
-	${flex('row', 'center', 'space-between')}
 	margin: 10px 0;
 	padding: 10px;
-	border: 1px solid ${color.lightText};
+	border-color: transparent;
+	
 	border-radius: 5px;
 	cursor: pointer;
 
 	&:hover {
-		border-color: transparent;
+		border: 1px solid ${color.lightText};
 		background: ${colors.light_blue};
+		width: 100%;
+
 	}
 `
 
