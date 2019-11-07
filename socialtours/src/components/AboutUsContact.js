@@ -11,6 +11,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { IoLogoGithub, IoLogoLinkedin, IoLogoTwitter } from "react-icons/io";
 import styled from "styled-components";
+import { colors } from "./DesignComponents/theme";
 
 import Gannon from "../images/gannon.png";
 import Michael from "../images/michael.png";
@@ -68,13 +69,7 @@ const useStyles = makeStyles(theme => ({
 		margin: "15px auto"
 	},
 	button: {
-		background: "#dff8eb",
-		color: "black",
-		margin: "0 auto",
-		"&:hover": {
-			background: "#14e576",
-			color: "black"
-		}
+		margin: "0 auto"
 	}
 }));
 
