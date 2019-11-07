@@ -7,11 +7,11 @@ import { colors } from "./DesignComponents/theme";
 // PREVIOUS LP images
 // import PlanImage from "../images/plan2.png";
 // import ShareImage from "../images/share.png";
-import Meeting1 from "../images/meeting1.jpg";
+// import Meeting1 from "../images/meeting1.jpg";
 import Meeting2 from "../images/meeting2.jpg";
 import Concert1 from "../images/concert1.jpg";
 import Concert2 from "../images/concert2.jpg";
-import CoffeeShop from "../images/coffeeshop.jpg";
+// import CoffeeShop from "../images/coffeeshop.jpg";
 
 // Me poking at things
 // const LandingPage = () => {
@@ -22,22 +22,10 @@ import CoffeeShop from "../images/coffeeshop.jpg";
 
 const carousel_data = [
 	{
-		imgUrl: require("../images/meeting1.jpg"),
-		attributionUrl:
-			"https://images.unsplash.com/photo-1528605105345-5344ea20e269?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
-		photographer: "Photo by Priscilla Du Preez on Unsplash"
-	},
-	{
 		imgUrl: require("../images/concert1.jpg"),
 		attributionUrl:
 			"https://images.unsplash.com/photo-1504680177321-2e6a879aac86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
 		photographer: "Photo by Danny Howe on Unsplash"
-	},
-	{
-		imgUrl: require("../images/coffeeshop.jpg"),
-		attributionUrl:
-			"https://images.unsplash.com/photo-1494346480775-936a9f0d0877?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2006&q=80",
-		photographer: "Photo by Nick Hillier on Unsplash"
 	},
 	{
 		imgUrl: require("../images/meeting2.jpg"),
