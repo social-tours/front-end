@@ -160,6 +160,13 @@ export default connect(
 )(EventsDashboard);
 
 
+const ScheduleWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+`;
+
+
 // Instructions
 // - Event Button: Create new event button
 // - Drop Down Schedule: Drop down from eventDetails that shows a schedule list underneath the event item similar to eventDetials in home page
