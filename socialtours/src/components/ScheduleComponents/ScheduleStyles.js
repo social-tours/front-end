@@ -90,11 +90,37 @@ export const ScheduleSummary = styled.div`
 	}
 `
 
-export const PayButton = styled(Button)`
+export const UpdateButton = styled(Button)`
+	width: 150px;
+	text-transform: uppercase;
+`
+
+export const ScheduleButton = styled(Button)`
 	width: 150px;
 	color: ${color.lightText};
 	background: ${colors.light_blue};
 	text-transform: uppercase;
+`
+
+export const ConfirmAlertWrapper = styled.div`
+	width: 100%;
+	max-width: 600px;
+	${flex('column', 'center')};
+`
+
+export const ButtonMenu = styled.div`
+	width: 100%;
+	${flex('row','center','space-between')};
+	margin: 5px 0;
+
+	button {
+		width: 80px;
+		border-radius: 10px;
+		color: ${color.lightText};
+		background: ${color.darkText};
+		font-size: ${fontSizing.s};
+		font-weight: bold;
+	}
 `
 
 export default Container;

@@ -112,7 +112,7 @@ function Navigation(props) {
 						/>
 					</ListItem>
 				)}
-				<ListItem button>
+				{/* <ListItem button>
 					<ListItemIcon>
 						<DirectionsWalkIcon />
 					</ListItemIcon>
@@ -120,7 +120,7 @@ function Navigation(props) {
 						primary={"Search"}
 						onClick={() => props.history.push("/search")}
 					/>
-				</ListItem>
+				</ListItem> */}
 				<ListItem button>
 					<ListItemIcon>
 						<AssignmentIndIcon />

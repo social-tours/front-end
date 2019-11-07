@@ -3,7 +3,7 @@ import styled from "styled-components";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { API_ENDPOINT } from "../config/api";
-import { colors } from "./DesignComponents/theme";
+import { color, colors } from "./DesignComponents/theme";
 import SubscriptionCard from "./ManageEvents/SubscriptionCard.js";
 
 class Search extends React.Component {
@@ -123,14 +123,19 @@ const Section = styled.div`
 	box-sizing: border-box;
 	display: flex;
 	width: 400px;
-	flex-direction: column;
-	justify-content: space-between;
 	padding-top: 60px;
 	// height: 140px;
 	margin: 0 auto;
 	align-items: center;
+	flex-wrap: wrap;
 `;
 const SearchBar = styled.input`
+	width: 80%;
+	padding: 10px;
+	border: 1px solid ${color.primaryBgShading};
+	background: ${colors.white};
+	color: #000;
+	line-height: 1rem;
 	::placeholder {
 		color: ${colors.black};
 	}
@@ -141,11 +146,9 @@ const SearchBtn = styled.span`
 	justify-content: center;
 	align-items: center;
 	width: 80px;
-	margin-top: 5px;
 	border: 1px solid black;
 	padding: 10px;
 	background-color: ${colors.red};
-	border-radius: 5px;
 `;
 const SearchResults = styled.div`
 	width: 300px;
@@ -156,7 +159,7 @@ const SearchResults = styled.div`
 	);
 	border: 1px solid ${colors.black};
 	color: ${colors.white};
-	margin-top: 20px;
+	margin: 10px auto 0;
 	padding: 0 10px;
 `;
 const SearchResult = styled.div`
