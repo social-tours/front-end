@@ -11,6 +11,7 @@ import * as S from "./ScheduleStyles";
 class ScheduleDetails extends Component {
 	state = {
 		edit: false,
+		paid_event: this.props.event.paid_event,
 		id: this.props.schedule.id,
 		title: "",
 		description: "",
@@ -76,24 +77,46 @@ class ScheduleDetails extends Component {
 		}
 	};
 
+	// handleDelete = id => {
+	// 	confirmAlert({
+	// 		title: "Confirm to delete",
+	// 		buttons: [
+	// 			{
+	// 				label: "Delete",
+	// 				onClick: async () => {
+	// 					await this.props.deleteSchedule(id)
+	// 					this.props.history.push(`/events/${this.props.event.id}`)
+	// 				}
+	// 			},
+	// 			{
+	// 				label: "Cancel"
+	// 			}
+	// 		]
+	// 	});
+	// };
+
 	handleDelete = id => {
 		confirmAlert({
-			title: "Confirm to delete",
-			buttons: [
-				{
-					label: "Delete",
-					onClick: async () => {
-						await this.props.deleteSchedule(id)
-						this.props.history.push(`/events/${this.props.event.id}`)
-					}
-				},
-				{
-					label: "Cancel"
-				}
-			]
+			customUI: ({ onClose }) => {
+				return (
+					<S.ConfirmAlertWrapper>
+						<h1>Confirm delete</h1>
+						<S.ButtonMenu>
+							<button
+								onClick={async () => {
+									await this.props.deleteSchedule(id);
+									this.props.history.push(`/events/${this.props.event.id}`);
+								}}
+							>
+								Delete
+							</button>
+							<button onClick={onClose}>Cancel</button>
+						</S.ButtonMenu>
+					</S.ConfirmAlertWrapper>
+				);
+			}
 		});
 	};
-
 	componentDidMount() {
 		document.title = "Schedule Details | Social Tours";
 	}
@@ -206,7 +229,9 @@ class ScheduleDetails extends Component {
 					</S.ScheduleSummary>
 				</S.EventInfoWrapper>
 				{!this.state.edit ? (
-					<S.PayButton primary>Buy Tickets</S.PayButton>
+					!this.state.paid_event ? (
+						<S.ScheduleButton primary>Register</S.ScheduleButton>
+					) : <S.ScheduleButton primary>Buy Tickets</S.ScheduleButton>
 				) : (
 					<S.UpdateButton update onClick={this.handleUpdate}>
 						Save Changes
