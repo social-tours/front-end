@@ -22,12 +22,6 @@ import Concert2 from "../images/concert2.jpg";
 
 const carousel_data = [
 	{
-		imgUrl: require("../images/meeting2.jpg"),
-		attributionUrl:
-			"https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80",
-		photographer: "Photo by Teemu Paananen on Unsplash"
-	},
-	{
 		imgUrl: require("../images/concert2.jpg"),
 		attributionUrl:
 			"https://images.unsplash.com/photo-1501281668745-f7f57925c3b4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80",
@@ -38,6 +32,12 @@ const carousel_data = [
 		attributionUrl:
 			"https://images.unsplash.com/photo-1504680177321-2e6a879aac86?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&q=80",
 		photographer: "Photo by Danny Howe on Unsplash"
+	},
+	{
+		imgUrl: require("../images/meeting2.jpg"),
+		attributionUrl:
+			"https://images.unsplash.com/photo-1505373877841-8d25f7d46678?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2000&q=80",
+		photographer: "Photo by Teemu Paananen on Unsplash"
 	}
 ];
 
@@ -55,6 +55,7 @@ const LandingPage = ({ history }) => {
 		<LandingPageWrapper>
 			<CarouselWrapper>
 				<LPTextWrapper>
+					<h1>Social Tours</h1>
 					<ButtonWrapper>
 						<RegisterButton onClick={() => history.push("/register")}>
 							Register
@@ -132,23 +133,32 @@ const CarouselImage = styled.img`
 
 const LPTextWrapper = styled.div`
 	position: absolute;
-	left: 0;
+	left: 15%;
 	right: 0;
-	margin: auto;
-	top: 80%;
-	margin-top: -50px;
+	margin: -50px auto 0;
+	top: 20%;
+	// max-width: 940px;
+
+	h1 {
+		font-size: 5rem;
+		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
+			1px 1px 0 #000;
+
+		color: ${colors.white};
+		margin-bottom: 20px;
+	}
 `;
 
 const ButtonWrapper = styled.div`
-	display: flex;
-	justify-content: center;
-	align-content: center;
+	// display: flex;
+	// justify-content: center;
+	// align-content: center;
 `;
 
 const Button = styled.button`
 	padding: 10px 20px;
 	cursor: pointer;
-	text-transform: uppercase;
+	// text-transform: uppercase;
 	border-radius: 5px;
 	font-size: 1.3rem;
 	border-color: ${colors.black_plum};
