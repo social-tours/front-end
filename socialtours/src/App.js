@@ -27,7 +27,7 @@ import { userHasEvent } from "./utils";
 import AboutUsContact from "./components/AboutUsContact.js";
 import Search from "./components/Search";
 import Payment from "./components/PaymentComponents/Payment";
-import EventsDashboard from "./components/ManageEvents/EventsDashboard";
+import EventsDashboard from "./components/EventComponents/EventsDashboard";
 import ScheduleDetails from "./components/ScheduleComponents/ScheduleDetails";
 // import Calendar from "./components/EventCalendar";
 import { API_ENDPOINT } from "./config/api";

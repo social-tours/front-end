@@ -7,7 +7,7 @@ import Search from "../Search";
 import { fetchEvents, getSubscriptionsByUserId } from "../../actions/";
 import Panel from "./Panel";
 import Tabs from "./Tabs";
-import * as S from "./EventFormStyles";
+import * as S from "./EventComponentsStyles.js";
 
 class EventsDashboard extends Component {
 	state = {
