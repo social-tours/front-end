@@ -48,7 +48,7 @@ const LandingPage = ({ history }) => {
 	useEffect(() => {
 		setTimeout(() => {
 			setImgIndex((imgIndex + 1) % carousel_data.length);
-		}, 2700);
+		}, 3000);
 	}, [imgIndex]);
 
 	return (
@@ -150,10 +150,10 @@ const CarouselImage = styled.img`
 
 const LPTextWrapper = styled.div`
 	position: absolute;
-	left: 15%;
+	left: 20%;
 	right: 0;
 	margin: -50px auto 0;
-	top: 20%;
+	top: 17%;
 	// max-width: 940px;
 
 	h1 {
@@ -169,7 +169,7 @@ const LPTextWrapper = styled.div`
 		text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000,
 			1px 1px 0 #000;
 		font-size: 1.5rem;
-		margin: 20px 0;
+		margin: 30px 0;
 	}
 `;
 
@@ -212,7 +212,7 @@ const Button = styled.button`
 	// text-transform: uppercase;
 	border-radius: 5px;
 	font-size: 1.3rem;
-	border-color: ${colors.black_plum};
+	border: 1px solid ${colors.black};
 `;
 
 const RegisterButton = styled(Button)`
