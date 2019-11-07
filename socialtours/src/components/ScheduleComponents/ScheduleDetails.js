@@ -77,24 +77,6 @@ class ScheduleDetails extends Component {
 		}
 	};
 
-	// handleDelete = id => {
-	// 	confirmAlert({
-	// 		title: "Confirm to delete",
-	// 		buttons: [
-	// 			{
-	// 				label: "Delete",
-	// 				onClick: async () => {
-	// 					await this.props.deleteSchedule(id)
-	// 					this.props.history.push(`/events/${this.props.event.id}`)
-	// 				}
-	// 			},
-	// 			{
-	// 				label: "Cancel"
-	// 			}
-	// 		]
-	// 	});
-	// };
-
 	handleDelete = id => {
 		confirmAlert({
 			customUI: ({ onClose }) => {
@@ -106,6 +88,7 @@ class ScheduleDetails extends Component {
 								onClick={async () => {
 									await this.props.deleteSchedule(id);
 									this.props.history.push(`/events/${this.props.event.id}`);
+									onClose()
 								}}
 							>
 								Delete
@@ -138,7 +121,7 @@ class ScheduleDetails extends Component {
 				{this.props.event.host_id === this.getUserId().id && (
 					<header>
 						<i className="far fa-edit" onClick={() => this.toggleEdit()}></i>
-						<i className="fa fa-trash" onClick={() => this.handleDelete()}></i>
+						<i className="fa fa-trash" onClick={() => this.handleDelete(this.props.schedule.id)}></i>
 					</header>
 				)}
 				<S.Banner>
