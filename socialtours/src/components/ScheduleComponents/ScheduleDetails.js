@@ -121,7 +121,7 @@ class ScheduleDetails extends Component {
 				{this.props.event.host_id === this.getUserId().id && (
 					<header>
 						<i className="far fa-edit" onClick={() => this.toggleEdit()}></i>
-						<i className="fa fa-trash" onClick={() => this.handleDelete(this.props.schedule.id)}></i>
+						<i className="fa fa-trash" onClick={() => this.handleDelete(id)}></i>
 					</header>
 				)}
 				<S.Banner>
