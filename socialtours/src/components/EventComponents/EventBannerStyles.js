@@ -14,7 +14,7 @@ export const EventBannerContainer = styled.div`
   width: 100%;
   height: 100%;
   ${flex("column","normal","center")};
-  padding: 10px;
+  padding: 10px 10%;
   font-weight: bold;
   color: ${color.lightText};
   background-size: cover;

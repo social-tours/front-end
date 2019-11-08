@@ -17,12 +17,42 @@ export const CarouselContainer = styled.div`
 
 	.carousel {
 		width: 100%;
-		border: 2px solid red;
 	}
 
 	.carousel__slide {
-		border: 2px solid coral;
 	}
+`
+
+export const SliderContainer = styled.div`
+  position: relative;
+
+  .buttonBack {
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    ${flex("column","center","center")};
+    border-radius: 35px;
+    font-size: ${fontSizing.ml};
+    font-weight: bold;
+    opacity: 0.75;
+  }
+
+  .buttonNext {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    width: 35px;
+    height: 35px;
+    ${flex("column", "center", "center")};
+    border-radius: 35px;
+    font-size: ${fontSizing.ml};
+    font-weight: bold;
+    opacity: 0.75;
+  }
 `
 
 export default CarouselContainer 
