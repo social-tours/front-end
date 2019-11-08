@@ -10,6 +10,7 @@
 		"jwt-decode": "^2.2.0",
 		"marked": "^0.7.0",
 		"moment": "^2.24.0",
+		"pure-react-carousel": "^1.23.2",
 		"react": "^16.9.0",
 		"react-calendar": "^2.19.1",
 		"react-confirm-alert": "^2.4.1",
