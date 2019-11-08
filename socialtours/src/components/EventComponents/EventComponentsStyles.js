@@ -94,6 +94,15 @@ export const DashBoardContainer = styled.div`
 	border-radius: 3px;
 	border: 1px solid #e5e5e5;
 
+	.carousel {
+		width: 100%;
+		border: 2px solid red;
+	}
+
+	.carousel__slide {
+		border: 2px solid coral;
+	}
+
 	.tab-title {
 		margin-top: 20px;
 		padding: 10px;

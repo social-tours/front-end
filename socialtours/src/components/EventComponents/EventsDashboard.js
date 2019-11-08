@@ -2,9 +2,11 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import jwtDecode from "jwt-decode";
-import Search from "../Search";
 
 import { fetchEvents, getSubscriptionsByUserId } from "../../actions/";
+
+import Search from "../Search";
+import Carousel from "./Carousel";
 import Panel from "./Panel";
 import Tabs from "./Tabs";
 import * as S from "./EventComponentsStyles.js";
@@ -41,9 +43,10 @@ class EventsDashboard extends Component {
 			<>
 				<Search />
 				<S.DashBoardContainer>
+					<Carousel {...this.props}/>
 					<S.CEButton onClick={e => this.props.history.push("createEvent")}>
 						<i className="fa fa-plus"></i> Create New Event
-				</S.CEButton>
+					</S.CEButton>
 					<Tabs>
 						<Panel title="My Events">
 							{this.props.events
