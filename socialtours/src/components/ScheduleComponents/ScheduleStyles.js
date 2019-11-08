@@ -24,7 +24,6 @@ export const Container = styled.div`
 	header {
 		width: 100%;
 		${flex("row", "center", "flex-end")};
-		margin-bottom: 20px;
 		padding: 10px;
 		border-radius: 5px 5px 0 0;
 		background: linear-gradient(to top, #cccccc 0%, #d6d6d6 1px, #ebebeb 100%); 
@@ -42,12 +41,12 @@ export const Container = styled.div`
 
 export const Banner = styled.div`
 	width: 100%;
-	max-width: 500px;
 
 	img {
 		margin: 0 auto;
 		width: 100%;
-		height: auto;
+		height: 200px;
+		object-fit: cover;
 	}
 
 `
@@ -61,17 +60,34 @@ export const EventSummary = styled.div`
 		width: 100%;
 		${flex("row", "center")};
 		padding: 10px;
-		border-bottom: 1px solid ${colorScheme.defaultBorderColor};
 `
 
 export const EventTitle = styled.h2`
-	width: 80%;
-	padding: 5px;
 	font-size: ${fontSizing.l};
+	font-weight: bold;
 
 	div.subtitle {
 		font-size: ${fontSizing.xs};
 		color: ${colorScheme.defaultBorderColor};
+	}
+`;
+
+export const EventDescription = styled.p`
+	width: 100%;
+	text-align: center;
+	font-size: ${fontSizing.m};
+
+`
+
+export const EventShareWrapper = styled.div`
+	width: 100%;
+	${flex('row', 'center', 'flex-end')};
+	margin-bottom: 10px;
+	border-bottom: 1px solid ${colorScheme.secondaryBorderColor};
+	background: ${color.lightText};
+
+	svg {
+		cursor: pointer;
 	}
 `
 
@@ -90,6 +106,25 @@ export const EventDate = styled.div`
 		}
 
 `
+
+export const ScheduleDetailsWrapper = styled.div`
+		margin-top: 20px;
+		font-size: ${fontSizing.sm};
+		font-weight: bold;
+
+		p {
+			margin: 10px 0;
+		}
+
+		input {
+			height: 35px;
+			padding-left: 10px;
+			border: 1px solid ${colors.grape};
+			border-radius: 5px;
+			font-size: ${fontSizing.sm};
+		}
+`
+
 export const ScheduleSummary = styled.div`
 	width: 100%;
 	padding: 10px;

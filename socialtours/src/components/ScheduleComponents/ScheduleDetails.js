@@ -5,6 +5,18 @@ import moment from "moment";
 import Flatpickr from "react-flatpickr";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import {
+	FacebookShareButton,
+	LinkedinShareButton,
+	TwitterShareButton,
+	EmailShareButton,
+	// buttons above / icons below
+	FacebookIcon,
+	LinkedinIcon,
+	TwitterIcon,
+	EmailIcon
+} from "react-share";
+
 import { updateSchedule, deleteSchedule, fetchEvents } from "../../actions";
 import * as S from "./ScheduleStyles";
 
@@ -117,6 +129,13 @@ class ScheduleDetails extends Component {
 			postal_code
 		} = this.props.schedule;
 
+		const size = "2.5rem"
+		const url = window.location.href
+		const subject = this.props.event.host_id === this.getUserId().id ? `Join me at the upcoming "${title}" event` : `I'm attending the "${title}" event`
+		const hashtag = `#${title}`
+		const body = description
+		console.log("SHARED URL: ", url)
+
 		return (
 			<S.Container>
 				{this.props.event.host_id === this.getUserId().id && (
@@ -141,8 +160,8 @@ class ScheduleDetails extends Component {
 						<S.EventTitle>{title}</S.EventTitle>
 					</S.EventSummary>
 					<S.ScheduleSummary>
-						<p className="event-description">{description}</p>
-						<div className="event-details">
+						<S.EventDescription>{description}</S.EventDescription>
+						<S.ScheduleDetailsWrapper>
 							<p>
 								{!this.state.edit ? (
 									moment(start_date_time).format("MMMM Do YYYY, h:mm:ss a")
@@ -209,8 +228,42 @@ class ScheduleDetails extends Component {
 									/>
 								)}
 							</p>
-						</div>
+						</S.ScheduleDetailsWrapper>
 					</S.ScheduleSummary>
+					<S.EventShareWrapper>
+						<FacebookShareButton
+							url={window.location.href}
+							quote={subject}
+							hashtag={hashtag}
+						>
+							<FacebookIcon size={size} />
+						</FacebookShareButton>
+						<TwitterShareButton
+							url={url}
+							title={subject}
+							hashtag={hashtag}
+						>
+							<TwitterIcon size={size} />
+						</TwitterShareButton>
+						<LinkedinShareButton
+							url={url} // this can be a public facing page in cavas#2 for followers to see
+							title={subject}
+							windowWidth={750}
+							windowHeight={600}
+						>
+							<LinkedinIcon size={size} />
+						</LinkedinShareButton>
+						<EmailShareButton>
+							<EmailIcon
+								url={url}
+								size={size}
+								subject={subject}
+								body={body}
+								seperator={" "}
+								openWindow={true}
+							/>
+						</EmailShareButton>
+					</S.EventShareWrapper>
 				</S.EventInfoWrapper>
 				{!this.state.edit ? (
 					!this.state.paid_event ? (

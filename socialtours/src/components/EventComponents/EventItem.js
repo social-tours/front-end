@@ -189,7 +189,7 @@ class EventItem extends Component {
 		console.log("URL: ", this.props.location.pathname)
 		const size = "2.5rem"
 		const url = window.location.href
-		const subject = this.props.event.host_id === this.getUserId().id ? "I have a new event!" : "I'm attending this event"
+		const subject = this.props.event.host_id === this.getUserId().id ? `Join me at the "${title}" event` : `I'm attending the "${title}" event`
 		const hashtag = `#${title}`
 		const body = description
 		console.log("SHARED URL: ", url)
