@@ -2,15 +2,10 @@ import styled from "styled-components";
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 import {
-  color,
-  colors,
   fontSizing,
-  flex,
-  breakpoints,
-  colorScheme
+  flex
 } from "../DesignComponents/theme";
 
-import Button from "../DesignComponents/Button";
 
 export const CarouselContainer = styled.div`
   width: 100%

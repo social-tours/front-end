@@ -18,7 +18,6 @@ export const EventBannerContainer = styled.div`
   font-weight: bold;
   color: ${color.lightText};
   background-size: cover;
-  border: 1px solid green;
 
   & * {
     margin: 5px 0;
