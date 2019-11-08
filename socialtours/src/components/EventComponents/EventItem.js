@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { withRouter } from "react-router-dom";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import jwtDecode from "jwt-decode";
@@ -6,6 +7,17 @@ import moment from "moment";
 import Flatpickr from "react-flatpickr";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
+import {
+	FacebookShareButton,
+	LinkedinShareButton,
+	TwitterShareButton,
+	EmailShareButton,
+	// buttons above / icons below
+	FacebookIcon,
+	LinkedinIcon,
+	TwitterIcon,
+	EmailIcon
+} from "react-share";
 
 import ScheduleEvent from "../ScheduleComponents/ScheduleEvent";
 
@@ -174,6 +186,14 @@ class EventItem extends Component {
 			paid_event,
 			price
 		} = this.props.event;
+		console.log("URL: ", this.props.location.pathname)
+		const size = "2.5rem"
+		const url = window.location.href
+		const subject = this.props.event.host_id === this.getUserId().id ? "I have a new event!" : "I'm attending this event"
+		const hashtag = `#${title}`
+		const body = description
+		console.log("SHARED URL: ", url)
+
 		return (
 			<S.Container>
 				{this.props.event.host_id === this.getUserId().id && (
@@ -193,7 +213,41 @@ class EventItem extends Component {
 					<S.EventSummary>
 						<S.EventTitle>{title}</S.EventTitle>
 						<S.EventDescription>{description}</S.EventDescription>
-					</S.EventSummary>
+						</S.EventSummary>
+						<S.EventShareWrapper>
+							<FacebookShareButton
+								url={window.location.href}
+								quote={subject}
+								hashtag={hashtag}
+							>
+								<FacebookIcon size={size} />
+							</FacebookShareButton>
+							<TwitterShareButton
+								url={url}
+								title={subject}
+								hashtag={hashtag}
+							>
+								<TwitterIcon size={size} />
+							</TwitterShareButton>
+							<LinkedinShareButton
+								url={url} // this can be a public facing page in cavas#2 for followers to see
+								title={subject}
+								windowWidth={750}
+								windowHeight={600}
+							>
+								<LinkedinIcon size={size} />
+							</LinkedinShareButton>
+							<EmailShareButton>
+								<EmailIcon
+									url={url}
+									size={size}
+									subject={subject}
+									body={body}
+									seperator={" "}
+									openWindow={true}
+								/>
+							</EmailShareButton>
+						</S.EventShareWrapper>
 					</div>
 				) : (
 						<S.EventFormStyles>
@@ -325,7 +379,9 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(
-	mapStateToProps,
-	{ fetchEvents, fetchEvent, putEvent, deleteEvent, addSchedule }
-)(EventItem);
+export default withRouter(
+	connect(
+		mapStateToProps,
+		{ fetchEvents, fetchEvent, putEvent, deleteEvent, addSchedule }
+	)(EventItem)
+);

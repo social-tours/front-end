@@ -201,9 +201,7 @@ export const EventSummary = styled.div`
 	width: 100%;
 	${flex("column", "center")};
 	margin: 0 auto;
-	margin-bottom: 10px;
 	padding: 10px;
-	border-bottom: 1px solid ${colorScheme.secondaryBorderColor};
 	background: ${color.lightText};
 
 	& * {
@@ -225,6 +223,18 @@ export const EventDescription = styled.p`
 	text-align: center;
 	font-size: ${fontSizing.m};
 
+`
+
+export const EventShareWrapper = styled.div`
+	width: 100%;
+	${flex('row', 'center', 'flex-end')};
+	margin-bottom: 10px;
+	border-bottom: 1px solid ${colorScheme.secondaryBorderColor};
+	background: ${color.lightText};
+
+	svg {
+		cursor: pointer;
+	}
 `
 
 export const SchedulePreview = styled.div`
