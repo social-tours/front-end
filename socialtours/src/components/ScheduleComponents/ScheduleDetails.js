@@ -87,6 +87,7 @@ class ScheduleDetails extends Component {
 							<button
 								onClick={async () => {
 									await this.props.deleteSchedule(id);
+									await this.props.fetchEvents()
 									this.props.history.push(`/events/${this.props.event.id}`);
 									onClose()
 								}}
@@ -125,7 +126,7 @@ class ScheduleDetails extends Component {
 					</header>
 				)}
 				<S.Banner>
-					<img src={this.props.event.event_image} />
+					<img src={this.props.event.event_image} alt="Event Image"/>
 				</S.Banner>
 				<S.EventInfoWrapper>
 					<S.EventSummary>
