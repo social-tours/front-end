@@ -113,13 +113,14 @@ export const postEvent = event => async dispatch => {
 };
 
 // Put event
-export const putEvent = eventID => async dispatch => {
+export const putEvent = event => async dispatch => {
 	dispatch({
 		type: types.PUT_EVENT
 	}); //greg
 	try {
-		const event = await axios.put(API_ENDPOINT + `/api/events/${eventID}`);
-		event.status === 200
+		const res = await axios.put(API_ENDPOINT + `/api/events/${event.id}`, event);
+		console.log("UPDATE EVENT ACTION CREATOR: ", res)
+		res.status === 200
 			? dispatch({
 					type: types.PUT_EVENT_SUCCESS,
 					payload: event.data

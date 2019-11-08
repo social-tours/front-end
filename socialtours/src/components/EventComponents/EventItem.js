@@ -117,12 +117,32 @@ class EventItem extends Component {
 		}
 	};
 
-	handleEditEvent = async e => {
+	handleUpdate = async e => {
 		e.preventDefault();
 		try {
-			const updatedData = this.state;
+			const {
+				id,
+				type,
+				title,
+				host_id,
+				description,
+				event_image,
+				paid_event,
+				price
+			} = this.state;
+			const updatedData = {
+				id,
+				type,
+				title,
+				host_id,
+				description,
+				event_image,
+				paid_event,
+				price
+			};
 			console.log("EVENT DATA TO UPDATE: ", updatedData);
 			await this.props.putEvent(updatedData);
+			await this.props.fetchEvents()
 
 			// reset form fields
 			this.setState({
@@ -165,7 +185,7 @@ class EventItem extends Component {
 				);
 			}
 		});
-	}
+	};
 
 	componentDidMount() {
 		if (this.props.event.id) {
@@ -174,13 +194,7 @@ class EventItem extends Component {
 	}
 
 	render() {
-		const {
-			id,
-			title,
-			host_id,
-			description,
-			event_image
-		} = this.props.event;
+		const { id, title, host_id, description, event_image } = this.props.event;
 		console.log("URL: ", this.props.location.pathname);
 		const size = "2.5rem";
 		const url = window.location.href;

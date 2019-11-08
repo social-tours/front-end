@@ -81,6 +81,7 @@ class ScheduleDetails extends Component {
 		try {
 			const updatedData = this.state;
 			delete updatedData.edit;
+			delete updatedData.paid_event;
 			console.log("SCHEDULE DATA TO UPDATE: ", updatedData);
 			await this.props.updateSchedule(updatedData);
 			await this.props.fetchEvents();
@@ -99,9 +100,9 @@ class ScheduleDetails extends Component {
 							<button
 								onClick={async () => {
 									await this.props.deleteSchedule(id);
-									await this.props.fetchEvents()
+									await this.props.fetchEvents();
 									this.props.history.push(`/events/${this.props.event.id}`);
-									onClose()
+									onClose();
 								}}
 							>
 								Delete
@@ -129,23 +130,29 @@ class ScheduleDetails extends Component {
 			postal_code
 		} = this.props.schedule;
 
-		const size = "2.5rem"
-		const url = window.location.href
-		const subject = this.props.event.host_id === this.getUserId().id ? `Join me at the upcoming "${title}" event` : `I'm attending the "${title}" event`
-		const hashtag = `#${title}`
-		const body = description
-		console.log("SHARED URL: ", url)
+		const size = "2.5rem";
+		const url = window.location.href;
+		const subject =
+			this.props.event.host_id === this.getUserId().id
+				? `Join me at the upcoming "${title}" event`
+				: `I'm attending the "${title}" event`;
+		const hashtag = `#${title}`;
+		const body = description;
+		console.log("SHARED URL: ", url);
 
 		return (
 			<S.Container>
 				{this.props.event.host_id === this.getUserId().id && (
 					<header>
 						<i className="far fa-edit" onClick={() => this.toggleEdit()}></i>
-						<i className="fa fa-trash" onClick={() => this.handleDelete(id)}></i>
+						<i
+							className="fa fa-trash"
+							onClick={() => this.handleDelete(id)}
+						></i>
 					</header>
 				)}
 				<S.Banner>
-					<img src={this.props.event.event_image} alt="Event Image"/>
+					<img src={this.props.event.event_image} alt="Event Image" />
 				</S.Banner>
 				<S.EventInfoWrapper>
 					<S.EventSummary>
@@ -238,11 +245,7 @@ class ScheduleDetails extends Component {
 						>
 							<FacebookIcon size={size} />
 						</FacebookShareButton>
-						<TwitterShareButton
-							url={url}
-							title={subject}
-							hashtag={hashtag}
-						>
+						<TwitterShareButton url={url} title={subject} hashtag={hashtag}>
 							<TwitterIcon size={size} />
 						</TwitterShareButton>
 						<LinkedinShareButton
@@ -268,7 +271,9 @@ class ScheduleDetails extends Component {
 				{!this.state.edit ? (
 					!this.state.paid_event ? (
 						<S.ScheduleButton primary>Register</S.ScheduleButton>
-					) : <S.ScheduleButton primary>Buy Tickets</S.ScheduleButton>
+					) : (
+						<S.ScheduleButton primary>Buy Tickets</S.ScheduleButton>
+					)
 				) : (
 					<S.UpdateButton update onClick={this.handleUpdate}>
 						Save Changes
