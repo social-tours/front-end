@@ -6,7 +6,7 @@ import { connect } from "react-redux";
 
 import { colors } from "../DesignComponents/theme";
 import "../../../node_modules/flatpickr/dist/themes/light.css";
-import EventFormStyles from "../EventComponents/EventComponentsStyles";
+import EventFormStyles from "../ManageEvents/EventFormStyles";
 import { addSchedule, fetchEvents } from "../../actions";
 
 class ScheduleEvent extends Component {
