@@ -98,7 +98,7 @@ function Navigation(props) {
 						onClick={() => props.history.push("/eventsdashboard")}
 					/>
 				</ListItem>
-				{userHasEvent(props.events) && (
+				{/* {userHasEvent(props.events) && (
 					<ListItem button>
 						<ListItemIcon>
 							<FormatListBulletedIcon />
@@ -109,7 +109,7 @@ function Navigation(props) {
 							onClick={() => props.history.push("/ManageEvents")}
 						/>
 					</ListItem>
-				)}
+				)} */}
 				{userHasEvent(props.events) && (
 					<ListItem button>
 						<ListItemIcon>
