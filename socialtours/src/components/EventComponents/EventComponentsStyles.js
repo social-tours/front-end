@@ -13,14 +13,15 @@ import Button from "../DesignComponents/Button";
 
 export const EventFormStyles = styled.div`
 	margin: 0 auto;
-	padding: 50px 0;
+	padding: 10px;
 	display: flex;
 	width: 95%;
+	max-width: 800px;
 	align-content: center;
 	align-items: center;
 	justify-content: space-between;
 	flex-direction: column;
-	height: 100%;
+	background: ${color.secondaryBgShading};
 
 	form {
 		width: 100%;
@@ -40,22 +41,31 @@ export const EventFormStyles = styled.div`
 		}
 	}
 
-	// button {
-	// 	background-color: ${colors.red};
-	// 	color: ${colors.black};
-	// 	height: 35px;
-	// 	width: 85%;
-	// 	max-width: 150px;
-	// 	border-radius: 5px;
-	// 	font-weight: bold;
-	// 	margin: 25px auto;
-	// 	align-self: flex-end;
+	button {
+		background-color: ${colors.red};
+		color: ${color.lightText};
+		height: 35px;
+		width: 85%;
+		max-width: 150px;
+		margin: 25px auto;
+		border: 1px solid transparent;
+		border-radius: 25px;
+		font-size: ${fontSizing.s};
+		font-weight: bold;
+		text-transform: uppercase;
+		cursor: pointer;
 
-	// 	border-width: 2px;
-	// 	border-color: black;
-	// 	border-style: solid;
-	// }
+		@media ${breakpoints[0]} {
+			font-size: ${fontSizing.xxs}
+		}
+	}
 `;
+
+export const FormContainer = styled.div`
+	width: 100%;
+	${flex("column", "center")};
+	margin-top: 50px;
+`
 
 export const EventInput = styled.input`
 	background-color: ${props => (props.disabled ? "#162a4f" : "white")};
