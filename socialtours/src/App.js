@@ -90,15 +90,15 @@ class App extends Component {
 					<Route path="/eventsdashboard" component={EventsDashboard} />
 					<Route path="/payment" component={Payment} />
 				</Switch>
-				{this.props.events.map(event => (
+				{this.props.events && (this.props.events.map(event => (
 					<Route
 						exact
 						path={`/events/${event.id}`}
 						key={event.id}
 						render={props => <EventItem {...props} event={event} />}
 					/>
-				))}
-				{this.props.events.map(event =>
+				)))}
+				{this.props.events && (this.props.events.map(event =>
 					event.schedule.map(schedule => (
 						<Route
 							key={schedule.id}
@@ -108,7 +108,7 @@ class App extends Component {
 							)}
 						/>
 					))
-				)}
+				))}
 			</Router>
 		);
 	}
