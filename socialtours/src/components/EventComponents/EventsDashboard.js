@@ -42,8 +42,8 @@ class EventsDashboard extends Component {
 		return (
 			<>
 				<Search />
+				<Carousel {...this.props} />
 				<S.DashBoardContainer>
-					<Carousel {...this.props}/>
 					<S.CEButton onClick={e => this.props.history.push("createEvent")}>
 						<i className="fa fa-plus"></i> Create New Event
 					</S.CEButton>

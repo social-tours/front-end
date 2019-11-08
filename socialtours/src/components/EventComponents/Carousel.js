@@ -1,26 +1,29 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 
 import { CarouselProvider, Slider, Slide, ButtonBack, ButtonNext } from 'pure-react-carousel';
-import 'pure-react-carousel/dist/react-carousel.es.css';
-
+import EventBanner from "./EventBanner"
+import * as S from "./CarouselStyles"
 class Carousel extends Component {
   render() {
     return (
+      <S.CarouselContainer>
       <CarouselProvider
         naturalSlideWidth={400}
         naturalSlideHeight={50}
-        totalSlides={3}
+        totalSlides={this.props.events.length}
+        isPlaying={true}
+        interval={5000}
       >
         <Slider>
           {this.props.events.map((event, i) => (
-            <Slide index={i}>{event.title}</Slide>
+            <Slide index={i}><EventBanner event={event}/></Slide>
           ))}
         </Slider>
-        <ButtonBack>Back</ButtonBack>
+        <ButtonBack>{">"}</ButtonBack>
         <ButtonNext>{">"}</ButtonNext>
-      </CarouselProvider>
+        </CarouselProvider>
+      </S.CarouselContainer>
     );
   }
 }
