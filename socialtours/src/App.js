@@ -19,7 +19,7 @@ import NotFound from "./components/NotFound";
 import Callback from "./components/UserComponents/Callback";
 import Calendar from "./components/EventCalendar";
 import UpdateEvent from "./components/ManageEvents/UpdateEvent.js";
-import TheCreateEvent from "./components/ManageEvents/createEvent.js";
+import TheCreateEvent from "./components/EventComponents/CreateEvent.js";
 //import TheCrudEvent from "./components/updateDeleteEvent.js";
 import ManageEvents from "./components/ManageEvents/ManageEvents";
 import Navigation from "./components/Navigation";
