@@ -76,16 +76,34 @@ class EventsDashboard extends Component {
                                     .includes(event.host_id)
                             )
                             .map(event => (
-                                <Link key={event.id} to={`/events/${event.id}`}>
-                                    <S.Preview key={event.id}>{event.title}</S.Preview>
-                                </Link>
+                                <S.Preview>
+                                    <Link key={event.id} to={`/events/${event.id}`}>
+                                        <S.Event key={event.id}> Click for {event.title}</S.Event>
+                                    </Link>
+
+                                    <StyledTypography>
+                                        <EventDetails {...event}>
+
+                                        </EventDetails>
+
+                                    </StyledTypography>
+                                </S.Preview>
                             ))}
                     </Panel>
                     <Panel title="All Events">
                         {this.props.events.map(event => (
-                            <Link key={event.id} to={`/events/${event.id}`}>
-                                <S.Preview key={event.id}>{event.title}</S.Preview>
-                            </Link>
+                            <S.Preview>
+                                <Link key={event.id} to={`/events/${event.id}`}>
+                                    <S.Event key={event.id}> Click for {event.title}</S.Event>
+                                </Link>
+
+                                <StyledTypography>
+                                    <EventDetails {...event}>
+
+                                    </EventDetails>
+
+                                </StyledTypography>
+                            </S.Preview>
                         ))}
                     </Panel>
                 </Tabs>
@@ -126,6 +144,8 @@ width: 100%;
 color: white;
 background-color: transparent;
 `;
+
+
 
 
 
