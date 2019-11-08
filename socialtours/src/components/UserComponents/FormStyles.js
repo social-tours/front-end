@@ -70,18 +70,18 @@ export const FormContainer = styled.div`
       color: #000;
       line-height: 1rem;
       ::placeholder {
-      	color: ${colors.black}
+        color: ${colors.black}
       }
     }
 
     label {
       width: 80%;
       margin-top: 0;
-      font-size: ${fontSizing.xxxs}
+      font-size: ${fontSizing.sm}
     }
 
     p {
-        font-size: ${fontSizing.xxs}
+        font-size: ${fontSizing.sm}
     }
 
   }
@@ -105,7 +105,7 @@ export const FormButton = styled(Button)`
 	padding: 10px;
 	border-radius: 5px;
 	font-weight: normal;
-	font-size: ${fontSizing.xxs};
+	font-size: ${fontSizing.sm};
 	border: 1px solid ${colors.black};
 	background-color: ${colors.red};
 	color: black;
@@ -129,7 +129,7 @@ export const FormButton = styled(Button)`
 
 export const MessageContainer = styled.div`
 	text-align: center;
-	font-size: ${fontSizing.xxs};
+	font-size: ${fontSizing.sm};
 `;
 
 export default FormContainer;
