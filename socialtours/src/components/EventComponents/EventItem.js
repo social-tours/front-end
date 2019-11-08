@@ -28,7 +28,7 @@ class EventItem extends Component {
 		host_id: "",
 		description: "",
 		event_image: "",
-		paid_event: null,
+		paid_event: false,
 		price: "",
 		schedule: []
 	};
@@ -87,8 +87,16 @@ class EventItem extends Component {
 
 	handleInput = e => {
 		e.preventDefault();
+		console.log("handleInput: ", e.target.name, e.target.value)
 		this.setState({ [e.target.name]: e.target.value });
 	};
+
+	handleCheckedInput = e => {
+		e.preventDefault()
+		this.setState(prevState => (
+			{ paid_event: !prevState.paid_event }
+		), () => console.log("paid_event: ", this.state.paid_event))
+	}
 
 	handleFetchEvent = async id => {
 		try {
@@ -116,7 +124,7 @@ class EventItem extends Component {
 				host_id: "",
 				description: "",
 				event_image: "",
-				paid_event: null,
+				paid_event: false,
 				price: "",
 				schedule: []
 			});
@@ -177,20 +185,100 @@ class EventItem extends Component {
 						></i>
 					</header>
 				)}
-				<S.Banner>
-					<img src={event_image} />
-				</S.Banner>
-				<S.EventSummary>
-					<S.EventTitle>{title}</S.EventTitle>
-					<S.EventDescription>{description}</S.EventDescription>
-				</S.EventSummary>
-				{this.state.edit ? (
+				{!this.state.edit ? (
+					<div>
+					<S.Banner>
+						<img src={event_image} alt="Event Image" />
+					</S.Banner>
+					<S.EventSummary>
+						<S.EventTitle>{title}</S.EventTitle>
+						<S.EventDescription>{description}</S.EventDescription>
+					</S.EventSummary>
+					</div>
+				) : (
+						<S.EventFormStyles>
+							<form>
+								<S.InputWrapper>
+									<label>Event Type</label>
+									<S.EventInput
+										name="type"
+										placeholder={this.state.type}
+										onChange={this.handleInput}
+										value={this.state.type}
+										type="number"
+									/>
+								</S.InputWrapper>
+								<S.InputWrapper>
+									<label>Title</label>
+									<S.EventInput
+										name="title"
+										placeholder={this.props.title}
+										onChange={this.handleInput}
+										value={this.state.title}
+									/>
+								</S.InputWrapper>
+								<S.InputWrapper>
+									<label>Host ID</label>
+									<S.EventInput
+										name="host_id"
+										placeholder="host_id"
+										onChange={this.handleInput}
+										value={this.state.host_id}
+										type="number"
+									/>
+								</S.InputWrapper>
+								<S.InputWrapper>
+									<label>Description</label>
+									<S.EventInput
+										name="description"
+										placeholder="description"
+										onChange={this.handleInput}
+										value={this.state.description}
+									/>
+								</S.InputWrapper>
+								<S.InputWrapper>
+									<label>Event Image</label>
+									<S.EventInput
+										name="event_image"
+										placeholder="event image url"
+										onChange={this.handleInput}
+										value={this.state.event_image}
+									/>
+								</S.InputWrapper>
+								<S.InputWrapper>
+									<label>Paid Event</label>
+									<S.EventInput
+										name="paid_event"
+										placeholder="paid event"
+										onChange={this.handleCheckedInput}
+										value={this.state.paid_event}
+										type="checkbox"
+									/>
+								</S.InputWrapper>
+								<S.InputWrapper>
+									<label>Price</label>
+									<S.EventInput
+										name="price"
+										placeholder="price"
+										onChange={this.handleInput}
+										value={this.state.price}
+										type="number"
+									/>
+								</S.InputWrapper>
+								<S.UpdateButton update onClick={this.handleUpdate}>
+										Save Changes
+								</S.UpdateButton>
+							</form>
+						</S.EventFormStyles>	
+				)}
+
+				{/* {this.state.edit ? (
 					<S.UpdateButton update onClick={this.handleUpdate}>
 						Save Changes
 					</S.UpdateButton>
 				) : (
 					""
-				)}
+				)} */}
 				{this.props.event.host_id === this.getUserId().id && (
 					<S.ScheduleButton onClick={e => this.toggleAddSchedule(e)}>+ Schedule Event</S.ScheduleButton>
 				)}

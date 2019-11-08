@@ -11,12 +11,11 @@ import {
 
 import Button from "../DesignComponents/Button";
 
-const EventFormStyles = styled.div`
+export const EventFormStyles = styled.div`
 	margin: 0 auto;
 	padding: 50px 0;
 	display: flex;
-	width: 100%;
-	max-width: 450px;
+	width: 95%;
 	align-content: center;
 	align-items: center;
 	justify-content: space-between;
@@ -41,20 +40,38 @@ const EventFormStyles = styled.div`
 		}
 	}
 
-	button {
-		background-color: ${colors.red};
-		color: ${colors.black};
-		height: 35px;
-		width: 85%;
-		max-width: 150px;
-		border-radius: 5px;
-		font-weight: bold;
-		margin: 25px auto;
-		align-self: flex-end;
+	// button {
+	// 	background-color: ${colors.red};
+	// 	color: ${colors.black};
+	// 	height: 35px;
+	// 	width: 85%;
+	// 	max-width: 150px;
+	// 	border-radius: 5px;
+	// 	font-weight: bold;
+	// 	margin: 25px auto;
+	// 	align-self: flex-end;
 
-		border-width: 2px;
-		border-color: black;
-		border-style: solid;
+	// 	border-width: 2px;
+	// 	border-color: black;
+	// 	border-style: solid;
+	// }
+`;
+
+export const EventInput = styled.input`
+	background-color: ${props => (props.disabled ? "#162a4f" : "white")};
+	color: ${props => (props.disabled ? "white" : "black")};
+	margin: 10px auto;
+	font-size: ${fontSizing.s};
+	border: 1px solid green;
+`;
+
+export const InputWrapper = styled.div`
+	width: 100%;
+	${flex("row","center","space-between")};
+
+	label {
+		width: 15%;
+		font-size: ${fontSizing.s};
 	}
 `;
 
