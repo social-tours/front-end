@@ -231,5 +231,5 @@ const NavWrapper = styled.div`
 	top: 0;
 	width: 100%;
 	height: 35px;
-	background-color: #605f5e;
+	background-color: #03112B;
 `;

@@ -1,14 +1,20 @@
 import styled from "styled-components";
 import { color, colors, flex, fontSizing } from "../DesignComponents/theme";
+import { breakpoints } from "@material-ui/system";
 
 export const Section = styled.div`
 	box-sizing: border-box;
 	display: flex;
-	width: 400px;
+	width: 50%;
+	max-width: 400px;
 	//padding-top: 60px;
 	// height: 140px;
 	// margin: 0 auto;
-  flex-wrap: wrap;
+	flex-wrap: wrap;
+	
+	${breakpoints[0]} {
+		width: 90%;
+	}
 
 `;
 
@@ -24,7 +30,12 @@ export const SearchBarContainer = styled.div`
     width: 20%;
     color: ${color.primaryDark};
     font-size: ${fontSizing.ml};
-    font-weight: bold;
+		font-weight: bold;
+		
+		${breakpoints[0]} {
+    	font-size: ${fontSizing.s};
+		}
+
   }
 
 `
@@ -36,6 +47,10 @@ export const SearchBar = styled.input`
   font-size: ${fontSizing.m};
 	::placeholder {
 		color: ${color.grayShade};
+	}
+
+	${breakpoints[0]} {
+		font-size: ${fontSizing.s}
 	}
 `;
 

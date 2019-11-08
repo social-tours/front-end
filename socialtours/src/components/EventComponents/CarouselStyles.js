@@ -3,13 +3,18 @@ import 'pure-react-carousel/dist/react-carousel.es.css';
 
 import {
   fontSizing,
-  flex
+  flex,
+  breakpoints
 } from "../DesignComponents/theme";
 
 
 export const CarouselContainer = styled.div`
   width: 100%
   margin-top: 35px;
+
+  @media ${breakpoints[0]} {
+    display: none;
+  }
 
 	.carousel {
 		width: 100%;

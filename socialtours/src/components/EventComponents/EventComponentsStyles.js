@@ -91,9 +91,19 @@ export const DashBoardContainer = styled.div`
 	margin: 0 auto;
 	padding: 20px;
 
+	@media ${breakpoints[0]} {
+		width: 95%;
+		margin-top: 40px;
+		padding: 10px;
+	}
+
 	header {
 		width: 100%;
 		${flex("row", "center", "space-between")};
+
+		@media ${breakpoints[0]} {
+      ${(flex("column-reverse", "center", "center"))};
+    }
 	}
 
 	.tab-title {
@@ -107,6 +117,11 @@ export const DashBoardContainer = styled.div`
 		text-transform: uppercase;
 		word-spacing: 4px;
 
+		${breakpoints[0]} {
+			padding: 5px;
+			font-size: ${fontSizing.xs};
+		}
+
 		&.selected {
 			background: ${colors.light_blue};
 		}
@@ -116,7 +131,7 @@ export const DashBoardContainer = styled.div`
 		width: 100%;
 		// padding: 20px;
 
-		.lost-item {
+		.items {
 			${flex("row", "center", "space-around")};
 			flex-wrap: wrap;
 			margin: 10px;
@@ -174,7 +189,7 @@ export const Container = styled.div`
 	width: 100%;
 	${flex("column", "center", "center")};
 	max-width: 600px;
-	margin: 50px auto;
+	margin: 35px auto;
 	padding-bottom: 20px;
 	border: 1px solid ${colorScheme.secondarytBorderColor};
 	border-radius: 3px;

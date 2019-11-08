@@ -16,7 +16,7 @@ class Carousel extends Component {
 			<S.CarouselContainer>
 				<CarouselProvider
 					naturalSlideWidth={400}
-					naturalSlideHeight={50}
+					naturalSlideHeight={100}
 					totalSlides={this.props.events.length}
 					isPlaying={true}
 					interval={5000}

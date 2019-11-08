@@ -12,10 +12,10 @@ import {
 import Button from "../DesignComponents/Button"
 
 export const Container = styled.div`
-	width: 90%;
+	width: 100%;
   max-width: 600px;
 	${flex("column", "center")};
-	margin: 50px auto;
+	margin: 35px auto;
 	padding-bottom: 20px;
   border: 1px solid ${colorScheme.secondarytBorderColor};
 	border-radius:3px;
