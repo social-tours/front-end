@@ -75,7 +75,7 @@ class EventItem extends Component {
 		});
 	};
 
-  toggleEdit() {
+	toggleEdit() {
 		if (this.props.event.host_id === this.getUserId().id) {
 			this.setState(
 				prevState => ({ edit: !prevState.edit }),
@@ -85,30 +85,29 @@ class EventItem extends Component {
 	}
 
 	toggleAddSchedule = e => {
-		e.preventDefault()
-		this.setState(
-			prevState => ({ addSchedule: !prevState.addSchedule })
-		);
+		e.preventDefault();
+		this.setState(prevState => ({ addSchedule: !prevState.addSchedule }));
 		// if (this.props.event.host_id === this.getUserId().id) {
 		// 	this.setState(
 		// 		prevState => ({ addSchedule: !prevState.addSchedule }),
 		// 		() => this.prePopulateForm()
 		// 	);
 		// } else console.log("Not authorized to perform function.");
-	}
+	};
 
 	handleInput = e => {
 		e.preventDefault();
-		console.log("handleInput: ", e.target.name, e.target.value)
+		console.log("handleInput: ", e.target.name, e.target.value);
 		this.setState({ [e.target.name]: e.target.value });
 	};
 
 	handleCheckedInput = e => {
-		e.preventDefault()
-		this.setState(prevState => (
-			{ paid_event: !prevState.paid_event }
-		), () => console.log("paid_event: ", this.state.paid_event))
-	}
+		e.preventDefault();
+		this.setState(
+			prevState => ({ paid_event: !prevState.paid_event }),
+			() => console.log("paid_event: ", this.state.paid_event)
+		);
+	};
 
 	handleFetchEvent = async id => {
 		try {
@@ -186,13 +185,16 @@ class EventItem extends Component {
 			paid_event,
 			price
 		} = this.props.event;
-		console.log("URL: ", this.props.location.pathname)
-		const size = "2.5rem"
-		const url = window.location.href
-		const subject = this.props.event.host_id === this.getUserId().id ? `Join me at the "${title}" event` : `I'm attending the "${title}" event`
-		const hashtag = `#${title}`
-		const body = description
-		console.log("SHARED URL: ", url)
+		console.log("URL: ", this.props.location.pathname);
+		const size = "2.5rem";
+		const url = window.location.href;
+		const subject =
+			this.props.event.host_id === this.getUserId().id
+				? `Join me at the "${title}" event`
+				: `I'm attending the "${title}" event`;
+		const hashtag = `#${title}`;
+		const body = description;
+		console.log("SHARED URL: ", url);
 
 		return (
 			<S.Container>
@@ -207,12 +209,12 @@ class EventItem extends Component {
 				)}
 				{!this.state.edit ? (
 					<div>
-					<S.Banner>
-						<img src={event_image} alt="Event Image" />
-					</S.Banner>
-					<S.EventSummary>
-						<S.EventTitle>{title}</S.EventTitle>
-						<S.EventDescription>{description}</S.EventDescription>
+						<S.Banner>
+							<img src={event_image} alt="Event Image" />
+						</S.Banner>
+						<S.EventSummary>
+							<S.EventTitle>{title}</S.EventTitle>
+							<S.EventDescription>{description}</S.EventDescription>
 						</S.EventSummary>
 						<S.EventShareWrapper>
 							<FacebookShareButton
@@ -222,11 +224,7 @@ class EventItem extends Component {
 							>
 								<FacebookIcon size={size} />
 							</FacebookShareButton>
-							<TwitterShareButton
-								url={url}
-								title={subject}
-								hashtag={hashtag}
-							>
+							<TwitterShareButton url={url} title={subject} hashtag={hashtag}>
 								<TwitterIcon size={size} />
 							</TwitterShareButton>
 							<LinkedinShareButton
@@ -250,80 +248,80 @@ class EventItem extends Component {
 						</S.EventShareWrapper>
 					</div>
 				) : (
-						<S.EventFormStyles>
-							<form>
-								<S.InputWrapper>
-									<label>Event Type</label>
-									<S.EventInput
-										name="type"
-										placeholder={this.state.type}
-										onChange={this.handleInput}
-										value={this.state.type}
-										type="number"
-									/>
-								</S.InputWrapper>
-								<S.InputWrapper>
-									<label>Title</label>
-									<S.EventInput
-										name="title"
-										placeholder={this.props.title}
-										onChange={this.handleInput}
-										value={this.state.title}
-									/>
-								</S.InputWrapper>
-								<S.InputWrapper>
-									<label>Host ID</label>
-									<S.EventInput
-										name="host_id"
-										placeholder="host_id"
-										onChange={this.handleInput}
-										value={this.state.host_id}
-										type="number"
-									/>
-								</S.InputWrapper>
-								<S.InputWrapper>
-									<label>Description</label>
-									<S.EventInput
-										name="description"
-										placeholder="description"
-										onChange={this.handleInput}
-										value={this.state.description}
-									/>
-								</S.InputWrapper>
-								<S.InputWrapper>
-									<label>Event Image</label>
-									<S.EventInput
-										name="event_image"
-										placeholder="event image url"
-										onChange={this.handleInput}
-										value={this.state.event_image}
-									/>
-								</S.InputWrapper>
-								<S.InputWrapper>
-									<label>Paid Event</label>
-									<S.EventInput
-										name="paid_event"
-										placeholder="paid event"
-										onChange={this.handleCheckedInput}
-										value={this.state.paid_event}
-										type="checkbox"
-									/>
-								</S.InputWrapper>
-								<S.InputWrapper>
-									<label>Price</label>
-									<S.EventInput
-										name="price"
-										placeholder="price"
-										onChange={this.handleInput}
-										value={this.state.price}
-										type="number"
-									/>
-								</S.InputWrapper>
-								<S.UpdateButton update onClick={this.handleUpdate}>
-										Save Changes
-								</S.UpdateButton>
-							</form>
-						</S.EventFormStyles>	
+					<S.EventFormStyles>
+						<form>
+							<S.InputWrapper>
+								<label>Event Type</label>
+								<S.EventInput
+									name="type"
+									placeholder={this.state.type}
+									onChange={this.handleInput}
+									value={this.state.type}
+									type="number"
+								/>
+							</S.InputWrapper>
+							<S.InputWrapper>
+								<label>Title</label>
+								<S.EventInput
+									name="title"
+									placeholder={this.props.title}
+									onChange={this.handleInput}
+									value={this.state.title}
+								/>
+							</S.InputWrapper>
+							<S.InputWrapper>
+								<label>Host ID</label>
+								<S.EventInput
+									name="host_id"
+									placeholder="host_id"
+									onChange={this.handleInput}
+									value={this.state.host_id}
+									type="number"
+								/>
+							</S.InputWrapper>
+							<S.InputWrapper>
+								<label>Description</label>
+								<S.EventInput
+									name="description"
+									placeholder="description"
+									onChange={this.handleInput}
+									value={this.state.description}
+								/>
+							</S.InputWrapper>
+							<S.InputWrapper>
+								<label>Event Image</label>
+								<S.EventInput
+									name="event_image"
+									placeholder="event image url"
+									onChange={this.handleInput}
+									value={this.state.event_image}
+								/>
+							</S.InputWrapper>
+							<S.InputWrapper>
+								<label>Paid Event</label>
+								<S.EventInput
+									name="paid_event"
+									placeholder="paid event"
+									onChange={this.handleCheckedInput}
+									value={this.state.paid_event}
+									type="checkbox"
+								/>
+							</S.InputWrapper>
+							<S.InputWrapper>
+								<label>Price</label>
+								<S.EventInput
+									name="price"
+									placeholder="price"
+									onChange={this.handleInput}
+									value={this.state.price}
+									type="number"
+								/>
+							</S.InputWrapper>
+							<S.UpdateButton update onClick={this.handleUpdate}>
+								Save Changes
+							</S.UpdateButton>
+						</form>
+					</S.EventFormStyles>
 				)}
 
 				{/* {this.state.edit ? (
@@ -334,7 +332,9 @@ class EventItem extends Component {
 					""
 				)} */}
 				{this.props.event.host_id === this.getUserId().id && (
-					<S.ScheduleButton onClick={e => this.toggleAddSchedule(e)}>+ Schedule Event</S.ScheduleButton>
+					<S.ScheduleButton onClick={e => this.toggleAddSchedule(e)}>
+						<i className="fa fa-plus"></i> Schedule Event
+					</S.ScheduleButton>
 				)}
 				{this.state.addSchedule && (
 					<ScheduleEvent

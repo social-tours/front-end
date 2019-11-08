@@ -95,6 +95,7 @@ export const DashBoardContainer = styled.div`
 	border: 1px solid #e5e5e5;
 
 	.tab-title {
+		margin-top: 20px;
 		padding: 10px;
 		border-radius: 5px;
 		cursor: pointer;
@@ -325,11 +326,30 @@ export const ScheduleButton = styled(Button)`
 	color: ${color.lightText};
 	background: ${colors.light_blue};
 	text-transform: uppercase;
+	word-spacing: 4px;
 `;
 
 export const UpdateButton = styled(Button)`
 	width: 150px;
 	text-transform: uppercase;
+`;
+
+export const CEButton = styled.button`
+	background-color: #247ba0;
+		padding: 10px;
+		border: 1px solid transparent;
+    border-radius: 25px;
+    cursor: pointer;
+		font-size: 1rem;
+		font-weight: bold;
+    color: #FFFFFF;
+    text-transform: uppercase;
+		word-spacing: 4px;
+		
+	@media (max-width: 800px) {
+		transform: translate(0);
+		align-self: center;
+	}
 `;
 
 export const ConfirmAlertWrapper = styled.div`
