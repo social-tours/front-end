@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 import moment from "moment";
-import Flatpickr from "react-flatpickr";
 import { confirmAlert } from "react-confirm-alert";
 import "react-confirm-alert/src/react-confirm-alert.css";
 import {
@@ -166,24 +165,21 @@ class EventItem extends Component {
 				);
 			}
 		});
-	};
+	}
 
-	// componentDidMount() {
-	// 	// if (this.props.event.id) {
-	// 	// 	this.handleFetchEvent(this.props.event.id);
-	// 	// }
-	// }
+	componentDidMount() {
+		if (this.props.event.id) {
+			document.title = "Events Informtion | Social Tours";
+		}
+	}
 
 	render() {
 		const {
 			id,
-			type,
 			title,
 			host_id,
 			description,
-			event_image,
-			paid_event,
-			price
+			event_image
 		} = this.props.event;
 		console.log("URL: ", this.props.location.pathname);
 		const size = "2.5rem";
@@ -210,7 +206,7 @@ class EventItem extends Component {
 				{!this.state.edit ? (
 					<div>
 						<S.Banner>
-							<img src={event_image} alt="Event Image" />
+							<img src={event_image} alt="Event Poster" />
 						</S.Banner>
 						<S.EventSummary>
 							<S.EventTitle>{title}</S.EventTitle>

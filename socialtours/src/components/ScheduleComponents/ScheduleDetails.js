@@ -114,7 +114,7 @@ class ScheduleDetails extends Component {
 		});
 	};
 	componentDidMount() {
-		document.title = "Schedule Details | Social Tours";
+		document.title = "Schedule Informtion | Social Tours";
 	}
 
 	render() {
