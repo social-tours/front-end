@@ -90,8 +90,6 @@ export const DashBoardContainer = styled.div`
 	${flex("column", "center")};
 	margin: 0 auto;
 	padding: 20px;
-	border-radius: 3px;
-	border: 1px solid #e5e5e5;
 
 	header {
 		width: 100%;
@@ -116,13 +114,14 @@ export const DashBoardContainer = styled.div`
 
 	.tab {
 		width: 100%;
-		padding: 20px;
+		// padding: 20px;
 
-		& a {
-			${flex("column","center","center")};
-			text-decoration: none;
-			color: ${color.lightText};
+		.lost-item {
+			${flex("row", "center", "space-around")};
+			flex-wrap: wrap;
+			margin: 10px;
 		}
+
 	}
 
 	ul {
@@ -148,10 +147,17 @@ export const DashBoardContainer = styled.div`
 	}
 `;
 
+export const EventList = styled.div`
+	width: 100%;
+	${flex("row", "center", "space-around")};
+	flex-wrap: wrap;
+`
+
 export const Preview = styled.div`
-	width: 90%;
-	min-width: 300px;
-	${flex("row", "center", "space-between")}
+	// width: 90%;
+	// min-width: 300px;
+	width: 250px;
+	// ${flex("row", "center", "space-between")}
 	margin: 10px 0;
 	padding: 10px;
 	border: 1px solid ${color.lightText};

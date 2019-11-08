@@ -5,6 +5,7 @@ import jwtDecode from "jwt-decode";
 
 import { fetchEvents, getSubscriptionsByUserId } from "../../actions/";
 
+import EventTile from "./EventTile";
 import Search from "../SearchComponents/Search";
 import Carousel from "./Carousel";
 import Panel from "./Panel";
@@ -48,17 +49,13 @@ class EventsDashboard extends Component {
 						<S.CEButton onClick={e => this.props.history.push("createEvent")}>
 							<i className="fa fa-plus"></i> Create New Event
 						</S.CEButton>
-
 					</header>
-
 					<Tabs>
 						<Panel title="My Events">
 							{this.props.events
 								.filter(event => event.host_id === this.state.userId)
 								.map(event => (
-									<Link key={event.id} to={`/events/${event.id}`}>
-										<S.Preview key={event.id}>{event.title}</S.Preview>
-									</Link>
+									<EventTile key={event.id} event={event} />
 								))}
 						</Panel>
 						<Panel title="Influencer Events">
@@ -69,16 +66,12 @@ class EventsDashboard extends Component {
 										.includes(event.host_id)
 								)
 								.map(event => (
-									<Link key={event.id} to={`/events/${event.id}`}>
-										<S.Preview key={event.id}>{event.title}</S.Preview>
-									</Link>
+									<EventTile key={event.id} event={event} />
 								))}
 						</Panel>
 						<Panel title="All Events">
 							{this.props.events.map(event => (
-								<Link key={event.id} to={`/events/${event.id}`}>
-									<S.Preview key={event.id}>{event.title}</S.Preview>
-								</Link>
+								<EventTile key={event.id} event={event} />
 							))}
 						</Panel>
 					</Tabs>
