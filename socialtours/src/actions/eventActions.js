@@ -123,11 +123,11 @@ export const putEvent = event => async dispatch => {
 		res.status === 200
 			? dispatch({
 					type: types.PUT_EVENT_SUCCESS,
-					payload: event.data
+					payload: res.data
 			  })
 			: dispatch({
 					type: types.PUT_EVENT_FAILED,
-					payload: event.data
+					payload: res.data
 			  });
 	} catch (err) {
 		//FETCH_FAILED
