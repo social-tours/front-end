@@ -109,7 +109,7 @@ export const EventContainer = styled.div`
 	width: 70%;
 	background-image: linear-gradient(to bottom right, ${colors.blue}, ${
 	colors.light_blue
-});
+	});
 `;
 
 export const EventsContainerContainer = styled.div`
@@ -148,20 +148,18 @@ export const EventsHeadline = styled.div`
 `;
 
 export const CEButton = styled.button`
-	transform: translate(130%, 0);
-	padding: 10px;
-	max-width: 150px;
-	max-height: 50px;
-	margin-top: 15px;
-	border-radius: 5px;
-	font-weight: bold;
-	box-shadow: ${colors.dirty_concord} 2px 2px 2px;
-	background-color: ${colors.red};
-	border: 1px solid ${colors.black};
-	color: ${colors.black};
+	background-color: #247ba0;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: #FFFFFF;
+    text-transform: uppercase;
+    word-spacing: 4px;
 
 	@media (max-width: 800px) {
 		transform: translate(0);
 		align-self: center;
 	}
 `;
+

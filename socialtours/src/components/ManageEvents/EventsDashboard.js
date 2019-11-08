@@ -53,7 +53,7 @@ class EventsDashboard extends Component {
                         {this.props.events
                             .filter(event => event.host_id === this.state.userId)
                             .map(event => (
-
+                                // This exactS.Preview is used for all 3 panels.
                                 <S.Preview>
                                     <Link key={event.id} to={`/events/${event.id}`}>
                                         <S.Event key={event.id}> Click for {event.title}</S.Event>
@@ -128,19 +128,13 @@ export default connect(
 )(EventsDashboard);
 
 
-// const EventsWrapper = styled.div`
-// 	display: flex;
-// 	flex-direction: row;
-// 	width: 100%;
-// `;
-
 const EventsDetails = styled.div`
 	width: 50%;
 `;
 
 
 const StyledTypography = styled(Typography)`
-width: 100%;
+width: 0%;
 color: white;
 background-color: transparent;
 `;

@@ -11,7 +11,7 @@ import moment from "moment";
 
 const useStyles = makeStyles(theme => ({
 	root: {
-		width: "100%"
+		width: "0%"
 	},
 	heading: {
 		fontSize: theme.typography.pxToRem(15),
@@ -29,7 +29,7 @@ const EventDetails = props => {
 					expandIcon={<ExpandMoreIcon />}
 					id={`${props.id}_header`}
 				>
-					<Typography className={classes.heading}>Venue's and Date's</Typography>
+					<Typography className={classes.heading}></Typography>
 				</ExpansionPanelSummary>
 				<ExpansionPanelDetails>
 					<div>
