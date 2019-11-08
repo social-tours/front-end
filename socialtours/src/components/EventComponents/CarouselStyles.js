@@ -9,6 +9,7 @@ import {
 
 export const CarouselContainer = styled.div`
   width: 100%
+  margin-top: 35px;
 
 	.carousel {
 		width: 100%;

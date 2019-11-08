@@ -90,17 +90,12 @@ export const DashBoardContainer = styled.div`
 	${flex("column", "center")};
 	margin: 0 auto;
 	padding: 20px;
-	padding-top: 50px;
 	border-radius: 3px;
 	border: 1px solid #e5e5e5;
 
-	.carousel {
+	header {
 		width: 100%;
-		border: 2px solid red;
-	}
-
-	.carousel__slide {
-		border: 2px solid coral;
+		${flex("row", "center", "space-between")};
 	}
 
 	.tab-title {
@@ -345,11 +340,11 @@ export const UpdateButton = styled(Button)`
 
 export const CEButton = styled.button`
 	background-color: #247ba0;
-		padding: 10px;
+		padding: 5px 10px;
 		border: 1px solid transparent;
     border-radius: 25px;
     cursor: pointer;
-		font-size: 1rem;
+		font-size: ${fontSizing.s};
 		font-weight: bold;
     color: #FFFFFF;
     text-transform: uppercase;
