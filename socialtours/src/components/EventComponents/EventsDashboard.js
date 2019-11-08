@@ -5,7 +5,7 @@ import jwtDecode from "jwt-decode";
 
 import { fetchEvents, getSubscriptionsByUserId } from "../../actions/";
 
-import Search from "../Search";
+import Search from "../SearchComponents/Search";
 import Carousel from "./Carousel";
 import Panel from "./Panel";
 import Tabs from "./Tabs";
@@ -41,12 +41,16 @@ class EventsDashboard extends Component {
 	render() {
 		return (
 			<>
-				<Search />
 				<Carousel {...this.props} />
 				<S.DashBoardContainer>
-					<S.CEButton onClick={e => this.props.history.push("createEvent")}>
-						<i className="fa fa-plus"></i> Create New Event
-					</S.CEButton>
+					<header>
+						<Search />
+						<S.CEButton onClick={e => this.props.history.push("createEvent")}>
+							<i className="fa fa-plus"></i> Create New Event
+						</S.CEButton>
+
+					</header>
+
 					<Tabs>
 						<Panel title="My Events">
 							{this.props.events

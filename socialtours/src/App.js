@@ -4,7 +4,6 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { connect } from "react-redux";
 import { fetchEvents } from "./actions/index.js";
 
-import "./App.css";
 import Login from "./components/UserComponents/Login";
 import Register from "./components/UserComponents/Register";
 import RegisterCallback from "./components/UserComponents/RegisterCallback";
@@ -25,7 +24,7 @@ import ManageEvents from "./components/ManageEvents/ManageEvents";
 import Navigation from "./components/Navigation";
 import { userHasEvent } from "./utils";
 import AboutUsContact from "./components/AboutUsContact.js";
-import Search from "./components/Search";
+import Search from "./components/SearchComponents/Search";
 import Payment from "./components/PaymentComponents/Payment";
 import EventsDashboard from "./components/EventComponents/EventsDashboard";
 import EventItem from "./components/EventComponents/EventItem";
