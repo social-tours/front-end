@@ -20,7 +20,11 @@ export const CarouselContainer = styled.div`
 
 	.carousel {
 		width: 100%;
-	}
+  }
+  
+  .carousel__slider {
+    height: 200px;
+  }
 
 	.carousel__slide {
 	}
