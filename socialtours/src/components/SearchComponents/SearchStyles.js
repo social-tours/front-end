@@ -14,6 +14,7 @@ export const Section = styled.div`
 	
 	${breakpoints[0]} {
 		width: 90%;
+		margin: 10px 0;
 	}
 
 `;
