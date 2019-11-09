@@ -4,16 +4,13 @@ import axios from "axios";
 import styled from "styled-components";
 //import EventFormStyles from "../components/DesignComponents/EventFormStyles.js";
 
-import ScheduleEvent from "../ScheduleComponents/ScheduleEvent";
+import ScheduleEvent from "./ScheduleEvent";
 import EventDetails from "./EventDetails";
 
 import EventFormStyles from "./EventFormStyles";
-import { colors } from "../DesignComponents/theme";
 
 import { fetchEvent, putEvent, deleteEvent } from "../../actions/eventActions";
 import { API_ENDPOINT } from "../../config/api.js";
-import { getUserId } from "../../utils";
-
 //const API = "https://staging-a-socialtours.herokuapp.com"; // need to get from backend
 
 class UpdateEvent extends React.Component {
@@ -103,83 +100,54 @@ class UpdateEvent extends React.Component {
 	// 	const myFunction = await axios.post(API_ENDPOINT + "/api/events", testEvent);
 	// };
 
-	getSchedules = () => {
-		return [
-			<Heading>Current Schedules</Heading>,
-			<ScheduleEvent
-				title={this.state.title}
-				description={this.state.description}
-				event_id={this.state.id}
-				host_id={this.state.host_id}
-			/>
-		];
-	};
-
 	render() {
-		const thisUser = getUserId() === this.state.host_id;
-		//console.log("user host", this.props.userID, this.props.host_id);
 		return (
 			<EventFormStyles>
 				<form>
-					<InputWrapper>
-						<label>Type</label>
-						<EventInput
-							name="type"
-							placeholder={this.state.type}
-							onChange={this.handleChange}
-							value={this.state.type}
-							disabled={!thisUser}
-							type="number"
-						/>
-					</InputWrapper>
-					<InputWrapper>
-						<label>Title</label>
-						<EventInput
-							name="title"
-							placeholder={this.props.title}
-							onChange={this.handleChange}
-							disabled={!thisUser}
-							value={this.state.title}
-						/>
-					</InputWrapper>
-					<InputWrapper>
-						<label>Host ID</label>
-						<EventInput
-							name="host_id"
-							placeholder="host_id"
-							onChange={this.handleChange}
-							value={this.state.host_id}
-							disabled={!thisUser}
-							type="number"
-						/>
-					</InputWrapper>
-					<InputWrapper>
-						<label>Description</label>
-						<EventInput
-							name="description"
-							placeholder="description"
-							onChange={this.handleChange}
-							value={this.state.description}
-							disabled={!thisUser}
-						/>
-					</InputWrapper>
-					{/*<EventInput*/}
-					{/*	name="event_image"*/}
-					{/*	placeholder="event_image"*/}
-					{/*	onChange={this.handleChange}*/}
-					{/*	value={this.state.event_image}*/}
-					{/*	disabled={!thisUser}*/}
-					{/*/>*/}
-					{thisUser ? (
-						<button onClick={this.handlePutEvent}>Update This Event</button>
-					) : (
-						""
-					)}
+					<input
+						name="type"
+						placeholder={this.state.type}
+						onChange={this.handleChange}
+						value={this.state.type}
+						type="number"
+					/>
+					<input
+						name="title"
+						placeholder={this.props.title}
+						onChange={this.handleChange}
+						value={this.state.title}
+					/>
+					<input
+						name="host_id"
+						placeholder="host_id"
+						onChange={this.handleChange}
+						value={this.state.host_id}
+						type="number"
+					/>
+					<input
+						name="description"
+						placeholder="description"
+						onChange={this.handleChange}
+						value={this.state.description}
+					/>
+					<input
+						name="event_image"
+						placeholder="event_image"
+						onChange={this.handleChange}
+						value={this.state.event_image}
+					/>
+					<button onClick={this.handlePutEvent}>Update This Event</button>
 				</form>
+				<Heading>Current Schedules</Heading>
 				{this.state.event && (
 					<EventDetails expanded={true} {...this.state.event} />
 				)}
-				{thisUser ? this.getSchedules() : ""}
+				<ScheduleEvent
+					title={this.state.title}
+					description={this.state.description}
+					event_id={this.state.id}
+					host_id={this.state.host_id}
+				/>
 			</EventFormStyles>
 		);
 	}
@@ -210,25 +178,6 @@ export default connect(
 
 const Heading = styled.h2`
 	font-size: 1.5rem;
-	color: #fff;
 	font-weight: bolder;
 	margin: 10px auto;
-`;
-
-const EventInput = styled.input`
-	background-color: ${props => (props.disabled ? "#162a4f" : "white")};
-	color: ${props => (props.disabled ? "white" : "black")};
-	margin: 5px auto;
-`;
-
-const InputWrapper = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	width: 100%;
-	label {
-		color: white;
-		margin-right: 15px;
-		min-width: 75px;
-	}
 `;

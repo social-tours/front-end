@@ -4,8 +4,7 @@ import { connect } from "react-redux";
 import styled from "styled-components";
 
 import LandingPage from "../components/LandingPage";
-import { userHasEvent } from "../utils";
-import FollowerDashboard from "./FollowerDashboard";
+import EventsDashboard from "../components/EventComponents/EventsDashboard"
 import Dashboard from "../components/Dashboard";
 
 class Main extends Component {
@@ -13,12 +12,10 @@ class Main extends Component {
 		let component;
 
 		// if authenticated and has at least one event
-		if (this.props.auth.isAuthenticated() && userHasEvent(this.props.events)) {
-			component = <Dashboard user={2} />;
-		} else if (this.props.auth.isAuthenticated()) {
-			component = <FollowerDashboard />;
+		if (this.props.auth.isAuthenticated()) {
+		component = <EventsDashboard />;
 		} else {
-			component = <LandingPage />;
+				component = <LandingPage />;
 		}
 
 		return (

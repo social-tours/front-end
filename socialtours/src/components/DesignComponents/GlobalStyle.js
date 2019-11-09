@@ -1,7 +1,7 @@
 import { createGlobalStyle } from "styled-components";
 import "typeface-roboto";
 
-import { fontStyles } from "./theme";
+import { color, fontStyles } from "./theme";
 import "../../reset.css";
 
 const GlobalStyle = createGlobalStyle`
@@ -20,6 +20,7 @@ body {
 	font-family: ${fontStyles.defaultFont};
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
+	background: ${color.primaryDark}
 }
 
 code {

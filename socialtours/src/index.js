@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { applyMiddleware, createStore } from "redux";
 import { Provider } from "react-redux";
-import './index.css';
+import "./index.css";
 import thunk from "redux-thunk";
 
 import { ThemeProvider } from "styled-components";

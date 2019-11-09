@@ -1,10 +1,10 @@
 import React from "react";
-import styled from "styled-components";
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-import { API_ENDPOINT } from "../config/api";
-import { colors } from "./DesignComponents/theme";
-import SubscriptionCard from "./ManageEvents/SubscriptionCard.js";
+import { API_ENDPOINT } from "../../config/api";
+import SubscriptionCard from "../ManageEvents/SubscriptionCard.js";
+
+import * as S from "./SearchStyles"
 
 class Search extends React.Component {
 	state = {
@@ -65,32 +65,40 @@ class Search extends React.Component {
 		console.log("This State HURR: ", this.state);
 		if (this.state.results.length === 0)
 			return (
-				<Section>
-					<SearchBar
+				<S.Section>
+					<S.SearchBarContainer>
+						<i className="fas fa-search" onClick={this.fetchResults}></i>
+						<S.SearchBar
+							placeholder="Search for an influencer"
+							name="search"
+							value={this.state.search}
+							onChange={this.handleChange}
+						/>
+					</S.SearchBarContainer>
+				</S.Section>
+			);
+
+		return (
+			<S.Section>
+				<S.SearchBarContainer>
+					<i className="fas fa-search" onClick={this.fetchResults}></i>
+					<S.SearchBar
+						type="submit"
 						placeholder="Search for an influencer"
 						name="search"
 						value={this.state.search}
 						onChange={this.handleChange}
+						onSubmit={this.fetchResults}
 					/>
-					<SearchBtn onClick={this.fetchResults}>Search</SearchBtn>
-				</Section>
-			);
+				</S.SearchBarContainer>
 
-		return (
-			<Section>
-				<SearchBar
-					placeholder="Search for an influencer"
-					name="search"
-					value={this.state.search}
-					onChange={this.handleChange}
-				/>
-				<SearchBtn onClick={this.fetchResults}>Search</SearchBtn>
-				<SearchResults>
+				
+				<S.SearchResults>
 					{this.state.results &&
 						this.state.results.map(result => {
 							return (
 								<div key={result.id}>
-									<SearchResult>
+									<S.SearchResult>
 										{`
 								${result.first_name}
 								${result.last_name}
@@ -98,7 +106,7 @@ class Search extends React.Component {
 										<button onClick={e => this.subscribe(e, result.id)}>
 											Subscribe
 										</button>
-									</SearchResult>
+									</S.SearchResult>
 								</div>
 							);
 
@@ -113,56 +121,10 @@ class Search extends React.Component {
 							// 	/>
 							// );
 						})}
-				</SearchResults>
-			</Section>
+				</S.SearchResults>
+			</S.Section>
 		);
 	}
 }
-
-const Section = styled.div`
-	box-sizing: border-box;
-	display: flex;
-	width: 400px;
-	flex-direction: column;
-	justify-content: space-between;
-	padding-top: 60px;
-	// height: 140px;
-	margin: 0 auto;
-	align-items: center;
-`;
-const SearchBar = styled.input`
-	::placeholder {
-		color: ${colors.black};
-	}
-`;
-const SearchBtn = styled.span`
-	cursor: pointer;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	width: 80px;
-	margin-top: 5px;
-	border: 1px solid black;
-	padding: 10px;
-	background-color: ${colors.red};
-	border-radius: 5px;
-`;
-const SearchResults = styled.div`
-	width: 300px;
-	background-image: linear-gradient(
-		to bottom right,
-		${colors.blue},
-		${colors.light_blue}
-	);
-	border: 1px solid ${colors.black};
-	color: ${colors.white};
-	margin-top: 20px;
-	padding: 0 10px;
-`;
-const SearchResult = styled.div`
-	margin: 10px 0;
-	display: flex;
-	justify-content: space-between;
-`;
 
 export default Search;

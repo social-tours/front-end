@@ -6,15 +6,15 @@ import {
 	fontSizing,
 	flex,
 	breakpoints
-} from "../DesignComponents/theme";
-import Button from "../DesignComponents/Button";
+} from "./theme";
+import Button from "./Button";
 
 export const FormContainer = styled.div`
   width: 600px;
   ${flex("column", "center", "center")};
-  margin: 0px auto 10px auto;
-  padding-top 50px;
+  margin: 50px auto 10px auto ;
   border-radius: 5px;
+  border: 1px solid ${colorScheme.secondaryBorderColor}
   // box-shadow:  10px 10px 5px 0px rgba(0,0,0,0.75);
   font-size: ${fontSizing.sm};
 
@@ -22,7 +22,6 @@ export const FormContainer = styled.div`
 		props.something &&
 		css`
 			margin-top: 10px;
-			padding-top: 0px;
 		`}
 
   @media ${breakpoints[0]} {
@@ -44,14 +43,9 @@ export const FormContainer = styled.div`
 
   form {
     width: 100%;
-    border-radius: 5px;
     ${flex("column", "center")};
-    border: 1px solid ${colors.black_plum};
-    background-color: ${colors.blue};
-    background-image: linear-gradient(to bottom right, ${colors.blue}, ${
-	colors.light_blue
-});
-    color: ${colors.white};
+    background-color: ${colors.black_plum};
+    color: ${colors.putty};
 
 
     @media ${breakpoints[0]} {
@@ -66,22 +60,22 @@ export const FormContainer = styled.div`
       width: 80%;
       padding: 10px;
       border: 1px solid ${color.primaryBgShading};
-      background: ${colors.white};     
-      color: #000;
+      background: ${colors.dirty_concord};     
+      color: white;
       line-height: 1rem;
       ::placeholder {
-        color: ${colors.black}
+      	color: ${color.lightText}
       }
     }
 
     label {
       width: 80%;
       margin-top: 0;
-      font-size: ${fontSizing.sm}
+      font-size: ${fontSizing.xxxs}
     }
 
     p {
-        font-size: ${fontSizing.sm}
+        font-size: ${fontSizing.xxs}
     }
 
   }
@@ -96,7 +90,6 @@ export const TextContainer = styled.div`
 		font-size: ${fontSizing.xs};
 		font-weight: bold;
 		text-transform: uppercase;
-		color: #fff;
 	}
 `;
 
@@ -105,16 +98,15 @@ export const FormButton = styled(Button)`
 	padding: 10px;
 	border-radius: 5px;
 	font-weight: normal;
-	font-size: ${fontSizing.sm};
-	border: 1px solid ${colors.black};
-	background-color: ${colors.red};
+	font-size: ${fontSizing.xxs};
+	border: 1px solid ${color.primaryBgShading};
+	background-color: ${colors.putty};
 	color: black;
 	${props =>
 		props.socialIcon &&
 		css`
 			${flex("row", "center", "space-evenly")};
 			padding: 1px 10px;
-			background-color: ${colors.white};
 
 			div:first-child {
 				width: 20px;
@@ -129,7 +121,7 @@ export const FormButton = styled(Button)`
 
 export const MessageContainer = styled.div`
 	text-align: center;
-	font-size: ${fontSizing.sm};
+	font-size: ${fontSizing.xxs};
 `;
 
 export default FormContainer;

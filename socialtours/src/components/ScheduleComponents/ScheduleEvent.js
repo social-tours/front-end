@@ -6,8 +6,8 @@ import { connect } from "react-redux";
 
 import { colors } from "../DesignComponents/theme";
 import "../../../node_modules/flatpickr/dist/themes/light.css";
-import EventFormStyles from "./EventFormStyles";
-import { addSchedule } from "../../actions";
+import EventFormStyles from "../ManageEvents/EventFormStyles";
+import { addSchedule, fetchEvents } from "../../actions";
 
 class ScheduleEvent extends Component {
 	state = {
@@ -43,7 +43,7 @@ class ScheduleEvent extends Component {
 		}
 	}
 
-	handleSubmit = e => {
+	handleSubmit = async e => {
 		console.log(e);
 		e.preventDefault();
 		let {
@@ -62,7 +62,7 @@ class ScheduleEvent extends Component {
 		start_date_time = start_date_time.toUTCString();
 		end_date_time = end_date_time.toUTCString();
 
-		this.props.addSchedule({
+		await this.props.addSchedule({
 			title,
 			description,
 			location,
@@ -86,6 +86,9 @@ class ScheduleEvent extends Component {
 			event_id: this.props.event_id || null,
 			start_date_time: new Date(),
 			end_date_time: new Date()
+		}, () => {
+				this.props.fetchEvents()
+				this.props.toggleAddSchedule(e)
 		});
 	};
 
@@ -155,7 +158,7 @@ class ScheduleEvent extends Component {
 
 export default connect(
 	null,
-	{ addSchedule }
+	{ addSchedule, fetchEvents }
 )(ScheduleEvent);
 
 const ScheduleWrapper = styled.div`

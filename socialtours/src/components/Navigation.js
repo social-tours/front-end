@@ -88,7 +88,17 @@ function Navigation(props) {
 						onClick={() => props.history.push("/createEvent")}
 					/>
 				</ListItem>
-				{userHasEvent(props.events) && (
+				<ListItem button>
+					<ListItemIcon>
+						<FormatListBulletedIcon />
+					</ListItemIcon>
+
+					<ListItemText
+						primary={"Events"}
+						onClick={() => props.history.push("/eventsdashboard")}
+					/>
+				</ListItem>
+				{/* {userHasEvent(props.events) && (
 					<ListItem button>
 						<ListItemIcon>
 							<FormatListBulletedIcon />
@@ -99,7 +109,7 @@ function Navigation(props) {
 							onClick={() => props.history.push("/ManageEvents")}
 						/>
 					</ListItem>
-				)}
+				)} */}
 				{userHasEvent(props.events) && (
 					<ListItem button>
 						<ListItemIcon>
@@ -112,7 +122,7 @@ function Navigation(props) {
 						/>
 					</ListItem>
 				)}
-				<ListItem button>
+				{/* <ListItem button>
 					<ListItemIcon>
 						<DirectionsWalkIcon />
 					</ListItemIcon>
@@ -120,7 +130,7 @@ function Navigation(props) {
 						primary={"Search"}
 						onClick={() => props.history.push("/search")}
 					/>
-				</ListItem>
+				</ListItem> */}
 				<ListItem button>
 					<ListItemIcon>
 						<AssignmentIndIcon />
@@ -221,5 +231,5 @@ const NavWrapper = styled.div`
 	top: 0;
 	width: 100%;
 	height: 35px;
-	background-color: #605f5e;
+	background-color: #03112B;
 `;

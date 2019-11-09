@@ -18,11 +18,12 @@ const theme = {
 
 	color: {
 		primaryColor: "#265077",
-		primaryDark: "#34344A",
+		primaryDark: "#1d3461",
 		primaryBgShading: "#011638",
-		secondaryColor: "#46237A",
-		secondaryBgShading: "#34344A",
+		secondaryColor: "#03112B",
+		secondaryBgShading: "#F6F8F9",
 		accent: "#DFF8EB",
+		grayShade: "#D6D6D6",
 		emphasis: "#214E34",
 		darkText: "#595959",
 		lightText: "#FFFFFF",
@@ -62,6 +63,9 @@ const theme = {
 		},
 		defaultBorderColor: () => {
 			return theme.color.primaryDark;
+		},
+		secondaryBorderColor: () => {
+			return theme.color.grayShade;
 		}
 	},
 
@@ -76,16 +80,17 @@ const theme = {
 
 	fontSizing: {
 		// Based on CSS default font-resizing of 62.5%
-		xxxs: "1rem",
-		xxs: "1.2rem",
-		xs: "1.4rem", // base size for mobile view
-		s: "1.6rem", // base size for text
-		sm: "1.8rem", // base size for menu and button text
-		m: "2rem", // base heading/sub-heading size
-		ml: "3rem", // base headline size
-		l: "4rem", // for big emphasis
-		xl: "5rem", // ultra large
-		xxl: "6rem" // site banner headline
+		xxxs: "calc(.625 * 0.8rem)",
+		xxs: "calc(.625 * 1rem)",
+		xs: "calc(.625 * 1.2rem)", // base size for mobile view
+		s: "calc(.625 * 1.4rem)", // base size for text
+		sm: "calc(.625 * 1.6rem)", // base size for menu and button text
+		m: "calc(.625 * 1.8rem)", // base heading/sub-heading size
+		ml: "calc(.625 * 2rem)", // base headline size
+		l: "calc(.625 * 3rem)", // for big emphasis
+		xl: "calc(.625 * 4rem)", // ultra large
+		xxl: "calc(.625 * 5rem)", // site banner headline
+		xxxl: "calc(.625 * 6rem)" // site banner headline
 	},
 
 	breakpoints: [
