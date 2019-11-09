@@ -24,6 +24,7 @@ export const EventInfoContainer = styled.div`
   ${flex("column", "center")};
   margin: 10px;
 	border-radius: 5px;
+	box-shadow: #282c34 5px 5px 5px;
   cursor: pointer;
 	background: ${color.lightText};
 	
