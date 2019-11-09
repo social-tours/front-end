@@ -39,6 +39,10 @@ export const EventFormStyles = styled.div`
 			padding-left: 10px;
 			border-radius: 5px;
 
+			&.form-control {
+				margin: 0;
+			}
+
 			@media ${breakpoints[1]} {
 				width: 100%;
 				margin: 0;
@@ -101,6 +105,12 @@ export const InputWrapper = styled.div`
 			width: 100%;
 			margin: 0;
 			margin-bottom: 4px;
+		}
+	}
+
+	.date-time-field {
+		label {
+			width: 5%;
 		}
 	}
 `;
