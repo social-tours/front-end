@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import jwtDecode from "jwt-decode";
 
 import { fetchEvents, getSubscriptionsByUserId } from "../../actions/";
@@ -88,7 +88,7 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(
+export default withRouter(connect(
 	mapStateToProps,
 	{ fetchEvents, getSubscriptionsByUserId }
-)(EventsDashboard);
+)(EventsDashboard));
