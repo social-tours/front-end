@@ -16,7 +16,7 @@ class TheCreateEvent extends React.Component {
 		description: "",
 		event_image: "",
 		paid_event: false,
-		price: ""
+		price: null
 	};
 
 	handleChange = e => {
@@ -38,11 +38,10 @@ class TheCreateEvent extends React.Component {
 		console.log("redirect handler used!");
 	}
 
-	addEvent = async e => {
+	addEvent = e => {
 		e.preventDefault();
 		const newEvent = this.state;
-		await this.props.postEvent(newEvent);
-		await this.props.fetchEvents();
+		this.props.postEvent(newEvent);
 	};
 
 	render() {
