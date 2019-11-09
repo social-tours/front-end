@@ -49,7 +49,8 @@ export const EventTitle = styled.h2`
   padding: 10px;
   font-size: ${fontSizing.s};
   font-weight: bold;
-  color: ${colors.black};
+	color: ${colors.black};
+	text-align: center;
 `;
 
 export default EventInfoContainer;
