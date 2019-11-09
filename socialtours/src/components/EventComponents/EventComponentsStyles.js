@@ -38,6 +38,12 @@ export const EventFormStyles = styled.div`
 			border: 1px solid ${colors.grape};
 			padding-left: 10px;
 			border-radius: 5px;
+
+			@media ${breakpoints[1]} {
+				width: 100%;
+				margin: 0;
+				padding: 10px;
+			}
 		}
 	}
 
@@ -67,22 +73,44 @@ export const FormContainer = styled.div`
 	margin-top: 50px;
 `
 
+export const InputWrapper = styled.div`
+	width: 100%;
+	${flex("row", "center", "space-between")};
+	padding: 0 10px;
+	
+	@media ${breakpoints[1]} {
+		width: 90%;
+		${flex("column")};
+		margin: 10px 0;
+		
+		&.input-checkbox {
+			${flex("row","center")};
+
+			label {
+				width: 100px;
+			}
+
+		}
+	}
+
+	label {
+		width: 10%;
+		font-size: ${fontSizing.s};
+
+		@media ${breakpoints[1]} {
+			width: 100%;
+			margin: 0;
+			margin-bottom: 4px;
+		}
+	}
+`;
+
 export const EventInput = styled.input`
 	background-color: ${props => (props.disabled ? "#162a4f" : "white")};
 	color: ${props => (props.disabled ? "white" : "black")};
 	margin: 10px auto;
 	font-size: ${fontSizing.s};
-	border: 1px solid green;
-`;
 
-export const InputWrapper = styled.div`
-	width: 100%;
-	${flex("row","center","space-between")};
-
-	label {
-		width: 15%;
-		font-size: ${fontSizing.s};
-	}
 `;
 
 export const DashBoardContainer = styled.div`
