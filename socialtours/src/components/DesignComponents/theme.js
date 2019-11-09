@@ -20,7 +20,7 @@ const theme = {
 		primaryColor: "#265077",
 		primaryDark: "#1d3461",
 		primaryBgShading: "#011638",
-		secondaryColor: "#46237A",
+		secondaryColor: "#03112B",
 		secondaryBgShading: "#F6F8F9",
 		accent: "#DFF8EB",
 		grayShade: "#D6D6D6",

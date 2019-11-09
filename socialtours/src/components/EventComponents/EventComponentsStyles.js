@@ -101,7 +101,7 @@ export const DashBoardContainer = styled.div`
 		width: 100%;
 		${flex("row", "center", "space-between")};
 
-		@media ${breakpoints[0]} {
+		@media ${breakpoints[1]} {
       ${(flex("column-reverse", "center", "center"))};
     }
 	}

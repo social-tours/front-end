@@ -2,6 +2,7 @@ import styled from "styled-components";
 import 'pure-react-carousel/dist/react-carousel.es.css';
 
 import {
+  color,
   fontSizing,
   flex,
   breakpoints
@@ -11,6 +12,7 @@ import {
 export const CarouselContainer = styled.div`
   width: 100%
   margin-top: 35px;
+  background: ${color.secondaryColor};
 
   @media ${breakpoints[0]} {
     display: none;
