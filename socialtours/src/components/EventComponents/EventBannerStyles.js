@@ -16,7 +16,7 @@ export const EventBannerContainer = styled.div`
 
 export const Caption = styled.div`
   width: 100%;
-  ${flex("row", "center", "space-around")};
+  ${flex("row", "center", "center")};
   padding: 0 20px;
   padding-top: 20px;
   background: ${color.secondaryColor};
