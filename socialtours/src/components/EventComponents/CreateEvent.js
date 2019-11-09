@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { fetchEvent, postEvent } from "../../actions";
+import { fetchEvents, fetchEvent, postEvent } from "../../actions";
 import * as S from "./EventComponentsStyles";
 import jwt_decode from "jwt-decode";
 
@@ -38,10 +38,11 @@ class TheCreateEvent extends React.Component {
 		console.log("redirect handler used!");
 	}
 
-	addEvent = e => {
+	addEvent = async e => {
 		e.preventDefault();
 		const newEvent = this.state;
-		this.props.postEvent(newEvent);
+		await this.props.postEvent(newEvent);
+		await this.props.fetchEvents();
 	};
 
 	render() {
@@ -120,6 +121,6 @@ const mapStateToProps = state => {
 export default withRouter(
 	connect(
 		mapStateToProps,
-		{ fetchEvent, postEvent }
+		{ fetchEvents, fetchEvent, postEvent }
 	)(TheCreateEvent)
 );
