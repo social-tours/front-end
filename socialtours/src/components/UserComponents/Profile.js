@@ -89,11 +89,11 @@ class Profile extends Component {
 		e.preventDefault();
 		const {
 			id,
-			email,
+			// email, DISABLED UPDATES UNTIL BUGFIX COMPLETE
 			first_name,
 			last_name,
 			phone_nbr,
-			password,
+			// password, DISABLED UPDATES UNTIL BUGFIX COMPLETE
 			type,
 			comm_preference
 		} = this.state;
@@ -102,9 +102,9 @@ class Profile extends Component {
 			id,
 			first_name,
 			last_name,
-			email,
+			// email, DISABLED UPDATES UNTIL BUGFIX COMPLETE
 			phone_nbr,
-			password,
+			// password, DISABLED UPDATES UNTIL BUGFIX COMPLETE
 			type,
 			comm_preference
 		};
@@ -150,14 +150,14 @@ class Profile extends Component {
 						placeholder="Last Name"
 						required
 					/>
-					<input
+					{/* <input
 						type="email"
 						name="email"
 						value={this.state.email}
 						onChange={this.handleInput}
 						placeholder="Email"
-						required
-					/>
+						disabled
+					/> */}
 					<input
 						type="tel"
 						name="phone_nbr"
@@ -165,13 +165,14 @@ class Profile extends Component {
 						onChange={this.handleInput}
 						placeholder="Phone Number"
 					/>
-					<input
+					{/* <input
 						type="password"
 						name="password"
 						value={this.state.password}
 						onChange={this.handleInput}
 						placeholder="Password"
-					/>
+						disabled
+					/> */}
 
 					<label htmlFor="password">Minimum length is 8 characters</label>
 

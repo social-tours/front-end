@@ -11,14 +11,17 @@ class EventBanner extends Component {
 	};
 
 	render() {
-		const { event } = this.props;
+		const { event_image, title } = this.props.event;
 		console.log("EventBanner props: ", this.props);
 		return (
-			<S.EventBannerContainer
-				style={{ backgroundImage: `url(${event.event_image})` }}
-			>
-				<S.Headline>{event.title}</S.Headline>
-				<S.BannerButton onClick={this.viewEventInfo}>Learn More</S.BannerButton>
+			<S.EventBannerContainer>
+				<S.Banner>
+					<img src={event_image} alt={title} />
+				</S.Banner>
+				<S.Caption>
+					<S.Headline>{title}</S.Headline>
+					<S.BannerButton onClick={this.viewEventInfo}>Learn More</S.BannerButton>
+				</S.Caption>
 			</S.EventBannerContainer>
 		);
 	}

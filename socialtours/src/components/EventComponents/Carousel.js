@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import jwtDecode from "jwt-decode";
 
 import {
 	CarouselProvider,

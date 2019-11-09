@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux";
 import { withRouter } from "react-router-dom";
-import { fetchEvent, postEvent } from "../../actions";
+import { fetchEvents, fetchEvent, postEvent } from "../../actions";
 import * as S from "./EventComponentsStyles";
 import jwt_decode from "jwt-decode";
 
@@ -16,7 +16,7 @@ class TheCreateEvent extends React.Component {
 		description: "",
 		event_image: "",
 		paid_event: false,
-		price: ""
+		price: null
 	};
 
 	handleChange = e => {
@@ -59,16 +59,6 @@ class TheCreateEvent extends React.Component {
 							/>
 						</S.InputWrapper>
 						<S.InputWrapper>
-							<label>Host ID</label>
-							<S.EventInput
-								name="host_id"
-								placeholder="host_id"
-								onChange={this.handleChange}
-								value={this.state.host_id}
-								type="number"
-							/>
-						</S.InputWrapper>
-						<S.InputWrapper>
 							<label>Description</label>
 							<S.EventInput
 								name="description"
@@ -86,7 +76,7 @@ class TheCreateEvent extends React.Component {
 								value={this.state.event_image}
 							/>
 						</S.InputWrapper>
-						<S.InputWrapper>
+						<S.InputWrapper className="input-checkbox">
 							<label>Paid Event</label>
 							<S.EventInput
 								name="paid_event"
@@ -130,6 +120,6 @@ const mapStateToProps = state => {
 export default withRouter(
 	connect(
 		mapStateToProps,
-		{ fetchEvent, postEvent }
+		{ fetchEvents, fetchEvent, postEvent }
 	)(TheCreateEvent)
 );
