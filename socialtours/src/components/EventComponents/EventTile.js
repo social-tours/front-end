@@ -14,7 +14,7 @@ class EventTile extends Component {
 		return (
 			<S.EventInfoContainer onClick={this.viewEventInfo}>
 				<S.Banner>
-					<img src={event_image} alt="Event Poster" />
+					<img src={event_image} alt={title} />
         </S.Banner>
         <S.EventTitle>{title}</S.EventTitle>
 			</S.EventInfoContainer>
