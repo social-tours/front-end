@@ -9,8 +9,8 @@ import { API_ENDPOINT } from "../../config/api";
 
 class PaymentForm extends Component {
 	state = {
-		description: "Receipt Test",
-		price: 10.00,
+		description: this.props.event.title,
+		price: this.props.event.price,
 		quantity: 0,
 		amount: 0,
 		coupon: "",
@@ -51,8 +51,9 @@ class PaymentForm extends Component {
 		console.log("SUBMITTED AMOUNT: ", amount);
 		const transactionDetails = {
 			description: this.state.description,
+			type: this.props.event.type,
 			user_id: jwt_decode(localStorage.getItem("api_token")).id,
-			// event_schedule_id: this.props.schedule.id,
+			event_schedule_id: this.props.schedule.id,
 			amount,
 			token
 		};
@@ -75,6 +76,7 @@ class PaymentForm extends Component {
 	};
 
 	render() {
+		console.log("PAYMENT FORM PROPS: ", this.props)
 		return (
 			<>
 				{!this.state.receipt_url ? (

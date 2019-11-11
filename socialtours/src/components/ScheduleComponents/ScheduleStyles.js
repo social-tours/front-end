@@ -107,6 +107,18 @@ export const EventDate = styled.div`
 
 `
 
+export const EventPriceWrapper = styled.div`
+		margin: 10px 0;
+		${flex("column", "center")}
+
+		h3 {
+			margin: 10px 0;
+			font-size: ${fontSizing.ml};
+			font-weight: bold;
+		}
+
+`
+
 export const ScheduleDetailsWrapper = styled.div`
 		margin-top: 20px;
 		font-size: ${fontSizing.sm};

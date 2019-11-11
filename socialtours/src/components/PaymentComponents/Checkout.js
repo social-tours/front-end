@@ -9,7 +9,7 @@ export default class Payment extends Component {
 			<>
 				<StripeProvider apiKey="pk_test_cW5OcjbXZmflVlvo7cPdkyy000LOqLFIwo">
 					<Elements>
-						<PaymentForm />
+						<PaymentForm {...this.props}/>
 					</Elements>
 				</StripeProvider>
 			</>
