@@ -277,7 +277,7 @@ class ScheduleDetails extends Component {
 				</S.EventInfoWrapper>
 				{!this.state.edit ? (
 					!this.state.paid_event ? (
-						<S.ScheduleButton primary>Register</S.ScheduleButton>
+						<S.ScheduleButton primary onClick={this.toggleCheckOut}>Register</S.ScheduleButton>
 					) : (
 						<S.EventPriceWrapper>
 							<h3>

@@ -21,6 +21,7 @@ class PaymentForm extends Component {
 		state: "",
 		country: "",
 		postal_code: "",
+		receipt: false,
 		receipt_url: null
 	};
 
@@ -35,7 +36,6 @@ class PaymentForm extends Component {
 	};
 
 	handlePayment = async e => {
-		e.preventDefault();
 		let { token } = await this.props.stripe.createToken({
 			name: this.state.name,
 			email: this.state.email,
@@ -54,6 +54,8 @@ class PaymentForm extends Component {
 			type: this.props.event.type,
 			user_id: jwt_decode(localStorage.getItem("api_token")).id,
 			event_schedule_id: this.props.schedule.id,
+			email: this.state.email,
+			quantity: this.state.quantity,
 			amount,
 			token
 		};
@@ -67,7 +69,7 @@ class PaymentForm extends Component {
 			if (response.data.success.id) {
 				console.log(response);
 				const { receipt_url } = response.data.success;
-				this.setState({ receipt_url });
+				this.setState({ receipt: !this.state.receipt, receipt_url });
 			}
 		} catch (error) {
 			console.log("Payment Error: ", error);
@@ -75,26 +77,63 @@ class PaymentForm extends Component {
 		}
 	};
 
+	handleReservation = async e => {
+		const transactionDetails = {
+			description: this.state.description,
+			type: this.props.event.type,
+			user_id: jwt_decode(localStorage.getItem("api_token")).id,
+			event_schedule_id: this.props.schedule.id,
+			email: this.state.email,
+			quantity: this.state.quantity,
+		};
+
+		try {
+			const response = await axios.post(
+				`${API_ENDPOINT}/api/tickets`,
+				transactionDetails
+			);
+
+			console.log("RESERVATION STATUS: ", response.data);
+			if (response.data.id) {
+				this.setState({ receipt: !this.state.receipt });
+			}
+		} catch (error) {
+			console.log("Reservation Error: ", error);
+			alert("Reservation Error");
+		}
+	}
+
+	handleSubmit = e => {
+		e.preventDefault();
+		if (this.props.event.paid_event) {
+			this.handlePayment(e)
+		} else {
+			this.handleReservation(e)
+		}
+
+	}
+
 	render() {
-		console.log("PAYMENT FORM PROPS: ", this.props)
 		return (
 			<>
-				{!this.state.receipt_url ? (
+				{!this.state.receipt ? (
 					<S.PaymentContainer>
-						<form onSubmit={this.handlePayment}>
+						<form onSubmit={this.handleSubmit}>
 							<h3>Order Information</h3>
 							<div className="product-description">
 								{this.state.description}
 							</div>
-							<S.PayInputWrapper>
-								<label htmlFor="price">Price</label>
-								<div className="product-price">
-									{this.state.price.toLocaleString("en-US", {
-										style: "currency",
-										currency: "usd"
-									})}
-								</div>
-							</S.PayInputWrapper>
+							{this.props.event.paid_event && (
+								<S.PayInputWrapper>
+									<label htmlFor="price">Price</label>
+									<div className="product-price">
+										{this.state.price.toLocaleString("en-US", {
+											style: "currency",
+											currency: "usd"
+										})}
+									</div>
+								</S.PayInputWrapper>
+							)}
 							<S.PayInputWrapper>
 								<label htmlFor="quantity">Quantity</label>
 								<input
@@ -103,18 +142,23 @@ class PaymentForm extends Component {
 									type="number"
 								/>
 							</S.PayInputWrapper>
-							<S.PayInputWrapper>
-								<label className="amount" htmlFor="amount">
-									Total
-								</label>
-								<div className="amount">
-									{this.state.amount.toLocaleString("en-US", {
-										style: "currency",
-										currency: "usd"
-									})}
-								</div>
-							</S.PayInputWrapper>
-							<h3>Billing Information</h3>
+							{this.props.event.paid_event && (
+								<S.PayInputWrapper>
+									<label className="amount" htmlFor="amount">
+										Total
+										</label>
+									<div className="amount">
+										{this.state.amount.toLocaleString("en-US", {
+											style: "currency",
+											currency: "usd"
+										})}
+									</div>
+								</S.PayInputWrapper>
+							)}
+							<h3>
+								{this.props.event.paid_event ? "Billing" : "Reservation"}{" "}
+								Information
+							</h3>
 							<S.PayInputWrapper>
 								<label htmlFor="name">Name</label>
 								<input name="name" onChange={this.handleInput} placeholder="" />
@@ -127,52 +171,56 @@ class PaymentForm extends Component {
 									placeholder=""
 								/>
 							</S.PayInputWrapper>
-							<S.PayInputWrapper>
-								<label htmlFor="address">Address</label>
-								<input
-									name="address"
-									onChange={this.handleInput}
-									placeholder=""
-								/>
-							</S.PayInputWrapper>
-							<S.PayInputWrapper>
-								<label htmlFor="city">City</label>
-								<input name="city" onChange={this.handleInput} placeholder="" />
-							</S.PayInputWrapper>
-							<S.PayInputWrapper>
-								<label htmlFor="">State</label>
-								<input
-									name="state"
-									onChange={this.handleInput}
-									placeholder=""
-								/>
-							</S.PayInputWrapper>
-							<S.PayInputWrapper>
-								<label htmlFor="">Postal Code</label>
-								<input
-									name="postal_code"
-									onChange={this.handleInput}
-									placeholder=""
-								/>
-							</S.PayInputWrapper>
-							<S.PayInputWrapper>
-								<label htmlFor="country">Country</label>
-								<input
-									name="country"
-									onChange={this.handleInput}
-									placeholder=""
-								/>
-							</S.PayInputWrapper>
-							<h3>Payment Information</h3>
-							<CardElement
-								className="stripe-card-element"
-								style={{ base: { fontSize: "18px" } }}
-							/>
-							<S.PayButton>Purchase</S.PayButton>
+							{this.props.event.paid_event && (
+								<>
+									<S.PayInputWrapper>
+										<label htmlFor="address">Address</label>
+										<input
+											name="address"
+											onChange={this.handleInput}
+											placeholder=""
+										/>
+									</S.PayInputWrapper>
+									<S.PayInputWrapper>
+										<label htmlFor="city">City</label>
+										<input name="city" onChange={this.handleInput} placeholder="" />
+									</S.PayInputWrapper>
+									<S.PayInputWrapper>
+										<label htmlFor="">State</label>
+										<input
+											name="state"
+											onChange={this.handleInput}
+											placeholder=""
+										/>
+									</S.PayInputWrapper>
+									<S.PayInputWrapper>
+										<label htmlFor="">Postal Code</label>
+										<input
+											name="postal_code"
+											onChange={this.handleInput}
+											placeholder=""
+										/>
+									</S.PayInputWrapper>
+									<S.PayInputWrapper>
+										<label htmlFor="country">Country</label>
+										<input
+											name="country"
+											onChange={this.handleInput}
+											placeholder=""
+										/>
+									</S.PayInputWrapper>
+									<h3>Payment Information</h3>
+									<CardElement
+										className="stripe-card-element"
+										style={{ base: { fontSize: "18px" } }}
+									/>
+								</>
+							)}
+							<S.PayButton>{this.props.event.paid_event ? "Purchase" : "Reserve"}</S.PayButton>
 						</form>
 					</S.PaymentContainer>
 				) : (
-					<Receipt receiptUrl={this.state.receipt_url} />
+						<Receipt receipt={this.state.receipt} receiptUrl={this.state.receipt_url} />
 				)}
 			</>
 		);
