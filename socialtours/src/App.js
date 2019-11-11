@@ -25,7 +25,7 @@ import Navigation from "./components/Navigation";
 import { userHasEvent } from "./utils";
 import AboutUsContact from "./components/AboutUsContact.js";
 import Search from "./components/SearchComponents/Search";
-import Payment from "./components/PaymentComponents/Payment";
+import Checkout from "./components/PaymentComponents/Checkout";
 import EventsDashboard from "./components/EventComponents/EventsDashboard";
 import EventItem from "./components/EventComponents/EventItem";
 import ScheduleDetails from "./components/ScheduleComponents/ScheduleDetails";
@@ -88,7 +88,7 @@ class App extends Component {
 					<Route path="/FollowerDash" component={FollowerDashboard} />
 					<Route path="/AboutUsContact" component={AboutUsContact} />
 					<Route path="/eventsdashboard" component={EventsDashboard} />
-					<Route path="/payment" component={Payment} />
+					<Route path="/payment" component={Checkout} />
 				</Switch>
 				{this.props.events && (this.props.events.map(event => (
 					<Route

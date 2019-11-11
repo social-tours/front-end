@@ -16,6 +16,10 @@ export const EventTitle = styled.h2`
   font-weight: bold;
 	color: ${colors.black};
 	text-align: center;
+
+	@media ${breakpoints[0]} {
+		font-size: ${fontSizing.ml};
+	}
 `;
 
 export const EventInfoContainer = styled.div`

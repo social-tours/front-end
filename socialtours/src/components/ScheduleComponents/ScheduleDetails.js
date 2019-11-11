@@ -18,11 +18,13 @@ import {
 } from "react-share";
 
 import { updateSchedule, deleteSchedule, fetchEvents } from "../../actions";
+import CheckOut from "../PaymentComponents/Checkout";
 import * as S from "./ScheduleStyles";
 
 class ScheduleDetails extends Component {
 	state = {
 		edit: false,
+		checkout: false,
 		paid_event: this.props.event.paid_event,
 		id: this.props.schedule.id,
 		title: "",
@@ -70,6 +72,11 @@ class ScheduleDetails extends Component {
 			);
 		} else console.log("Not authorized to edit.");
 	}
+
+	toggleCheckOut = e => {
+		e.preventDefault();
+		this.setState({ checkout: !this.state.checkout });
+	};
 
 	handleInput = e => {
 		e.preventDefault();
@@ -270,15 +277,26 @@ class ScheduleDetails extends Component {
 				</S.EventInfoWrapper>
 				{!this.state.edit ? (
 					!this.state.paid_event ? (
-						<S.ScheduleButton primary>Register</S.ScheduleButton>
+						<S.ScheduleButton primary onClick={this.toggleCheckOut}>Register</S.ScheduleButton>
 					) : (
-						<S.ScheduleButton primary>Buy Tickets</S.ScheduleButton>
+						<S.EventPriceWrapper>
+							<h3>
+								{`$${this.props.event.price.toLocaleString("en-US", {
+									style: "currency",
+									currency: "usd"
+								})}`}
+							</h3>
+							<S.ScheduleButton primary onClick={this.toggleCheckOut}>
+								Buy Tickets
+							</S.ScheduleButton>
+						</S.EventPriceWrapper>
 					)
 				) : (
 					<S.UpdateButton update onClick={this.handleUpdate}>
 						Save Changes
 					</S.UpdateButton>
 				)}
+				{this.state.checkout && <CheckOut {...this.props} />}
 			</S.Container>
 		);
 	}
