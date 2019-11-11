@@ -8,7 +8,7 @@ import {
 	breakpoints
 } from "../DesignComponents/theme";
 import Button from "../DesignComponents/Button";
-import InputWrapper from "../EventComponents/EventComponentsStyles"
+import { InputWrapper, ScheduleButton } from "../EventComponents/EventComponentsStyles"
 
 export const PaymentContainer = styled.div`
 	width: 90%;
@@ -98,15 +98,29 @@ export const PayInputWrapper = styled(InputWrapper)`
 
 `
 
-export const PayButton = styled(Button)`
-	width: 250px;
-	padding: 10px;
-	border-radius: 5px;
-	border: 1px solid ${color.primaryBgShading};
-	font-weight: normal;
-	font-size: ${fontSizing.xxs}
-	background-color: ${colors.putty};
-	color: black;
+export const ReceiptContainer = styled.div`
+	width: 90%;
+	max-width: 500px;
+	${flex("column", "center", "center")};
+	margin: 50px auto;
+	padding: 20px;
+	border: 2px solid ${colors.grape};
+	border-radius: 10px;
+	background: ${color.secondaryBgShading};
+
+	& * {
+		margin: 10px 0;
+	}
+
+	h2 {
+		font-size: ${fontSizing.l};
+		font-weight: bold;
+		text-transform: uppercase;
+	}
+
+`
+
+export const PayButton = styled(ScheduleButton)`
 `;
 
 export default PaymentContainer;
