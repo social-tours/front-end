@@ -4,7 +4,7 @@ import { CardElement, injectStripe } from "react-stripe-elements";
 
 import * as S from "./PaymentComponentStyles";
 
-class CheckoutForm extends Component {
+class PaymentForm extends Component {
 	// constructor(props) {
 	//   super(props)
 
@@ -46,4 +46,4 @@ class CheckoutForm extends Component {
 	}
 }
 
-export default injectStripe(CheckoutForm);
+export default injectStripe(PaymentForm);
