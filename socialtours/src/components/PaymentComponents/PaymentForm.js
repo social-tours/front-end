@@ -8,8 +8,8 @@ import { API_ENDPOINT } from "../../config/api";
 
 class PaymentForm extends Component {
 	state = {
-		description: "",
-		price: 5,
+		description: "Cafe Morgan Launch Party Event",
+		price: 9.99,
 		quantity: 0,
 		amount: 0,
 		coupon: '',
@@ -31,13 +31,17 @@ class PaymentForm extends Component {
 	handlePricing = e => {
 		//this.handleInput(e)
 		this.setState({ [e.target.name]: e.target.value }, () => {
-			this.setState({ amount: this.state.price * this.state.quantity });
+			this.setState({ amount: this.state.price * this.state.quantity }, () => {
+				console.log(`CURRENT TOTAL: ${this.state.amount}`)
+			})
 		})
 	}
 
-	handlePayment = async () => {
+	handlePayment = async e => {
+		e.preventDefault()
 		let { token } = await this.props.stripe.createToken({
 			name: this.state.name,
+			email: this.state.email,
 			address_line1: this.state.address,
 			address_city: this.state.city,
 			address_zip: this.state.postal_code,
@@ -46,7 +50,8 @@ class PaymentForm extends Component {
 
 		console.log("STRIPE TOKEN STATUS: ", token)
 
-		const amount = Number(this.props.amount) * 100;
+		const amount = Number(this.state.amount) * 100;
+		console.log("SUBMITTED AMOUNT: ", amount)
 		const transactionDetails = {
 			description: this.state.description,
 			user_id: jwt_decode(localStorage.getItem("api_token")).id,
@@ -69,11 +74,9 @@ class PaymentForm extends Component {
 	};
 
 	render() {
-		console.log("THIS.PROPS: ", this.props);
-		
 		return (
 			<S.PaymentContainer>
-				<form>
+				<form onSubmit={this.handlePayment}>
 					<h3>Order Information</h3>
 					<div className="product-description">{this.state.description}</div>
 					<S.PayInputWrapper>

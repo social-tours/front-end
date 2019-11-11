@@ -48,12 +48,12 @@ export const PaymentContainer = styled.div`
 			}
 		}
 
-		.product-description, .product-price {
+		.product-price {
 			width: 80%;
 			font-size: ${fontSizing.m};
 		}
 
-		.amount {
+		.product-description, .amount {
 			font-size: ${fontSizing.ml};
 			font-weight: bold;
 		}
