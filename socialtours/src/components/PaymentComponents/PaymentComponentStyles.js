@@ -22,7 +22,7 @@ export const PaymentContainer = styled.div`
 		width: 100%;
 		${flex("column", "space-between", "center")};
 		padding: 0 10px;
-		border: 2px solid ${colors.grape};
+		border: 2px solid ${color.secondaryColor};
 		border-radius: 10px;
 		background: ${color.lightText};
 
@@ -96,6 +96,21 @@ export const PayInputWrapper = styled(InputWrapper)`
 		width: 15%;
 	}
 
+	@media ${breakpoints[0]} {
+		width: 90%;
+		${flex("column")};
+		margin: 10px 0;
+		
+		&.input-checkbox {
+			${flex("row", "center")};
+
+			label {
+				width: 100px;
+			}
+
+		}
+	}
+
 `
 
 export const ReceiptContainer = styled.div`
@@ -104,7 +119,7 @@ export const ReceiptContainer = styled.div`
 	${flex("column", "center", "center")};
 	margin: 50px auto;
 	padding: 20px;
-	border: 2px solid ${colors.grape};
+	border: 2px solid ${color.secondaryColor};
 	border-radius: 10px;
 	background: ${color.secondaryBgShading};
 
