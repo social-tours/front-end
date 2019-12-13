@@ -65,12 +65,10 @@ class ScheduleDetails extends Component {
 	};
 
 	toggleEdit() {
-		if (this.props.event.host_id === this.getUserId().id) {
-			this.setState(
-				prevState => ({ edit: !prevState.edit }),
-				() => this.prePopulateForm()
-			);
-		} else console.log("Not authorized to edit.");
+		this.setState(
+			prevState => ({ edit: !prevState.edit }),
+			() => this.prePopulateForm()
+		);
 	}
 
 	toggleCheckOut = e => {
@@ -149,15 +147,13 @@ class ScheduleDetails extends Component {
 
 		return (
 			<S.Container>
-				{this.props.event.host_id === this.getUserId().id && (
-					<header>
-						<i className="far fa-edit" onClick={() => this.toggleEdit()}></i>
-						<i
-							className="fa fa-trash"
-							onClick={() => this.handleDelete(id)}
-						></i>
-					</header>
-				)}
+				<header>
+					<i className="far fa-edit" onClick={() => this.toggleEdit()}></i>
+					<i
+						className="fa fa-trash"
+						onClick={() => this.handleDelete(id)}
+					></i>
+				</header>
 				<S.Banner>
 					<img src={this.props.event.event_image} alt="Event Image" />
 				</S.Banner>

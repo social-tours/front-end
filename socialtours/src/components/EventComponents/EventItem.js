@@ -75,12 +75,10 @@ class EventItem extends Component {
 	};
 
 	toggleEdit() {
-		if (this.props.event.host_id === this.getUserId().id) {
-			this.setState(
-				prevState => ({ edit: !prevState.edit }),
-				() => this.prePopulateForm()
-			);
-		} else console.log("Not authorized to perform function.");
+		this.setState(
+			prevState => ({ edit: !prevState.edit }),
+			() => this.prePopulateForm()
+		);
 	}
 
 	toggleAddSchedule = e => {
@@ -208,15 +206,13 @@ class EventItem extends Component {
 
 		return (
 			<S.Container>
-				{this.props.event.host_id === this.getUserId().id && (
-					<header>
-						<i className="far fa-edit" onClick={() => this.toggleEdit()}></i>
-						<i
-							className="fa fa-trash"
-							onClick={() => this.handleDelete(id)}
-						></i>
-					</header>
-				)}
+				<header>
+					<i className="far fa-edit" onClick={() => this.toggleEdit()}></i>
+					<i
+						className="fa fa-trash"
+						onClick={() => this.handleDelete(id)}
+					></i>
+				</header>
 				{!this.state.edit ? (
 					<div>
 						<S.Banner>
