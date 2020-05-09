@@ -30,7 +30,8 @@ if (hostname === "www.socialtours.io") {
 } else {
 	API_ENDPOINT = "https://staging-a-socialtours.herokuapp.com";
 	// API_ENDPOINT = "http://localhost:8080";
-	REDIRECT_URI = "http://localhost:3000";
+	// REDIRECT_URI = "http://localhost:3000";
+	REDIRECT_URI = "https://socialtours.netlify.app"
 }
 
 export { API_ENDPOINT, REDIRECT_URI };
